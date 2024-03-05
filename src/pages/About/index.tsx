@@ -1,6 +1,9 @@
+import Layout from "../../components/Layout/Layout"
 
 const About = () => {
-    return <div>About</div>
+    return <Layout>
+        <div>About</div>
+    </Layout>
 }
 
 export default About
