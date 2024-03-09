@@ -1,5 +1,9 @@
-@import "../utils/colors.scss";
+@import "utils/mixins.scss";
+@import "utils/colors.scss";
+
 .layout {
+  max-width: 100vw;
+  overflow-x: hidden;
   .MuiAppBar-colorPrimary {
     background-color: $black;
   }
@@ -12,6 +16,7 @@
         padding: 0;
       }
       .navigation-list {
+        @include horizontal-list;
         .navigation-item {
           :hover {
             color: $primary-color;
@@ -26,12 +31,18 @@
       .right-menu {
         align-self: flex-end;
         .lang-list {
+          @include horizontal-list;
         }
       }
     }
   }
-  .horizontal-list {
-    display: flex;
-    flex-direction: row;
+  .content-container {
+    min-height: 100vh;
+  }
+  .footer {
+    @include horizontal-list;
+    background-color: black;
+    color: white;
+    width: 100%;
   }
 }

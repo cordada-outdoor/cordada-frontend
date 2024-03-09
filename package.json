@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@types/react-slick": "^0.23.13",
-    "@types/slick-carousel": "^1.6.40"
+    "@types/slick-carousel": "^1.6.40",
+    "@babel/plugin-proposal-private-property-in-object": ""
   }
 }

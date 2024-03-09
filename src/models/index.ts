@@ -1,0 +1,1 @@
+export type AppbarPosition = "fixed" | "sticky" | undefined;
