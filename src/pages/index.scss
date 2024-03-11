@@ -42,7 +42,30 @@
   .footer {
     @include horizontal-list;
     background-color: black;
+    justify-content: space-between;
     color: white;
-    width: 100%;
+    a {
+      color: white;
+    }
+    .icon-button {
+      height: 32px;
+    }
+    .icon-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: $primary-color;
+    }
+    .footer-link {
+      text-decoration: none;
+      margin: 0 1em;
+    }
+    .footer-link:hover {
+      color: $primary-color;
+    }
+  }
+  .icon-button {
+    color: inherit;
+  }
+  .horizontal-list {
+    @include horizontal-list;
   }
 }
