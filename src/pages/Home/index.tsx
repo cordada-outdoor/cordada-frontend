@@ -2,7 +2,7 @@ import Layout from "components/Layout/Layout"
 
 const Home = () => {
     return <Layout appbarPosition="fixed">
-        <div>home</div>
+        <div>home QQQQ</div>
     </Layout>
 }
 
