@@ -62,6 +62,36 @@
       color: $primary-color;
     }
   }
+
+  .preview-image-container {
+    position: relative;
+    color: white;
+    .preview-content {
+      position: absolute;
+      bottom: 0;
+      padding: 5px;
+      .MuiTypography-caption {
+        font-weight: 300;
+      }
+    }
+    .hover-container {
+      height: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      bottom: 0;
+      transition: 0.2s;
+    }
+    .non-hoverable {
+      height: 100%;
+    }
+  }
+  .preview-image-container:hover {
+    .hover-container {
+      height: 100%;
+    }
+  }
+
   .icon-button {
     color: inherit;
   }
