@@ -1,6 +1,6 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material"
-import { ReactComponent as InstagramLogo } from 'assets/instagram-logo.svg'
-import { ReactComponent as LinkedinLogo } from 'assets/linkedin-logo.svg'
+import { ReactComponent as InstagramLogo } from 'assets/logos/instagram-logo.svg'
+import { ReactComponent as LinkedinLogo } from 'assets/logos/linkedin-logo.svg'
 import CustomIconButton from "components/Common/CustomIconButton";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";

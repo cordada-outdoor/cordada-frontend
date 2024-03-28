@@ -1,8 +1,11 @@
 import { AppbarPosition } from "models";
-import { AppBar, Box, List, ListItem, ListItemButton, ListItemText, Toolbar, styled, useScrollTrigger } from "@mui/material"
-import React, { ReactElement } from "react";
+import { AppBar, Box, Button, Drawer, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography, styled, useMediaQuery, useScrollTrigger, useTheme } from "@mui/material"
+import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import CustomIconButton from "components/Common/CustomIconButton";
+import { ReactComponent as LogoSmall } from 'assets/logos/logo-small.svg'
+import { ReactComponent as MenuIcon } from 'assets/logos/menu-icon.svg'
 
 interface MenuScrollProps {
     children: ReactElement,
@@ -29,8 +32,66 @@ interface MenuProps {
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
-    const { t } = useTranslation();
+    const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+    const { t, i18n } = useTranslation();
     const navigate = useNavigate();
+    if (isMobile) {
+        return <>
+            <AppBar className="mobile-appbar appbar" color="transparent" elevation={0}>
+                <Toolbar className="toolbar">
+                    <LogoSmall className="main-menu-logo" />
+                    <Button className="right-mobile-menu" onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
+                        <Typography>{i18n.language.toUpperCase() + ' >'}</Typography>
+                        <MenuIcon className="menu-icon" />
+                    </Button>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                className="menu-drawer"
+                anchor="right"
+                open={isDrawerOpen}
+                onClose={() => setIsDrawerOpen(!isDrawerOpen)}>
+                <List>
+                    {navigationOptions.map(aN => (
+                        <ListItem key={aN.value} className="navigation-item">
+                            <ListItemButton onClick={() => navigate(aN.value)}>
+                                <ListItemText primary={t(aN.label).toUpperCase()} />
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
+                </List>
+                <Box>
+                    <List className="bottom-menu-navigation">
+                        <ListItem className="navigation-item">
+                            <ListItemButton onClick={() => navigate('/')}>
+                                <ListItemText primary={t('legalNotice')} />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem className="navigation-item">
+                            <ListItemButton onClick={() => navigate('/')}>
+                                <ListItemText primary={t('privacyPolicy')} />
+                            </ListItemButton>
+                        </ListItem>
+                    </List>
+                    <List className="lang-list">
+                        {
+                            supportedLngs.map(aL => {
+                                const isSelected = i18n.language.toUpperCase() === aL.toUpperCase();
+                                return <ListItem className={isSelected ? 'primary-color-button' : ''} key={aL}>
+                                    <ListItemButton>
+                                        <ListItemText primary={aL.toUpperCase()} />
+                                    </ListItemButton>
+                                </ListItem>
+                            })
+                        }
+                    </List>
+                </Box>
+            </Drawer>
+        </>
+    }
     return <>
         <MenuScroll position={appbarPosition}>
             <AppBar className="appbar" position="fixed">
@@ -55,6 +116,11 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
                                         </ListItemButton>
                                     </ListItem>)
                             }
+                            <ListItem>
+                                <ListItemButton>
+                                    <LogoSmall className="main-menu-logo" />
+                                </ListItemButton>
+                            </ListItem>
                         </List>
                     </Box>
                 </Toolbar>
