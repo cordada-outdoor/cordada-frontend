@@ -33,12 +33,43 @@
         .lang-list {
           @include horizontal-list;
         }
+        .logo-container {
+          height: 1em;
+          .icon-button {
+            height: 1em;
+            width: 1em;
+          }
+        }
+      }
+      .main-menu-logo {
+        height: 32px;
+        width: 32px;
+        transform: scale(3.5);
       }
     }
   }
+  .mobile-appbar {
+    color: $primary-color;
+    overflow-y: hidden;
+    .right-mobile-menu {
+      color: $primary-color;
+      @include horizontal-list;
+      .menu-icon {
+        margin-left: 10px;
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+
+  .mobile-appbar:active {
+    background-color: transparent;
+  }
+
   .content-container {
     min-height: 100vh;
   }
+
   .footer {
     @include horizontal-list;
     background-color: black;
@@ -97,5 +128,28 @@
   }
   .horizontal-list {
     @include horizontal-list;
+  }
+}
+.menu-drawer {
+  .MuiPaper-root {
+    min-width: 70vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .navigation-item {
+      padding-left: 0;
+    }
+    .bottom-menu-navigation {
+      background-color: rgba(128, 128, 128, 0.174);
+    }
+    .lang-list {
+      display: flex;
+      flex-direction: row;
+      background-color: $primary-translucid;
+      align-items: center;
+      .primary-color-button {
+        color: $primary-color;
+      }
+    }
   }
 }
