@@ -29,9 +29,16 @@
         }
       }
       .right-menu {
-        align-self: flex-end;
         .lang-list {
           @include horizontal-list;
+          .language-button {
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+          .selected-language {
+            background-color: $primary-color;
+            color: white;
+          }
         }
         .logo-container {
           height: 1em;
@@ -44,6 +51,7 @@
       .main-menu-logo {
         height: 32px;
         width: 32px;
+        margin-left: 15px;
         transform: scale(3.5);
       }
     }
