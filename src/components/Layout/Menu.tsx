@@ -7,6 +7,7 @@ import { ReactComponent as MenuIcon } from 'assets/logos/menu-icon.svg'
 import { useHistory } from "react-router-dom";
 import useUrlLang from "utils/useUrlLang";
 import { SUPPORTED_LANGS } from "utils/constants";
+import { findLangName } from "utils";
 
 interface MenuScrollProps {
     children: ReactElement,
@@ -41,12 +42,13 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
     const history = useHistory();
 
     if (isMobile) {
+        const languageName = findLangName(i18n.language);
         return <>
             <AppBar className="mobile-appbar appbar" color="transparent" elevation={0}>
                 <Toolbar className="toolbar">
                     <LogoSmall className="main-menu-logo" />
                     <Button className="right-mobile-menu" onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
-                        <Typography>{i18n.language.toUpperCase() + ' >'}</Typography>
+                        <Typography>{languageName + ' >'}</Typography>
                         <MenuIcon className="menu-icon" />
                     </Button>
                 </Toolbar>
@@ -81,10 +83,11 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
                     <List className="lang-list">
                         {
                             SUPPORTED_LANGS.map(aL => {
+                                const langName = findLangName(aL)
                                 const isSelected = i18n.language.toUpperCase() === aL.toUpperCase();
-                                return <ListItem className={isSelected ? 'primary-color-button' : ''} key={aL}>
+                                return <ListItem onClick={() => history.push(`/${aL}`)} className={isSelected ? 'primary-color-button' : ''} key={aL}>
                                     <ListItemButton>
-                                        <ListItemText primary={aL.toUpperCase()} />
+                                        <ListItemText primary={langName} />
                                     </ListItemButton>
                                 </ListItem>
                             })
@@ -112,10 +115,12 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
                         <List className="lang-list">
                             {
                                 SUPPORTED_LANGS.map(aL => {
+                                    const langName = findLangName(aL)
+
                                     const isSelected = i18n.language.toUpperCase() === aL.toUpperCase();
                                     return <ListItem key={aL}>
                                         <ListItemButton className={isSelected ? 'selected-language language-button' : 'language-button'} onClick={() => history.push(`/${aL}`)}>
-                                            <ListItemText primary={aL.toUpperCase()} />
+                                            <ListItemText primary={langName} />
                                         </ListItemButton>
                                     </ListItem>
                                 }
