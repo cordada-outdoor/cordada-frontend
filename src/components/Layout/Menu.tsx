@@ -2,10 +2,12 @@ import { AppbarPosition } from "models";
 import { AppBar, Box, Button, Drawer, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography, styled, useMediaQuery, useScrollTrigger, useTheme } from "@mui/material"
 import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import CustomIconButton from "components/Common/CustomIconButton";
 import { ReactComponent as LogoSmall } from 'assets/logos/logo-small.svg'
 import { ReactComponent as MenuIcon } from 'assets/logos/menu-icon.svg'
+import { useHistory } from "react-router-dom";
+import useUrlLang from "utils/useUrlLang";
+import { SUPPORTED_LANGS } from "utils/constants";
+import { findLangName } from "utils";
 
 interface MenuScrollProps {
     children: ReactElement,
@@ -22,7 +24,6 @@ const MenuScroll = ({ children, position }: MenuScrollProps) => {
         elevation: trigger ? 4 : 0
     });
 }
-const supportedLngs = ['ca', 'es', 'en']
 const navigationOptions = [{ label: 'whatIsCordada', value: '/' }, { label: 'aboutUs', value: '/about' }]
 
 interface MenuProps {
@@ -35,16 +36,19 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const { langUrlPrefix } = useUrlLang();
 
     const { t, i18n } = useTranslation();
-    const navigate = useNavigate();
+    const history = useHistory();
+
     if (isMobile) {
+        const languageName = findLangName(i18n.language);
         return <>
             <AppBar className="mobile-appbar appbar" color="transparent" elevation={0}>
                 <Toolbar className="toolbar">
                     <LogoSmall className="main-menu-logo" />
                     <Button className="right-mobile-menu" onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
-                        <Typography>{i18n.language.toUpperCase() + ' >'}</Typography>
+                        <Typography>{languageName + ' >'}</Typography>
                         <MenuIcon className="menu-icon" />
                     </Button>
                 </Toolbar>
@@ -57,7 +61,7 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
                 <List>
                     {navigationOptions.map(aN => (
                         <ListItem key={aN.value} className="navigation-item">
-                            <ListItemButton onClick={() => navigate(aN.value)}>
+                            <ListItemButton onClick={() => history.push(`${langUrlPrefix + aN.value}`)}>
                                 <ListItemText primary={t(aN.label).toUpperCase()} />
                             </ListItemButton>
                         </ListItem>
@@ -66,23 +70,24 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
                 <Box>
                     <List className="bottom-menu-navigation">
                         <ListItem className="navigation-item">
-                            <ListItemButton onClick={() => navigate('/')}>
+                            <ListItemButton onClick={() => history.push(`${langUrlPrefix}`)}>
                                 <ListItemText primary={t('legalNotice')} />
                             </ListItemButton>
                         </ListItem>
                         <ListItem className="navigation-item">
-                            <ListItemButton onClick={() => navigate('/')}>
+                            <ListItemButton onClick={() => history.push(`${langUrlPrefix}`)}>
                                 <ListItemText primary={t('privacyPolicy')} />
                             </ListItemButton>
                         </ListItem>
                     </List>
                     <List className="lang-list">
                         {
-                            supportedLngs.map(aL => {
+                            SUPPORTED_LANGS.map(aL => {
+                                const langName = findLangName(aL)
                                 const isSelected = i18n.language.toUpperCase() === aL.toUpperCase();
-                                return <ListItem className={isSelected ? 'primary-color-button' : ''} key={aL}>
+                                return <ListItem onClick={() => history.push(`/${aL}`)} className={isSelected ? 'primary-color-button' : ''} key={aL}>
                                     <ListItemButton>
-                                        <ListItemText primary={aL.toUpperCase()} />
+                                        <ListItemText primary={langName} />
                                     </ListItemButton>
                                 </ListItem>
                             })
@@ -99,7 +104,7 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
                     <List className="navigation-list">
                         {navigationOptions.map(aN => (
                             <ListItem key={aN.value} className="navigation-item">
-                                <ListItemButton onClick={() => navigate(aN.value)}>
+                                <ListItemButton onClick={() => history.push(`${langUrlPrefix + aN.value}`)}>
                                     <ListItemText primary={t(aN.label).toUpperCase()} />
                                 </ListItemButton>
                             </ListItem>
@@ -109,17 +114,20 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
                     <Box className="right-menu">
                         <List className="lang-list">
                             {
-                                supportedLngs.map(aL =>
-                                    <ListItem key={aL}>
-                                        <ListItemButton>
-                                            <ListItemText primary={aL.toUpperCase()} />
+                                SUPPORTED_LANGS.map(aL => {
+                                    const langName = findLangName(aL)
+
+                                    const isSelected = i18n.language.toUpperCase() === aL.toUpperCase();
+                                    return <ListItem key={aL}>
+                                        <ListItemButton className={isSelected ? 'selected-language language-button' : 'language-button'} onClick={() => history.push(`/${aL}`)}>
+                                            <ListItemText primary={langName} />
                                         </ListItemButton>
-                                    </ListItem>)
+                                    </ListItem>
+                                }
+                                )
                             }
                             <ListItem>
-                                <ListItemButton>
-                                    <LogoSmall className="main-menu-logo" />
-                                </ListItemButton>
+                                <LogoSmall className="main-menu-logo" />
                             </ListItem>
                         </List>
                     </Box>
