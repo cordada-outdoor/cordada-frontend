@@ -1,8 +1,11 @@
 {
-    "whatIsCordada": "What is Cordada?",
+    "home": "Home",
+    "projects": "Projects",
+    "services": "Services",
+    "us": "Us",
     "aboutUs": "About us",
     "pageDoesNotExist": "This page does not exist. Sorry for the inconvenience.",
     "anyDoubtContact": "For any question you can contact us.",
-    "legalNotice": "Aviso legal",
-    "privacyPolicy": "Politica de privacidad"
+    "legalNotice": "Legal notice",
+    "privacyPolicy": "Privacy policy"
 }

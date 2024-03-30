@@ -1,4 +1,4 @@
-import { Avatar, Box, Container } from "@mui/material"
+import { Box } from "@mui/material"
 import Layout from "components/Layout/Layout"
 import HomeBg from "assets/images/home_bg.jpg"
 import "./index.scss"

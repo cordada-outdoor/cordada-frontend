@@ -24,7 +24,7 @@ const MenuScroll = ({ children, position }: MenuScrollProps) => {
         elevation: trigger ? 4 : 0
     });
 }
-const navigationOptions = [{ label: 'whatIsCordada', value: '/' }, { label: 'aboutUs', value: '/about' }]
+const navigationOptions = [{ label: 'home', value: '/' }, { label: 'projects', value: '/projects' }, { label: 'services', value: '/services' }, { label: 'us', value: '/about' }]
 
 interface MenuProps {
     appbarPosition?: AppbarPosition

@@ -15,6 +15,7 @@ const Routes = () => {
         if (lang !== i18n.language) {
             i18n.changeLanguage(lang)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lang])
 
     return <Switch>
