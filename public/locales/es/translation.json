@@ -7,5 +7,8 @@
     "pageDoesNotExist": "Esta página no existe. Disculpen las molestias.",
     "anyDoubtContact": "Para cualquier duda o cuestión, puede contactar con nosotros.",
     "legalNotice": "Aviso legal",
-    "privacyPolicy": "Politica de privacidad"
+    "privacyPolicy": "Politica de privacidad",
+    "homePage": {
+        "ourProjects": "nuestros proyectos"
+    }
 }

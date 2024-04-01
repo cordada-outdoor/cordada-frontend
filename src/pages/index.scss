@@ -7,6 +7,9 @@
   .MuiAppBar-colorPrimary {
     background-color: $black;
   }
+  .primary-appbar {
+    background-color: $primary-color;
+  }
   .appbar {
     transition: 0.2s;
     .toolbar {
@@ -119,6 +122,7 @@
       background-color: rgba(0, 0, 0, 0.5);
       position: absolute;
       bottom: 0;
+      overflow: hidden;
       transition: 0.2s;
     }
     .non-hoverable {

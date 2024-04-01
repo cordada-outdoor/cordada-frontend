@@ -28,11 +28,12 @@ const navigationOptions = [{ label: 'home', value: '/' }, { label: 'projects', v
 
 interface MenuProps {
     appbarPosition?: AppbarPosition
+    primaryAppbar?: boolean
 }
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
-const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
+const Menu = ({ appbarPosition = "sticky", primaryAppbar = false }: MenuProps) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -99,7 +100,7 @@ const Menu = ({ appbarPosition = "sticky" }: MenuProps) => {
     }
     return <>
         <MenuScroll position={appbarPosition}>
-            <AppBar className="appbar" position="fixed">
+            <AppBar className={`appbar ${primaryAppbar ? 'primary-appbar' : ''}`} position="fixed">
                 <Toolbar className="toolbar">
                     <List className="navigation-list">
                         {navigationOptions.map(aN => (

@@ -1,7 +1,35 @@
+@import "utils/mixins.scss";
+@import "utils/colors.scss";
+
 .home-page {
     .home-page-header {
         .home-background-image {
             width: 100vw;
+        }
+        .home-primary-logo {
+            position: absolute;
+            width: 70%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+        }
+    }
+    .home-projects-section {
+        padding: 50px 10px;
+        color: white;
+        background: linear-gradient(black, black, $primary-color);
+        .projects-preview-container {
+            @include horizontal-list;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: space-evenly;
+            .project-preview {
+                width: 25%;
+                border: 10px solid $primary-color;
+            }
         }
     }
 }
@@ -15,6 +43,18 @@
                 transform: translateX(-50%);
                 width: auto;
                 height: 100vh;
+            }
+            .home-primary-logo {
+                width: 100%;
+            }
+        }
+    }
+    .home-projects-section {
+        .projects-preview-container {
+            align-content: space-evenly;
+            .project-preview {
+                width: 80% !important;
+                margin: 10px 0;
             }
         }
     }
