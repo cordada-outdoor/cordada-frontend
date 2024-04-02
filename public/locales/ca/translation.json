@@ -1,8 +1,16 @@
 {
-    "whatIsCordada": "Què és Cordada?",
+    "home": "Inici",
+    "projects": "Projectes",
+    "services": "Serveis",
+    "us": "Nosaltres",
     "aboutUs": "Sobre nosaltres",
     "pageDoesNotExist": "Aquesta pàgina no existeix. Disculpeu les molèsties.",
     "anyDoubtContact": "Per a qualsevol dubte o qüestió, podeu contactar amb nosaltres.",
     "legalNotice": "Avís legal",
-    "privacyPolicy": "Política de privacitat"
+    "privacyPolicy": "Política de privacitat",
+    "homePage": {
+        "ourProjects": "els nostres projectes",
+        "allProjects": "Tots els projectes",
+        "ourCordada": "la nostra cordada"
+    }
 }

@@ -1,8 +1,83 @@
+@import "utils/mixins.scss";
+@import "utils/colors.scss";
+
 .home-page {
     .home-page-header {
         .home-background-image {
-            min-width: 100vw;
-            min-height: 100vh;
+            width: 100vw;
+        }
+        .home-primary-logo {
+            position: absolute;
+            width: 70%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+        }
+    }
+    .see-projects-button-container {
+        margin-top: 20px;
+        float: right;
+        .see-projects-button {
+            background-color: $primary-color;
+            border-radius: 0;
+        }
+    }
+    .home-projects-section {
+        padding: 50px 30px;
+        color: white;
+        background: linear-gradient(black, black, $primary-color);
+        .projects-preview-container {
+            @include horizontal-list;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: space-between;
+            .project-preview {
+                width: 25%;
+                border: 10px solid $primary-color;
+            }
+        }
+        .collaborators-preview-container {
+            padding: 80px 0 30px;
+            .carousel {
+                margin-top: 30px;
+                img {
+                    width: 72px;
+                    height: 72px;
+                    object-fit: contain;
+                }
+            }
+        }
+        .section-title {
+            margin-left: 10px;
+        }
+    }
+}
+@media (max-width: 900px) {
+    .home-page {
+        .home-page-header {
+            position: relative;
+            overflow: hidden;
+            .home-background-image {
+                margin-left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                height: 100vh;
+            }
+            .home-primary-logo {
+                width: 100%;
+            }
+        }
+    }
+    .home-projects-section {
+        .projects-preview-container {
+            align-content: space-evenly;
+            .project-preview {
+                width: 80% !important;
+                margin: 10px 0;
+            }
         }
     }
 }

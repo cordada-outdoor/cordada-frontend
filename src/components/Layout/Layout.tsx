@@ -7,10 +7,11 @@ import { Box } from "@mui/material";
 interface LayoutProps {
     children: ReactNode;
     appbarPosition?: AppbarPosition
+    primaryAppbar?: boolean
 }
-const Layout = ({ children, appbarPosition }: LayoutProps) => {
+const Layout = ({ children, appbarPosition, primaryAppbar }: LayoutProps) => {
     return <div className="layout">
-        <Menu appbarPosition={appbarPosition} />
+        <Menu appbarPosition={appbarPosition} primaryAppbar={primaryAppbar} />
         <Box className="content-container">
             {children}
         </Box>

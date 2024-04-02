@@ -1,10 +1,7 @@
 import { ThemeProvider } from '@mui/material';
 import './index.scss';
-import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { theme } from 'utils/theme';
-import Home from './Home';
-import About from './About';
-import NotFound from './NotFound';
 import Routes from 'utils/Routes';
 import { SUPPORTED_LANGS } from 'utils/constants';
 import ScrollToTop from 'utils/ScrollToTop';
