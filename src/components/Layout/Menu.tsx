@@ -16,7 +16,7 @@ interface MenuScrollProps {
 
 const MenuScroll = ({ children, position }: MenuScrollProps) => {
     const trigger = useScrollTrigger({
-        disableHysteresis: false,
+        disableHysteresis: true,
         threshold: 0,
     });
     return React.cloneElement(children, {

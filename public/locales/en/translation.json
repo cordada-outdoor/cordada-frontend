@@ -9,6 +9,8 @@
     "legalNotice": "Legal notice",
     "privacyPolicy": "Privacy policy",
     "homePage": {
-        "ourProjects": "our projects"
+        "ourProjects": "our projects",
+        "allProjects": "All projects",
+        "ourCordada": "our cordada"
     }
 }

@@ -9,6 +9,8 @@
     "legalNotice": "Avís legal",
     "privacyPolicy": "Política de privacitat",
     "homePage": {
-        "ourProjects": "els nostres projectes"
+        "ourProjects": "els nostres projectes",
+        "allProjects": "Tots els projectes",
+        "ourCordada": "la nostra cordada"
     }
 }
