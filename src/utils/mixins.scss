@@ -1,5 +1,22 @@
+@import "./colors.scss";
+
 @mixin horizontal-list {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+@mixin white-on-primary {
+    color: $white;
+    background-color: $primary-color;
+}
+
+@mixin primary-on-white {
+    color: $primary-color;
+    background-color: $white;
+}
+
+@mixin white-on-black {
+    color: $white;
+    background-color: $black;
 }

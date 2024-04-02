@@ -83,9 +83,8 @@
 
   .footer {
     @include horizontal-list;
-    background-color: black;
+    @include white-on-primary;
     justify-content: space-between;
-    color: white;
     a {
       color: white;
     }
@@ -94,14 +93,14 @@
     }
     .icon-button:hover {
       background-color: rgba(255, 255, 255, 0.2);
-      color: $primary-color;
+      color: black;
     }
     .footer-link {
       text-decoration: none;
       margin: 0 1em;
     }
     .footer-link:hover {
-      color: $primary-color;
+      color: black;
     }
   }
 

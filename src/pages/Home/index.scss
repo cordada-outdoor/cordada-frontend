@@ -16,16 +16,10 @@
             bottom: 0;
         }
     }
-    .see-projects-button-container {
-        margin-top: 20px;
-        float: right;
-        .see-projects-button {
-            background-color: $primary-color;
-            border-radius: 0;
-        }
-    }
+
     .home-projects-section {
-        padding: 50px 30px;
+        margin-top: -5px;
+        padding: 55px 30px;
         color: white;
         background: linear-gradient(black, black, $primary-color);
         .projects-preview-container {
@@ -40,18 +34,70 @@
             }
         }
         .collaborators-preview-container {
-            padding: 80px 0 30px;
+            padding: 120px 0 30px;
             .carousel {
                 margin-top: 30px;
                 img {
-                    width: 72px;
-                    height: 72px;
+                    width: 10vw;
+                    height: 10vw;
                     object-fit: contain;
                 }
             }
         }
-        .section-title {
-            margin-left: 10px;
+
+        .see-projects-button-container {
+            margin-top: 20px;
+            float: right;
+            .see-projects-button {
+                @include white-on-primary;
+                border-radius: 0;
+            }
+        }
+    }
+    .home-services-section {
+        margin-top: -1px;
+        white-space: pre-line;
+        padding: 11px 20px 80px;
+        @include white-on-primary;
+
+        .see-services-button-container {
+            float: right;
+            .see-services-button {
+                @include primary-on-white;
+                border-radius: 0;
+            }
+        }
+    }
+    .home-about-section {
+        text-align: center;
+        .about-us-img-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+            overflow-y: hidden;
+            .about-us-img {
+                width: 100%;
+            }
+            .about-us-button-container {
+                position: absolute;
+                .about-us-button {
+                    @include white-on-primary;
+                    border-radius: 0;
+                }
+            }
+        }
+        .home-about-contact-us-section {
+            padding: 12px 0;
+            @include white-on-black;
+            .contact-us-button {
+                margin: 10px auto 20px;
+                display: block;
+                background-color: white;
+                border: 10px solid $primary-color;
+                height: 2em;
+                width: 400px;
+            }
         }
     }
 }
@@ -74,10 +120,32 @@
     .home-projects-section {
         .projects-preview-container {
             align-content: space-evenly;
+            justify-content: center !important;
             .project-preview {
                 width: 80% !important;
                 margin: 10px 0;
             }
+        }
+        .collaborators-preview-container {
+            .carousel {
+                img {
+                    width: auto;
+                    height: 60px !important;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+    .home-services-section {
+        .see-services-button-container {
+            .see-services-button {
+                margin-top: 10px;
+            }
+        }
+    }
+    .home-about-section {
+        .about-us-img-container {
+            height: auto !important;
         }
     }
 }

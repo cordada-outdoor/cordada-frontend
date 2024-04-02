@@ -11,6 +11,12 @@
     "homePage": {
         "ourProjects": "our projects",
         "allProjects": "All projects",
-        "ourCordada": "our cordada"
+        "ourCordada": "our cordada",
+        "ourServices": "our services",
+        "servicesText1": "Cordada is a marketing and communication agency specialized in the outdoor sports and cycling sector. We offer an integral service that goes from planning to execution and distribution, and we meet the needs of companies, athletes, institutions and organizations that are looking for value and quality solutions.",
+        "expertsIn": "Experts in",
+        "expertsDescription": "SPORTS MARKETING, SOCIAL MEDIA \n CONTENT CREATION AND BUSINESS DEVELOPMENT",
+        "allServices": "All services",
+        "contactUs": "Got a question? Contact us!"
     }
 }
