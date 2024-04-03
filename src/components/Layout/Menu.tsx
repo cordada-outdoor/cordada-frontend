@@ -103,13 +103,18 @@ const Menu = ({ appbarPosition = "sticky", primaryAppbar = false }: MenuProps) =
             <AppBar className={`appbar ${primaryAppbar ? 'primary-appbar' : ''}`} position="fixed">
                 <Toolbar className="toolbar">
                     <List className="navigation-list">
-                        {navigationOptions.map(aN => (
-                            <ListItem key={aN.value} className="navigation-item">
-                                <ListItemButton onClick={() => history.push(`${langUrlPrefix + aN.value}`)}>
-                                    <ListItemText primary={t(aN.label).toUpperCase()} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
+                        {navigationOptions.map(aN => {
+                            const isSelected = window.location.pathname.includes(aN.value) && aN.value !== '/'
+                            return (
+                                <ListItem key={aN.value} >
+                                    <ListItemButton className={`navigation-item ${isSelected ? 'selected-item-in-menu' : ''}`} onClick={() => history.push(`${langUrlPrefix + aN.value}`)}>
+                                        <ListItemText primary={t(aN.label).toUpperCase()} />
+                                    </ListItemButton>
+                                </ListItem>
+                            )
+                        }
+                        )
+                        }
 
                     </List>
                     <Box className="right-menu">
@@ -120,7 +125,7 @@ const Menu = ({ appbarPosition = "sticky", primaryAppbar = false }: MenuProps) =
 
                                     const isSelected = i18n.language.toUpperCase() === aL.toUpperCase();
                                     return <ListItem key={aL}>
-                                        <ListItemButton className={isSelected ? 'selected-language language-button' : 'language-button'} onClick={() => history.push(`/${aL}`)}>
+                                        <ListItemButton className={isSelected ? 'selected-item-in-menu language-button' : 'language-button'} onClick={() => history.push(`/${aL}`)}>
                                             <ListItemText primary={langName} />
                                         </ListItemButton>
                                     </ListItem>

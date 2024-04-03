@@ -82,7 +82,7 @@ const Home = () => {
                 </Box>
             </Box>
             <Box className="home-services-section">
-                <Typography variant="h3">{t("homePage.ourServices")}</Typography>
+                <Typography variant="h3">{t("ourServices")}</Typography>
                 <Box py={2} />
                 <Typography>{t("homePage.servicesText1")}</Typography>
                 <Box py={2} />

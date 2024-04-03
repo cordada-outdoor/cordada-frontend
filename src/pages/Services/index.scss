@@ -1,0 +1,33 @@
+@import "/src/utils/colors.scss";
+.services {
+    padding: 50px 36px 10px;
+    scroll-behavior: smooth;
+    .service-menu {
+        padding: 24px 0;
+        .service-menu-item {
+            word-wrap: break-word;
+            border: 10px solid $primary-color;
+            padding: 0;
+            text-align: center;
+            cursor: pointer;
+            .menu-item-content-container {
+                padding: 0 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                .menu-item-title {
+                    position: absolute;
+                }
+            }
+        }
+    }
+    .services-content-container {
+        padding-top: 50px;
+        .services-content-section {
+            .services-content-title {
+                color: $primary-color;
+            }
+        }
+    }
+}
