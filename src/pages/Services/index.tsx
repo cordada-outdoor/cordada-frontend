@@ -16,7 +16,7 @@ const Services = () => {
     return (
         <Layout>
             <Box className="services">
-                <Typography variant="h4">{t("ourServices")}</Typography>
+                <Typography variant="h3">{t("ourServices")}</Typography>
                 <Grid className="service-menu" container spacing={2}>
                     {SERVICES_LIST.map(aS => {
                         return <Grid key={aS} item md={4} xs={12}>
