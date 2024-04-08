@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
 import "./i18n";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { config } from "config";
 
 const root = ReactDOM.createRoot(
@@ -24,7 +24,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       {config.reactQuery.devTools && (
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={false} client={queryClient} />
       )}
       <App />
     </QueryClientProvider>
