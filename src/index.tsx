@@ -24,7 +24,11 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       {config.reactQuery.devTools && (
-        <ReactQueryDevtools initialIsOpen={false} client={queryClient} />
+        <ReactQueryDevtools
+          initialIsOpen={false}
+          client={queryClient}
+          position="right"
+        />
       )}
       <App />
     </QueryClientProvider>
