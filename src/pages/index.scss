@@ -80,6 +80,24 @@
     min-height: 100vh;
   }
 
+  .contact-us-section {
+    padding: 12px 0;
+    .contact-us-button {
+      margin: 10px auto 20px;
+      display: block;
+      background-color: white;
+      border: 10px solid $primary-color;
+      height: 2em;
+      width: 400px;
+    }
+  }
+  .black-on-white {
+    @include black-on-white;
+  }
+  .white-on-black {
+    @include white-on-black;
+  }
+
   .footer {
     @include horizontal-list;
     @include white-on-primary;

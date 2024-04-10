@@ -5,13 +5,14 @@ import HomeBg from "assets/images/home_bg.jpg"
 import { useTranslation } from "react-i18next";
 import { SERVICES_LIST } from "utils/constants";
 import PreviewImage from "components/Common/PreviewImage";
+import ServiceDescription from "components/ServiceDescription";
 
 const Services = () => {
     const { t } = useTranslation();
 
     const handleScrollToElement = (elId: string) => {
         const el = document.getElementById(elId);
-        if (el) el.scrollIntoView({ behavior: "smooth" })
+        if (el) el.scrollIntoView({ behavior: "smooth", block: 'center' })
     }
     return (
         <Layout>
@@ -45,20 +46,60 @@ const Services = () => {
                     })}
                 </Grid>
                 <Box className="services-content-container">
-                    <Box className="services-content-section" id="socialMedia">
-                        <Typography className="services-content-title" variant="h3">{t("servicesPage.socialMedia")}</Typography>
+                    <Box id="socialMedia">
+                        <ServiceDescription
+                            service="socialMedia"
+                            title={t("servicesPage.socialMedia")}
+                            direction="left-to-right"
+                            image={HomeBg}
+                            children={(
+                                <Typography fontWeight={300}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</Typography>
+                            )}
+                        />
                     </Box>
-                    <Box className="services-content-section" id="events">
-                        <Typography className="services-content-title" variant="h3">{t("servicesPage.events")}</Typography>
+                    <Box id="events">
+                        <ServiceDescription
+                            service="events"
+                            title={t("servicesPage.events")}
+                            direction="right-to-left"
+                            image={HomeBg}
+                            children={(
+                                <Typography fontWeight={300}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</Typography>
+                            )}
+                        />
                     </Box>
-                    <Box className="services-content-section" id="press">
-                        <Typography className="services-content-title" variant="h3">{t("servicesPage.press")}</Typography>
+                    <Box id="press">
+                        <ServiceDescription
+                            service="press"
+                            title={t("servicesPage.press")}
+                            direction="left-to-right"
+                            image={HomeBg}
+                            children={(
+                                <Typography fontWeight={300}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</Typography>
+                            )}
+                        />
                     </Box>
-                    <Box className="services-content-section" id="contentCreation">
-                        <Typography className="services-content-title" variant="h3">{t("servicesPage.contentCreation")}</Typography>
+                    <Box id="contentCreation">
+                        <ServiceDescription
+                            service="contentCreation"
+                            title={t("servicesPage.contentCreation")}
+                            direction="right-to-left"
+                            image={HomeBg}
+                            children={(
+                                <Typography fontWeight={300}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</Typography>
+                            )}
+                        />
                     </Box>
-                    <Box className="services-content-section" id="businessDevelopment">
-                        <Typography className="services-content-title" variant="h3">{t("servicesPage.businessDevelopment")}</Typography>
+                    <Box id="businessDevelopment">
+                        <ServiceDescription
+                            service="businessDevelopment"
+                            title={t("servicesPage.businessDevelopment")}
+                            direction="left-to-right"
+                            image={HomeBg}
+                            children={(
+                                <Typography fontWeight={300}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</Typography>
+                            )}
+                        />
                     </Box>
                 </Box>
             </Box>

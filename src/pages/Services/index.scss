@@ -25,9 +25,76 @@
     }
     .services-content-container {
         padding-top: 50px;
-        .services-content-section {
-            .services-content-title {
+        .service-container {
+            margin: 100px 12px;
+            opacity: 0;
+            transform: translateX(-20vw);
+            visibility: hidden;
+            transition:
+                opacity 1200ms ease-out,
+                transform 600ms ease-out,
+                visibility 1200ms ease-out;
+            will-change: opacity, transform, visibility;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            .service-image-container {
+                .service-image {
+                    width: calc(100% - 16px);
+                    height: 0%;
+                }
+                .see-more-button {
+                    @include white-on-primary;
+                    position: absolute;
+                    left: 30px;
+                    border-radius: 0;
+                    bottom: 10px;
+                }
+                .see-more-button:hover {
+                    @include primary-on-white;
+                }
+            }
+            .service-title {
                 color: $primary-color;
+                margin-bottom: 12px;
+            }
+        }
+        .right-to-left {
+            transform: translateX(20vw);
+            flex-direction: row-reverse;
+            .see-more-button {
+                right: 30px;
+                left: auto !important;
+            }
+        }
+        .service-container.is-visible {
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+        }
+    }
+}
+@media (max-width: 900px) {
+    .services {
+        .services-content-container {
+            .service-container {
+                flex-direction: column;
+                text-align: center;
+                margin-left: 0;
+                .service-image-container {
+                    padding-left: 16px;
+                }
+                .service-description-container {
+                    padding-left: 0;
+                }
+            }
+            .right-to-left {
+                flex-direction: column;
+            }
+            .see-more-button {
+                position: inherit !important;
+                margin-top: 12px;
             }
         }
     }

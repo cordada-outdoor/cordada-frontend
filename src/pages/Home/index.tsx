@@ -10,6 +10,7 @@ import { t } from "i18next";
 import Carousel from "components/Carousel/Carousel";
 import { Link } from "react-router-dom";
 import useUrlLang from "utils/useUrlLang";
+import ContactUs from "components/Common/ContactUs";
 
 const Home = () => {
     const projectsRef = useRef();
@@ -101,10 +102,7 @@ const Home = () => {
                     </Link>
                 </Box>
 
-                <Box className="home-about-contact-us-section">
-                    <Typography variant="h3">{t("homePage.contactUs")}</Typography>
-                    <a title="Email" className="contact-us-button" href="mailto:info@cordadaoutdoor.com" />
-                </Box>
+                <ContactUs titleVariant="h3" colorScheme="white-on-black" />
             </Box>
         </Box>
     </Layout>

@@ -25,7 +25,8 @@
         "press": "prensa",
         "events": "esdeveniments",
         "contentCreation": "creació de contingut",
-        "businessDevelopment": "business development"
+        "businessDevelopment": "business development",
+        "seeProjects": "veure projectes"
     },
     "projectsPage": {
         "filterBy": "filtra per",

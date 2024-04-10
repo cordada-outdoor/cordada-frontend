@@ -87,18 +87,6 @@
                 }
             }
         }
-        .home-about-contact-us-section {
-            padding: 12px 0;
-            @include white-on-black;
-            .contact-us-button {
-                margin: 10px auto 20px;
-                display: block;
-                background-color: white;
-                border: 10px solid $primary-color;
-                height: 2em;
-                width: 400px;
-            }
-        }
     }
 }
 @media (max-width: 900px) {
