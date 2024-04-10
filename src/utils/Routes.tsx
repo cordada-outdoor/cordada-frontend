@@ -6,6 +6,7 @@ import NotFound from "pages/NotFound";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Services from "pages/Services";
+import Projects from "pages/Projects";
 
 const Routes = () => {
     const { langUrlPrefix, path, lang } = useUrlLang();
@@ -34,6 +35,12 @@ const Routes = () => {
         </Route>
         <Route path={`${pathPrefix}/services`}>
             <Redirect to={`${langUrlPrefix}/services`} />
+        </Route>
+        <Route exact path={`${pathPrefix}/projects`}>
+            <Projects />
+        </Route>
+        <Route path={`${pathPrefix}/projects`}>
+            <Redirect to={`${langUrlPrefix}/projects`} />
         </Route>
         <Route path={'*'}>
             <NotFound />

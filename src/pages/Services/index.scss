@@ -1,6 +1,7 @@
 @import "/src/utils/colors.scss";
+@import "/src/utils/mixins.scss";
 .services {
-    padding: 50px 36px 10px;
+    @include page-padding;
     scroll-behavior: smooth;
     .service-menu {
         padding: 24px 0;

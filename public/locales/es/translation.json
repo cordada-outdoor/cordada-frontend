@@ -9,6 +9,7 @@
     "legalNotice": "Aviso legal",
     "privacyPolicy": "Politica de privacidad",
     "ourServices": "nuestros servicios",
+    "seeMore": "ver más",
     "homePage": {
         "ourProjects": "nuestros proyectos",
         "allProjects": "Todos los proyectos",
@@ -25,5 +26,11 @@
         "events": "eventos",
         "contentCreation": "creación de contenido",
         "businessDevelopment": "business development"
+    },
+    "projectsPage": {
+        "filterBy": "filtrar por",
+        "type": "tipo",
+        "date": "fecha",
+        "client": "cliente"
     }
 }

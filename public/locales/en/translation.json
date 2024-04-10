@@ -9,6 +9,7 @@
     "legalNotice": "Legal notice",
     "privacyPolicy": "Privacy policy",
     "ourServices": "our services",
+    "seeMore": "see more",
     "homePage": {
         "ourProjects": "our projects",
         "allProjects": "All projects",
@@ -25,5 +26,11 @@
         "events": "events",
         "contentCreation": "content creation",
         "businessDevelopment": "business development"
+    },
+    "projectsPage": {
+        "filterBy": "filter by",
+        "type": "type",
+        "date": "date",
+        "client": "client"
     }
 }

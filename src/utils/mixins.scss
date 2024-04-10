@@ -20,3 +20,7 @@
     color: $white;
     background-color: $black;
 }
+
+@mixin page-padding {
+    padding: 50px 36px 10px;
+}

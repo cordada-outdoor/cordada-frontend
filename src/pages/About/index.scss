@@ -1,5 +1,8 @@
+@import "utils/mixins.scss";
+@import "utils/colors.scss";
+
 .about {
-    padding: 50px 36px 10px;
+    @include page-padding;
     .about-top-image-container {
         margin-top: 36px;
         .about-top-image {
