@@ -71,6 +71,9 @@
       }
     }
   }
+  .mobile-appbar.primary-appbar {
+    background-color: black;
+  }
 
   .mobile-appbar:active {
     background-color: transparent;
@@ -177,6 +180,15 @@
       align-items: center;
       .primary-color-button {
         color: $primary-color;
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
+  .layout {
+    .contact-us-section {
+      .contact-us-button {
+        width: 200px;
       }
     }
   }

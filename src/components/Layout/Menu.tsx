@@ -45,7 +45,7 @@ const Menu = ({ appbarPosition = "sticky", primaryAppbar = false }: MenuProps) =
     if (isMobile) {
         const languageName = findLangName(i18n.language);
         return <>
-            <AppBar className="mobile-appbar appbar" color="transparent" elevation={0}>
+            <AppBar className={`mobile-appbar appbar ${primaryAppbar ? 'primary-appbar' : ''}`} color="transparent" elevation={0}>
                 <Toolbar className="toolbar">
                     <LogoSmall className="main-menu-logo" />
                     <Button className="right-mobile-menu" onClick={() => setIsDrawerOpen(!isDrawerOpen)}>

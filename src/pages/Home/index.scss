@@ -106,15 +106,39 @@
         }
     }
     .home-projects-section {
+        .mobile-projects-preview {
+            margin-top: 10px;
+            .slick-arrow::before {
+                color: white;
+                opacity: 1;
+            }
+            .project-preview {
+                border: 10px solid $primary-color;
+                width: calc(100% - 20px) !important;
+            }
+        }
         .projects-preview-container {
             align-content: space-evenly;
             justify-content: center !important;
+
             .project-preview {
                 width: 80% !important;
                 margin: 10px 0;
             }
         }
         .collaborators-preview-container {
+            .mobile-collaborators {
+                display: flex;
+                width: 100%;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                img {
+                    width: auto;
+                    margin: 10px;
+                    height: 60px !important;
+                    object-fit: contain;
+                }
+            }
             .carousel {
                 img {
                     width: auto;
