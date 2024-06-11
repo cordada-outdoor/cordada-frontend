@@ -10,7 +10,7 @@ import HomeBg from "assets/images/home_bg.jpg";
 import AboutImg from "assets/images/about-us.jpg";
 import LogoWhite from "assets/logos/logo-big-white.png";
 import "./index.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import PreviewImage from "components/Common/PreviewImage";
 import { t } from "i18next";
 import Carousel from "components/Carousel/Carousel";
@@ -39,20 +39,26 @@ const Home = () => {
     observer.observe(!isMobile ? projectsRef.current : servicesRef.current);
   }, [isMobile]);
 
-  const projects = useQuery({
+  const projectsQuery = useQuery({
     queryKey: ["projects", "home"],
-    queryFn: async (...args) => {
+    queryFn: async () => {
       const res = await http.get("api/projects", {
         params: {
           "pagination[start]": 0,
           "pagination[limit]": 3,
-          populate: "client",
+          populate: "*",
         },
       });
 
       return res.data;
     },
   });
+
+  const projects = useMemo(() => {
+    if (projectsQuery.isLoading) return [];
+
+    return projectsQuery.data.data;
+  }, [projectsQuery]);
 
   return (
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
@@ -82,24 +88,24 @@ const Home = () => {
                   cssEase: "linear",
                 }}
               >
-                {projects.data?.data.map((p: any, i: number) => {
+                {projects.map((p: any, i: number) => {
+                  const { title, body, client } = p.attributes;
+
                   return (
                     <Box className="project-preview" key={i}>
                       <PreviewImage
                         src={HomeBg}
                         hoverable={true}
-                        title={p.attributes.title}
-                        description={`${p.attributes.client.data.attributes.name.toUpperCase()} X CORDADA`}
+                        title={title}
+                        description={`${client.data.attributes.name.toUpperCase()} X CORDADA`}
                         hoverContent={
                           <Box
                             style={{
                               padding: "1rem",
                             }}
                           >
-                            <Typography variant="h4">
-                              {p.attributes.title}
-                            </Typography>
-                            <Typography>{p.attributes.body}</Typography>
+                            <Typography variant="h4">{title}</Typography>
+                            <Typography>{body}</Typography>
                           </Box>
                         }
                       />
@@ -110,24 +116,24 @@ const Home = () => {
             </Box>
           ) : (
             <Box className="projects-preview-container">
-              {projects.data?.data.map((p: any, i: number) => {
+              {projects.map((p: any, i: number) => {
+                const { title, body, client } = p.attributes;
+
                 return (
                   <Box className="project-preview" key={i}>
                     <PreviewImage
                       src={HomeBg}
                       hoverable={true}
-                      title={p.attributes.title}
-                      description={`${p.attributes.client.data.attributes.name.toUpperCase()} X CORDADA`}
+                      title={title}
+                      description={`${client.data.attributes.name.toUpperCase()} X CORDADA`}
                       hoverContent={
                         <Box
                           style={{
                             padding: "1rem",
                           }}
                         >
-                          <Typography variant="h4">
-                            {p.attributes.title}
-                          </Typography>
-                          <Typography>{p.attributes.body}</Typography>
+                          <Typography variant="h4">{title}</Typography>
+                          <Typography>{body}</Typography>
                         </Box>
                       }
                     />
