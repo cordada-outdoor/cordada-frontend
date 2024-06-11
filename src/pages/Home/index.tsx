@@ -17,12 +17,15 @@ import Carousel from "components/Carousel/Carousel";
 import { Link } from "react-router-dom";
 import useUrlLang from "utils/useUrlLang";
 import ContactUs from "components/Common/ContactUs";
+import { useQuery } from "@tanstack/react-query";
+import { http } from "http/client";
 
 const Home = () => {
   const projectsRef = useRef();
   const servicesRef = useRef();
   const [projectsSectionVisible, updateProjectsSectionVisible] =
     useState<boolean>(false);
+
   const { langUrlPrefix } = useUrlLang();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -34,7 +37,22 @@ const Home = () => {
     });
     // @ts-expect-error
     observer.observe(!isMobile ? projectsRef.current : servicesRef.current);
-  }, []);
+  }, [isMobile]);
+
+  const projects = useQuery({
+    queryKey: ["projects", "home"],
+    queryFn: async (...args) => {
+      const res = await http.get("api/projects", {
+        params: {
+          "pagination[start]": 0,
+          "pagination[limit]": 3,
+          populate: "client",
+        },
+      });
+
+      return res.data;
+    },
+  });
 
   return (
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
@@ -64,18 +82,24 @@ const Home = () => {
                   cssEase: "linear",
                 }}
               >
-                {["", "", ""].map((aI, idx) => {
+                {projects.data?.data.map((p: any, i: number) => {
                   return (
-                    <Box className="project-preview">
+                    <Box className="project-preview" key={i}>
                       <PreviewImage
                         src={HomeBg}
                         hoverable={true}
+                        title={p.attributes.title}
+                        description={`${p.attributes.client.data.attributes.name.toUpperCase()} X CORDADA`}
                         hoverContent={
-                          <Box>
-                            <Typography variant="h3">Title</Typography>
-                            <Typography>
-                              Some really long description
+                          <Box
+                            style={{
+                              padding: "1rem",
+                            }}
+                          >
+                            <Typography variant="h4">
+                              {p.attributes.title}
                             </Typography>
+                            <Typography>{p.attributes.body}</Typography>
                           </Box>
                         }
                       />
@@ -86,16 +110,24 @@ const Home = () => {
             </Box>
           ) : (
             <Box className="projects-preview-container">
-              {["", "", ""].map((aI, idx) => {
+              {projects.data?.data.map((p: any, i: number) => {
                 return (
-                  <Box className="project-preview">
+                  <Box className="project-preview" key={i}>
                     <PreviewImage
                       src={HomeBg}
                       hoverable={true}
+                      title={p.attributes.title}
+                      description={`${p.attributes.client.data.attributes.name.toUpperCase()} X CORDADA`}
                       hoverContent={
-                        <Box>
-                          <Typography variant="h3">Title</Typography>
-                          <Typography>Some really long description</Typography>
+                        <Box
+                          style={{
+                            padding: "1rem",
+                          }}
+                        >
+                          <Typography variant="h4">
+                            {p.attributes.title}
+                          </Typography>
+                          <Typography>{p.attributes.body}</Typography>
                         </Box>
                       }
                     />
