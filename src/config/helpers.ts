@@ -2,7 +2,6 @@ export const string = (key: string): string => {
   const value = process.env[key];
 
   if (!value) {
-    return 'true'
     throw new Error(`Missing environment variable ${key}`);
   }
 
