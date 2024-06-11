@@ -3,7 +3,6 @@ import "./index.scss";
 import { Box, Grid, Typography } from "@mui/material";
 import HomeBg from "assets/images/home_bg.jpg";
 import { useTranslation } from "react-i18next";
-import { SERVICES_LIST } from "utils/constants";
 import PreviewImage from "components/Common/PreviewImage";
 import ServiceDescription from "components/ServiceDescription";
 import { useQuery } from "@tanstack/react-query";
@@ -28,8 +27,6 @@ const Services = () => {
   });
 
   if (servicesQuery.isLoading) return null;
-
-  console.log({ services: servicesQuery.data });
 
   const services = servicesQuery.data.data;
 
