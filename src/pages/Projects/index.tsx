@@ -6,6 +6,7 @@ import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
 import { useQuery } from "@tanstack/react-query";
 import { http } from "http/client";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
   const { t } = useTranslation();
@@ -38,33 +39,37 @@ const Projects = () => {
         <Box className="projects-section">
           <Grid container spacing={2}>
             {projects.data?.data.map((p: any, i: number) => {
+              const { title, body, client } = p.attributes;
+
               return (
                 <Grid item key={i} md={4} xs={12} sm={6}>
                   <Box className="project-container">
                     <PreviewImage
                       src={HomeBg}
                       hoverable={true}
-                      title={p.attributes.title}
-                      description={`${p.attributes.client.data.attributes.name.toUpperCase()} X CORDADA`}
+                      title={title}
+                      description={`${client.data.attributes.name.toUpperCase()} X CORDADA`}
                       hoverContent={
                         <Box className="project-card">
-                          <Typography variant="h6">
-                            {p.attributes.title}
-                          </Typography>
+                          <Typography variant="h6">{title}</Typography>
                           <Typography variant="subtitle1">
-                            {p.attributes.client.data.attributes.name.toUpperCase()}{" "}
-                            X CORDADA
+                            {client.data.attributes.name.toUpperCase()} X
+                            CORDADA
                           </Typography>
                           <Typography
                             className="project-description"
                             fontWeight={300}
                           >
-                            {p.attributes.body}
+                            {body}
                           </Typography>
                           <Box className="see-more-button-container">
-                            <Button className="see-more-button">
+                            <Link
+                              component={Button}
+                              to={`/project/${p.id}`}
+                              className="see-more-button"
+                            >
                               {t("seeMore")}
-                            </Button>
+                            </Link>
                           </Box>
                         </Box>
                       }
