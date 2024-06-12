@@ -10,19 +10,22 @@ import HomeBg from "assets/images/home_bg.jpg";
 import AboutImg from "assets/images/about-us.jpg";
 import LogoWhite from "assets/logos/logo-big-white.png";
 import "./index.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import PreviewImage from "components/Common/PreviewImage";
 import { t } from "i18next";
 import Carousel from "components/Carousel/Carousel";
 import { Link } from "react-router-dom";
 import useUrlLang from "utils/useUrlLang";
 import ContactUs from "components/Common/ContactUs";
+import { useQuery } from "@tanstack/react-query";
+import { http } from "http/client";
 
 const Home = () => {
   const projectsRef = useRef();
   const servicesRef = useRef();
   const [projectsSectionVisible, updateProjectsSectionVisible] =
     useState<boolean>(false);
+
   const { langUrlPrefix } = useUrlLang();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -34,7 +37,28 @@ const Home = () => {
     });
     // @ts-expect-error
     observer.observe(!isMobile ? projectsRef.current : servicesRef.current);
-  }, []);
+  }, [isMobile]);
+
+  const projectsQuery = useQuery({
+    queryKey: ["projects", "home"],
+    queryFn: async () => {
+      const res = await http.get("api/projects", {
+        params: {
+          "pagination[start]": 0,
+          "pagination[limit]": 3,
+          populate: "*",
+        },
+      });
+
+      return res.data;
+    },
+  });
+
+  const projects = useMemo(() => {
+    if (projectsQuery.isLoading) return [];
+
+    return projectsQuery.data.data;
+  }, [projectsQuery]);
 
   return (
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
@@ -64,18 +88,24 @@ const Home = () => {
                   cssEase: "linear",
                 }}
               >
-                {["", "", ""].map((aI, idx) => {
+                {projects.map((p: any, i: number) => {
+                  const { title, body, client } = p.attributes;
+
                   return (
-                    <Box className="project-preview">
+                    <Box className="project-preview" key={i}>
                       <PreviewImage
                         src={HomeBg}
                         hoverable={true}
+                        title={title}
+                        description={`${client.data.attributes.name.toUpperCase()} X CORDADA`}
                         hoverContent={
-                          <Box>
-                            <Typography variant="h3">Title</Typography>
-                            <Typography>
-                              Some really long description
-                            </Typography>
+                          <Box
+                            style={{
+                              padding: "1rem",
+                            }}
+                          >
+                            <Typography variant="h4">{title}</Typography>
+                            <Typography>{body}</Typography>
                           </Box>
                         }
                       />
@@ -86,16 +116,24 @@ const Home = () => {
             </Box>
           ) : (
             <Box className="projects-preview-container">
-              {["", "", ""].map((aI, idx) => {
+              {projects.map((p: any, i: number) => {
+                const { title, body, client } = p.attributes;
+
                 return (
-                  <Box className="project-preview">
+                  <Box className="project-preview" key={i}>
                     <PreviewImage
                       src={HomeBg}
                       hoverable={true}
+                      title={title}
+                      description={`${client.data.attributes.name.toUpperCase()} X CORDADA`}
                       hoverContent={
-                        <Box>
-                          <Typography variant="h3">Title</Typography>
-                          <Typography>Some really long description</Typography>
+                        <Box
+                          style={{
+                            padding: "1rem",
+                          }}
+                        >
+                          <Typography variant="h4">{title}</Typography>
+                          <Typography>{body}</Typography>
                         </Box>
                       }
                     />
