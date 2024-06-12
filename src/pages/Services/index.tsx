@@ -82,10 +82,13 @@ const Services = () => {
                   title={name.toLowerCase()}
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
                   image={HomeBg}
-                  children={
-                    <Typography fontWeight={300}>{description}</Typography>
-                  }
-                />
+                >
+                  <Typography fontWeight={300}>{description}</Typography>
+                  <br />
+                  <Typography fontWeight={"bold"} fontStyle={"italic"}>
+                    "{description}"
+                  </Typography>
+                </ServiceDescription>
               </Box>
             );
           })}
