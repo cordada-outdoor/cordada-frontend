@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import Layout from "components/Layout/Layout";
 import HomeBg from "assets/images/home_bg.jpg";
+import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import AboutImg from "assets/images/about-us.jpg";
 import LogoWhite from "assets/logos/logo-big-white.png";
 import "./index.scss";
@@ -19,6 +20,8 @@ import useUrlLang from "utils/useUrlLang";
 import ContactUs from "components/Common/ContactUs";
 import { useQuery } from "@tanstack/react-query";
 import { http } from "http/client";
+import { Client } from "models/client";
+import { Project } from "models/project";
 
 const Home = () => {
   const projectsRef = useRef();
@@ -54,11 +57,30 @@ const Home = () => {
     },
   });
 
+  const clientsQuery = useQuery({
+    queryKey: ["clients", "home"],
+    queryFn: async () => {
+      const res = await http.get("api/clients", {
+        params: {
+          populate: "*",
+        },
+      });
+
+      return res.data;
+    },
+  });
+
   const projects = useMemo(() => {
     if (projectsQuery.isLoading) return [];
 
-    return projectsQuery.data.data;
+    return projectsQuery?.data?.data ?? [];
   }, [projectsQuery]);
+
+  const clients = useMemo(() => {
+    if (clientsQuery.isLoading) return [];
+
+    return clientsQuery?.data?.data ?? [];
+  }, [clientsQuery]);
 
   return (
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
@@ -116,7 +138,7 @@ const Home = () => {
             </Box>
           ) : (
             <Box className="projects-preview-container">
-              {projects.map((p: any, i: number) => {
+              {projects.map((p: Project, i: number) => {
                 const { title, body, client } = p.attributes;
 
                 return (
@@ -161,34 +183,21 @@ const Home = () => {
             <Typography variant="h3" className="section-title">
               {t("homePage.ourCordada")}
             </Typography>
-            {isMobile ? (
-              <Box className="mobile-collaborators">
-                {["", "", "", "", "", "", "", ""].map((aI, idx) => {
-                  return <img src={HomeBg} alt={"carousel " + idx} />;
-                })}
-              </Box>
-            ) : (
-              <Carousel
-                settings={{
-                  dots: false,
-                  arrows: false,
-                  infinite: true,
-                  slidesToShow: 6,
-                  slidesToScroll: 1,
-                  autoplay: true,
-                  autoplaySpeed: 7000,
-                  pauseOnDotsHover: false,
-                  pauseOnHover: true,
-                  pauseOnFocus: false,
-                  speed: 2000,
-                  cssEase: "linear",
-                }}
-              >
-                {["", "", "", "", "", "", "", ""].map((aI, idx) => {
-                  return <img src={HomeBg} alt={"carousel " + idx} />;
-                })}
-              </Carousel>
-            )}
+            <Box
+              className={
+                isMobile ? "mobile-collaborators" : "collaborators-list"
+              }
+            >
+              {clients.map((client: Client, idx: number) => {
+                return (
+                  <img
+                    key={client.id}
+                    src={LogoSmallWhite}
+                    alt={"carousel " + idx}
+                  />
+                );
+              })}
+            </Box>
           </Box>
         </Box>
 
