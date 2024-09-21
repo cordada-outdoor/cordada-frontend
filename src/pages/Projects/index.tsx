@@ -7,9 +7,11 @@ import PreviewImage from "components/Common/PreviewImage";
 import { useQuery } from "@tanstack/react-query";
 import { http } from "http/client";
 import { Link } from "react-router-dom";
+import useUrlLang from "utils/useUrlLang";
 
 const Projects = () => {
   const { t } = useTranslation();
+  const { langUrlPrefix } = useUrlLang();
 
   const projects = useQuery({
     queryKey: ["projects"],
@@ -65,7 +67,7 @@ const Projects = () => {
                           <Box className="see-more-button-container">
                             <Link
                               component={Button}
-                              to={`/project/${p.id}`}
+                              to={`${langUrlPrefix}/project/${p.id}`}
                               className="see-more-button"
                             >
                               {t("seeMore")}
