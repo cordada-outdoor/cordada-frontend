@@ -149,13 +149,27 @@ const Home = () => {
                       title={title}
                       description={`${client.data.attributes.name.toUpperCase()} X CORDADA`}
                       hoverContent={
-                        <Box
-                          style={{
-                            padding: "1rem",
-                          }}
-                        >
-                          <Typography variant="h4">{title}</Typography>
-                          <Typography>{body}</Typography>
+                        <Box className="project-card">
+                          <Typography variant="h6">{title}</Typography>
+                          <Typography variant="subtitle1">
+                            {client.data.attributes.name.toUpperCase()} X
+                            CORDADA
+                          </Typography>
+                          <Typography
+                            className="project-description"
+                            fontWeight={300}
+                          >
+                            {body}
+                          </Typography>
+                          <Box className="see-more-button-container">
+                            <Link
+                              component={Button}
+                              to={`${langUrlPrefix}/project/${p.id}`}
+                              className="see-more-button"
+                            >
+                              {t("seeMore")}
+                            </Link>
+                          </Box>
                         </Box>
                       }
                     />
