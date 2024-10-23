@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+
 export function findLangName(language: string) {
   switch (language) {
     case "ca":
@@ -24,4 +26,12 @@ export const formatDate = (date: string) => {
   // const dd = Number(projectDate.getDate()) < 10 ? '0' + projectDate.getDate() : projectDate.getDate();
 
   return mm + "/" + yyyy;
+};
+
+export const useQueryParams = () => {
+  const location = useLocation();
+
+  const params = new URLSearchParams(location.search);
+
+  return params;
 };
