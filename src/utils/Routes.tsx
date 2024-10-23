@@ -8,17 +8,24 @@ import { useTranslation } from "react-i18next";
 import Services from "pages/Services";
 import Projects from "pages/Projects";
 import SingleProject from "pages/SingleProject";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Routes = () => {
   const { langUrlPrefix, path, lang } = useUrlLang();
   const pathPrefix = path.replace(/\/$/, "");
   const { i18n } = useTranslation();
 
+  const queryClient = useQueryClient();
+
   useEffect(() => {
     if (lang !== i18n.language) {
       i18n.changeLanguage(lang);
     }
-  }, [i18n, lang]);
+
+    localStorage.setItem("locale", lang);
+
+    queryClient.invalidateQueries();
+  }, [i18n, lang, queryClient]);
 
   return (
     <Switch>
