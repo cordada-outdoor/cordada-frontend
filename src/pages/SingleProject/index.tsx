@@ -9,9 +9,9 @@ import { useParams } from "react-router-dom";
 import { Project } from "models/project";
 import { Client } from "models/client";
 import { Service } from "models/service";
-import { formatDate } from "utils";
-import HeaderImg from "assets/images/about-us-top-img.png";
+import { formatDate, getImageUrl } from "utils";
 import ContactUs from "components/Common/ContactUs";
+import ClientInProject from "components/ClientInProject";
 
 const SingleProject = () => {
   const { t } = useTranslation();
@@ -36,7 +36,8 @@ const SingleProject = () => {
   const project: Project = projectQuery?.data?.data;
   const client: Client | undefined = project?.attributes?.client?.data;
   const service: Service | undefined = project?.attributes?.service?.data;
-
+  const image = project?.attributes?.image;
+  const imgUrl = getImageUrl(image, "large");
   const projectDate = formatDate(project?.attributes?.date ?? "");
 
   return (
@@ -47,10 +48,10 @@ const SingleProject = () => {
         ) : (
           <>
             <Typography className="project-title" variant="h3">
-              {project.attributes.title}
+              {project.attributes?.title ?? "TBD"}
             </Typography>
             <Box className="project-img-container">
-              <img src={HomeBg} alt="project-header" />
+              <img src={imgUrl ?? HomeBg} alt="project-header" />
             </Box>
             <Grid container>
               <Grid item md={4} xs={12} className="project-data">
@@ -97,16 +98,7 @@ const SingleProject = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Box className="project-client-logos">
-              {["", "", ""].map((client: string, idx: number) => {
-                return (
-                  <Avatar className="project-client-logo" src={HeaderImg} />
-                );
-              })}
-            </Box>
-            <Box className="contact-container">
-              <ContactUs titleVariant="h6" colorScheme="black-on-white" />
-            </Box>
+            {client?.id && <ClientInProject id={Number(id)} />}
           </>
         )}
       </Box>

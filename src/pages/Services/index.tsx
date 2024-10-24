@@ -1,13 +1,13 @@
 import Layout from "components/Layout/Layout";
 import "./index.scss";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import HomeBg from "assets/images/home_bg.jpg";
 import { useTranslation } from "react-i18next";
 import PreviewImage from "components/Common/PreviewImage";
 import ServiceDescription from "components/ServiceDescription";
 import { useQuery } from "@tanstack/react-query";
 import { http } from "http/client";
-import { isEven } from "utils";
+import { getImageUrl, isEven } from "utils";
 
 const Services = () => {
   const { t } = useTranslation();
@@ -20,13 +20,22 @@ const Services = () => {
   const servicesQuery = useQuery({
     queryKey: ["services"],
     queryFn: async () => {
-      const res = await http.get("api/services");
+      const res = await http.get("api/services", {
+        params: {
+          populate: "*",
+        },
+      });
 
       return res.data;
     },
   });
 
-  if (servicesQuery.isLoading) return null;
+  if (servicesQuery.isLoading)
+    return (
+      <Layout>
+        <CircularProgress className="loading-indicator" />
+      </Layout>
+    );
 
   const services = servicesQuery.data.data;
 
@@ -36,8 +45,8 @@ const Services = () => {
         <Typography variant="h3">{t("ourServices")}</Typography>
         <Grid className="service-menu" container spacing={2}>
           {services.map((service: any, i: number) => {
-            const { name } = service.attributes;
-
+            const { name, banner } = service.attributes;
+            const imgUrl = getImageUrl(banner, "medium");
             return (
               <Grid key={i} item md={4} xs={12}>
                 <Box
@@ -52,7 +61,7 @@ const Services = () => {
                   className="service-menu-item"
                 >
                   <PreviewImage
-                    src={HomeBg}
+                    src={imgUrl ?? HomeBg}
                     hoverable={false}
                     hoverContent={
                       <Box className="menu-item-content-container">
@@ -73,7 +82,8 @@ const Services = () => {
         </Grid>
         <Box className="services-content-container">
           {services.map((service: any, i: number) => {
-            const { name, description } = service.attributes;
+            const { name, description, quote, banner } = service.attributes;
+            const imgUrl = getImageUrl(banner, "medium");
 
             return (
               <Box id={name.toLowerCase().split(" ").join("-")}>
@@ -81,12 +91,12 @@ const Services = () => {
                   service="socialMedia"
                   title={name.toLowerCase()}
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
-                  image={HomeBg}
+                  image={imgUrl ?? HomeBg}
                 >
                   <Typography fontWeight={300}>{description}</Typography>
                   <br />
                   <Typography fontWeight={"bold"} fontStyle={"italic"}>
-                    "{description}"
+                    "{quote}"
                   </Typography>
                 </ServiceDescription>
               </Box>

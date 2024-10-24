@@ -6,6 +6,7 @@ export type ProjectAttributes = {
   client: {
     data: Client;
   };
+  image: any;
   body: string;
   date: string;
   service: {

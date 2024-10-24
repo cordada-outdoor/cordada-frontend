@@ -1,6 +1,8 @@
 import {
+  Avatar,
   Box,
   Button,
+  CircularProgress,
   Typography,
   useMediaQuery,
   useTheme,
@@ -22,6 +24,8 @@ import { useQuery } from "@tanstack/react-query";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
+import { config } from "config";
+import { getImageUrl } from "utils";
 
 const Home = () => {
   const projectsRef = useRef();
@@ -111,15 +115,16 @@ const Home = () => {
                 }}
               >
                 {projects.map((p: any, i: number) => {
-                  const { title, body, client } = p.attributes;
+                  const { title, body, client, image } = p.attributes;
+                  const imgUrl = getImageUrl(image, "small");
 
                   return (
                     <Box className="project-preview" key={i}>
                       <PreviewImage
-                        src={HomeBg}
+                        src={imgUrl ?? HomeBg}
                         hoverable={true}
                         title={title}
-                        description={`${client.data.attributes.name.toUpperCase()} X CORDADA`}
+                        description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box
                             style={{
@@ -138,44 +143,49 @@ const Home = () => {
             </Box>
           ) : (
             <Box className="projects-preview-container">
-              {projects.map((p: Project, i: number) => {
-                const { title, body, client } = p.attributes;
-
-                return (
-                  <Box className="project-preview" key={i}>
-                    <PreviewImage
-                      src={HomeBg}
-                      hoverable={true}
-                      title={title}
-                      description={`${client.data.attributes.name.toUpperCase()} X CORDADA`}
-                      hoverContent={
-                        <Box className="project-card">
-                          <Typography variant="h6">{title}</Typography>
-                          <Typography variant="subtitle1">
-                            {client.data.attributes.name.toUpperCase()} X
-                            CORDADA
-                          </Typography>
-                          <Typography
-                            className="project-description"
-                            fontWeight={300}
-                          >
-                            {body}
-                          </Typography>
-                          <Box className="see-more-button-container">
-                            <Link
-                              component={Button}
-                              to={`${langUrlPrefix}/project/${p.id}`}
-                              className="see-more-button"
+              {projectsQuery.isLoading ? (
+                <CircularProgress className="loading-indicator" />
+              ) : (
+                projects.map((p: Project, i: number) => {
+                  const { title, body, client, image } = p.attributes;
+                  const imgUrl = getImageUrl(image, "small");
+                  return (
+                    <Box className="project-preview" key={i}>
+                      <PreviewImage
+                        src={imgUrl ?? HomeBg}
+                        hoverable={true}
+                        title={title}
+                        description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
+                        hoverContent={
+                          <Box className="project-card">
+                            <Typography variant="h6">{title}</Typography>
+                            <Typography variant="subtitle1">
+                              {client.data?.attributes?.name?.toUpperCase() ??
+                                ""}{" "}
+                              X CORDADA
+                            </Typography>
+                            <Typography
+                              className="project-description"
+                              fontWeight={300}
                             >
-                              {t("seeMore")}
-                            </Link>
+                              {body}
+                            </Typography>
+                            <Box className="see-more-button-container">
+                              <Link
+                                component={Button}
+                                to={`${langUrlPrefix}/project/${p.id}`}
+                                className="see-more-button"
+                              >
+                                {t("seeMore")}
+                              </Link>
+                            </Box>
                           </Box>
-                        </Box>
-                      }
-                    />
-                  </Box>
-                );
-              })}
+                        }
+                      />
+                    </Box>
+                  );
+                })
+              )}
             </Box>
           )}
 
@@ -202,15 +212,23 @@ const Home = () => {
                 isMobile ? "mobile-collaborators" : "collaborators-list"
               }
             >
-              {clients.map((client: Client, idx: number) => {
-                return (
-                  <img
-                    key={client.id}
-                    src={LogoSmallWhite}
-                    alt={"carousel " + idx}
-                  />
-                );
-              })}
+              {clientsQuery.isLoading ? (
+                <CircularProgress sx={{ color: "black", margin: "1em" }} />
+              ) : (
+                clients.map((client: Client, idx: number) => {
+                  const { icon } = client.attributes;
+                  const imgUrl = getImageUrl(icon, "thumbnail");
+
+                  return (
+                    <Avatar
+                      className="avatar-img"
+                      key={client.id}
+                      src={imgUrl ?? LogoSmallWhite}
+                      alt={"carousel " + idx}
+                    />
+                  );
+                })
+              )}
             </Box>
           </Box>
         </Box>

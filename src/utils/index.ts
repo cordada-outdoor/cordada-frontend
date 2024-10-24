@@ -1,3 +1,4 @@
+import { config } from "config";
 import { useLocation } from "react-router-dom";
 
 export function findLangName(language: string) {
@@ -34,4 +35,14 @@ export const useQueryParams = () => {
   const params = new URLSearchParams(location.search);
 
   return params;
+};
+
+export const getImageUrl = (
+  img: any,
+  size: "thumbnail" | "medium" | "large" | "small",
+) => {
+  const imgUrl = img?.data?.attributes?.formats[size]?.url;
+  const completeUrl = config.cms.host + imgUrl;
+
+  return imgUrl ? completeUrl : undefined;
 };

@@ -5,6 +5,8 @@ import "./index.scss";
 import AboutUsDescription from "components/AboutUsDescription";
 import { useQuery } from "@tanstack/react-query";
 import { http } from "http/client";
+import { getImageUrl } from "utils";
+import HomeBg from "assets/images/home_bg.jpg";
 
 const About = () => {
   const { data, isLoading } = useQuery({
@@ -39,12 +41,14 @@ const About = () => {
           <img src={HeaderImg} alt="header-img" className="about-top-image" />
         </Box>
         <Box className="about-us-content">
-          {content?.sections?.map((sec: any) => {
+          {content?.sections?.map((sec: any, idx: number) => {
+            const imgUrl = getImageUrl(sec.profilePicture, "thumbnail");
+            const even = idx % 2 == 0;
             return (
               <AboutUsDescription
                 title={sec.name}
-                direction="left-to-right"
-                image={HeaderImg}
+                direction={even ? "left-to-right" : "right-to-left"}
+                image={imgUrl ?? HomeBg}
                 children={
                   <Box>
                     <Typography fontWeight={300}>{sec.body}</Typography>
