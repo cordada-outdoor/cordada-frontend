@@ -41,8 +41,18 @@ export const getImageUrl = (
   img: any,
   size: "thumbnail" | "medium" | "large" | "small",
 ) => {
-  const imgUrl = img?.data?.attributes?.formats[size]?.url;
-  const completeUrl = config.cms.host + imgUrl;
+  const urlForFormat = img?.data?.attributes?.formats[size]?.url;
 
-  return imgUrl ? completeUrl : undefined;
+  if (urlForFormat) {
+    return `${config.cms.host}${urlForFormat}`;
+  }
+
+  const baseUrl = img?.data?.attributes?.url;
+
+  if (baseUrl) {
+    // Use the base image, not the formatted one
+    return `${config.cms.host}${img?.data?.attributes?.url}`;
+  }
+
+  return null;
 };
