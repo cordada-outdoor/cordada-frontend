@@ -129,6 +129,7 @@
     color: white;
     .preview-content {
       position: absolute;
+      background: linear-gradient(180deg, rgba(234, 55, 94, 0) 0%, rgba(0, 0, 0, 1) 100%);
       bottom: 0;
       padding: 5px;
       .MuiTypography-caption {
@@ -159,6 +160,10 @@
   }
   .horizontal-list {
     @include horizontal-list;
+  }
+  .loading-indicator {
+    margin: 1em;
+    color: $primary-color;
   }
 }
 .menu-drawer {

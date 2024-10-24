@@ -31,6 +31,33 @@
             .project-preview {
                 width: 25%;
                 border: 10px solid $primary-color;
+                .project-card {
+                    padding: 5px 10px;
+                    height: calc(100% - 10px);
+                    .project-description {
+                        margin-top: 5px;
+                        line-height: 1.1rem;
+                        max-height: 4.5em;
+                        overflow: hidden;
+                    }
+                    .see-more-button-container {
+                        position: absolute;
+                        bottom: 10px;
+                        left: -5px;
+                        display: flex;
+                        flex-direction: row;
+                        width: 100%;
+                        align-items: center;
+                        justify-content: center;
+                        .see-more-button {
+                            @include white-on-primary;
+                            border-radius: 0;
+                        }
+                        .see-more-button:hover {
+                            @include primary-on-white;
+                        }
+                    }
+                }
             }
         }
         .collaborators-preview-container {
