@@ -24,15 +24,13 @@ const About = () => {
 
   const content = data?.data?.attributes;
 
-  // eslint-disable-next-line no-console
-  console.log({ content });
-
   if (isLoading)
     return (
       <Layout>
         <CircularProgress className="loading-indicator" />
       </Layout>
     );
+
   return (
     <Layout>
       <Box className="about">
