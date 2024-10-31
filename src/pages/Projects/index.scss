@@ -20,6 +20,9 @@
         .filter-button:hover {
             color: $primary-color;
         }
+        .selected-filter-button {
+            color: $primary-color;
+        }
     }
     .projects-section {
         padding-top: 12px;
@@ -64,5 +67,37 @@
                 }
             }
         }
+    }
+}
+.filter-modal {
+    padding: 1em;
+    width: calc(350px - 2em);
+    .close-button-icon {
+        width: 30px;
+        float: right;
+        height: 30px;
+        .close-button-text {
+            margin-top: -2.5px;
+            font-size: 20px;
+        }
+    }
+    .remove-filter-button {
+        float: right;
+        border-radius: 0;
+        background-color: $primary-color !important;
+        color: white !important;
+        border-color: $primary-color !important;
+        border: 1px solid;
+        box-sizing: border-box;
+        margin-top: 3rem;
+    }
+    .remove-filter-button:hover {
+        background-color: white !important;
+        color: $primary-color !important;
+        border-color: $primary-color !important;
+        border: 1px solid;
+    }
+    .select-container {
+        margin-top: 2rem;
     }
 }

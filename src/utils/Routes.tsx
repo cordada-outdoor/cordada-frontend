@@ -9,6 +9,8 @@ import Services from "pages/Services";
 import Projects from "pages/Projects";
 import SingleProject from "pages/SingleProject";
 import { useQueryClient } from "@tanstack/react-query";
+import PrivacyPolicy from "pages/PrivacyPolicy";
+import LegalNotice from "pages/LegalNotice";
 
 const Routes = () => {
   const { langUrlPrefix, path, lang } = useUrlLang();
@@ -50,8 +52,20 @@ const Routes = () => {
       <Route exact path={`${pathPrefix}/projects`}>
         <Projects />
       </Route>
+      <Route exact path={`${pathPrefix}/legal-notice`}>
+        <LegalNotice />
+      </Route>
+      <Route exact path={`${pathPrefix}/privacy-policy`}>
+        <PrivacyPolicy />
+      </Route>
       <Route path={`${pathPrefix}/projects`}>
         <Redirect to={`${langUrlPrefix}/projects`} />
+      </Route>
+      <Route path={`${pathPrefix}/legal-notice`}>
+        <Redirect to={`${langUrlPrefix}/legal-notice`} />
+      </Route>
+      <Route path={`${pathPrefix}/privacy-policy`}>
+        <Redirect to={`${langUrlPrefix}/privacy-policy`} />
       </Route>
       <Route path={"*"}>
         <NotFound />

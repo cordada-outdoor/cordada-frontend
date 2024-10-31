@@ -30,8 +30,9 @@
     },
     "projectsPage": {
         "filterBy": "filtrar por",
-        "type": "tipo",
-        "date": "fecha",
-        "client": "cliente"
+        "type": "Tipo",
+        "date": "Fecha",
+        "client": "Cliente",
+        "removeFilter": "Quitar filtro"
     }
 }

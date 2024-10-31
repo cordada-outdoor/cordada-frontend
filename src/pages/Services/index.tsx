@@ -88,7 +88,7 @@ const Services = () => {
             return (
               <Box id={name.toLowerCase().split(" ").join("-")}>
                 <ServiceDescription
-                  service="socialMedia"
+                  service={service.id}
                   title={name.toLowerCase()}
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
                   image={imgUrl ?? HomeBg}

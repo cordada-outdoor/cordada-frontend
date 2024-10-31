@@ -30,8 +30,9 @@
     },
     "projectsPage": {
         "filterBy": "filtra per",
-        "type": "tipus",
-        "date": "data",
-        "client": "client"
+        "type": "Tipus",
+        "date": "Data",
+        "client": "Client",
+        "removeFilter": "Treure filtre"
     }
 }

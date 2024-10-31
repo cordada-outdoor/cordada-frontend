@@ -163,9 +163,40 @@
   .horizontal-list {
     @include horizontal-list;
   }
-  .loading-indicator {
-    margin: 1em;
-    color: $primary-color;
+}
+.loading-indicator {
+  margin: 1em;
+  color: $primary-color !important;
+}
+.datepicker-container {
+  .datepicker-header-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    svg {
+      height: 20px;
+      width: auto;
+    }
+  }
+  .datepicker-months-container {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    .datepicker-month {
+      cursor: pointer;
+      .datepicker-month-text {
+        font-weight: 700;
+      }
+      :hover {
+        background-color: $primary-translucid;
+        border-radius: 5px;
+      }
+    }
+    .selected-month {
+      color: $primary-color;
+    }
   }
 }
 .menu-drawer {

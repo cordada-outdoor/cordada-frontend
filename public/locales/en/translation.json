@@ -30,8 +30,9 @@
     },
     "projectsPage": {
         "filterBy": "filter by",
-        "type": "type",
-        "date": "date",
-        "client": "client"
+        "type": "Type",
+        "date": "Date",
+        "client": "Client",
+        "removeFilter": "Remove filter"
     }
 }

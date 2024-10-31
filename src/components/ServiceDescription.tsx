@@ -3,6 +3,7 @@ import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { ServiceType } from "models";
+import { Link } from "react-router-dom";
 
 interface ServiceDescriptionProps {
   direction: "left-to-right" | "right-to-left";
@@ -40,9 +41,11 @@ const ServiceDescription = ({
       >
         <Grid item md={6} xs={12} className="service-image-container">
           <Avatar variant="square" className="service-image" src={image} />
-          <Button className="see-more-button">
-            {t("servicesPage.seeProjects")}
-          </Button>
+          <Link to={{ pathname: "/projects", state: { service: service } }}>
+            <Button className="see-more-button">
+              {t("servicesPage.seeProjects")}
+            </Button>
+          </Link>
         </Grid>
         <Grid item md={6} xs={12} className="service-description-container">
           <Typography className="service-title" variant="h3">
