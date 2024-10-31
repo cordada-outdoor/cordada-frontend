@@ -1,5 +1,9 @@
-import Layout from "components/Layout/Layout";
 import "./index.scss";
+
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Link, useLocation } from "react-router-dom";
+
 import {
   Box,
   Button,
@@ -8,16 +12,15 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
+
 import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
-import { useQuery } from "@tanstack/react-query";
-import { http } from "http/client";
-import { Link, useLocation } from "react-router-dom";
-import useUrlLang from "utils/useUrlLang";
-import { getImageUrl } from "utils";
-import { useEffect, useState } from "react";
+import Layout from "components/Layout/Layout";
 import ProjectsFilterDialog from "components/ProjectsFilterDialog";
+import { http } from "http/client";
+import { getImageUrl } from "utils";
+import useUrlLang from "utils/useUrlLang";
 
 type Filters = {
   service?: string;

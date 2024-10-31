@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { ServiceType } from "models";
 import { Link } from "react-router-dom";
+
+import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
+
+import { ServiceType } from "models";
 
 interface ServiceDescriptionProps {
   direction: "left-to-right" | "right-to-left";

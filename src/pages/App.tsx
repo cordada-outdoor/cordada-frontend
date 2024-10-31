@@ -1,10 +1,13 @@
-import { ThemeProvider } from '@mui/material';
-import './index.scss';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { theme } from 'utils/theme';
-import Routes from 'utils/Routes';
-import { SUPPORTED_LANGS } from 'utils/constants';
-import ScrollToTop from 'utils/ScrollToTop';
+import "./index.scss";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import { ThemeProvider } from "@mui/material";
+
+import { SUPPORTED_LANGS } from "utils/constants";
+import Routes from "utils/Routes";
+import ScrollToTop from "utils/ScrollToTop";
+import { theme } from "utils/theme";
 
 const App = () => {
   return (
@@ -19,8 +22,7 @@ const App = () => {
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
-
   );
-}
+};
 
 export default App;

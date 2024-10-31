@@ -1,5 +1,6 @@
-import { config } from "config";
 import { useLocation } from "react-router-dom";
+
+import { config } from "config";
 
 export function findLangName(language: string) {
   switch (language) {

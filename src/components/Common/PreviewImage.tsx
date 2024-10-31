@@ -1,5 +1,6 @@
-import { Avatar, Box, Typography } from "@mui/material";
 import { ReactNode } from "react";
+
+import { Avatar, Box, Typography } from "@mui/material";
 
 interface PreviewImageProps {
   src: string;

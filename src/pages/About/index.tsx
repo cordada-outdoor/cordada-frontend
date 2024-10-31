@@ -1,13 +1,15 @@
-import { Box, CircularProgress, Typography } from "@mui/material";
-import Layout from "components/Layout/Layout";
-import HeaderImg from "assets/images/about-us-top-img.png";
 import "./index.scss";
-import AboutUsDescription from "components/AboutUsDescription";
+
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
+import MuiMarkdown from "mui-markdown";
+
+import HeaderImg from "assets/images/about-us-top-img.png";
+import HomeBg from "assets/images/home_bg.jpg";
+import AboutUsDescription from "components/AboutUsDescription";
+import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
-import HomeBg from "assets/images/home_bg.jpg";
-import MuiMarkdown from "mui-markdown";
 
 const About = () => {
   const { data, isLoading } = useQuery({
