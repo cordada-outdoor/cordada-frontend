@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Box, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 import { ReactComponent as ArrowBack } from "assets/icons/arrow-ios-back.svg";
 import { ReactComponent as ArrowForward } from "assets/icons/arrow-ios-forward.svg";

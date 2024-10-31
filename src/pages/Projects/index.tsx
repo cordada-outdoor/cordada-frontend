@@ -85,14 +85,15 @@ const Projects = () => {
 
   useEffect(() => {
     projects.refetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
-
-  useEffect(() => {});
 
   const handleChangeFilters = (value: string) => {
     const filterToChange = filterDialog ?? "date";
     const newFilters = { ...filters };
+
     newFilters[filterToChange as keyof Filters] = value;
+
     if (filterToChange === "date") {
       const month = value.split("-")[1];
       const nextMonth = Number(month) + 1;
@@ -101,6 +102,7 @@ const Projects = () => {
       const nextDate = value.split("-")[0] + "-" + monthToString + "-01";
       newFilters.maxDate = nextDate;
     }
+
     setFilters(newFilters);
     setFilterDialog(undefined);
   };

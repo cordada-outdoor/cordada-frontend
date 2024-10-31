@@ -23,7 +23,6 @@ import Carousel from "components/Carousel/Carousel";
 import ContactUs from "components/Common/ContactUs";
 import PreviewImage from "components/Common/PreviewImage";
 import Layout from "components/Layout/Layout";
-import { config } from "config";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";

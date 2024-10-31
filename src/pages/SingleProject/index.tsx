@@ -3,12 +3,11 @@ import "./index.scss";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
-import { Avatar, Box, CircularProgress, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 
 import HomeBg from "assets/images/home_bg.jpg";
 import ClientInProject from "components/ClientInProject";
-import ContactUs from "components/Common/ContactUs";
 import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { Client } from "models/client";
