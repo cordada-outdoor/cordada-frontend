@@ -31,10 +31,11 @@ const Projects = () => {
   const { langUrlPrefix } = useUrlLang();
   const location = useLocation();
 
-  //@ts-expect-error weird
   const [filters, setFilters] = useState<Filters>({
+    //@ts-expect-error getting weird type error, working just fine
     service: location?.state?.service
-      ? location?.state?.service.toString()
+      ? //@ts-expect-error getting weird type error, working just fine
+        location?.state?.service.toString()
       : "",
     date: "",
     client: "",
