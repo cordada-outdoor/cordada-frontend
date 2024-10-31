@@ -1,3 +1,8 @@
+import "./index.scss";
+
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+
 import {
   Avatar,
   Box,
@@ -7,25 +12,22 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import Layout from "components/Layout/Layout";
-import HomeBg from "assets/images/home_bg.jpg";
-import LogoSmallWhite from "assets/logos/logo-small-white.png";
-import AboutImg from "assets/images/about-us.jpg";
-import LogoWhite from "assets/logos/logo-big-white.png";
-import "./index.scss";
-import { useEffect, useMemo, useRef, useState } from "react";
-import PreviewImage from "components/Common/PreviewImage";
-import { t } from "i18next";
-import Carousel from "components/Carousel/Carousel";
-import { Link } from "react-router-dom";
-import useUrlLang from "utils/useUrlLang";
-import ContactUs from "components/Common/ContactUs";
 import { useQuery } from "@tanstack/react-query";
+import { t } from "i18next";
+
+import AboutImg from "assets/images/about-us.jpg";
+import HomeBg from "assets/images/home_bg.jpg";
+import LogoWhite from "assets/logos/logo-big-white.png";
+import LogoSmallWhite from "assets/logos/logo-small-white.png";
+import Carousel from "components/Carousel/Carousel";
+import ContactUs from "components/Common/ContactUs";
+import PreviewImage from "components/Common/PreviewImage";
+import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
-import { config } from "config";
 import { getImageUrl } from "utils";
+import useUrlLang from "utils/useUrlLang";
 
 const Home = () => {
   const projectsRef = useRef();

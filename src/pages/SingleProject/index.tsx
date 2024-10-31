@@ -1,17 +1,19 @@
-import Layout from "components/Layout/Layout";
 import "./index.scss";
-import { Avatar, Box, CircularProgress, Grid, Typography } from "@mui/material";
+
 import { useTranslation } from "react-i18next";
-import HomeBg from "assets/images/home_bg.jpg";
-import { useQuery } from "@tanstack/react-query";
-import { http } from "http/client";
 import { useParams } from "react-router-dom";
-import { Project } from "models/project";
+
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
+
+import HomeBg from "assets/images/home_bg.jpg";
+import ClientInProject from "components/ClientInProject";
+import Layout from "components/Layout/Layout";
+import { http } from "http/client";
 import { Client } from "models/client";
+import { Project } from "models/project";
 import { Service } from "models/service";
 import { formatDate, getImageUrl } from "utils";
-import ContactUs from "components/Common/ContactUs";
-import ClientInProject from "components/ClientInProject";
 
 const SingleProject = () => {
   const { t } = useTranslation();

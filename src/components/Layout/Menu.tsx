@@ -1,4 +1,7 @@
-import { AppbarPosition } from "models";
+import React, { ReactElement, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
+
 import {
   AppBar,
   Box,
@@ -8,21 +11,20 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  styled,
   Toolbar,
   Typography,
-  styled,
   useMediaQuery,
   useScrollTrigger,
   useTheme,
 } from "@mui/material";
-import React, { ReactElement, useState } from "react";
-import { useTranslation } from "react-i18next";
+
 import { ReactComponent as LogoSmall } from "assets/logos/logo-small.svg";
 import { ReactComponent as MenuIcon } from "assets/logos/menu-icon.svg";
-import { useHistory } from "react-router-dom";
-import useUrlLang from "utils/useUrlLang";
-import { SUPPORTED_LANGS } from "utils/constants";
+import { AppbarPosition } from "models";
 import { findLangName } from "utils";
+import { SUPPORTED_LANGS } from "utils/constants";
+import useUrlLang from "utils/useUrlLang";
 
 interface MenuScrollProps {
   children: ReactElement;

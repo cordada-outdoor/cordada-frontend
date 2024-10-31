@@ -1,9 +1,8 @@
 import { Box, Typography } from "@mui/material";
+
 import Layout from "components/Layout/Layout";
-import { useTranslation } from "react-i18next";
 
 const LegalNotice = () => {
-  const { t } = useTranslation();
   return (
     <Layout>
       <Box p={5}>

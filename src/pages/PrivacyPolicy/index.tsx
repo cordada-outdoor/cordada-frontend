@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+
 import Layout from "components/Layout/Layout";
 
 const PrivacyPolicy = () => {
