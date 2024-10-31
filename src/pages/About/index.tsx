@@ -44,7 +44,7 @@ const About = () => {
         <Box className="about-us-content">
           {content?.sections?.map((sec: any, idx: number) => {
             const imgUrl = getImageUrl(sec.profilePicture, "thumbnail");
-            const even = idx % 2 == 0;
+            const even = idx % 2 === 0;
             return (
               <AboutUsDescription
                 title={sec.name}

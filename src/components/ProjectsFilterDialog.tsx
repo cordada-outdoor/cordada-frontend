@@ -1,11 +1,9 @@
 import { useTranslation } from "react-i18next";
 
 import {
-  Box,
   Button,
   CircularProgress,
   FormControl,
-  Icon,
   IconButton,
   InputLabel,
   MenuItem,
@@ -19,7 +17,6 @@ import { http } from "http/client";
 import { Client } from "models/client";
 import { Service } from "models/service";
 
-import CustomIconButton from "./Common/CustomIconButton";
 import DatePicker from "./Common/DatePicker";
 
 interface ProjectsFilterDialogProps {
