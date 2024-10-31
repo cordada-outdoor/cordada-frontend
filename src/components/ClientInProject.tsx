@@ -10,6 +10,7 @@ import { getImageUrl } from "utils";
 interface ClientInProjectProps {
   id: number;
 }
+
 const ClientInProject = ({ id }: ClientInProjectProps) => {
   const clientQuery = useQuery({
     queryKey: ["client", Number(id)],
