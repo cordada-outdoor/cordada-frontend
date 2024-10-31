@@ -30,6 +30,7 @@ const About = () => {
         <CircularProgress className="loading-indicator" />
       </Layout>
     );
+
   return (
     <Layout>
       <Box className="about">
