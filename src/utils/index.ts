@@ -86,3 +86,8 @@ export const getMarkdownWithEmbeds = (markdown: string) => {
     return result;
   }
 };
+
+export const getUrlWithoutLang = (url: string) => {
+  if (!url.length) return "/";
+  return url.replace("/ca", "").replace("/en", "").replace("/es", "");
+};

@@ -152,12 +152,12 @@
         .mobile-projects-preview {
             margin-top: 10px;
             .slick-arrow::before {
-                color: white;
+                color: $primary-color;
                 opacity: 1;
             }
             .project-preview {
                 border: 5px solid $primary-color;
-                width: calc(100% - 20px) !important;
+                width: calc(100% - 10px) !important;
             }
         }
         .projects-preview-container {
