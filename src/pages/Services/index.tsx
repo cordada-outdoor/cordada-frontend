@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
+import MuiMarkdown from "mui-markdown";
 
 import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
@@ -11,7 +12,6 @@ import Layout from "components/Layout/Layout";
 import ServiceDescription from "components/ServiceDescription";
 import { http } from "http/client";
 import { getImageUrl, isEven } from "utils";
-import MuiMarkdown from "mui-markdown";
 
 const Services = () => {
   const { t } = useTranslation();
