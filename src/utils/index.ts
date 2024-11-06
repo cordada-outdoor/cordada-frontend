@@ -1,5 +1,6 @@
-import { config } from "config";
 import { useLocation } from "react-router-dom";
+
+import { config } from "config";
 
 export function findLangName(language: string) {
   switch (language) {
@@ -60,6 +61,7 @@ export const getImageUrl = (
 export const getMarkdownWithEmbeds = (markdown: string) => {
   if (!markdown?.length) return [{ type: "markdown", body: "" }];
   else {
+    // eslint-disable-next-line no-useless-escape
     const regex = /\[([^\]]+)\]\(https:\/\/www\.instagram\.com\/([^\)]+)\)/g;
 
     let result = [];

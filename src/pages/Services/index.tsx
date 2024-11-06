@@ -1,14 +1,19 @@
-import Layout from "components/Layout/Layout";
+/* eslint-disable jsx-a11y/aria-props */
+/* eslint-disable jsx-a11y/role-supports-aria-props */
 import "./index.scss";
-import { Box, CircularProgress, Grid, Typography } from "@mui/material";
-import HomeBg from "assets/images/home_bg.jpg";
+
 import { useTranslation } from "react-i18next";
-import PreviewImage from "components/Common/PreviewImage";
-import ServiceDescription from "components/ServiceDescription";
+
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
+import MuiMarkdown from "mui-markdown";
+
+import HomeBg from "assets/images/home_bg.jpg";
+import PreviewImage from "components/Common/PreviewImage";
+import Layout from "components/Layout/Layout";
+import ServiceDescription from "components/ServiceDescription";
 import { http } from "http/client";
 import { getImageUrl, isEven } from "utils";
-import MuiMarkdown from "mui-markdown";
 
 const Services = () => {
   const { t } = useTranslation();

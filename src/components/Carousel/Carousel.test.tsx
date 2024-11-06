@@ -1,8 +1,13 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import Carousel from './Carousel';
+import { render } from "@testing-library/react";
 
-it('renders correctly', () => {
-    const el = render(<Carousel><div></div></Carousel>)
-    expect(el).toMatchSnapshot();
+import Carousel from "./Carousel";
+
+it("renders correctly", () => {
+  // eslint-disable-next-line testing-library/render-result-naming-convention
+  const el = render(
+    <Carousel>
+      <div></div>
+    </Carousel>,
+  );
+  expect(el).toMatchSnapshot();
 });

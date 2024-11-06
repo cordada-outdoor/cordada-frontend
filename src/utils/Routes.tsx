@@ -1,16 +1,19 @@
-import Home from "pages/Home";
-import { Redirect, Route, Switch } from "react-router-dom";
-import useUrlLang from "./useUrlLang";
-import About from "pages/About";
-import NotFound from "pages/NotFound";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import Services from "pages/Services";
-import Projects from "pages/Projects";
-import SingleProject from "pages/SingleProject";
+import { Redirect, Route, Switch } from "react-router-dom";
+
 import { useQueryClient } from "@tanstack/react-query";
-import PrivacyPolicy from "pages/PrivacyPolicy";
+
+import About from "pages/About";
+import Home from "pages/Home";
 import LegalNotice from "pages/LegalNotice";
+import NotFound from "pages/NotFound";
+import PrivacyPolicy from "pages/PrivacyPolicy";
+import Projects from "pages/Projects";
+import Services from "pages/Services";
+import SingleProject from "pages/SingleProject";
+
+import useUrlLang from "./useUrlLang";
 
 const Routes = () => {
   const { langUrlPrefix, path, lang } = useUrlLang();

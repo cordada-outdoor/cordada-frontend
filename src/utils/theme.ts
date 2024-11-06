@@ -1,9 +1,7 @@
 import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
-    typography: {
-        fontFamily: [
-            'AeonikPro'
-        ].join(','),
-    },
+  typography: {
+    fontFamily: ["AeonikPro"].join(","),
+  },
 });
