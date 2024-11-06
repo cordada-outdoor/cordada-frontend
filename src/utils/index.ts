@@ -61,6 +61,7 @@ export const getImageUrl = (
 export const getMarkdownWithEmbeds = (markdown: string) => {
   if (!markdown?.length) return [{ type: "markdown", body: "" }];
   else {
+    // eslint-disable-next-line no-useless-escape
     const regex = /\[([^\]]+)\]\(https:\/\/www\.instagram\.com\/([^\)]+)\)/g;
 
     let result = [];

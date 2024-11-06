@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/aria-props */
+/* eslint-disable jsx-a11y/role-supports-aria-props */
 import "./index.scss";
 
 import { useTranslation } from "react-i18next";
