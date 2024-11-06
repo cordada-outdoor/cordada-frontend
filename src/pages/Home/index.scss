@@ -29,8 +29,8 @@
             width: 100%;
             justify-content: space-between;
             .project-preview {
-                width: 25%;
-                border: 10px solid $primary-color;
+                width: 30%;
+                border: 5px solid $primary-color;
                 .project-card {
                     padding: 5px 10px;
                     height: calc(100% - 10px);
@@ -156,7 +156,7 @@
                 opacity: 1;
             }
             .project-preview {
-                border: 10px solid $primary-color;
+                border: 5px solid $primary-color;
                 width: calc(100% - 20px) !important;
             }
         }
