@@ -5,7 +5,7 @@
     margin-top: 30px;
     .project-title {
         color: $primary-color;
-        margin-left: 2em;
+        margin-left: 1em;
         margin-bottom: 20px;
     }
     .project-img-container {
@@ -22,10 +22,6 @@
     .project-data {
         padding: 20px 30px;
         .project-data-element {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: left;
             .project-data-primary {
                 color: $primary-color;
                 margin-left: 1rem;
@@ -54,8 +50,9 @@
 }
 @media (max-width: 900px) {
     .project-detail {
+        padding-top: 20px;
         .project-title {
-            margin-left: 1em;
+            margin-left: 20px;
         }
     }
 }

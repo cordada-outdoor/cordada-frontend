@@ -1,6 +1,13 @@
 import Layout from "components/Layout/Layout";
 import "./index.scss";
-import { Avatar, Box, CircularProgress, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import HomeBg from "assets/images/home_bg.jpg";
 import { useQuery } from "@tanstack/react-query";
@@ -10,9 +17,7 @@ import { Project } from "models/project";
 import { Client } from "models/client";
 import { Service } from "models/service";
 import { formatDate, getImageUrl } from "utils";
-import ContactUs from "components/Common/ContactUs";
 import ClientInProject from "components/ClientInProject";
-import MuiMarkdown from "mui-markdown";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 
 const SingleProject = () => {
@@ -41,7 +46,10 @@ const SingleProject = () => {
   const image = project?.attributes?.image;
   const imgUrl = getImageUrl(image, "large");
   const projectDate = formatDate(project?.attributes?.date ?? "");
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  const dataVariant = isMobile ? "h6" : "h4";
   return (
     <Layout>
       <Box className="project-detail">
@@ -57,42 +65,56 @@ const SingleProject = () => {
             </Box>
             <Grid container>
               <Grid item md={4} xs={12} className="project-data">
-                <Box className="project-data-element">
-                  <Typography fontWeight={300} variant="h4">
-                    {t("projectsPage.client")}
-                  </Typography>
-                  <Typography
-                    fontWeight={700}
-                    variant="h4"
-                    className="project-data-primary"
-                  >
-                    {client?.attributes?.name ?? "N/A"}
-                  </Typography>
-                </Box>
-                <Box className="project-data-element">
-                  <Typography fontWeight={300} variant="h4">
-                    {t("projectsPage.date")}
-                  </Typography>
-                  <Typography
-                    fontWeight={700}
-                    variant="h4"
-                    className="project-data-primary"
-                  >
-                    {projectDate}
-                  </Typography>
-                </Box>
-                <Box className="project-data-element">
-                  <Typography fontWeight={300} variant="h4">
-                    {t("projectsPage.type")}
-                  </Typography>
-                  <Typography
-                    fontWeight={700}
-                    variant="h4"
-                    className="project-data-primary"
-                  >
-                    {service?.attributes?.name ?? "N/A"}
-                  </Typography>
-                </Box>
+                <table>
+                  <tr className="project-data-element">
+                    <td>
+                      <Typography fontWeight={300} variant={dataVariant}>
+                        {t("projectsPage.client")}
+                      </Typography>
+                    </td>
+                    <td>
+                      <Typography
+                        fontWeight={700}
+                        variant={dataVariant}
+                        className="project-data-primary"
+                      >
+                        {client?.attributes?.name ?? "N/A"}
+                      </Typography>
+                    </td>
+                  </tr>
+                  <tr className="project-data-element">
+                    <td>
+                      <Typography fontWeight={300} variant={dataVariant}>
+                        {t("projectsPage.date")}
+                      </Typography>
+                    </td>
+                    <td>
+                      <Typography
+                        fontWeight={700}
+                        variant={dataVariant}
+                        className="project-data-primary"
+                      >
+                        {projectDate}
+                      </Typography>
+                    </td>
+                  </tr>
+                  <tr className="project-data-element">
+                    <td>
+                      <Typography fontWeight={300} variant={dataVariant}>
+                        {t("projectsPage.type")}
+                      </Typography>
+                    </td>
+                    <td>
+                      <Typography
+                        fontWeight={700}
+                        variant={dataVariant}
+                        className="project-data-primary"
+                      >
+                        {service?.attributes?.name ?? "N/A"}
+                      </Typography>
+                    </td>
+                  </tr>
+                </table>
               </Grid>
               <Grid
                 item
