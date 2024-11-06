@@ -84,8 +84,6 @@ const Projects = () => {
     projects.refetch();
   }, [filters]);
 
-  useEffect(() => {});
-
   const handleChangeFilters = (value: string) => {
     const filterToChange = filterDialog ?? "date";
     const newFilters = { ...filters };
@@ -148,12 +146,6 @@ const Projects = () => {
                         description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
-                            <Typography variant="h6">{title}</Typography>
-                            <Typography variant="subtitle1">
-                              {client.data?.attributes?.name?.toUpperCase() ??
-                                ""}{" "}
-                              X CORDADA
-                            </Typography>
                             <Typography
                               className="project-description"
                               fontWeight={300}

@@ -158,12 +158,6 @@ const Home = () => {
                         description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
-                            <Typography variant="h6">{title}</Typography>
-                            <Typography variant="subtitle1">
-                              {client.data?.attributes?.name?.toUpperCase() ??
-                                ""}{" "}
-                              X CORDADA
-                            </Typography>
                             <Typography
                               className="project-description"
                               fontWeight={300}
@@ -221,6 +215,7 @@ const Home = () => {
 
                   return (
                     <Avatar
+                      variant="square"
                       className="avatar-img"
                       key={client.id}
                       src={imgUrl ?? LogoSmallWhite}

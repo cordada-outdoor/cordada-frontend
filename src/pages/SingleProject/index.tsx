@@ -12,6 +12,8 @@ import { Service } from "models/service";
 import { formatDate, getImageUrl } from "utils";
 import ContactUs from "components/Common/ContactUs";
 import ClientInProject from "components/ClientInProject";
+import MuiMarkdown from "mui-markdown";
+import RenderMarkdown from "components/Common/RenderMarkdown";
 
 const SingleProject = () => {
   const { t } = useTranslation();
@@ -92,10 +94,14 @@ const SingleProject = () => {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item md={8} xs={12} className="project-body">
-                <Typography fontWeight={300}>
-                  {project.attributes.body}
-                </Typography>
+              <Grid
+                item
+                md={8}
+                xs={12}
+                sx={{ fontWeight: 300 }}
+                className="project-body markdown-container"
+              >
+                <RenderMarkdown markdown={project?.attributes?.body} />
               </Grid>
             </Grid>
             {client?.id && <ClientInProject id={Number(id)} />}

@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
 import HomeBg from "assets/images/home_bg.jpg";
+import MuiMarkdown from "mui-markdown";
 
 const About = () => {
   const { data, isLoading } = useQuery({
@@ -48,8 +49,8 @@ const About = () => {
                 direction={even ? "left-to-right" : "right-to-left"}
                 image={imgUrl ?? HomeBg}
                 children={
-                  <Box>
-                    <Typography fontWeight={300}>{sec.body}</Typography>
+                  <Box className="markdown-container">
+                    <MuiMarkdown>{sec.body}</MuiMarkdown>
                   </Box>
                 }
               />

@@ -29,7 +29,11 @@ const ClientInProject = ({ id }: ClientInProjectProps) => {
 
   return (
     <Box className="project-client-logos">
-      <Avatar className="project-client-logo" src={imgUrl ?? HomeBg} />
+      <Avatar
+        variant="square"
+        className="project-client-logo"
+        src={imgUrl ?? HomeBg}
+      />
     </Box>
   );
 };

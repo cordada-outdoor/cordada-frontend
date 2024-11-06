@@ -72,6 +72,7 @@
 .filter-modal {
     padding: 1em;
     width: calc(350px - 2em);
+    max-width: calc(100% - 2em);
     .close-button-icon {
         width: 30px;
         float: right;
