@@ -9,6 +9,8 @@
         margin-bottom: 20px;
     }
     .project-img-container {
+        cursor: pointer;
+        transition: 0.2s;
         height: 300px;
         width: 100vw;
         overflow: hidden;
@@ -18,6 +20,11 @@
         img {
             width: 100%;
         }
+    }
+    .project-img-container:hover {
+        -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
     }
     .project-data {
         padding: 20px 30px;
@@ -41,6 +48,7 @@
             margin: 30px;
             height: 200px;
             width: 200px;
+            background-color: black;
         }
     }
     .contact-container {

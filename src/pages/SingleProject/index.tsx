@@ -3,6 +3,7 @@ import "./index.scss";
 import {
   Box,
   CircularProgress,
+  Dialog,
   Grid,
   Typography,
   useMediaQuery,
@@ -19,9 +20,11 @@ import { Service } from "models/service";
 import { formatDate, getImageUrl } from "utils";
 import ClientInProject from "components/ClientInProject";
 import RenderMarkdown from "components/Common/RenderMarkdown";
+import { useState } from "react";
 
 const SingleProject = () => {
   const { t } = useTranslation();
+  const [imgModal, setImgModal] = useState<boolean>(false);
 
   const { id } = useParams<{
     id: string;
@@ -60,7 +63,10 @@ const SingleProject = () => {
             <Typography className="project-title" variant="h3">
               {project.attributes?.title ?? "TBD"}
             </Typography>
-            <Box className="project-img-container">
+            <Box
+              className="project-img-container"
+              onClick={() => setImgModal(!imgModal)}
+            >
               <img src={imgUrl ?? HomeBg} alt="project-header" />
             </Box>
             <Grid container>
@@ -126,10 +132,13 @@ const SingleProject = () => {
                 <RenderMarkdown markdown={project?.attributes?.body} />
               </Grid>
             </Grid>
-            {client?.id && <ClientInProject id={Number(id)} />}
+            {client?.id && <ClientInProject id={Number(client.id)} />}
           </>
         )}
       </Box>
+      <Dialog open={imgModal} onClose={() => setImgModal(!imgModal)}>
+        <img alt="full-project-img" src={imgUrl ?? HomeBg} />
+      </Dialog>
     </Layout>
   );
 };
