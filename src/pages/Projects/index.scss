@@ -27,14 +27,14 @@
     .projects-section {
         padding-top: 12px;
         .project-container {
-            border: 10px solid $primary-color;
+            border: 5px solid $primary-color;
             .project-card {
                 padding: 5px 10px;
                 height: calc(100% - 10px);
                 .project-description {
                     margin-top: 5px;
                     line-height: 1.1rem;
-                    max-height: 4.5em;
+                    max-height: calc(100% - 50px);
                     overflow: hidden;
                 }
                 .see-more-button-container {
@@ -60,6 +60,7 @@
 }
 @media (max-width: 900px) {
     .projects {
+        padding: 50px 20px 10px;
         .projects-section {
             .project-card {
                 .see-more-button-container {
@@ -72,6 +73,7 @@
 .filter-modal {
     padding: 1em;
     width: calc(350px - 2em);
+    max-width: calc(100% - 2em);
     .close-button-icon {
         width: 30px;
         float: right;

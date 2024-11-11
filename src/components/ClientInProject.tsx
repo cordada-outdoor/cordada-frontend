@@ -15,7 +15,7 @@ const ClientInProject = ({ id }: ClientInProjectProps) => {
   const clientQuery = useQuery({
     queryKey: ["client", Number(id)],
     queryFn: async () => {
-      const res = await http.get(`api/projects/${Number(id)}`, {
+      const res = await http.get(`api/clients/${Number(id)}`, {
         params: {
           populate: "*",
         },
@@ -26,7 +26,7 @@ const ClientInProject = ({ id }: ClientInProjectProps) => {
   });
 
   const client = clientQuery?.data?.data;
-  const img = client?.attributes?.image;
+  const img = client?.attributes?.icon;
   const imgUrl = getImageUrl(img, "small");
 
   if (!clientQuery?.data || clientQuery.isLoading) {

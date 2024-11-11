@@ -5,10 +5,12 @@
     margin-top: 30px;
     .project-title {
         color: $primary-color;
-        margin-left: 2em;
+        margin-left: 1em;
         margin-bottom: 20px;
     }
     .project-img-container {
+        cursor: pointer;
+        transition: 0.2s;
         height: 300px;
         width: 100vw;
         overflow: hidden;
@@ -19,13 +21,14 @@
             width: 100%;
         }
     }
+    .project-img-container:hover {
+        -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    }
     .project-data {
         padding: 20px 30px;
         .project-data-element {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: left;
             .project-data-primary {
                 color: $primary-color;
                 margin-left: 1rem;
@@ -45,6 +48,7 @@
             margin: 30px;
             height: 200px;
             width: 200px;
+            background-color: black;
         }
     }
     .contact-container {
@@ -54,8 +58,9 @@
 }
 @media (max-width: 900px) {
     .project-detail {
+        padding-top: 20px;
         .project-title {
-            margin-left: 1em;
+            margin-left: 20px;
         }
     }
 }

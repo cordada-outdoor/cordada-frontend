@@ -248,6 +248,15 @@ const PrivacyPolicy = () => {
           nuestra actividad.
         </Typography>
         <Typography mt={5} variant="h6" fontWeight={300}>
+          ¿Usamos cookies?
+        </Typography>
+        <Typography mt={3} variant="body1" fontWeight={300}>
+          Utilizamos cookies durante la navegación en nuestra web con el
+          consentimiento informado del usuario. El usuario puede configurar su
+          navegador para ser avisado de la utilización de cookies y para evitar
+          su uso.
+        </Typography>
+        <Typography mt={5} variant="h6" fontWeight={300}>
           ¿Qué medidas de seguridad aplicamos?
         </Typography>
         <Typography mt={3} variant="body1" fontWeight={300}>

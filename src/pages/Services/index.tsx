@@ -11,6 +11,7 @@ import Layout from "components/Layout/Layout";
 import ServiceDescription from "components/ServiceDescription";
 import { http } from "http/client";
 import { getImageUrl, isEven } from "utils";
+import MuiMarkdown from "mui-markdown";
 
 const Services = () => {
   const { t } = useTranslation();
@@ -85,7 +86,7 @@ const Services = () => {
         </Grid>
         <Box className="services-content-container">
           {services.map((service: any, i: number) => {
-            const { name, description, quote, banner } = service.attributes;
+            const { name, body, banner } = service.attributes;
             const imgUrl = getImageUrl(banner, "medium");
 
             return (
@@ -96,11 +97,9 @@ const Services = () => {
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
                   image={imgUrl ?? HomeBg}
                 >
-                  <Typography fontWeight={300}>{description}</Typography>
-                  <br />
-                  <Typography fontWeight={"bold"} fontStyle={"italic"}>
-                    "{quote}"
-                  </Typography>
+                  <Box className="markdown-container">
+                    <MuiMarkdown>{body}</MuiMarkdown>
+                  </Box>
                 </ServiceDescription>
               </Box>
             );

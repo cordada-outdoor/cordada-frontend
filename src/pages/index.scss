@@ -130,6 +130,8 @@
     color: white;
     .preview-content {
       position: absolute;
+      max-height: calc(100% - 10px);
+      overflow: hidden;
       width: calc(100% - 10px);
       background: linear-gradient(180deg, rgba(234, 55, 94, 0) 0%, rgba(0, 0, 0, 1) 100%);
       bottom: 0;
@@ -152,6 +154,9 @@
     }
   }
   .preview-image-container:hover {
+    .preview-content {
+      visibility: hidden;
+    }
     .hover-container {
       height: 100%;
     }
@@ -162,6 +167,19 @@
   }
   .horizontal-list {
     @include horizontal-list;
+  }
+  .markdown-container {
+    .MuiTypography-body1 {
+      font-weight: 300;
+    }
+    a {
+      color: $primary-color;
+      text-decoration-color: $primary-color;
+    }
+    a:visited {
+      color: $primary-color;
+      text-decoration-color: $primary-color;
+    }
   }
 }
 .loading-indicator {

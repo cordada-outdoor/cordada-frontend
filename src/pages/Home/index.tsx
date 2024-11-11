@@ -112,7 +112,6 @@ const Home = () => {
                   pauseOnDotsHover: false,
                   pauseOnHover: true,
                   pauseOnFocus: false,
-                  speed: 500,
                   cssEase: "linear",
                 }}
               >
@@ -160,12 +159,6 @@ const Home = () => {
                         description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
-                            <Typography variant="h6">{title}</Typography>
-                            <Typography variant="subtitle1">
-                              {client.data?.attributes?.name?.toUpperCase() ??
-                                ""}{" "}
-                              X CORDADA
-                            </Typography>
                             <Typography
                               className="project-description"
                               fontWeight={300}
@@ -217,19 +210,67 @@ const Home = () => {
               {clientsQuery.isLoading ? (
                 <CircularProgress sx={{ color: "black", margin: "1em" }} />
               ) : (
-                clients.map((client: Client, idx: number) => {
-                  const { icon } = client.attributes;
-                  const imgUrl = getImageUrl(icon, "thumbnail");
+                <Carousel
+                  settings={{
+                    dots: false,
+                    arrows: false,
+                    infinite: true,
+                    slidesToShow: clients?.length > 5 ? 6 : clients.length,
+                    initialSlide: 1,
+                    autoplay: true,
+                    pauseOnDotsHover: false,
+                    pauseOnHover: true,
+                    pauseOnFocus: false,
+                    autoplaySpeed: 6000,
+                    speed: 1000,
+                    accessibility: false,
+                    cssEase: "linear",
+                    swipeToSlide: true,
+                    responsive: [
+                      {
+                        breakpoint: 1024,
+                        settings: {
+                          slidesToShow:
+                            clients?.length > 5 ? 6 : clients.length,
+                          slidesToScroll: 5,
+                          infinite: true,
+                        },
+                      },
+                      {
+                        breakpoint: 600,
+                        settings: {
+                          slidesToShow:
+                            clients?.length > 3 ? 4 : clients.length,
+                          slidesToScroll: 3,
+                          initialSlide: 2,
+                        },
+                      },
+                      {
+                        breakpoint: 480,
+                        settings: {
+                          slidesToShow:
+                            clients?.length > 2 ? 3 : clients.length,
+                          slidesToScroll: 2,
+                        },
+                      },
+                    ],
+                  }}
+                >
+                  {clients.map((client: Client, idx: number) => {
+                    const { icon } = client.attributes;
+                    const imgUrl = getImageUrl(icon, "thumbnail");
 
-                  return (
-                    <Avatar
-                      className="avatar-img"
-                      key={client.id}
-                      src={imgUrl ?? LogoSmallWhite}
-                      alt={"carousel " + idx}
-                    />
-                  );
-                })
+                    return (
+                      <Avatar
+                        variant="square"
+                        className="avatar-img"
+                        key={client.id}
+                        src={imgUrl ?? LogoSmallWhite}
+                        alt={"carousel " + idx}
+                      />
+                    );
+                  })}
+                </Carousel>
               )}
             </Box>
           </Box>

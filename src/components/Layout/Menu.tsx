@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import {
   AppBar,
@@ -22,9 +22,9 @@ import {
 import { ReactComponent as LogoSmall } from "assets/logos/logo-small.svg";
 import { ReactComponent as MenuIcon } from "assets/logos/menu-icon.svg";
 import { AppbarPosition } from "models";
-import { findLangName } from "utils";
 import { SUPPORTED_LANGS } from "utils/constants";
 import useUrlLang from "utils/useUrlLang";
+import { findLangName, getUrlWithoutLang } from "utils";
 
 interface MenuScrollProps {
   children: ReactElement;
@@ -63,10 +63,11 @@ const Menu = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { langUrlPrefix } = useUrlLang();
-
+  const { pathname } = useLocation();
   const { t, i18n } = useTranslation();
   const history = useHistory();
 
+  const urlWithoutLang = getUrlWithoutLang(pathname);
   if (isMobile) {
     const languageName = findLangName(i18n.language);
     return (
@@ -77,7 +78,10 @@ const Menu = ({
           elevation={0}
         >
           <Toolbar className="toolbar">
-            <LogoSmall className="main-menu-logo" />
+            <LogoSmall
+              onClick={() => history.push(`${langUrlPrefix + "/"}`)}
+              className="main-menu-logo"
+            />
             <Button
               className="right-mobile-menu"
               onClick={() => setIsDrawerOpen(!isDrawerOpen)}
@@ -130,7 +134,7 @@ const Menu = ({
                   i18n.language.toUpperCase() === aL.toUpperCase();
                 return (
                   <ListItem
-                    onClick={() => history.push(`/${aL}`)}
+                    onClick={() => history.push(`/${aL + urlWithoutLang}`)}
                     className={isSelected ? "primary-color-button" : ""}
                     key={aL}
                   >
@@ -188,7 +192,7 @@ const Menu = ({
                             ? "selected-item-in-menu language-button"
                             : "language-button"
                         }
-                        onClick={() => history.push(`/${aL}`)}
+                        onClick={() => history.push(`/${aL + urlWithoutLang}`)}
                       >
                         <ListItemText primary={langName} />
                       </ListItemButton>

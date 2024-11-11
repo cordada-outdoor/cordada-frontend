@@ -9,6 +9,7 @@ import AboutUsDescription from "components/AboutUsDescription";
 import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
+import MuiMarkdown from "mui-markdown";
 
 const About = () => {
   const { data, isLoading } = useQuery({
@@ -50,8 +51,8 @@ const About = () => {
                 direction={even ? "left-to-right" : "right-to-left"}
                 image={imgUrl ?? HomeBg}
                 children={
-                  <Box>
-                    <Typography fontWeight={300}>{sec.body}</Typography>
+                  <Box className="markdown-container">
+                    <MuiMarkdown>{sec.body}</MuiMarkdown>
                   </Box>
                 }
               />

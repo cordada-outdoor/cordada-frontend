@@ -57,3 +57,38 @@ export const getImageUrl = (
 
   return null;
 };
+
+export const getMarkdownWithEmbeds = (markdown: string) => {
+  if (!markdown?.length) return [{ type: "markdown", body: "" }];
+  else {
+    const regex = /\[([^\]]+)\]\(https:\/\/www\.instagram\.com\/([^\)]+)\)/g;
+
+    let result = [];
+    let lastIndex = 0;
+
+    let match;
+    while ((match = regex.exec(markdown)) !== null) {
+      if (match.index > lastIndex) {
+        let markdownText = markdown.slice(lastIndex, match.index);
+        result.push({ type: "markdown", body: markdownText });
+      }
+
+      result.push({
+        type: "instagram-link",
+        body: `https://www.instagram.com/${match[2]}`,
+      });
+
+      lastIndex = regex.lastIndex;
+    }
+
+    if (lastIndex < markdown.length) {
+      result.push({ type: "markdown", body: markdown.slice(lastIndex) });
+    }
+    return result;
+  }
+};
+
+export const getUrlWithoutLang = (url: string) => {
+  if (!url.length) return "/";
+  return url.replace("/ca", "").replace("/en", "").replace("/es", "");
+};
