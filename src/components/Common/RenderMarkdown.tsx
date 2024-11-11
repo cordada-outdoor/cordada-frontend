@@ -1,6 +1,8 @@
+import { InstagramEmbed } from "react-social-media-embed";
+
 import { Box } from "@mui/material";
 import MuiMarkdown from "mui-markdown";
-import { InstagramEmbed } from "react-social-media-embed";
+
 import { getMarkdownWithEmbeds } from "utils";
 
 interface RenderMarkdownProps {

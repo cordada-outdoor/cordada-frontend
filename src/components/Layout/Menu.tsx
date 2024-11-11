@@ -22,9 +22,9 @@ import {
 import { ReactComponent as LogoSmall } from "assets/logos/logo-small.svg";
 import { ReactComponent as MenuIcon } from "assets/logos/menu-icon.svg";
 import { AppbarPosition } from "models";
+import { findLangName, getUrlWithoutLang } from "utils";
 import { SUPPORTED_LANGS } from "utils/constants";
 import useUrlLang from "utils/useUrlLang";
-import { findLangName, getUrlWithoutLang } from "utils";
 
 interface MenuScrollProps {
   children: ReactElement;

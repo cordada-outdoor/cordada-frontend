@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import CookieConsent from "react-cookie-consent";
 
 import { Box, Typography } from "@mui/material";
 
@@ -6,8 +7,6 @@ import { AppbarPosition } from "models";
 
 import Footer from "./Footer";
 import Menu from "./Menu";
-
-import CookieConsent from "react-cookie-consent";
 interface LayoutProps {
   children: ReactNode;
   appbarPosition?: AppbarPosition;
