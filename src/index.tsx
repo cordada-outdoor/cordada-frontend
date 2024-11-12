@@ -19,6 +19,7 @@ const root = ReactDOM.createRoot(
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      staleTime: 120 * 2 * 1000,
       refetchOnWindowFocus: false,
     },
   },
