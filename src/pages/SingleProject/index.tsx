@@ -47,8 +47,9 @@ const SingleProject = () => {
   });
 
   const project: Project = projectQuery?.data?.data;
+
   const client: Client | undefined = project?.attributes?.client?.data;
-  const service: Service | undefined = project?.attributes?.service?.data;
+  const services: Service[] = project?.attributes?.services?.data ?? [];
   const image = project?.attributes?.image;
   const imgUrl = getImageUrl(image, "large");
   const projectDate = formatDate(project?.attributes?.date ?? "");
@@ -119,7 +120,11 @@ const SingleProject = () => {
                         variant={dataVariant}
                         className="project-data-primary"
                       >
-                        {service?.attributes?.name ?? "N/A"}
+                        {services
+                          .map((s) => {
+                            return s.attributes.name;
+                          })
+                          .join(" & ")}
                       </Typography>
                     </td>
                   </tr>

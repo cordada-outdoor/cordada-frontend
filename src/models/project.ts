@@ -9,8 +9,8 @@ export type ProjectAttributes = {
   image: any;
   body: string;
   date: string;
-  service: {
-    data: Service;
+  services: {
+    data: Service[];
   };
 };
 
