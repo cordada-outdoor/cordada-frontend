@@ -25,13 +25,13 @@ const ClientInProject = ({ id }: ClientInProjectProps) => {
     },
   });
 
-  const client = clientQuery?.data?.data;
-  const img = client?.attributes?.icon;
-  const imgUrl = getImageUrl(img, "small");
-
-  if (!clientQuery?.data || clientQuery.isLoading) {
+  if (!clientQuery.data || clientQuery.isLoading) {
     return <CircularProgress className="loading-indicator" />;
   }
+
+  const client = clientQuery.data.data;
+  const img = client.attributes.icon;
+  const imgUrl = getImageUrl(img, "small");
 
   return (
     <Box className="project-client-logos">

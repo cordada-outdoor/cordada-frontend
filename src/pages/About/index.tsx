@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography, useTheme } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import MuiMarkdown from "mui-markdown";
 
@@ -12,6 +12,8 @@ import { http } from "http/client";
 import { getImageUrl } from "utils";
 
 const About = () => {
+  const theme = useTheme();
+
   const { data, isLoading } = useQuery({
     queryKey: ["about-us-page"],
     queryFn: async () => {
@@ -25,14 +27,14 @@ const About = () => {
     },
   });
 
-  const content = data?.data?.attributes;
-
   if (isLoading)
     return (
       <Layout>
         <CircularProgress className="loading-indicator" />
       </Layout>
     );
+
+  const content = data.data.attributes;
 
   return (
     <Layout>
@@ -41,7 +43,11 @@ const About = () => {
         <Box className="about-top-image-container">
           <img src={HeaderImg} alt="header-img" className="about-top-image" />
         </Box>
-        <Box className="about-us-content">
+        <Box
+          className="about-us-content"
+          maxWidth={theme.breakpoints.values.xl}
+          margin="auto"
+        >
           {content?.sections?.map((sec: any, idx: number) => {
             const imgUrl = getImageUrl(sec.profilePicture, "thumbnail");
             const even = idx % 2 === 0;
