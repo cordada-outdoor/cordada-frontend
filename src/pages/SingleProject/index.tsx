@@ -85,18 +85,16 @@ const SingleProject = () => {
         >
           <img src={imgUrl ?? HomeBg} alt="project-header" />
         </Box>
-        <Box maxWidth={theme.breakpoints.values.md} margin="auto" p={2}>
-          <Typography
-            textAlign="center"
-            variant={dataVariant}
-            color="primary"
-            fontWeight="bold"
-          >
-            {project.attributes.subtitle}
-          </Typography>
-        </Box>
+
+        <Grid container justifyContent={"center"}>
+          <Grid item md={12} lg={6} p={2}>
+            <Typography variant={dataVariant} color="primary" fontWeight="bold">
+              {project.attributes.subtitle}
+            </Typography>
+          </Grid>
+        </Grid>
         <Grid container>
-          <Grid item lg={3} md={12} className="project-data">
+          <Grid item md={12} lg={3} className="project-data">
             <table>
               <tr className="project-data-element">
                 <td>
