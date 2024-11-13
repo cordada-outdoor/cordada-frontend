@@ -94,7 +94,7 @@ const SingleProject = () => {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid item md={12} lg={3} className="project-data">
+          <Grid item md={12} lg={3} className="project-data" p={2}>
             <table>
               <tr className="project-data-element">
                 <td>
@@ -152,8 +152,9 @@ const SingleProject = () => {
           </Grid>
           <Grid
             item
-            lg={6}
             md={12}
+            lg={6}
+            p={2}
             sx={{ fontWeight: 300 }}
             className="project-body markdown-container"
           >
