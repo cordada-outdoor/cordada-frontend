@@ -52,7 +52,7 @@ const Projects = () => {
       const res = await http.get("api/projects", {
         params: {
           filters: {
-            service: filters.service
+            services: filters.service
               ? {
                   id: {
                     $eq: filters.service,
