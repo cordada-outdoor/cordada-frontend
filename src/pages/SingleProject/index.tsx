@@ -83,7 +83,7 @@ const SingleProject = () => {
         <Box maxWidth={theme.breakpoints.values.md} margin="auto" p={2}>
           <Typography
             textAlign="center"
-            variant="h5"
+            variant={dataVariant}
             color="primary"
             fontWeight="bold"
           >
