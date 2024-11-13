@@ -71,7 +71,12 @@ const SingleProject = () => {
   return (
     <Layout>
       <Box className="project-detail">
-        <Typography className="project-title" variant="h3">
+        <Typography
+          className="project-title"
+          variant="h3"
+          color="primary"
+          p={2}
+        >
           {project.attributes.title}
         </Typography>
         <Box

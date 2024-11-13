@@ -2,16 +2,10 @@
 @import "/src/utils/mixins.scss";
 
 .project-detail {
-  margin-top: 30px;
-  .project-title {
-    color: $primary-color;
-    margin-left: 1em;
-    margin-bottom: 20px;
-  }
   .project-img-container {
     cursor: pointer;
     transition: 0.2s;
-    height: 300px;
+    max-height: 300px;
     width: 100vw;
     overflow: hidden;
     display: flex;
@@ -58,9 +52,6 @@
 }
 @media (max-width: 900px) {
   .project-detail {
-    padding-top: 20px;
-    .project-title {
-      margin-left: 20px;
-    }
+    margin-top: 2rem;
   }
 }
