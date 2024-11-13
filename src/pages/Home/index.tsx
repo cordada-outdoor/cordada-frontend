@@ -186,7 +186,7 @@ const Home = () => {
 
           <Link
             className="see-projects-button-container"
-            to={`${langUrlPrefix + "/projects"}`}
+            to={`${langUrlPrefix}/projects`}
           >
             <Button
               className="see-projects-button"

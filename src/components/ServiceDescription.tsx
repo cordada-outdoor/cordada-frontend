@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 
 import { ServiceType } from "models";
+import useUrlLang from "utils/useUrlLang";
 
 interface ServiceDescriptionProps {
   direction: "left-to-right" | "right-to-left";
@@ -25,6 +26,8 @@ const ServiceDescription = ({
   const [isVisible, setVisible] = useState(false);
   const domRef = useRef();
   const { t } = useTranslation();
+  const { langUrlPrefix } = useUrlLang();
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => setVisible(entry.isIntersecting));
@@ -43,7 +46,12 @@ const ServiceDescription = ({
       >
         <Grid item md={6} xs={12} className="service-image-container">
           <Avatar variant="square" className="service-image" src={image} />
-          <Link to={{ pathname: "/projects", state: { service: service } }}>
+          <Link
+            to={{
+              pathname: `${langUrlPrefix}/projects`,
+              state: { service: service },
+            }}
+          >
             <Button className="see-more-button">
               {t("servicesPage.seeProjects")}
             </Button>
