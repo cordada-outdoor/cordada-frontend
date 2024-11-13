@@ -116,7 +116,7 @@ const Home = () => {
                 }}
               >
                 {projects.map((p: any, i: number) => {
-                  const { title, body, client, image } = p.attributes;
+                  const { title, subtitle, client, image } = p.attributes;
                   const imgUrl = getImageUrl(image, "small");
 
                   return (
@@ -133,7 +133,16 @@ const Home = () => {
                             }}
                           >
                             <Typography variant="h4">{title}</Typography>
-                            <Typography>{body}</Typography>
+                            <Typography>{subtitle}</Typography>
+                            <Box className="see-more-button-container">
+                              <Link
+                                component={Button}
+                                to={`${langUrlPrefix}/project/${p.id}`}
+                                className="see-more-button"
+                              >
+                                {t("seeMore")}
+                              </Link>
+                            </Box>
                           </Box>
                         }
                       />
@@ -148,7 +157,7 @@ const Home = () => {
                 <CircularProgress className="loading-indicator" />
               ) : (
                 projects.map((p: Project, i: number) => {
-                  const { title, body, client, image } = p.attributes;
+                  const { title, subtitle, client, image } = p.attributes;
                   const imgUrl = getImageUrl(image, "small");
                   return (
                     <Box className="project-preview" key={i}>
@@ -159,11 +168,12 @@ const Home = () => {
                         description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
+                            <Typography variant="h4">{title}</Typography>
                             <Typography
                               className="project-description"
                               fontWeight={300}
                             >
-                              {body}
+                              {subtitle}
                             </Typography>
                             <Box className="see-more-button-container">
                               <Link

@@ -8,6 +8,7 @@ export type ProjectAttributes = {
   };
   image: any;
   body: string;
+  subtitle: string;
   date: string;
   services: {
     data: Service[];

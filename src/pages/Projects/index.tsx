@@ -138,7 +138,7 @@ const Projects = () => {
               <CircularProgress className="loading-indicator" />
             ) : (
               projects.data?.data.map((p: any, i: number) => {
-                const { title, body, client, image } = p.attributes;
+                const { title, subtitle, client, image } = p.attributes;
                 const imgUrl = getImageUrl(image, "small");
 
                 return (
@@ -151,11 +151,12 @@ const Projects = () => {
                         description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
+                            <Typography variant="h4">{title}</Typography>
                             <Typography
                               className="project-description"
                               fontWeight={300}
                             >
-                              {body}
+                              {subtitle}
                             </Typography>
                             <Box className="see-more-button-container">
                               <Link

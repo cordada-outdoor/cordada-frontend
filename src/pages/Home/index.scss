@@ -164,6 +164,24 @@
             .project-preview {
                 border: 5px solid $primary-color;
                 width: calc(100% - 10px) !important;
+
+                .see-more-button-container {
+                    position: absolute;
+                    bottom: 10px;
+                    left: -5px;
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    .see-more-button {
+                        @include white-on-primary;
+                        border-radius: 0;
+                    }
+                    .see-more-button:hover {
+                        @include primary-on-white;
+                    }
+                }
             }
         }
         .projects-preview-container {
