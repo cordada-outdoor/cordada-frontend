@@ -67,7 +67,7 @@ const SingleProject = () => {
 
   const projectDate = dayjs(project.attributes.date).format("MM/YYYY");
 
-  const dataVariant = isMobile ? "h6" : "h4";
+  const dataVariant = isMobile ? "h6" : "h5";
   return (
     <Layout>
       <Box className="project-detail">
@@ -80,8 +80,18 @@ const SingleProject = () => {
         >
           <img src={imgUrl ?? HomeBg} alt="project-header" />
         </Box>
+        <Box maxWidth={theme.breakpoints.values.md} margin="auto" p={2}>
+          <Typography
+            textAlign="center"
+            variant="h5"
+            color="primary"
+            fontWeight="bold"
+          >
+            {project.attributes.subtitle}
+          </Typography>
+        </Box>
         <Grid container>
-          <Grid item md={4} xs={12} className="project-data">
+          <Grid item lg={3} md={12} className="project-data">
             <table>
               <tr className="project-data-element">
                 <td>
@@ -139,8 +149,8 @@ const SingleProject = () => {
           </Grid>
           <Grid
             item
-            md={8}
-            xs={12}
+            lg={6}
+            md={12}
             sx={{ fontWeight: 300 }}
             className="project-body markdown-container"
           >
