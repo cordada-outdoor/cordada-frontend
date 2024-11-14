@@ -135,12 +135,10 @@ const Home = () => {
                             <Typography variant="h4">{title}</Typography>
                             <Typography>{subtitle}</Typography>
                             <Box className="see-more-button-container">
-                              <Link
-                                component={Button}
-                                to={`${langUrlPrefix}/project/${p.id}`}
-                                className="see-more-button"
-                              >
-                                {t("seeMore")}
+                              <Link to={`${langUrlPrefix}/project/${p.id}`}>
+                                <Button className="see-more-button">
+                                  {t("seeMore")}
+                                </Button>
                               </Link>
                             </Box>
                           </Box>
@@ -176,12 +174,10 @@ const Home = () => {
                               {subtitle}
                             </Typography>
                             <Box className="see-more-button-container">
-                              <Link
-                                component={Button}
-                                to={`${langUrlPrefix}/project/${p.id}`}
-                                className="see-more-button"
-                              >
-                                {t("seeMore")}
+                              <Link to={`${langUrlPrefix}/project/${p.id}`}>
+                                <Button className="see-more-button">
+                                  {t("seeMore")}
+                                </Button>
                               </Link>
                             </Box>
                           </Box>

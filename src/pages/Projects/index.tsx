@@ -159,12 +159,10 @@ const Projects = () => {
                               {subtitle}
                             </Typography>
                             <Box className="see-more-button-container">
-                              <Link
-                                component={Button}
-                                to={`${langUrlPrefix}/project/${p.id}`}
-                                className="see-more-button"
-                              >
-                                {t("seeMore")}
+                              <Link to={`${langUrlPrefix}/project/${p.id}`}>
+                                <Button className="see-more-button">
+                                  {t("seeMore")}
+                                </Button>
                               </Link>
                             </Box>
                           </Box>
