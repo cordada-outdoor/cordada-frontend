@@ -9,6 +9,7 @@ import {
   CircularProgress,
   Dialog,
   Grid,
+  Stack,
   Typography,
   useMediaQuery,
   useTheme,
@@ -86,15 +87,8 @@ const SingleProject = () => {
           <img src={imgUrl ?? HomeBg} alt="project-header" />
         </Box>
 
-        <Grid container justifyContent={"center"}>
-          <Grid item md={12} lg={6} p={2}>
-            <Typography variant={dataVariant} color="primary" fontWeight="bold">
-              {project.attributes.subtitle}
-            </Typography>
-          </Grid>
-        </Grid>
         <Grid container>
-          <Grid item md={12} lg={3} className="project-data" p={2}>
+          <Grid item md={12} lg={3} className="project-data" pt={2} px={2}>
             <table>
               <tr className="project-data-element">
                 <td>
@@ -158,7 +152,16 @@ const SingleProject = () => {
             sx={{ fontWeight: 300 }}
             className="project-body markdown-container"
           >
-            <RenderMarkdown markdown={project.attributes.body} />
+            <Stack gap={2}>
+              <Typography
+                variant={dataVariant}
+                color="primary"
+                fontWeight="bold"
+              >
+                {project.attributes.subtitle}
+              </Typography>
+              <RenderMarkdown markdown={project.attributes.body} />
+            </Stack>
           </Grid>
         </Grid>
         {client?.id && <ClientInProject id={Number(client.id)} />}
