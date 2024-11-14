@@ -69,9 +69,10 @@ const SingleProject = () => {
   const projectDate = dayjs(project.attributes.date).format("MM/YYYY");
 
   const dataVariant = isMobile ? "h6" : "h5";
+
   return (
     <Layout>
-      <Box className="project-detail">
+      <Box className="project-detail" pt={[4, 4, 0]}>
         <Typography
           className="project-title"
           variant="h3"
@@ -162,8 +163,10 @@ const SingleProject = () => {
               <RenderMarkdown markdown={project.attributes.body} />
             </Stack>
           </Grid>
+          <Grid item xs={12}>
+            <ClientInProject id={Number(client.id)} />
+          </Grid>
         </Grid>
-        {client?.id && <ClientInProject id={Number(client.id)} />}
       </Box>
       <Dialog open={imgModal} onClose={() => setImgModal(!imgModal)}>
         <img alt="full-project-img" src={imgUrl ?? HomeBg} />

@@ -34,8 +34,15 @@ const ClientInProject = ({ id }: ClientInProjectProps) => {
   const imgUrl = getImageUrl(img, "small");
 
   return (
-    <Box className="project-client-logos">
-      <Avatar className="project-client-logo" src={imgUrl ?? HomeBg} />
+    <Box display="flex" alignItems="center" justifyContent="center" p={2}>
+      <Avatar
+        sx={{
+          width: "175px",
+          height: "175px",
+          bgcolor: "black",
+        }}
+        src={imgUrl ?? HomeBg}
+      />
     </Box>
   );
 };
