@@ -87,8 +87,8 @@ const SingleProject = () => {
           <img src={imgUrl ?? HomeBg} alt="project-header" />
         </Box>
 
-        <Grid container>
-          <Grid item md={12} lg={3} className="project-data" pt={2} px={2}>
+        <Grid container p={2} spacing={2}>
+          <Grid item md={12} lg={3} className="project-data">
             <table>
               <tr className="project-data-element">
                 <td>
@@ -148,7 +148,6 @@ const SingleProject = () => {
             item
             md={12}
             lg={6}
-            p={2}
             sx={{ fontWeight: 300 }}
             className="project-body markdown-container"
           >
