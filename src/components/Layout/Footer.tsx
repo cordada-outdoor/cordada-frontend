@@ -1,18 +1,21 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 import { ReactComponent as InstagramLogo } from "assets/logos/instagram-logo.svg";
 import { ReactComponent as LinkedinLogo } from "assets/logos/linkedin-logo.svg";
 import CustomIconButton from "components/Common/CustomIconButton";
+import { theme } from "utils/theme";
 import useUrlLang from "utils/useUrlLang";
 
 const Footer = () => {
-  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   const { t } = useTranslation();
+
   const { langUrlPrefix } = useUrlLang();
+
   return (
     <Box py={3} px={3} className="footer">
       <div className="horizontal-list">

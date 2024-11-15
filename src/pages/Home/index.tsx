@@ -27,6 +27,7 @@ import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
 import { getImageUrl } from "utils";
+import { theme } from "utils/theme";
 import useUrlLang from "utils/useUrlLang";
 
 const Home = () => {
@@ -36,7 +37,6 @@ const Home = () => {
     useState<boolean>(false);
 
   const { langUrlPrefix } = useUrlLang();
-  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {

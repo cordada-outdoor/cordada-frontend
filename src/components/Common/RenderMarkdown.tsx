@@ -1,9 +1,10 @@
 import { InstagramEmbed, YouTubeEmbed } from "react-social-media-embed";
 
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import MarkdownToJsx from "markdown-to-jsx";
 
 import { getMarkdownWithEmbeds } from "utils";
+import { theme } from "utils/theme";
 
 interface RenderMarkdownProps {
   markdown: string;
@@ -11,7 +12,6 @@ interface RenderMarkdownProps {
 
 const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
   const formattedMarkdown = getMarkdownWithEmbeds(markdown);
-  const theme = useTheme();
 
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 

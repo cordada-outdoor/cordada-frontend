@@ -16,7 +16,6 @@ import {
   Typography,
   useMediaQuery,
   useScrollTrigger,
-  useTheme,
 } from "@mui/material";
 
 import { ReactComponent as LogoSmall } from "assets/logos/logo-small.svg";
@@ -24,6 +23,7 @@ import { ReactComponent as MenuIcon } from "assets/logos/menu-icon.svg";
 import { AppbarPosition } from "models";
 import { findLangName, getUrlWithoutLang } from "utils";
 import { SUPPORTED_LANGS } from "utils/constants";
+import { theme } from "utils/theme";
 import useUrlLang from "utils/useUrlLang";
 
 interface MenuScrollProps {
@@ -60,7 +60,6 @@ const Menu = ({
   primaryAppbar = false,
 }: MenuProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
-  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { langUrlPrefix } = useUrlLang();
   const { pathname } = useLocation();
