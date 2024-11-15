@@ -1,6 +1,6 @@
-import { InstagramEmbed } from "react-social-media-embed";
+import { InstagramEmbed, YouTubeEmbed } from "react-social-media-embed";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import MarkdownToJsx from "markdown-to-jsx";
 
 import { getMarkdownWithEmbeds } from "utils";
@@ -11,6 +11,9 @@ interface RenderMarkdownProps {
 
 const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
   const formattedMarkdown = getMarkdownWithEmbeds(markdown);
+  const theme = useTheme();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   if (!formattedMarkdown?.length) {
     return <Box />;
@@ -24,7 +27,7 @@ const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
                 <MarkdownToJsx>{element.body}</MarkdownToJsx>
               </Typography>
             );
-          } else {
+          } else if (element.type === "instagram-link") {
             return (
               <Box
                 className="markdown-container"
@@ -33,6 +36,13 @@ const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
               >
                 <InstagramEmbed width={328} url={element.body} />
               </Box>
+            );
+          } else {
+            return (
+              <YouTubeEmbed
+                width={isMobile ? "100%" : undefined}
+                url={element.body}
+              />
             );
           }
         })}
