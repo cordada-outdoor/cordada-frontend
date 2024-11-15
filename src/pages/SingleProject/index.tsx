@@ -168,7 +168,11 @@ const SingleProject = () => {
           </Grid>
         </Grid>
       </Box>
-      <Dialog open={imgModal} onClose={() => setImgModal(!imgModal)}>
+      <Dialog
+        maxWidth={false}
+        open={imgModal}
+        onClose={() => setImgModal(!imgModal)}
+      >
         <img alt="full-project-img" src={imgUrl ?? HomeBg} />
       </Dialog>
     </Layout>
