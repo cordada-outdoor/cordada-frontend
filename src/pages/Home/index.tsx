@@ -10,7 +10,6 @@ import {
   CircularProgress,
   Typography,
   useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { t } from "i18next";
