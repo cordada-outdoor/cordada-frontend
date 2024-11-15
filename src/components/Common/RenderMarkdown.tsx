@@ -1,7 +1,7 @@
 import { InstagramEmbed } from "react-social-media-embed";
 
-import { Box } from "@mui/material";
-import MuiMarkdown from "mui-markdown";
+import { Box, Typography } from "@mui/material";
+import MarkdownToJsx from "markdown-to-jsx";
 
 import { getMarkdownWithEmbeds } from "utils";
 
@@ -11,6 +11,7 @@ interface RenderMarkdownProps {
 
 const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
   const formattedMarkdown = getMarkdownWithEmbeds(markdown);
+
   if (!formattedMarkdown?.length) {
     return <Box />;
   } else
@@ -18,10 +19,15 @@ const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
       <>
         {formattedMarkdown.map((element) => {
           if (element.type === "markdown") {
-            return <MuiMarkdown>{element.body}</MuiMarkdown>;
+            return (
+              <Typography className="markdown-container">
+                <MarkdownToJsx>{element.body}</MarkdownToJsx>
+              </Typography>
+            );
           } else {
             return (
               <Box
+                className="markdown-container"
                 width={"100%"}
                 sx={{ display: "flex", justifyContent: "center" }}
               >

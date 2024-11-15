@@ -2,11 +2,11 @@ import "./index.scss";
 
 import { Box, CircularProgress, Typography, useTheme } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import MuiMarkdown from "mui-markdown";
 
 import HeaderImg from "assets/images/about-us-top-img.png";
 import HomeBg from "assets/images/home_bg.jpg";
 import AboutUsDescription from "components/AboutUsDescription";
+import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
@@ -60,11 +60,7 @@ const About = () => {
                 title={sec.name}
                 direction={even ? "left-to-right" : "right-to-left"}
                 image={imgUrl ?? HomeBg}
-                children={
-                  <Box className="markdown-container">
-                    <MuiMarkdown>{sec.body}</MuiMarkdown>
-                  </Box>
-                }
+                children={<RenderMarkdown markdown={sec.body} />}
               />
             );
           })}

@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 
 import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import MuiMarkdown from "mui-markdown";
 
 import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
+import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import ServiceDescription from "components/ServiceDescription";
 import { http } from "http/client";
@@ -98,9 +98,7 @@ const Services = () => {
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
                   image={imgUrl ?? HomeBg}
                 >
-                  <Box className="markdown-container">
-                    <MuiMarkdown>{body}</MuiMarkdown>
-                  </Box>
+                  <RenderMarkdown markdown={body} />
                 </ServiceDescription>
               </Box>
             );

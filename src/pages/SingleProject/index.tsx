@@ -150,7 +150,7 @@ const SingleProject = () => {
             md={12}
             lg={6}
             sx={{ fontWeight: 300 }}
-            className="project-body markdown-container"
+            className="project-body"
           >
             <Stack gap={2}>
               <Typography
