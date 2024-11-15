@@ -1,43 +1,44 @@
 {
-    "home": "Inicio",
-    "projects": "Proyectos",
-    "services": "Servicios",
-    "us": "Nosotros",
-    "aboutUs": "Sobre nosotros",
-    "pageDoesNotExist": "Esta página no existe. Disculpen las molestias.",
-    "anyDoubtContact": "Para cualquier duda o cuestión, puede contactar con nosotros.",
-    "legalNotice": "Aviso legal",
-    "privacyPolicy": "Politica de privacidad",
-    "ourServices": "nuestros servicios",
-    "seeMore": "ver más",
-    "homePage": {
-        "ourProjects": "nuestros proyectos",
-        "allProjects": "Todos los proyectos",
-        "ourCordada": "nuestra cordada",
-        "servicesText1": "Cordada es una agencia de marketing y comunicación especializada en el sector del deporte outdoor y el ciclismo. Ofrecemos un servicio integral que va desde la planificación a la ejecución y la distribución, y cubrimos las necesidades de empresas, atletas, instituciones y organizaciones que busquen soluciones de valor y calidad.",
-        "expertsIn": "Expertos en",
-        "expertsDescription": "SPORTS MARKETING, SOCIAL MEDIA, \n CREACIÓN DE CONTENIDO, PRENSA & RRPP Y BUSINESS DEVELOPMENT.",
-        "allServices": "Todos los servicios",
-        "contactUs": "Alguna pregunta? Escríbenos!",
-        "corpCopy": {
-            "title": "En la montaña no te atas a cualquiera",
-            "mainText": "Más allá de la amistad, más allá del afecto, la persona con quien te atas es depositaria de la más absoluta de las confianzas: la vida en manos del otro, y viceversa. En un sentido literal, sin melodramas. Y es en esta relación de confianza simbiótica, basada en la seguridad mutua y la sinergia de fuerzas, donde radica la clave de la progresión y el éxito en la montaña: lo podemos hacer porque vamos juntos, porque vamos encordados. Quién encuentra un buen compañero de cordada encuentra un buen compañero de vida.",
-            "higlightedText": "Nuestra cordada es una conjunción de amantes de la montaña, el deporte y el outdoor, unidos y unidas por un proyecto común: compartir nuestra pasión, nuestra energía, nuestro valor y nuestro conocimiento con quien se quiera unir a nuestra cordada."
-        }
-    },
-    "servicesPage": {
-        "socialMedia": "social media",
-        "press": "prensa",
-        "events": "eventos",
-        "contentCreation": "creación de contenido",
-        "businessDevelopment": "business development",
-        "seeProjects": "ver proyectos"
-    },
-    "projectsPage": {
-        "filterBy": "filtrar por",
-        "type": "Tipo",
-        "date": "Fecha",
-        "client": "Cliente",
-        "removeFilter": "Quitar filtro"
+  "home": "Inicio",
+  "projects": "Proyectos",
+  "services": "Servicios",
+  "us": "Nosotros",
+  "aboutUs": "Sobre nosotros",
+  "pageDoesNotExist": "Esta página no existe. Disculpen las molestias.",
+  "anyDoubtContact": "Para cualquier duda o cuestión, puede contactar con nosotros.",
+  "legalNotice": "Aviso legal",
+  "privacyPolicy": "Politica de privacidad",
+  "ourServices": "nuestros servicios",
+  "seeMore": "ver más",
+  "loadMore": "cargar más",
+  "homePage": {
+    "ourProjects": "nuestros proyectos",
+    "allProjects": "Todos los proyectos",
+    "ourCordada": "nuestra cordada",
+    "servicesText1": "Cordada es una agencia de marketing y comunicación especializada en el sector del deporte outdoor y el ciclismo. Ofrecemos un servicio integral que va desde la planificación a la ejecución y la distribución, y cubrimos las necesidades de empresas, atletas, instituciones y organizaciones que busquen soluciones de valor y calidad.",
+    "expertsIn": "Expertos en",
+    "expertsDescription": "SPORTS MARKETING, SOCIAL MEDIA, \n CREACIÓN DE CONTENIDO, PRENSA & RRPP Y BUSINESS DEVELOPMENT.",
+    "allServices": "Todos los servicios",
+    "contactUs": "Alguna pregunta? Escríbenos!",
+    "corpCopy": {
+      "title": "En la montaña no te atas a cualquiera",
+      "mainText": "Más allá de la amistad, más allá del afecto, la persona con quien te atas es depositaria de la más absoluta de las confianzas: la vida en manos del otro, y viceversa. En un sentido literal, sin melodramas. Y es en esta relación de confianza simbiótica, basada en la seguridad mutua y la sinergia de fuerzas, donde radica la clave de la progresión y el éxito en la montaña: lo podemos hacer porque vamos juntos, porque vamos encordados. Quién encuentra un buen compañero de cordada encuentra un buen compañero de vida.",
+      "higlightedText": "Nuestra cordada es una conjunción de amantes de la montaña, el deporte y el outdoor, unidos y unidas por un proyecto común: compartir nuestra pasión, nuestra energía, nuestro valor y nuestro conocimiento con quien se quiera unir a nuestra cordada."
     }
+  },
+  "servicesPage": {
+    "socialMedia": "social media",
+    "press": "prensa",
+    "events": "eventos",
+    "contentCreation": "creación de contenido",
+    "businessDevelopment": "business development",
+    "seeProjects": "ver proyectos"
+  },
+  "projectsPage": {
+    "filterBy": "filtrar por",
+    "type": "Tipo",
+    "date": "Fecha",
+    "client": "Cliente",
+    "removeFilter": "Quitar filtro"
+  }
 }

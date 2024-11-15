@@ -1,43 +1,44 @@
 {
-    "home": "Inici",
-    "projects": "Projectes",
-    "services": "Serveis",
-    "us": "Nosaltres",
-    "aboutUs": "Sobre nosaltres",
-    "pageDoesNotExist": "Aquesta pàgina no existeix. Disculpeu les molèsties.",
-    "anyDoubtContact": "Per a qualsevol dubte o qüestió, podeu contactar amb nosaltres.",
-    "legalNotice": "Avís legal",
-    "privacyPolicy": "Política de privacitat",
-    "ourServices": "els nostres serveis",
-    "seeMore": "veure més",
-    "homePage": {
-        "ourProjects": "els nostres projectes",
-        "allProjects": "Tots els projectes",
-        "ourCordada": "la nostra cordada",
-        "servicesText1": "Cordada és una agència de màrqueting i comunicació especialitzada en el sector de l’esport outdoor i el ciclisme. Oferim un servei integral que va des de la planificació a l’execució i la distribució, i cobrim les necessitats d’empreses, atletes, institucions i organitzacions que busquin solucions de valor i de qualitat.",
-        "expertsIn": "Experts en",
-        "expertsDescription": "SPORTS MARKETING, SOCIAL MEDIA \n CREACIÓ DE CONTINGUT I BUSINESS DEVELOPMENT",
-        "allServices": "Tots els serveis",
-        "contactUs": "Alguna pregunta? Escriu-nos!",
-        "corpCopy": {
-            "title": "A la muntanya no t'enrecordes de qualsevol",
-            "mainText": "La persona encordada és dipositària de la més absoluta de les confianças: la vida en mans de l'altre, i viceversa. És en aquesta relació de confiança simbiòtica on radica la clau de la progressió i l'èxit a la muntanya: ho podem fer perquè anem junts, perquè anem encordats.",
-            "higlightedText": "Qui troba un bon company de cordada troba un bon company de vida."
-        }
-    },
-    "servicesPage": {
-        "socialMedia": "social media",
-        "press": "prensa",
-        "events": "esdeveniments",
-        "contentCreation": "creació de contingut",
-        "businessDevelopment": "business development",
-        "seeProjects": "veure projectes"
-    },
-    "projectsPage": {
-        "filterBy": "filtra per",
-        "type": "Tipus",
-        "date": "Data",
-        "client": "Client",
-        "removeFilter": "Treure filtre"
+  "home": "Inici",
+  "projects": "Projectes",
+  "services": "Serveis",
+  "us": "Nosaltres",
+  "aboutUs": "Sobre nosaltres",
+  "pageDoesNotExist": "Aquesta pàgina no existeix. Disculpeu les molèsties.",
+  "anyDoubtContact": "Per a qualsevol dubte o qüestió, podeu contactar amb nosaltres.",
+  "legalNotice": "Avís legal",
+  "privacyPolicy": "Política de privacitat",
+  "ourServices": "els nostres serveis",
+  "seeMore": "veure més",
+  "loadMore": "carregar més",
+  "homePage": {
+    "ourProjects": "els nostres projectes",
+    "allProjects": "Tots els projectes",
+    "ourCordada": "la nostra cordada",
+    "servicesText1": "Cordada és una agència de màrqueting i comunicació especialitzada en el sector de l’esport outdoor i el ciclisme. Oferim un servei integral que va des de la planificació a l’execució i la distribució, i cobrim les necessitats d’empreses, atletes, institucions i organitzacions que busquin solucions de valor i de qualitat.",
+    "expertsIn": "Experts en",
+    "expertsDescription": "SPORTS MARKETING, SOCIAL MEDIA \n CREACIÓ DE CONTINGUT I BUSINESS DEVELOPMENT",
+    "allServices": "Tots els serveis",
+    "contactUs": "Alguna pregunta? Escriu-nos!",
+    "corpCopy": {
+      "title": "A la muntanya no t'enrecordes de qualsevol",
+      "mainText": "La persona encordada és dipositària de la més absoluta de les confianças: la vida en mans de l'altre, i viceversa. És en aquesta relació de confiança simbiòtica on radica la clau de la progressió i l'èxit a la muntanya: ho podem fer perquè anem junts, perquè anem encordats.",
+      "higlightedText": "Qui troba un bon company de cordada troba un bon company de vida."
     }
+  },
+  "servicesPage": {
+    "socialMedia": "social media",
+    "press": "prensa",
+    "events": "esdeveniments",
+    "contentCreation": "creació de contingut",
+    "businessDevelopment": "business development",
+    "seeProjects": "veure projectes"
+  },
+  "projectsPage": {
+    "filterBy": "filtra per",
+    "type": "Tipus",
+    "date": "Data",
+    "client": "Client",
+    "removeFilter": "Treure filtre"
+  }
 }

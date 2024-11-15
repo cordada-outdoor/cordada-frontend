@@ -1,43 +1,44 @@
 {
-    "home": "Home",
-    "projects": "Projects",
-    "services": "Services",
-    "us": "Us",
-    "aboutUs": "About us",
-    "pageDoesNotExist": "This page does not exist. Sorry for the inconvenience.",
-    "anyDoubtContact": "For any question you can contact us.",
-    "legalNotice": "Legal notice",
-    "privacyPolicy": "Privacy policy",
-    "ourServices": "our services",
-    "seeMore": "see more",
-    "homePage": {
-        "ourProjects": "our projects",
-        "allProjects": "All projects",
-        "ourCordada": "our cordada",
-        "servicesText1": "Cordada is a marketing and communication agency specialized in the outdoor sports and cycling sector. We offer an integral service that goes from planning to execution and distribution, and we meet the needs of companies, athletes, institutions and organizations that are looking for value and quality solutions.",
-        "expertsIn": "Experts in",
-        "expertsDescription": "SPORTS MARKETING, SOCIAL MEDIA \n CONTENT CREATION AND BUSINESS DEVELOPMENT",
-        "allServices": "All services",
-        "contactUs": "Got a question? Contact us!",
-        "corpCopy": {
-            "title": "In the mountain you don't get roped to anyone.",
-            "mainText": "Beyond friendship, beyond affection, the person with whom you get roped to is the depositary of the most absolute of trusts: your life in their hands, and vice versa. In a literal sense, without melodramas. And in this symbiotic relationship of trust, based on security and the synergy of forces, lies the key to progression and success on the mountain: we can do it because we go together, because we are roped to one another. Whoever finds a good rope partner finds a good life partner. ",
-            "higlightedText": "Our rope team is composed of a community of mountain, sport and outdoor lovers, united by a common project: sharing our passion, our energy, our values and our experience with whoever wants to join our rope. "
-        }
-    },
-    "servicesPage": {
-        "socialMedia": "social media",
-        "press": "press",
-        "events": "events",
-        "contentCreation": "content creation",
-        "businessDevelopment": "business development",
-        "seeProjects": "see projects"
-    },
-    "projectsPage": {
-        "filterBy": "filter by",
-        "type": "Type",
-        "date": "Date",
-        "client": "Client",
-        "removeFilter": "Remove filter"
+  "home": "Home",
+  "projects": "Projects",
+  "services": "Services",
+  "us": "Us",
+  "aboutUs": "About us",
+  "pageDoesNotExist": "This page does not exist. Sorry for the inconvenience.",
+  "anyDoubtContact": "For any question you can contact us.",
+  "legalNotice": "Legal notice",
+  "privacyPolicy": "Privacy policy",
+  "ourServices": "our services",
+  "seeMore": "see more",
+  "loadMore": "load more",
+  "homePage": {
+    "ourProjects": "our projects",
+    "allProjects": "All projects",
+    "ourCordada": "our cordada",
+    "servicesText1": "Cordada is a marketing and communication agency specialized in the outdoor sports and cycling sector. We offer an integral service that goes from planning to execution and distribution, and we meet the needs of companies, athletes, institutions and organizations that are looking for value and quality solutions.",
+    "expertsIn": "Experts in",
+    "expertsDescription": "SPORTS MARKETING, SOCIAL MEDIA \n CONTENT CREATION AND BUSINESS DEVELOPMENT",
+    "allServices": "All services",
+    "contactUs": "Got a question? Contact us!",
+    "corpCopy": {
+      "title": "In the mountain you don't get roped to anyone.",
+      "mainText": "Beyond friendship, beyond affection, the person with whom you get roped to is the depositary of the most absolute of trusts: your life in their hands, and vice versa. In a literal sense, without melodramas. And in this symbiotic relationship of trust, based on security and the synergy of forces, lies the key to progression and success on the mountain: we can do it because we go together, because we are roped to one another. Whoever finds a good rope partner finds a good life partner. ",
+      "higlightedText": "Our rope team is composed of a community of mountain, sport and outdoor lovers, united by a common project: sharing our passion, our energy, our values and our experience with whoever wants to join our rope. "
     }
+  },
+  "servicesPage": {
+    "socialMedia": "social media",
+    "press": "press",
+    "events": "events",
+    "contentCreation": "content creation",
+    "businessDevelopment": "business development",
+    "seeProjects": "see projects"
+  },
+  "projectsPage": {
+    "filterBy": "filter by",
+    "type": "Type",
+    "date": "Date",
+    "client": "Client",
+    "removeFilter": "Remove filter"
+  }
 }
