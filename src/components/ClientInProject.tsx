@@ -29,8 +29,8 @@ const ClientInProject = ({ id }: ClientInProjectProps) => {
     return <CircularProgress className="loading-indicator" />;
   }
 
-  const client = clientQuery.data.data;
-  const img = client.attributes.icon;
+  const client = clientQuery.data?.data;
+  const img = client?.attributes.icon;
   const imgUrl = getImageUrl(img, "small");
 
   return (

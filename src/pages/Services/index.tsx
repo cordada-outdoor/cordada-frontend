@@ -41,14 +41,14 @@ const Services = () => {
       </Layout>
     );
 
-  const services = servicesQuery.data.data;
+  const services = servicesQuery.data?.data;
 
   return (
     <Layout>
       <Box className="services">
         <Typography variant="h3">{t("ourServices")}</Typography>
         <Grid className="service-menu" container spacing={2}>
-          {services.map((service: any, i: number) => {
+          {services?.map((service: any, i: number) => {
             const { name, banner } = service.attributes;
             const imgUrl = getImageUrl(banner, "medium");
             return (
@@ -88,7 +88,6 @@ const Services = () => {
           {services.map((service: any, i: number) => {
             const { name, body, banner } = service.attributes;
             const imgUrl = getImageUrl(banner, "medium");
-
             return (
               <Box id={name.toLowerCase().split(" ").join("-")}>
                 <ServiceDescription
