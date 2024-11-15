@@ -18,7 +18,12 @@
         "expertsIn": "Expertos en",
         "expertsDescription": "SPORTS MARKETING, SOCIAL MEDIA, \n CREACIÓN DE CONTENIDO, PRENSA & RRPP Y BUSINESS DEVELOPMENT.",
         "allServices": "Todos los servicios",
-        "contactUs": "Alguna pregunta? Escríbenos!"
+        "contactUs": "Alguna pregunta? Escríbenos!",
+        "corpCopy": {
+            "title": "En la montaña no te atas a cualquiera",
+            "mainText": "Más allá de la amistad, más allá del afecto, la persona con quien te atas es depositaria de la más absoluta de las confianzas: la vida en manos del otro, y viceversa. En un sentido literal, sin melodramas. Y es en esta relación de confianza simbiótica, basada en la seguridad mutua y la sinergia de fuerzas, donde radica la clave de la progresión y el éxito en la montaña: lo podemos hacer porque vamos juntos, porque vamos encordados. Quién encuentra un buen compañero de cordada encuentra un buen compañero de vida.",
+            "higlightedText": "Nuestra cordada es una conjunción de amantes de la montaña, el deporte y el outdoor, unidos y unidas por un proyecto común: compartir nuestra pasión, nuestra energía, nuestro valor y nuestro conocimiento con quien se quiera unir a nuestra cordada."
+        }
     },
     "servicesPage": {
         "socialMedia": "social media",

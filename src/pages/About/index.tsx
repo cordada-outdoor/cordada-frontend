@@ -53,7 +53,7 @@ const About = () => {
           margin="auto"
         >
           {content?.sections?.map((sec: any, idx: number) => {
-            const imgUrl = getImageUrl(sec.profilePicture, "thumbnail");
+            const imgUrl = getImageUrl(sec.profilePicture, "small");
             const even = idx % 2 === 0;
             return (
               <AboutUsDescription
