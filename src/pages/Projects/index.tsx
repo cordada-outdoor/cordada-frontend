@@ -12,13 +12,14 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
 import Layout from "components/Layout/Layout";
 import ProjectsFilterDialog from "components/ProjectsFilterDialog";
 import { http } from "http/client";
+import { Project } from "models/project";
 import { getImageUrl } from "utils";
 import useUrlLang from "utils/useUrlLang";
 
@@ -49,38 +50,52 @@ const Projects = () => {
     "service" | "date" | "client" | undefined
   >(undefined);
 
-  const projects = useQuery({
+  const projectsQuery = useInfiniteQuery({
     queryKey: ["projects", filters],
-    queryFn: async () => {
-      const res = await http.get("api/projects", {
-        params: {
-          filters: {
-            services: filters.service
-              ? {
-                  id: {
-                    $eq: filters.service,
-                  },
-                }
-              : undefined,
-            date: filters.date
-              ? {
-                  $gte: filters.date + "-01",
-                  $lt: filters.maxDate,
-                }
-              : undefined,
-            client: filters.client
-              ? {
-                  id: {
-                    $eq: filters.client,
-                  },
-                }
-              : undefined,
+    queryFn: async ({ pageParam }) => {
+      const res = await http.get<{ data: Project[]; meta: any }>(
+        "api/projects",
+        {
+          params: {
+            pagination: {
+              page: pageParam,
+            },
+            filters: {
+              services: filters.service
+                ? {
+                    id: {
+                      $eq: filters.service,
+                    },
+                  }
+                : undefined,
+              date: filters.date
+                ? {
+                    $gte: filters.date + "-01",
+                    $lt: filters.maxDate,
+                  }
+                : undefined,
+              client: filters.client
+                ? {
+                    id: {
+                      $eq: filters.client,
+                    },
+                  }
+                : undefined,
+            },
+            populate: "*",
           },
-          populate: "*",
         },
-      });
+      );
 
       return res.data;
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => {
+      if (lastPage.meta.pagination.page < lastPage.meta.pagination.pageCount) {
+        return lastPage.meta.pagination.page + 1;
+      }
+
+      return null;
     },
   });
 
@@ -132,47 +147,75 @@ const Projects = () => {
         </Box>
         <Box className="projects-section">
           <Grid container spacing={2}>
-            {projects.isFetching ? (
+            {projectsQuery.isLoading ? (
               <CircularProgress className="loading-indicator" />
             ) : (
-              projects.data?.data.map((p: any, i: number) => {
-                const { title, subtitle, client, image } = p.attributes;
-                const imgUrl = getImageUrl(image, "large");
+              projectsQuery.data?.pages.map((page, i: number) => {
+                return page.data.map((p) => {
+                  const { title, subtitle, client, image } = p.attributes;
+                  const imgUrl = getImageUrl(image, "large");
 
-                return (
-                  <Grid item key={i} md={4} xs={12} sm={6}>
-                    <Box className="project-container">
-                      <PreviewImage
-                        src={imgUrl ?? HomeBg}
-                        hoverable={true}
-                        title={title}
-                        description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
-                        hoverContent={
-                          <Box className="project-card">
-                            <Typography variant="h5">{title}</Typography>
-                            <Typography
-                              className="project-description"
-                              fontWeight={300}
-                            >
-                              {subtitle}
-                            </Typography>
-                            <Box className="see-more-button-container">
-                              <Link to={`${langUrlPrefix}/project/${p.id}`}>
-                                <Button className="see-more-button">
-                                  {t("seeMore")}
-                                </Button>
-                              </Link>
+                  return (
+                    <Grid item key={i} md={4} xs={12} sm={6}>
+                      <Box className="project-container">
+                        <PreviewImage
+                          src={imgUrl ?? HomeBg}
+                          hoverable={true}
+                          title={title}
+                          description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
+                          hoverContent={
+                            <Box className="project-card">
+                              <Typography variant="h5">{title}</Typography>
+                              <Typography
+                                className="project-description"
+                                fontWeight={300}
+                              >
+                                {subtitle}
+                              </Typography>
+                              <Box className="see-more-button-container">
+                                <Link to={`${langUrlPrefix}/project/${p.id}`}>
+                                  <Button className="see-more-button">
+                                    {t("seeMore")}
+                                  </Button>
+                                </Link>
+                              </Box>
                             </Box>
-                          </Box>
-                        }
-                      />
-                    </Box>
-                  </Grid>
-                );
+                          }
+                        />
+                      </Box>
+                    </Grid>
+                  );
+                });
               })
             )}
           </Grid>
         </Box>
+        {projectsQuery.hasNextPage && (
+          <Box
+            margin="auto"
+            p={3}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            {projectsQuery.isFetching ? (
+              <CircularProgress />
+            ) : (
+              <Button
+                variant="contained"
+                sx={{
+                  fontWeight: "bold",
+                  borderRadius: "0px",
+                }}
+                onClick={() => {
+                  projectsQuery.fetchNextPage();
+                }}
+              >
+                {t("loadMore")}
+              </Button>
+            )}
+          </Box>
+        )}
       </Box>
       <Dialog
         open={filterDialog ? true : false}
