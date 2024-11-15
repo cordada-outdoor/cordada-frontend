@@ -12,7 +12,6 @@ import {
   Stack,
   Typography,
   useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
@@ -26,12 +25,12 @@ import { Client } from "models/client";
 import { Project } from "models/project";
 import { Service } from "models/service";
 import { getImageUrl } from "utils";
+import { theme } from "utils/theme";
 
 const SingleProject = () => {
   const { t } = useTranslation();
   const [imgModal, setImgModal] = useState<boolean>(false);
 
-  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const { id } = useParams<{

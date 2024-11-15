@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import { Box, CircularProgress, Typography, useTheme } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 
 import HeaderImg from "assets/images/about-us-top-img.png";
@@ -10,10 +10,9 @@ import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
+import { theme } from "utils/theme";
 
 const About = () => {
-  const theme = useTheme();
-
   const { data, isLoading } = useQuery({
     queryKey: ["about-us-page"],
     queryFn: async () => {
