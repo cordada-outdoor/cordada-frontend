@@ -119,7 +119,7 @@ const Home = () => {
               >
                 {projects.map((p: any, i: number) => {
                   const { title, subtitle, client, image } = p.attributes;
-                  const imgUrl = getImageUrl(image, "small");
+                  const imgUrl = getImageUrl(image, "large");
 
                   return (
                     <Box className="project-preview" key={i}>
@@ -158,7 +158,7 @@ const Home = () => {
               ) : (
                 projects.map((p: Project, i: number) => {
                   const { title, subtitle, client, image } = p.attributes;
-                  const imgUrl = getImageUrl(image, "small");
+                  const imgUrl = getImageUrl(image, "large");
                   return (
                     <Box className="project-preview" key={i}>
                       <PreviewImage
@@ -266,7 +266,7 @@ const Home = () => {
                 >
                   {clients.map((client: Client, idx: number) => {
                     const { icon } = client.attributes;
-                    const imgUrl = getImageUrl(icon, "thumbnail");
+                    const imgUrl = getImageUrl(icon, "small");
 
                     return (
                       <Avatar

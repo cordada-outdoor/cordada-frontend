@@ -87,7 +87,9 @@ const Services = () => {
         <Box className="services-content-container">
           {services.map((service: any, i: number) => {
             const { name, body, banner } = service.attributes;
-            const imgUrl = getImageUrl(banner, "medium");
+
+            const imgUrl = getImageUrl(banner, "large");
+
             return (
               <Box id={name.toLowerCase().split(" ").join("-")}>
                 <ServiceDescription

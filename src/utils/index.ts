@@ -27,8 +27,12 @@ export const useQueryParams = () => {
 
 export const getImageUrl = (
   img: any,
-  size: "thumbnail" | "medium" | "large" | "small",
+  size?: "thumbnail" | "medium" | "large" | "small",
 ) => {
+  if (!size) {
+    return `${config.cms.host}${img?.data?.attributes?.url}`;
+  }
+
   const urlForFormat = img?.data?.attributes?.formats[size]?.url;
 
   if (urlForFormat) {

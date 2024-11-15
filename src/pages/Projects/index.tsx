@@ -137,7 +137,7 @@ const Projects = () => {
             ) : (
               projects.data?.data.map((p: any, i: number) => {
                 const { title, subtitle, client, image } = p.attributes;
-                const imgUrl = getImageUrl(image, "small");
+                const imgUrl = getImageUrl(image, "large");
 
                 return (
                   <Grid item key={i} md={4} xs={12} sm={6}>

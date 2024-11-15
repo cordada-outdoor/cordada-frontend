@@ -64,7 +64,7 @@ const SingleProject = () => {
   const services: Service[] = project?.attributes.services.data;
 
   const image = project.attributes.image;
-  const imgUrl = getImageUrl(image, "large");
+  const imgUrl = getImageUrl(image);
 
   const projectDate = dayjs(project.attributes.date).format("MM/YYYY");
 
@@ -169,7 +169,7 @@ const SingleProject = () => {
         </Grid>
       </Box>
       <Dialog
-        maxWidth={false}
+        maxWidth={"lg"}
         open={imgModal}
         onClose={() => setImgModal(!imgModal)}
       >
