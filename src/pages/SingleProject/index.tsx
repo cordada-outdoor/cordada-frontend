@@ -59,9 +59,9 @@ const SingleProject = () => {
     );
   }
 
-  const project: Project = projectQuery.data.data;
-  const client: Client = project.attributes.client.data;
-  const services: Service[] = project.attributes.services.data;
+  const project: Project = projectQuery.data?.data;
+  const client: Client = project?.attributes.client.data;
+  const services: Service[] = project?.attributes.services.data;
 
   const image = project.attributes.image;
   const imgUrl = getImageUrl(image, "large");

@@ -44,7 +44,7 @@
                 .service-image {
                     width: calc(100% - 16px);
                     aspect-ratio: 3 / 2;
-                    height: 0%;
+                    height: auto;
                 }
                 .see-more-button {
                     @include white-on-primary;
