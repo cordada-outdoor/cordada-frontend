@@ -53,8 +53,10 @@ const Home = () => {
     queryFn: async () => {
       const res = await http.get("api/projects", {
         params: {
-          "pagination[start]": 0,
-          "pagination[limit]": 3,
+          pagination: {
+            start: 0,
+            limit: 3,
+          },
           populate: "*",
         },
       });

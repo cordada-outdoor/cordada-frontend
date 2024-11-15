@@ -19,7 +19,11 @@ const About = () => {
     queryFn: async () => {
       const res = await http.get("/api/about-us-page", {
         params: {
-          "populate[sections][populate]": "*",
+          populate: {
+            sections: {
+              populate: "*",
+            },
+          },
         },
       });
 
