@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import { useQueryClient } from "@tanstack/react-query";
-
+import { queryClient } from "http/query-client";
 import About from "pages/About";
 import Home from "pages/Home";
 import LegalNotice from "pages/LegalNotice";
@@ -20,8 +19,6 @@ const Routes = () => {
   const pathPrefix = path.replace(/\/$/, "");
   const { i18n } = useTranslation();
 
-  const queryClient = useQueryClient();
-
   useEffect(() => {
     if (lang !== i18n.language) {
       i18n.changeLanguage(lang);
@@ -30,7 +27,7 @@ const Routes = () => {
     localStorage.setItem("locale", lang);
 
     queryClient.invalidateQueries();
-  }, [i18n, lang, queryClient]);
+  }, [i18n, lang]);
 
   return (
     <Switch>
