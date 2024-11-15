@@ -95,7 +95,23 @@ const Home = () => {
       <Box className="home-page">
         <Box className="home-page-header">
           <img src={HomeBg} alt="home-bg" className="home-background-image" />
-          <img src={LogoWhite} alt="home-logo" className="home-primary-logo" />
+          <Box className="home-primary-logo-container">
+            <img
+              src={LogoWhite}
+              alt="home-logo"
+              className="home-primary-logo"
+            />
+          </Box>
+
+          <Box className="home-corp-copy">
+            <Typography variant="h4">{t("homePage.corpCopy.title")}</Typography>
+            <Typography fontWeight={300} my={2}>
+              {t("homePage.corpCopy.mainText")}
+            </Typography>
+            <Typography>
+              <strong>{t("homePage.corpCopy.higlightedText")}</strong>
+            </Typography>
+          </Box>
         </Box>
         <Box className="home-projects-section" id="home-projects-section">
           <Typography variant="h3" className="section-title">
@@ -134,8 +150,13 @@ const Home = () => {
                               padding: "1rem",
                             }}
                           >
-                            <Typography variant="h4">{title}</Typography>
-                            <Typography>{subtitle}</Typography>
+                            <Typography variant="h5">{title}</Typography>
+                            <Typography
+                              className="project-description"
+                              fontWeight={300}
+                            >
+                              {subtitle}
+                            </Typography>
                             <Box className="see-more-button-container">
                               <Link to={`${langUrlPrefix}/project/${p.id}`}>
                                 <Button className="see-more-button">
@@ -168,7 +189,7 @@ const Home = () => {
                         description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
-                            <Typography variant="h4">{title}</Typography>
+                            <Typography variant="h5">{title}</Typography>
                             <Typography
                               className="project-description"
                               fontWeight={300}

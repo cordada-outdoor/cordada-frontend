@@ -149,7 +149,7 @@ const Projects = () => {
                         description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
-                            <Typography variant="h4">{title}</Typography>
+                            <Typography variant="h5">{title}</Typography>
                             <Typography
                               className="project-description"
                               fontWeight={300}
