@@ -52,7 +52,8 @@ export const getImageUrl = (
 export const getMarkdownWithEmbeds = (markdown: string) => {
   if (!markdown?.length) return [{ type: "markdown", body: "" }];
   else {
-    const regex = /\[([^\]]+)\]\(https:\/\/www\.instagram\.com\/([^\)]+)\)/g;
+    const regex =
+      /\[([^\]]+)\]\(https:\/\/www\.(instagram\.com|youtube\.com)\/([^\)]+)\)/g;
 
     let result = [];
     let lastIndex = 0;
@@ -63,12 +64,17 @@ export const getMarkdownWithEmbeds = (markdown: string) => {
         let markdownText = markdown.slice(lastIndex, match.index);
         result.push({ type: "markdown", body: markdownText });
       }
-
-      result.push({
-        type: "instagram-link",
-        body: `https://www.instagram.com/${match[2]}`,
-      });
-
+      if (match[2] === "instagram.com") {
+        result.push({
+          type: "instagram-link",
+          body: `https://www.instagram.com/${match[3]}`,
+        });
+      } else if (match[2] === "youtube.com") {
+        result.push({
+          type: "youtube-link",
+          body: `https://www.youtube.com/${match[3]}`,
+        });
+      }
       lastIndex = regex.lastIndex;
     }
 
