@@ -34,7 +34,11 @@ const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
                 width={"100%"}
                 sx={{ display: "flex", justifyContent: "center" }}
               >
-                <InstagramEmbed width={328} url={element.body} />
+                <InstagramEmbed
+                  style={{ overflow: "visible" }}
+                  width={328}
+                  url={element.body}
+                />
               </Box>
             );
           } else {
