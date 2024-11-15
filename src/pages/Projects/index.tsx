@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 
@@ -42,12 +42,15 @@ const Projects = () => {
     client: "",
     maxDate: "",
   });
+
   window.history.replaceState({}, "");
+
   const [filterDialog, setFilterDialog] = useState<
     "service" | "date" | "client" | undefined
   >(undefined);
+
   const projects = useQuery({
-    queryKey: ["projects"],
+    queryKey: ["projects", filters],
     queryFn: async () => {
       const res = await http.get("api/projects", {
         params: {
@@ -80,11 +83,6 @@ const Projects = () => {
       return res.data;
     },
   });
-
-  useEffect(() => {
-    projects.refetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters]);
 
   const handleChangeFilters = (value: string) => {
     const filterToChange = filterDialog ?? "date";
