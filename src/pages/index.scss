@@ -133,7 +133,11 @@
       max-height: calc(100% - 10px);
       overflow: hidden;
       width: calc(100% - 10px);
-      background: linear-gradient(180deg, rgba(234, 55, 94, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(234, 55, 94, 0) 0%,
+        rgba(0, 0, 0, 1) 100%
+      );
       bottom: 0;
       padding: 5px;
       .MuiTypography-caption {
@@ -169,6 +173,7 @@
     @include horizontal-list;
   }
   .markdown-container {
+    font-weight: 300;
     .MuiTypography-body1 {
       font-weight: 300;
     }
