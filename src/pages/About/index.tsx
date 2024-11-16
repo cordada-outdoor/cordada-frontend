@@ -46,11 +46,7 @@ const About = () => {
         <Box className="about-top-image-container">
           <img src={HeaderImg} alt="header-img" className="about-top-image" />
         </Box>
-        <Box
-          className="about-us-content"
-          maxWidth={theme.breakpoints.values.xl}
-          margin="auto"
-        >
+        <Box className="about-us-content" maxWidth="xl" margin="auto">
           {content?.sections?.map((sec: any, idx: number) => {
             const imgUrl = getImageUrl(sec.profilePicture, "small");
             const even = idx % 2 === 0;
