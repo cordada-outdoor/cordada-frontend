@@ -89,3 +89,16 @@ export const getUrlWithoutLang = (url: string) => {
   if (!url.length) return "/";
   return url.replace("/ca", "").replace("/en", "").replace("/es", "");
 };
+
+export function joinWithCommasAndAmpersand(strings: string[]) {
+  const length = strings.length;
+
+  if (length === 0) return "";
+  if (length === 1) return strings[0];
+  if (length === 2) return `${strings[0]} & ${strings[1]}`;
+
+  const allButLast = strings.slice(0, -1).join(", ");
+  const last = strings[length - 1];
+
+  return `${allButLast} & ${last}`;
+}

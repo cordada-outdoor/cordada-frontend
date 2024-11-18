@@ -24,7 +24,7 @@ import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
 import { Service } from "models/service";
-import { getImageUrl } from "utils";
+import { getImageUrl, joinWithCommasAndAmpersand } from "utils";
 import { theme } from "utils/theme";
 
 const SingleProject = () => {
@@ -61,6 +61,10 @@ const SingleProject = () => {
   const project: Project = projectQuery.data?.data;
   const client: Client = project?.attributes.client.data;
   const services: Service[] = project?.attributes.services.data;
+
+  const serviceNames = joinWithCommasAndAmpersand(
+    services.map((s) => s.attributes.name),
+  );
 
   const image = project.attributes.image;
   const imgUrl = getImageUrl(image);
@@ -134,11 +138,7 @@ const SingleProject = () => {
                     variant={dataVariant}
                     className="project-data-primary"
                   >
-                    {services
-                      .map((s) => {
-                        return s.attributes.name;
-                      })
-                      .join(" & ")}
+                    {serviceNames}
                   </Typography>
                 </td>
               </tr>
