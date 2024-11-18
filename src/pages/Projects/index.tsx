@@ -82,6 +82,7 @@ const Projects = () => {
                   }
                 : undefined,
             },
+            sort: "createdAt:desc",
             populate: "*",
           },
         },

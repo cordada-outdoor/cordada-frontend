@@ -57,6 +57,7 @@ const Home = () => {
             limit: 3,
           },
           populate: "*",
+          sort: "createdAt:desc",
         },
       });
 
