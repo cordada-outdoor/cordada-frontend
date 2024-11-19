@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Variant } from "@mui/material/styles/createTypography";
 
 interface ContactUsProps {
@@ -11,12 +12,21 @@ const ContactUs = ({ colorScheme, titleVariant = "h3" }: ContactUsProps) => {
   const { t } = useTranslation();
   return (
     <Box className={`contact-us-section ${colorScheme}`}>
-      <Typography variant={titleVariant}>{t("homePage.contactUs")}</Typography>
-      <a
-        title="Email"
-        className="contact-us-button"
-        href="mailto:info@cordadaoutdoor.com"
-      />
+      <Typography variant={titleVariant}>
+        {t("homePage.anyQuestions")}
+      </Typography>
+      <Box m={2}>
+        <a href="mailto:info@cordadaoutdoor.com">
+          <Button
+            variant="contained"
+            sx={{
+              borderRadius: 0,
+            }}
+          >
+            <Typography fontWeight={"bold"}>Escriu-nos!</Typography>
+          </Button>
+        </a>
+      </Box>
     </Box>
   );
 };
