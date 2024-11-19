@@ -16,7 +16,6 @@ import { t } from "i18next";
 
 import AboutImg from "assets/images/about-us.jpg";
 import HomeBg from "assets/images/home_bg.jpg";
-import LogoWhite from "assets/logos/logo-big-white.png";
 import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import Carousel from "components/Carousel/Carousel";
 import ContactUs from "components/Common/ContactUs";
@@ -25,7 +24,7 @@ import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
-import { getImageUrl } from "utils";
+import { getHomeImagesArr, getImageUrl } from "utils";
 import { theme } from "utils/theme";
 import useUrlLang from "utils/useUrlLang";
 
@@ -109,23 +108,49 @@ const Home = () => {
 
   const images = homepageImagesQuery.data?.data?.attributes.images;
 
+  const homeImagesArr = getHomeImagesArr(images);
+
   return (
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
       <Box className="home-page">
         <Box className="home-page-header">
-          <img
-            src={getImageUrl(images?.[0].hero) ?? HomeBg}
-            alt="home-bg"
-            className="home-background-image"
-          />
-          <Box className="home-primary-logo-container">
-            <img
-              src={getImageUrl(images?.[0].logo) as string}
-              alt="home-logo"
-              className="home-primary-logo"
-            />
-          </Box>
-
+          <Carousel
+            settings={{
+              dots: true,
+              arrows: false,
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              autoplay: true,
+              autoplaySpeed: 6000,
+              speed: 1500,
+              swipeToSlide: false,
+              pauseOnDotsHover: false,
+              pauseOnHover: false,
+              pauseOnFocus: false,
+              cssEase: "linear",
+            }}
+          >
+            {homeImagesArr.map((homeImage, idx) => {
+              return (
+                <Box key={idx}>
+                  <img
+                    key={idx}
+                    src={homeImage.hero}
+                    alt="home-bg"
+                    className="home-background-image"
+                  />
+                  <Box className="home-primary-logo-container">
+                    <img
+                      src={homeImage.logo}
+                      alt="home-logo"
+                      className="home-primary-logo"
+                    />
+                  </Box>
+                </Box>
+              );
+            })}
+          </Carousel>
           <Box className="home-corp-copy">
             <Typography variant="h4">{t("homePage.corpCopy.title")}</Typography>
             <Typography fontWeight={300} my={2}>
@@ -136,6 +161,7 @@ const Home = () => {
             </Typography>
           </Box>
         </Box>
+
         <Box className="home-projects-section" id="home-projects-section">
           <Typography variant="h3" className="section-title">
             {t("homePage.ourProjects")}

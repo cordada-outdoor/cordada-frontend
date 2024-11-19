@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
 
+import HomeBg from "assets/images/home_bg.jpg";
+import LogoWhite from "assets/logos/logo-big-white.png";
 import { config } from "config";
 
 export function findLangName(language: string) {
@@ -29,8 +31,6 @@ export const getImageUrl = (
   img: any,
   size?: "thumbnail" | "medium" | "large" | "small",
 ) => {
-  console.log({ img });
-
   if (!size) {
     return `${config.cms.host}${img?.data?.attributes?.url}`;
   }
@@ -104,3 +104,18 @@ export function joinWithCommasAndAmpersand(strings: string[]) {
 
   return `${allButLast} & ${last}`;
 }
+
+export const getHomeImagesArr = (images: any[]) => {
+  const defaultImg = [{ hero: HomeBg, logo: LogoWhite }];
+  if (!images?.length) return defaultImg;
+  else {
+    const imgWithSize = images.map((image) => {
+      return {
+        hero: getImageUrl(image.hero, "large") ?? "",
+        logo: getImageUrl(image.logo, "large") ?? "",
+      };
+    });
+
+    return defaultImg.concat(imgWithSize);
+  }
+};

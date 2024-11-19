@@ -4,8 +4,12 @@
 .home-page {
     .home-page-header {
         position: relative;
+        .carousel {
+            position: relative;
+        }
         .home-background-image {
-            width: 100vw;
+            min-width: 100vw;
+            height: 115vh;
         }
         .home-primary-logo-container {
             position: absolute;
@@ -208,12 +212,7 @@
         .home-page-header {
             position: relative;
             overflow: hidden;
-            .home-background-image {
-                margin-left: 50%;
-                transform: translateX(-50%);
-                width: auto;
-                height: 100vh;
-            }
+
             .home-primary-logo {
                 width: 100%;
             }
