@@ -127,17 +127,17 @@ const Home = () => {
           </Box>
 
           <Box className="home-corp-copy">
-            <Typography variant="h4">{t("homePage.corpCopy.title")}</Typography>
-            <Typography fontWeight={300} my={2}>
-              {t("homePage.corpCopy.mainText")}
+            <Typography variant="h4" fontWeight={600}>
+              {t("homePage.corpCopy.title")}
             </Typography>
+            <Typography my={2}>{t("homePage.corpCopy.mainText")}</Typography>
             <Typography>
               <strong>{t("homePage.corpCopy.higlightedText")}</strong>
             </Typography>
           </Box>
         </Box>
         <Box className="home-projects-section" id="home-projects-section">
-          <Typography variant="h3" className="section-title">
+          <Typography variant="h3" fontWeight={600} className="section-title">
             {t("homePage.ourProjects")}
           </Typography>
           {isMobile ? (
@@ -173,11 +173,10 @@ const Home = () => {
                               padding: "1rem",
                             }}
                           >
-                            <Typography variant="h5">{title}</Typography>
-                            <Typography
-                              className="project-description"
-                              fontWeight={300}
-                            >
+                            <Typography variant="h5" fontWeight={600}>
+                              {title}
+                            </Typography>
+                            <Typography className="project-description">
                               {subtitle}
                             </Typography>
                             <Box className="see-more-button-container">
@@ -212,11 +211,10 @@ const Home = () => {
                         description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
-                            <Typography variant="h5">{title}</Typography>
-                            <Typography
-                              className="project-description"
-                              fontWeight={300}
-                            >
+                            <Typography variant="h5" fontWeight={600}>
+                              {title}
+                            </Typography>
+                            <Typography className="project-description">
                               {subtitle}
                             </Typography>
                             <Box className="see-more-button-container">
@@ -251,7 +249,7 @@ const Home = () => {
           <Box ref={projectsRef} />
 
           <Box className="collaborators-preview-container">
-            <Typography variant="h3" className="section-title">
+            <Typography variant="h3" fontWeight={600} className="section-title">
               {t("homePage.ourCordada")}
             </Typography>
             <Box
@@ -324,13 +322,15 @@ const Home = () => {
         </Box>
 
         <Box ref={servicesRef} className="home-services-section">
-          <Typography variant="h3">{t("ourServices")}</Typography>
+          <Typography variant="h3" fontWeight={600}>
+            {t("ourServices")}
+          </Typography>
           <Box py={2} />
           <Typography>{t("homePage.servicesText1")}</Typography>
           <Box py={2} />
           <Typography variant="h5">{t("homePage.expertsIn")}</Typography>
           <Box mt={1} />
-          <Typography variant="h4">
+          <Typography variant="h4" fontWeight={600}>
             {t("homePage.expertsDescription")}
           </Typography>
           <Link

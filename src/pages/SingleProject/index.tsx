@@ -96,7 +96,7 @@ const SingleProject = () => {
             <table>
               <tr className="project-data-element">
                 <td>
-                  <Typography fontWeight={300} variant={dataVariant}>
+                  <Typography variant={dataVariant}>
                     {t("projectsPage.client")}
                   </Typography>
                 </td>
@@ -112,7 +112,7 @@ const SingleProject = () => {
               </tr>
               <tr className="project-data-element">
                 <td>
-                  <Typography fontWeight={300} variant={dataVariant}>
+                  <Typography variant={dataVariant}>
                     {t("projectsPage.date")}
                   </Typography>
                 </td>
@@ -128,7 +128,7 @@ const SingleProject = () => {
               </tr>
               <tr className="project-data-element">
                 <td>
-                  <Typography fontWeight={300} variant={dataVariant}>
+                  <Typography variant={dataVariant}>
                     {t("projectsPage.type")}
                   </Typography>
                 </td>
@@ -144,13 +144,7 @@ const SingleProject = () => {
               </tr>
             </table>
           </Grid>
-          <Grid
-            item
-            md={12}
-            lg={6}
-            sx={{ fontWeight: 300 }}
-            className="project-body"
-          >
+          <Grid item md={12} lg={6} className="project-body">
             <Stack gap={2}>
               <Typography
                 variant={dataVariant}

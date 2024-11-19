@@ -18,7 +18,11 @@ interface PreviewContentProps {
 const PreviewContent = ({ title, description }: PreviewContentProps) => {
   return (
     <Box className="preview-content">
-      {title && <Typography variant="h4">{title}</Typography>}
+      {title && (
+        <Typography variant="h4" fontWeight={600}>
+          {title}
+        </Typography>
+      )}
       {description && (
         <Typography fontWeight="bold" variant="caption">
           {description}

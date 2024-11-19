@@ -7,24 +7,22 @@ const LegalNotice = () => {
     <Layout>
       <Box p={5}>
         <Typography variant="h3">Aviso legal</Typography>
-        <Typography mt={3} variant="body1" fontWeight={300}>
+        <Typography mt={3} variant="body1">
           De conformidad con la Ley 34/2002, de Servicios de la Sociedad de la
           Información y de Comercio Electrónico, le informamos que esta web es
           titularidad de:
         </Typography>
-        <Typography variant="body1" fontWeight={300}>
+        <Typography variant="body1">
           Identidad: Cordada Outdoor, SL (en adelante “EL TITULAR”)
         </Typography>
-        <Typography variant="body1" fontWeight={300}>
-          CIF: B44829927
-        </Typography>
-        <Typography variant="body1" fontWeight={300}>
+        <Typography variant="body1">CIF: B44829927</Typography>
+        <Typography variant="body1">
           Domicilio: c. Miguel de Cervantes 35, 3-1
         </Typography>
-        <Typography mt={5} variant="h5" fontWeight={300}>
+        <Typography mt={5} variant="h5">
           PROPIEDAD INTELECTUAL E INDUSTRIAL
         </Typography>
-        <Typography mt={3} variant="body1" fontWeight={300}>
+        <Typography mt={3} variant="body1">
           Los contenidos de este sitio, incluyendo los textos, imágenes y
           diseños gráficos, pertenecen a EL TITULAR, o a terceros que han
           autorizado su uso. EL TITULAR presenta estos contenidos con fines de
@@ -34,10 +32,10 @@ const LegalNotice = () => {
           EL TITULAR, quien se reserva el derecho a iniciar las acciones legales
           oportunas para reparar los daños
         </Typography>
-        <Typography mt={5} variant="h5" fontWeight={300}>
+        <Typography mt={5} variant="h5">
           EXCLUSIÓN DE RESPONSABILIDAD
         </Typography>
-        <Typography mt={3} variant="body1" fontWeight={300}>
+        <Typography mt={3} variant="body1">
           EL TITULAR actúa con la máxima diligencia posible para que los datos y
           la información que ofrece en su sitio web esté actualizada en tomo
           momento, si bien no garantiza ni se hace responsable de la exactitud y
@@ -49,10 +47,10 @@ const LegalNotice = () => {
           establezcan por EL TITULAR en un documento específico a tal efecto, o
           por los pactos concretos que pudieran acordarse con los clientes.
         </Typography>
-        <Typography mt={5} variant="h5" fontWeight={300}>
+        <Typography mt={5} variant="h5">
           CONDICIONES DE USO
         </Typography>
-        <Typography mt={3} variant="body1" fontWeight={300}>
+        <Typography mt={3} variant="body1">
           El uso de este sitio web implica la aceptación plena de los términos
           del presente aviso legal. Los posibles conflictos relativos a esta web
           se regirán exclusivamente por el derecho del Estado Español. Toda

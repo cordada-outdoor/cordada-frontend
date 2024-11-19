@@ -46,7 +46,9 @@ const Services = () => {
   return (
     <Layout>
       <Box className="services">
-        <Typography variant="h3">{t("ourServices")}</Typography>
+        <Typography variant="h3" fontWeight={600}>
+          {t("ourServices")}
+        </Typography>
         <Grid className="service-menu" container spacing={2}>
           {services?.map((service: any, i: number) => {
             const { name, banner } = service.attributes;
