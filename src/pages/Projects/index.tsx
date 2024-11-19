@@ -59,6 +59,7 @@ const Projects = () => {
           params: {
             pagination: {
               page: pageParam,
+              pageSize: 9,
             },
             filters: {
               services: filters.service
