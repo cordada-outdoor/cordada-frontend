@@ -63,13 +63,13 @@ const SingleProject = () => {
   const services: Service[] = project?.attributes.services.data;
 
   const serviceNames = joinWithCommasAndAmpersand(
-    services.map((s) => s.attributes.name),
+    services?.map((s) => s?.attributes.name),
   );
 
-  const image = project.attributes.image;
+  const image = project?.attributes.image;
   const imgUrl = getImageUrl(image);
 
-  const projectDate = dayjs(project.attributes.date).format("MM/YYYY");
+  const projectDate = dayjs(project?.attributes.date).format("MM/YYYY");
 
   const dataVariant = isMobile ? "h6" : "h5";
 
@@ -82,7 +82,7 @@ const SingleProject = () => {
           color="primary"
           p={2}
         >
-          {project.attributes.title}
+          {project?.attributes.title}
         </Typography>
         <Box
           className="project-img-container"
@@ -106,7 +106,7 @@ const SingleProject = () => {
                     variant={dataVariant}
                     className="project-data-primary"
                   >
-                    {client.attributes.name}
+                    {client?.attributes.name}
                   </Typography>
                 </td>
               </tr>
@@ -157,13 +157,13 @@ const SingleProject = () => {
                 color="primary"
                 fontWeight="bold"
               >
-                {project.attributes.subtitle}
+                {project?.attributes?.subtitle}
               </Typography>
-              <RenderMarkdown markdown={project.attributes.body} />
+              <RenderMarkdown markdown={project?.attributes?.body} />
             </Stack>
           </Grid>
           <Grid item xs={12}>
-            <ClientInProject id={Number(client.id)} />
+            <ClientInProject id={Number(client?.id)} />
           </Grid>
         </Grid>
       </Box>

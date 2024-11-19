@@ -248,21 +248,19 @@ const Home = () => {
                     initialSlide: 1,
                     autoplay: true,
                     pauseOnDotsHover: false,
-                    pauseOnHover: true,
+                    pauseOnHover: false,
                     pauseOnFocus: false,
-                    autoplaySpeed: 6000,
-                    speed: 1000,
+                    autoplaySpeed: 0,
+                    speed: 5000,
                     accessibility: false,
                     cssEase: "linear",
-                    swipeToSlide: true,
+                    swipeToSlide: false,
                     responsive: [
                       {
                         breakpoint: 1024,
                         settings: {
                           slidesToShow:
                             clients?.length > 5 ? 6 : clients.length,
-                          slidesToScroll: 5,
-                          infinite: true,
                         },
                       },
                       {
@@ -270,8 +268,6 @@ const Home = () => {
                         settings: {
                           slidesToShow:
                             clients?.length > 3 ? 4 : clients.length,
-                          slidesToScroll: 3,
-                          initialSlide: 2,
                         },
                       },
                       {
@@ -279,7 +275,6 @@ const Home = () => {
                         settings: {
                           slidesToShow:
                             clients?.length > 2 ? 3 : clients.length,
-                          slidesToScroll: 2,
                         },
                       },
                     ],

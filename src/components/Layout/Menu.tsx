@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -71,25 +71,27 @@ const Menu = ({
     const languageName = findLangName(i18n.language);
     return (
       <>
-        <AppBar
-          className={`mobile-appbar appbar ${primaryAppbar ? "primary-appbar" : ""}`}
-          color="transparent"
-          elevation={0}
-        >
-          <Toolbar className="toolbar">
-            <LogoSmall
-              onClick={() => history.push(`${langUrlPrefix + "/"}`)}
-              className="main-menu-logo"
-            />
-            <Button
-              className="right-mobile-menu"
-              onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-            >
-              <Typography>{languageName + " >"}</Typography>
-              <MenuIcon className="menu-icon" />
-            </Button>
-          </Toolbar>
-        </AppBar>
+        <MenuScroll position="fixed">
+          <AppBar
+            className={`mobile-appbar appbar`}
+            color="transparent"
+            elevation={0}
+          >
+            <Toolbar className="toolbar">
+              <LogoSmall
+                onClick={() => history.push(`${langUrlPrefix + "/"}`)}
+                className="main-menu-logo"
+              />
+              <Button
+                className="right-mobile-menu"
+                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+              >
+                <Typography>{languageName + " >"}</Typography>
+                <MenuIcon className="menu-icon" />
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </MenuScroll>
         <Drawer
           className="menu-drawer"
           anchor="right"
