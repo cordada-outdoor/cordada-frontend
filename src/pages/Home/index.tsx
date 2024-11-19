@@ -164,7 +164,13 @@ const Home = () => {
         </Box>
 
         <Box className="home-projects-section" id="home-projects-section">
-          <Typography variant="h3" fontWeight={600} className="section-title">
+          <Typography
+            variant="h3"
+            fontWeight={600}
+            className="section-title"
+            maxWidth="lg"
+            margin="auto"
+          >
             {t("homePage.ourProjects")}
           </Typography>
           {isMobile ? (
@@ -280,7 +286,13 @@ const Home = () => {
           <Box ref={projectsRef} />
 
           <Box className="collaborators-preview-container">
-            <Typography variant="h3" fontWeight={600} className="section-title">
+            <Typography
+              variant="h3"
+              fontWeight={600}
+              className="section-title"
+              maxWidth="lg"
+              margin="auto"
+            >
               {t("homePage.ourCordada")}
             </Typography>
             <Box
@@ -349,24 +361,30 @@ const Home = () => {
           </Box>
         </Box>
 
-        <Box ref={servicesRef} className="home-services-section">
-          <Typography variant="h3" fontWeight={600}>
-            {t("ourServices")}
-          </Typography>
-          <RenderMarkdown markdown={homepageQuery.data?.data.servicesCopy} />
-
-          <Link
-            className="see-services-button-container"
-            to={`${langUrlPrefix + "/services"}`}
-          >
-            <Button
-              className="see-services-button"
-              color="primary"
-              variant="contained"
+        <Box
+          ref={servicesRef}
+          className="home-services-section"
+          display="flex"
+          justifyContent="center"
+        >
+          <Box maxWidth="lg">
+            <Typography variant="h3" fontWeight={600}>
+              {t("ourServices")}
+            </Typography>
+            <RenderMarkdown markdown={homepageQuery.data?.data.servicesCopy} />
+            <Link
+              className="see-services-button-container"
+              to={`${langUrlPrefix + "/services"}`}
             >
-              {t("homePage.allServices")}
-            </Button>
-          </Link>
+              <Button
+                className="see-services-button"
+                color="primary"
+                variant="contained"
+              >
+                {t("homePage.allServices")}
+              </Button>
+            </Link>
+          </Box>
         </Box>
         <Box className="home-about-section">
           <Box className="about-us-img-container">
