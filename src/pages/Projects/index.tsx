@@ -123,7 +123,9 @@ const Projects = () => {
   return (
     <Layout>
       <Box className="projects">
-        <Typography variant="h3">{t("homePage.ourProjects")}</Typography>
+        <Typography variant="h3" fontWeight={600}>
+          {t("homePage.ourProjects")}
+        </Typography>
         <Box className="filter-section">
           <Typography className="filter-title">
             {t("projectsPage.filterBy")}
@@ -167,7 +169,9 @@ const Projects = () => {
                           description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
                           hoverContent={
                             <Box className="project-card">
-                              <Typography variant="h5">{title}</Typography>
+                              <Typography variant="h5" fontWeight={600}>
+                                {title}
+                              </Typography>
                               <Typography className="project-description">
                                 {subtitle}
                               </Typography>

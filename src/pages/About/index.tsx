@@ -10,7 +10,6 @@ import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
-import { theme } from "utils/theme";
 
 const About = () => {
   const { data, isLoading } = useQuery({
@@ -42,7 +41,9 @@ const About = () => {
   return (
     <Layout>
       <Box className="about">
-        <Typography variant="h3">{content?.header ?? "About us"}</Typography>
+        <Typography variant="h3" fontWeight={600}>
+          {content?.header ?? "about us"}
+        </Typography>
         <Box className="about-top-image-container">
           <img src={HeaderImg} alt="header-img" className="about-top-image" />
         </Box>
