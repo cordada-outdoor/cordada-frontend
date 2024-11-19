@@ -152,8 +152,14 @@ const Home = () => {
               );
             })}
           </Carousel>
-          <Box className="home-corp-copy">
-            <RenderMarkdown markdown={homepageQuery.data?.data.heroCopy} />
+          <Box
+            className="home-corp-copy"
+            display="flex"
+            justifyContent="center"
+          >
+            <Box maxWidth="lg">
+              <RenderMarkdown markdown={homepageQuery.data?.data.heroCopy} />
+            </Box>
           </Box>
         </Box>
 
@@ -378,7 +384,6 @@ const Home = () => {
               </Button>
             </Link>
           </Box>
-
           <ContactUs titleVariant="h3" colorScheme="white-on-black" />
         </Box>
       </Box>
