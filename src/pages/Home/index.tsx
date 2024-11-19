@@ -125,6 +125,7 @@ const Home = () => {
               autoplaySpeed: 6000,
               speed: 1500,
               swipeToSlide: false,
+              swipe: false,
               pauseOnDotsHover: false,
               pauseOnHover: false,
               pauseOnFocus: false,
