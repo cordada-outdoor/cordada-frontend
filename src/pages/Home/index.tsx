@@ -128,9 +128,7 @@ const Home = () => {
 
           <Box className="home-corp-copy">
             <Typography variant="h4">{t("homePage.corpCopy.title")}</Typography>
-            <Typography fontWeight={300} my={2}>
-              {t("homePage.corpCopy.mainText")}
-            </Typography>
+            <Typography my={2}>{t("homePage.corpCopy.mainText")}</Typography>
             <Typography>
               <strong>{t("homePage.corpCopy.higlightedText")}</strong>
             </Typography>
@@ -174,10 +172,7 @@ const Home = () => {
                             }}
                           >
                             <Typography variant="h5">{title}</Typography>
-                            <Typography
-                              className="project-description"
-                              fontWeight={300}
-                            >
+                            <Typography className="project-description">
                               {subtitle}
                             </Typography>
                             <Box className="see-more-button-container">
@@ -213,10 +208,7 @@ const Home = () => {
                         hoverContent={
                           <Box className="project-card">
                             <Typography variant="h5">{title}</Typography>
-                            <Typography
-                              className="project-description"
-                              fontWeight={300}
-                            >
+                            <Typography className="project-description">
                               {subtitle}
                             </Typography>
                             <Box className="see-more-button-container">

@@ -2,104 +2,103 @@
 @import "/src/utils/mixins.scss";
 
 .projects {
-    @include page-padding;
-    .filter-section {
-        @include horizontal-list;
-        margin-top: 12px;
-        align-items: center;
-        .filter-title {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-right: 12px;
-        }
-        .filter-button {
-            color: $black;
-            font-weight: 600;
-            font-size: 1.35rem;
-        }
-        .filter-button:hover {
-            color: $primary-color;
-        }
-        .selected-filter-button {
-            color: $primary-color;
-        }
+  @include page-padding;
+  .filter-section {
+    @include horizontal-list;
+    margin-top: 12px;
+    align-items: center;
+    .filter-title {
+      font-size: 1.2rem;
+      margin-right: 12px;
     }
-    .projects-section {
-        padding-top: 12px;
-        .project-container {
-            border: 5px solid $primary-color;
-            .project-card {
-                padding: 5px 10px;
-                height: calc(100% - 10px);
-                .project-description {
-                    margin-top: 5px;
-                    line-height: 1.1rem;
-                    max-height: calc(100% - 80px);
-                    overflow: hidden;
-                }
-                .see-more-button-container {
-                    position: absolute;
-                    bottom: 10px;
-                    left: -5px;
-                    display: flex;
-                    flex-direction: row;
-                    width: 100%;
-                    align-items: center;
-                    justify-content: center;
-                    .see-more-button {
-                        @include white-on-primary;
-                        border-radius: 0;
-                    }
-                    .see-more-button:hover {
-                        @include primary-on-white;
-                    }
-                }
-            }
-        }
+    .filter-button {
+      color: $black;
+      font-weight: 600;
+      font-size: 1.35rem;
     }
+    .filter-button:hover {
+      color: $primary-color;
+    }
+    .selected-filter-button {
+      color: $primary-color;
+    }
+  }
+  .projects-section {
+    padding-top: 12px;
+    .project-container {
+      border: 5px solid $primary-color;
+      .project-card {
+        padding: 5px 10px;
+        height: calc(100% - 10px);
+        .project-description {
+          margin-top: 5px;
+          line-height: 1.1rem;
+          max-height: calc(100% - 80px);
+          overflow: hidden;
+        }
+        .see-more-button-container {
+          position: absolute;
+          bottom: 10px;
+          left: -5px;
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          .see-more-button {
+            @include white-on-primary;
+            border-radius: 0;
+          }
+          .see-more-button:hover {
+            @include primary-on-white;
+          }
+        }
+      }
+    }
+  }
 }
 @media (max-width: 900px) {
-    .projects {
-        padding: 50px 20px 10px;
-        .projects-section {
-            .project-card {
-                .see-more-button-container {
-                    bottom: 5px !important;
-                }
-            }
+  .projects {
+    padding: 50px 20px 10px;
+    .projects-section {
+      .project-card {
+        .see-more-button-container {
+          bottom: 5px !important;
         }
+      }
     }
+  }
 }
 .filter-modal {
-    padding: 1em;
-    width: calc(350px - 2em);
-    max-width: calc(100% - 2em);
-    .close-button-icon {
-        width: 30px;
-        float: right;
-        height: 30px;
-        .close-button-text {
-            margin-top: -2.5px;
-            font-size: 20px;
-        }
+  padding: 1em;
+  width: calc(350px - 2em);
+  max-width: calc(100% - 2em);
+  .close-button-icon {
+    width: 30px;
+    float: right;
+    height: 30px;
+    .close-button-text {
+      margin-top: -2.5px;
+      font-size: 20px;
     }
-    .remove-filter-button {
-        float: right;
-        border-radius: 0;
-        background-color: $primary-color !important;
-        color: white !important;
-        border-color: $primary-color !important;
-        border: 1px solid;
-        box-sizing: border-box;
-        margin-top: 3rem;
-    }
-    .remove-filter-button:hover {
-        background-color: white !important;
-        color: $primary-color !important;
-        border-color: $primary-color !important;
-        border: 1px solid;
-    }
-    .select-container {
-        margin-top: 2rem;
-    }
+  }
+  .remove-filter-button {
+    float: right;
+    border-radius: 0;
+    background-color: $primary-color !important;
+    color: white !important;
+    border-color: $primary-color !important;
+    border: 1px solid;
+    box-sizing: border-box;
+    margin-top: 3rem;
+  }
+  .remove-filter-button:hover {
+    background-color: white !important;
+    color: $primary-color !important;
+    border-color: $primary-color !important;
+    border: 1px solid;
+  }
+  .select-container {
+    margin-top: 2rem;
+  }
 }

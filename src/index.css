@@ -1,60 +1,77 @@
 /* AeonikPro Bold */
 @font-face {
-  font-family: 'AeonikPro';
-  src: url('/public/fonts/AeonikPro-Bold.otf') format('opentype');
+  font-family: "AeonikPro";
+  src: url("/public/fonts/AeonikPro-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
-/* AeonikPro Bold Italic*/
+
+/* AeonikPro Bold Italic */
 @font-face {
-  font-family: 'AeonikPro';
-  src: url('/public/fonts/AeonikPro-BoldItalic.otf') format('opentype');
+  font-family: "AeonikPro";
+  src: url("/public/fonts/AeonikPro-BoldItalic.otf") format("opentype");
   font-weight: 700;
   font-style: italic;
 }
 
-/* AeonikPro Medium*/
+/* AeonikPro Medium */
 @font-face {
-  font-family: 'AeonikPro';
-  src: url('/public/fonts/AeonikPro-Medium.otf') format('opentype');
+  font-family: "AeonikPro";
+  src: url("/public/fonts/AeonikPro-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* AeonikPro Medium Italic */
+@font-face {
+  font-family: "AeonikPro";
+  src: url("/public/fonts/AeonikPro-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* AeonikPro Regular Light */
+@font-face {
+  font-family: "AeonikPro";
+  src: url("/public/fonts/AeonikPro-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
-/* AeonikPro Medium Italic*/
+/* AeonikPro Regular Italic */
 @font-face {
-  font-family: 'AeonikPro';
-  src: url('/public/fonts/AeonikPro-MediumItalic.otf') format('opentype');
+  font-family: "AeonikPro";
+  src: url("/public/fonts/AeonikPro-RegularItalic.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 
-/* AeonikPro Light*/
+/* AeonikPro Light */
 @font-face {
-  font-family: 'AeonikPro';
-  src: url('/public/fonts/AeonikPro-Light.otf') format('opentype');
-  font-weight: 200;
+  font-family: "AeonikPro";
+  src: url("/public/fonts/AeonikPro-Light.otf") format("opentype");
+  font-weight: 300;
   font-style: normal;
 }
 
-/* AeonikPro Light*/
+/* AeonikPro Light Italic */
 @font-face {
-  font-family: 'AeonikPro';
-  src: url('/public/fonts/AeonikPro-LightItalic.otf') format('opentype');
-  font-weight: 200;
+  font-family: "AeonikPro";
+  src: url("/public/fonts/AeonikPro-LightItalic.otf") format("opentype");
+  font-weight: 300;
   font-style: italic;
 }
 
 body {
   margin: 0;
-  font-family: 'AeonikPro';
-  font-weight: 400;
+  font-family: "AeonikPro";
+  font-weight: 600;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: overlay;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

@@ -168,10 +168,7 @@ const Projects = () => {
                           hoverContent={
                             <Box className="project-card">
                               <Typography variant="h5">{title}</Typography>
-                              <Typography
-                                className="project-description"
-                                fontWeight={300}
-                              >
+                              <Typography className="project-description">
                                 {subtitle}
                               </Typography>
                               <Box className="see-more-button-container">
