@@ -10,6 +10,7 @@ interface ContactUsProps {
 }
 const ContactUs = ({ colorScheme, titleVariant = "h3" }: ContactUsProps) => {
   const { t } = useTranslation();
+
   return (
     <Box className={`contact-us-section ${colorScheme}`}>
       <Typography variant={titleVariant}>
@@ -23,7 +24,7 @@ const ContactUs = ({ colorScheme, titleVariant = "h3" }: ContactUsProps) => {
               borderRadius: 0,
             }}
           >
-            <Typography fontWeight={"bold"}>Escriu-nos!</Typography>
+            <Typography fontWeight={"bold"}>{t("homePage.writeUs")}</Typography>
           </Button>
         </a>
       </Box>
