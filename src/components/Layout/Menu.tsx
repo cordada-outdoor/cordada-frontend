@@ -104,7 +104,13 @@ const Menu = ({
                 <ListItemButton
                   onClick={() => history.push(`${langUrlPrefix + aN.value}`)}
                 >
-                  <ListItemText primary={t(aN.label).toUpperCase()} />
+                  <ListItemText
+                    primary={
+                      <Typography fontWeight={700}>
+                        {t(aN.label).toUpperCase()}
+                      </Typography>
+                    }
+                  />
                 </ListItemButton>
               </ListItem>
             ))}
@@ -115,7 +121,13 @@ const Menu = ({
                 <ListItemButton
                   onClick={() => history.push(`${langUrlPrefix}/legal-notice`)}
                 >
-                  <ListItemText primary={t("legalNotice")} />
+                  <ListItemText
+                    primary={
+                      <Typography fontWeight={700}>
+                        {t("legalNotice")}
+                      </Typography>
+                    }
+                  />
                 </ListItemButton>
               </ListItem>
               <ListItem className="navigation-item">
@@ -124,7 +136,13 @@ const Menu = ({
                     history.push(`${langUrlPrefix}/privacy-policy`)
                   }
                 >
-                  <ListItemText primary={t("privacyPolicy")} />
+                  <ListItemText
+                    primary={
+                      <Typography fontWeight={700}>
+                        {t("privacyPolicy")}
+                      </Typography>
+                    }
+                  />
                 </ListItemButton>
               </ListItem>
             </List>
@@ -140,7 +158,11 @@ const Menu = ({
                     key={aL}
                   >
                     <ListItemButton>
-                      <ListItemText primary={langName} />
+                      <ListItemText
+                        primary={
+                          <Typography fontWeight={700}>{langName}</Typography>
+                        }
+                      />
                     </ListItemButton>
                   </ListItem>
                 );
@@ -172,7 +194,13 @@ const Menu = ({
                         history.push(`${langUrlPrefix + aN.value}`)
                       }
                     >
-                      <ListItemText primary={t(aN.label).toUpperCase()} />
+                      <ListItemText
+                        primary={
+                          <Typography fontWeight={700}>
+                            {t(aN.label).toUpperCase()}
+                          </Typography>
+                        }
+                      />
                     </ListItemButton>
                   </ListItem>
                 );
@@ -185,6 +213,7 @@ const Menu = ({
 
                   const isSelected =
                     i18n.language.toUpperCase() === aL.toUpperCase();
+
                   return (
                     <ListItem key={aL}>
                       <ListItemButton
@@ -195,7 +224,11 @@ const Menu = ({
                         }
                         onClick={() => history.push(`/${aL + urlWithoutLang}`)}
                       >
-                        <ListItemText primary={langName} />
+                        <ListItemText
+                          primary={
+                            <Typography fontWeight={700}>{langName}</Typography>
+                          }
+                        />
                       </ListItemButton>
                     </ListItem>
                   );

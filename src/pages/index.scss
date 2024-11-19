@@ -140,9 +140,6 @@
       );
       bottom: 0;
       padding: 5px;
-      .MuiTypography-caption {
-        font-weight: 300;
-      }
     }
     .hover-container {
       height: 0;
@@ -173,10 +170,6 @@
     @include horizontal-list;
   }
   .markdown-container {
-    font-weight: 300;
-    .MuiTypography-body1 {
-      font-weight: 300;
-    }
     a {
       color: $primary-color;
       text-decoration-color: $primary-color;
