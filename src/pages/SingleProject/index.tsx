@@ -80,6 +80,7 @@ const SingleProject = () => {
           className="project-title"
           variant="h3"
           color="primary"
+          fontWeight={600}
           p={2}
         >
           {project?.attributes.title}
