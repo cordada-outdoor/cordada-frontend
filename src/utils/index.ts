@@ -29,6 +29,8 @@ export const getImageUrl = (
   img: any,
   size?: "thumbnail" | "medium" | "large" | "small",
 ) => {
+  console.log({ img });
+
   if (!size) {
     return `${config.cms.host}${img?.data?.attributes?.url}`;
   }

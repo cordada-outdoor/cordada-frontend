@@ -90,14 +90,37 @@ const Home = () => {
     return clientsQuery?.data?.data ?? [];
   }, [clientsQuery]);
 
+  const homepageImagesQuery = useQuery({
+    queryKey: ["homepageImages"],
+    queryFn: async () => {
+      const res = await http.get("api/homepage-image", {
+        params: {
+          populate: {
+            images: {
+              populate: "*",
+            },
+          },
+        },
+      });
+
+      return res.data;
+    },
+  });
+
+  const images = homepageImagesQuery.data?.data?.attributes.images;
+
   return (
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
       <Box className="home-page">
         <Box className="home-page-header">
-          <img src={HomeBg} alt="home-bg" className="home-background-image" />
+          <img
+            src={getImageUrl(images?.[0].hero) ?? HomeBg}
+            alt="home-bg"
+            className="home-background-image"
+          />
           <Box className="home-primary-logo-container">
             <img
-              src={LogoWhite}
+              src={getImageUrl(images?.[0].logo) as string}
               alt="home-logo"
               className="home-primary-logo"
             />
