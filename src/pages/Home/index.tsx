@@ -137,12 +137,14 @@ const Home = () => {
             {homeImagesArr.map((homeImage, idx) => {
               return (
                 <Box key={idx}>
-                  <img
-                    key={idx}
-                    src={homeImage.hero}
-                    alt="home-bg"
-                    className="home-background-image"
-                  />
+                  <Box className="home-background-image-container">
+                    <img
+                      key={idx}
+                      src={homeImage.hero}
+                      alt="home-bg"
+                      className="home-background-image"
+                    />
+                  </Box>
                   <Box className="home-primary-logo-container">
                     <img
                       src={homeImage.logo}

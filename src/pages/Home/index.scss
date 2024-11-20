@@ -7,9 +7,16 @@
         .carousel {
             position: relative;
         }
-        .home-background-image {
+        .home-background-image-container {
             min-width: 100vw;
             height: 115vh;
+        }
+        .home-background-image {
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 100%;
         }
         .home-primary-logo-container {
             position: absolute;
@@ -18,7 +25,7 @@
             width: 100vw;
             .home-primary-logo {
                 position: absolute;
-                width: 70%;
+                width: 60%;
                 left: 0;
                 right: 0;
                 margin: auto;
@@ -209,13 +216,13 @@
 }
 @media (max-width: 1000px) {
     .home-page {
+        .home-primary-logo {
+            width: 80% !important;
+        }
         .home-page-header {
             position: relative;
             overflow: hidden;
 
-            .home-primary-logo {
-                width: 100%;
-            }
             .home-corp-copy {
                 position: relative;
                 margin-top: -5px;
