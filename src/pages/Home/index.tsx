@@ -70,6 +70,7 @@ const Home = () => {
       const res = await http.get("api/clients", {
         params: {
           populate: "*",
+          sort: "homepageOrder:asc",
         },
       });
 
