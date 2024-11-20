@@ -8,14 +8,14 @@ import { http } from "http/client";
 import { getImageUrl } from "utils";
 
 interface ClientInProjectProps {
-  id: number;
+  documentId: string;
 }
 
-const ClientInProject = ({ id }: ClientInProjectProps) => {
+const ClientInProject = ({ documentId }: ClientInProjectProps) => {
   const clientQuery = useQuery({
-    queryKey: ["client", Number(id)],
+    queryKey: ["client", documentId],
     queryFn: async () => {
-      const res = await http.get(`api/clients/${Number(id)}`, {
+      const res = await http.get(`api/clients/${documentId}`, {
         params: {
           populate: "*",
         },

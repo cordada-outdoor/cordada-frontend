@@ -166,7 +166,7 @@ const Projects = () => {
                           src={imgUrl ?? HomeBg}
                           hoverable={true}
                           title={title}
-                          description={`${client.data?.name?.toUpperCase() ?? ""} X CORDADA`}
+                          description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
                           hoverContent={
                             <Box className="project-card">
                               <Typography variant="h5" fontWeight={600}>
@@ -176,7 +176,9 @@ const Projects = () => {
                                 {subtitle}
                               </Typography>
                               <Box className="see-more-button-container">
-                                <Link to={`${langUrlPrefix}/project/${p.id}`}>
+                                <Link
+                                  to={`${langUrlPrefix}/project/${p.documentId}`}
+                                >
                                   <Button className="see-more-button">
                                     {t("seeMore")}
                                   </Button>

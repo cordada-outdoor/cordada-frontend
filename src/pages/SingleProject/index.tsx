@@ -38,9 +38,9 @@ const SingleProject = () => {
   }>();
 
   const projectQuery = useQuery({
-    queryKey: ["project", Number(id)],
+    queryKey: ["project", id],
     queryFn: async () => {
-      const res = await http.get(`api/projects/${Number(id)}`, {
+      const res = await http.get(`api/projects/${id}`, {
         params: {
           populate: "*",
         },
@@ -59,8 +59,10 @@ const SingleProject = () => {
   }
 
   const project: Project = projectQuery.data?.data;
-  const client: Client = project?.client.data;
-  const services: Service[] = project?.services.data;
+  const client: Client = project?.client;
+  const services: Service[] = project?.services;
+
+  console.log({ project });
 
   const serviceNames = joinWithCommasAndAmpersand(
     services?.map((s) => s?.name),
@@ -158,7 +160,7 @@ const SingleProject = () => {
             </Stack>
           </Grid>
           <Grid item xs={12}>
-            <ClientInProject id={Number(client?.id)} />
+            <ClientInProject documentId={client?.documentId} />
           </Grid>
         </Grid>
       </Box>
