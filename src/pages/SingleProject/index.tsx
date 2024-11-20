@@ -38,9 +38,9 @@ const SingleProject = () => {
   }>();
 
   const projectQuery = useQuery({
-    queryKey: ["project", Number(id)],
+    queryKey: ["project", id],
     queryFn: async () => {
-      const res = await http.get(`api/projects/${Number(id)}`, {
+      const res = await http.get(`api/projects/${id}`, {
         params: {
           populate: "*",
         },
@@ -59,17 +59,19 @@ const SingleProject = () => {
   }
 
   const project: Project = projectQuery.data?.data;
-  const client: Client = project?.attributes.client.data;
-  const services: Service[] = project?.attributes.services.data;
+  const client: Client = project?.client;
+  const services: Service[] = project?.services;
+
+  console.log({ project });
 
   const serviceNames = joinWithCommasAndAmpersand(
-    services?.map((s) => s?.attributes.name),
+    services?.map((s) => s?.name),
   );
 
-  const image = project?.attributes.image;
+  const image = project?.image;
   const imgUrl = getImageUrl(image);
 
-  const projectDate = dayjs(project?.attributes.date).format("MM/YYYY");
+  const projectDate = dayjs(project?.date).format("MM/YYYY");
 
   const dataVariant = isMobile ? "h6" : "h5";
 
@@ -83,7 +85,7 @@ const SingleProject = () => {
           fontWeight={600}
           p={2}
         >
-          {project?.attributes.title}
+          {project?.title}
         </Typography>
         <Box
           className="project-img-container"
@@ -107,7 +109,7 @@ const SingleProject = () => {
                     variant={dataVariant}
                     className="project-data-primary"
                   >
-                    {client?.attributes.name}
+                    {client?.name}
                   </Typography>
                 </td>
               </tr>
@@ -152,13 +154,13 @@ const SingleProject = () => {
                 color="primary"
                 fontWeight="bold"
               >
-                {project?.attributes?.subtitle}
+                {project?.subtitle}
               </Typography>
-              <RenderMarkdown markdown={project?.attributes?.body} />
+              <RenderMarkdown markdown={project?.body} />
             </Stack>
           </Grid>
           <Grid item xs={12}>
-            <ClientInProject id={Number(client?.id)} />
+            <ClientInProject documentId={client?.documentId} />
           </Grid>
         </Grid>
       </Box>

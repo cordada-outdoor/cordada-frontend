@@ -51,7 +51,7 @@ const Services = () => {
         </Typography>
         <Grid className="service-menu" container spacing={2}>
           {services?.map((service: any, i: number) => {
-            const { name, banner } = service.attributes;
+            const { name, banner } = service;
             const imgUrl = getImageUrl(banner, "medium");
             return (
               <Grid key={i} item md={4} xs={12}>
@@ -88,7 +88,7 @@ const Services = () => {
         </Grid>
         <Box className="services-content-container">
           {services.map((service: any, i: number) => {
-            const { name, body, banner } = service.attributes;
+            const { name, body, banner } = service;
 
             const imgUrl = getImageUrl(banner, "large");
 

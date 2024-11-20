@@ -1,11 +1,9 @@
 import { Project } from "./project";
 
-export type ClientAttributes = {
+export type Client = {
+  id: number;
+  documentId: string;
   name: string;
   icon: any;
   projects: { data: Project[] };
-};
-export type Client = {
-  id: number;
-  attributes: ClientAttributes;
 };
