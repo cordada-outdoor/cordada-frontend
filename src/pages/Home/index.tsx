@@ -116,14 +116,16 @@ const Home = () => {
         <Box className="home-page-header">
           <Carousel
             settings={{
-              dots: true,
+              dots: false,
               arrows: false,
               infinite: true,
               slidesToShow: 1,
               slidesToScroll: 1,
               autoplay: true,
               autoplaySpeed: 6000,
-              speed: 1500,
+              draggable: false,
+              fade: true,
+              speed: 2000,
               swipeToSlide: false,
               swipe: false,
               pauseOnDotsHover: false,
