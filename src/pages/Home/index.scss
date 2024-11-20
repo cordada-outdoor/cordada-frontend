@@ -105,6 +105,9 @@
                         width: calc(100% - 20px);
                     }
                 }
+                .avatar-img:focus-visible {
+                    outline: none;
+                }
             }
         }
 
