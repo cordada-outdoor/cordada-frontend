@@ -107,12 +107,13 @@ export function joinWithCommasAndAmpersand(strings: string[]) {
 
 export const getHomeImagesArr = (images: any[]) => {
   const defaultImg = [{ hero: HomeBg, logo: LogoWhite }];
+
   if (!images?.length) return defaultImg;
   else {
     const imgWithSize = images.map((image) => {
       return {
-        hero: getImageUrl(image.hero, "large") ?? "",
-        logo: getImageUrl(image.logo, "large") ?? "",
+        hero: getImageUrl(image.hero) ?? "",
+        logo: getImageUrl(image.logo) ?? "",
       };
     });
 
