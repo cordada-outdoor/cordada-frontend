@@ -36,7 +36,7 @@ const About = () => {
       </Layout>
     );
 
-  const content = data.data.attributes;
+  const content = data.data;
 
   return (
     <Layout>

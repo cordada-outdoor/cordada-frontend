@@ -66,7 +66,7 @@ const ProjectsFilterDialog = ({
               >
                 {services?.map((service: Service) => (
                   <MenuItem value={service.id.toString()}>
-                    {service.attributes.name}
+                    {service.name}
                   </MenuItem>
                 ))}
               </Select>
@@ -125,7 +125,7 @@ const ProjectsFilterDialog = ({
               >
                 {clients?.map((client: Client) => (
                   <MenuItem value={client.id.toString()}>
-                    {client.attributes.name}
+                    {client.name}
                   </MenuItem>
                 ))}
               </Select>

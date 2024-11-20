@@ -30,7 +30,7 @@ const ClientInProject = ({ id }: ClientInProjectProps) => {
   }
 
   const client = clientQuery.data?.data;
-  const img = client?.attributes.icon;
+  const img = client?.icon;
   const imgUrl = getImageUrl(img, "small");
 
   return (

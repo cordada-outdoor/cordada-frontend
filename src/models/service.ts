@@ -1,15 +1,11 @@
 import { Project } from "./project";
 
-export type ServiceAttributes = {
+export type Service = {
+  id: number;
   name: string;
   description: string;
   project: {
     data: Project[];
   };
   quote: string;
-};
-
-export type Service = {
-  id: number;
-  attributes: ServiceAttributes;
 };

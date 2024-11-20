@@ -106,7 +106,7 @@ const Home = () => {
     },
   });
 
-  const images = homepageImagesQuery.data?.data?.attributes.images;
+  const images = homepageImagesQuery.data?.data?.images;
 
   const homeImagesArr = getHomeImagesArr(images);
 
@@ -184,7 +184,7 @@ const Home = () => {
                 }}
               >
                 {projects.map((p: any, i: number) => {
-                  const { title, subtitle, client, image } = p.attributes;
+                  const { title, subtitle, client, image } = p;
                   const imgUrl = getImageUrl(image, "large");
 
                   return (
@@ -193,7 +193,7 @@ const Home = () => {
                         src={imgUrl ?? HomeBg}
                         hoverable={true}
                         title={title}
-                        description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
+                        description={`${client.data?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box
                             style={{
@@ -227,7 +227,7 @@ const Home = () => {
                 <CircularProgress className="loading-indicator" />
               ) : (
                 projects.map((p: Project, i: number) => {
-                  const { title, subtitle, client, image } = p.attributes;
+                  const { title, subtitle, client, image } = p;
                   const imgUrl = getImageUrl(image, "large");
                   return (
                     <Box className="project-preview" key={i}>
@@ -235,7 +235,7 @@ const Home = () => {
                         src={imgUrl ?? HomeBg}
                         hoverable={true}
                         title={title}
-                        description={`${client.data?.attributes?.name?.toUpperCase() ?? ""} X CORDADA`}
+                        description={`${client.data?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
                             <Typography variant="h5" fontWeight={600}>
@@ -329,7 +329,7 @@ const Home = () => {
                   }}
                 >
                   {clients.map((client: Client, idx: number) => {
-                    const { icon } = client.attributes;
+                    const { icon } = client;
                     const imgUrl = getImageUrl(icon, "small");
 
                     return (
