@@ -62,8 +62,6 @@ const SingleProject = () => {
   const client: Client = project?.client;
   const services: Service[] = project?.services;
 
-  console.log({ project });
-
   const serviceNames = joinWithCommasAndAmpersand(
     services?.map((s) => s?.name),
   );

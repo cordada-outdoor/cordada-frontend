@@ -105,15 +105,21 @@ export function joinWithCommasAndAmpersand(strings: string[]) {
   return `${allButLast} & ${last}`;
 }
 
-export const getHomeImagesArr = (images: any[]) => {
-  const defaultImg = [{ hero: HomeBg, logo: LogoWhite }];
+export const getHomeImagesArr = (images?: any[]) => {
+  const defaultImg = [
+    {
+      hero: HomeBg,
+      logo: LogoWhite,
+    },
+  ];
 
-  if (!images?.length) return defaultImg;
-  else {
+  if (!images?.length) {
+    return defaultImg;
+  } else {
     const imgWithSize = images.map((image) => {
       return {
-        hero: getImageUrl(image.hero) ?? "",
-        logo: getImageUrl(image.logo) ?? "",
+        hero: getImageUrl(image) ?? HomeBg,
+        logo: LogoWhite,
       };
     });
 
