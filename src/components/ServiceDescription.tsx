@@ -14,6 +14,7 @@ interface ServiceDescriptionProps {
   children: ReactNode;
   title: string;
   service: ServiceType;
+  isMobile: boolean;
 }
 
 const ServiceDescription = ({
@@ -22,6 +23,7 @@ const ServiceDescription = ({
   image,
   children,
   service,
+  isMobile,
 }: ServiceDescriptionProps) => {
   const [isVisible, setVisible] = useState(false);
   const domRef = useRef();
@@ -58,7 +60,10 @@ const ServiceDescription = ({
           </Link>
         </Grid>
         <Grid item md={6} xs={12} className="service-description-container">
-          <Typography className="service-title" variant="h3">
+          <Typography
+            className="service-title"
+            variant={isMobile ? "h4" : "h3"}
+          >
             {title}
           </Typography>
           {children}

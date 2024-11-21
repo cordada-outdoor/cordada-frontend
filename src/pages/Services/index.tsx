@@ -2,7 +2,13 @@ import "./index.scss";
 
 import { useTranslation } from "react-i18next";
 
-import { Box, CircularProgress, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 
 import HomeBg from "assets/images/home_bg.jpg";
@@ -12,9 +18,11 @@ import Layout from "components/Layout/Layout";
 import ServiceDescription from "components/ServiceDescription";
 import { http } from "http/client";
 import { getImageUrl, isEven } from "utils";
+import { theme } from "utils/theme";
 
 const Services = () => {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleScrollToElement = (elId: string) => {
     const el = document.getElementById(elId);
@@ -61,8 +69,6 @@ const Services = () => {
                       name.toLowerCase().split(" ").join("-"),
                     )
                   }
-                  aria-role="link"
-                  role="link"
                   aria-description={name}
                   className="service-menu-item"
                 >
@@ -73,7 +79,7 @@ const Services = () => {
                       <Box className="menu-item-content-container">
                         <Typography
                           className="menu-item-title"
-                          variant="h4"
+                          variant={isMobile ? "h5" : "h4"}
                           fontWeight={700}
                         >
                           {name.toUpperCase()}
@@ -99,6 +105,7 @@ const Services = () => {
                   title={name.toLowerCase()}
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
                   image={imgUrl ?? HomeBg}
+                  isMobile={isMobile}
                 >
                   <RenderMarkdown markdown={body} />
                 </ServiceDescription>
