@@ -70,6 +70,7 @@ const Home = () => {
       const res = await http.get("api/clients", {
         params: {
           populate: "*",
+          sort: "homepageOrder:asc",
         },
       });
 
@@ -301,16 +302,14 @@ const Home = () => {
                     arrows: false,
                     infinite: true,
                     slidesToShow: clients?.length > 5 ? 6 : clients.length,
-                    initialSlide: 1,
+                    initialSlide: -2,
                     autoplay: true,
                     pauseOnDotsHover: false,
                     pauseOnHover: false,
                     pauseOnFocus: false,
                     autoplaySpeed: 0,
                     speed: 5000,
-                    accessibility: false,
                     cssEase: "linear",
-                    swipeToSlide: false,
                     responsive: [
                       {
                         breakpoint: 1024,
@@ -339,7 +338,6 @@ const Home = () => {
                   {clients.map((client: Client, idx: number) => {
                     const { icon } = client;
                     const imgUrl = getImageUrl(icon, "small");
-
                     return (
                       <Avatar
                         variant="square"
