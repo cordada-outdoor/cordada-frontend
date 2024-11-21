@@ -104,8 +104,6 @@ const Home = () => {
     },
   });
 
-  console.log(homepageQuery.data);
-
   const homeImagesArr = getHomeImagesArr(homepageQuery.data?.data.heroImages);
 
   return (
