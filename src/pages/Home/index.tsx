@@ -20,6 +20,7 @@ import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import Carousel from "components/Carousel/Carousel";
 import ContactUs from "components/Common/ContactUs";
 import PreviewImage from "components/Common/PreviewImage";
+import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { Client } from "models/client";
@@ -90,16 +91,12 @@ const Home = () => {
     return clientsQuery?.data?.data ?? [];
   }, [clientsQuery]);
 
-  const homepageImagesQuery = useQuery({
-    queryKey: ["homepageImages"],
+  const homepageQuery = useQuery({
+    queryKey: ["homepage"],
     queryFn: async () => {
-      const res = await http.get("api/homepage-image", {
+      const res = await http.get("api/homepage", {
         params: {
-          populate: {
-            images: {
-              populate: "*",
-            },
-          },
+          populate: "*",
         },
       });
 
@@ -107,9 +104,7 @@ const Home = () => {
     },
   });
 
-  const images = homepageImagesQuery.data?.data?.images;
-
-  const homeImagesArr = getHomeImagesArr(images);
+  const homeImagesArr = getHomeImagesArr(homepageQuery.data?.data.heroImages);
 
   return (
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
@@ -158,13 +153,7 @@ const Home = () => {
             })}
           </Carousel>
           <Box className="home-corp-copy">
-            <Typography variant="h4" fontWeight={600}>
-              {t("homePage.corpCopy.title")}
-            </Typography>
-            <Typography my={2}>{t("homePage.corpCopy.mainText")}</Typography>
-            <Typography>
-              <strong>{t("homePage.corpCopy.higlightedText")}</strong>
-            </Typography>
+            <RenderMarkdown markdown={homepageQuery.data?.data.heroCopy} />
           </Box>
         </Box>
 
