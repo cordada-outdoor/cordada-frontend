@@ -347,14 +347,8 @@ const Home = () => {
           <Typography variant="h3" fontWeight={600}>
             {t("ourServices")}
           </Typography>
-          <Box py={2} />
-          <Typography>{t("homePage.servicesText1")}</Typography>
-          <Box py={2} />
-          <Typography variant="h5">{t("homePage.expertsIn")}</Typography>
-          <Box mt={1} />
-          <Typography variant="h4" fontWeight={600}>
-            {t("homePage.expertsDescription")}
-          </Typography>
+          <RenderMarkdown markdown={homepageQuery.data?.data.servicesCopy} />
+
           <Link
             className="see-services-button-container"
             to={`${langUrlPrefix + "/services"}`}
