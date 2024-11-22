@@ -152,13 +152,25 @@ const Home = () => {
               );
             })}
           </Carousel>
-          <Box className="home-corp-copy">
-            <RenderMarkdown markdown={homepageQuery.data?.data.heroCopy} />
+          <Box
+            className="home-corp-copy"
+            display="flex"
+            justifyContent="center"
+          >
+            <Box maxWidth="lg">
+              <RenderMarkdown markdown={homepageQuery.data?.data.heroCopy} />
+            </Box>
           </Box>
         </Box>
 
         <Box className="home-projects-section" id="home-projects-section">
-          <Typography variant="h3" fontWeight={600} className="section-title">
+          <Typography
+            variant="h3"
+            fontWeight={600}
+            className="section-title"
+            maxWidth="lg"
+            margin="auto"
+          >
             {t("homePage.ourProjects")}
           </Typography>
           {isMobile ? (
@@ -218,7 +230,11 @@ const Home = () => {
               </Carousel>
             </Box>
           ) : (
-            <Box className="projects-preview-container">
+            <Box
+              className="projects-preview-container"
+              maxWidth="lg"
+              margin="auto"
+            >
               {projectsQuery.isLoading ? (
                 <CircularProgress className="loading-indicator" />
               ) : (
@@ -259,22 +275,31 @@ const Home = () => {
             </Box>
           )}
 
-          <Link
-            className="see-projects-button-container"
-            to={`${langUrlPrefix}/projects`}
-          >
-            <Button
-              className="see-projects-button"
-              color="primary"
-              variant="contained"
+          <Box margin="auto" display="flex" maxWidth="lg" justifyContent="end">
+            <Link
+              className="see-projects-button-container"
+              to={`${langUrlPrefix}/projects`}
             >
-              {t("homePage.allProjects")}
-            </Button>
-          </Link>
+              <Button
+                className="see-projects-button"
+                color="primary"
+                variant="contained"
+              >
+                {t("homePage.allProjects")}
+              </Button>
+            </Link>
+          </Box>
+
           <Box ref={projectsRef} />
 
           <Box className="collaborators-preview-container">
-            <Typography variant="h3" fontWeight={600} className="section-title">
+            <Typography
+              variant="h3"
+              fontWeight={600}
+              className="section-title"
+              maxWidth="lg"
+              margin="auto"
+            >
               {t("homePage.ourCordada")}
             </Typography>
             <Box
@@ -343,24 +368,30 @@ const Home = () => {
           </Box>
         </Box>
 
-        <Box ref={servicesRef} className="home-services-section">
-          <Typography variant="h3" fontWeight={600}>
-            {t("ourServices")}
-          </Typography>
-          <RenderMarkdown markdown={homepageQuery.data?.data.servicesCopy} />
-
-          <Link
-            className="see-services-button-container"
-            to={`${langUrlPrefix + "/services"}`}
-          >
-            <Button
-              className="see-services-button"
-              color="primary"
-              variant="contained"
+        <Box
+          ref={servicesRef}
+          className="home-services-section"
+          display="flex"
+          justifyContent="center"
+        >
+          <Box maxWidth="lg">
+            <Typography variant="h3" fontWeight={600}>
+              {t("ourServices")}
+            </Typography>
+            <RenderMarkdown markdown={homepageQuery.data?.data.servicesCopy} />
+            <Link
+              className="see-services-button-container"
+              to={`${langUrlPrefix + "/services"}`}
             >
-              {t("homePage.allServices")}
-            </Button>
-          </Link>
+              <Button
+                className="see-services-button"
+                color="primary"
+                variant="contained"
+              >
+                {t("homePage.allServices")}
+              </Button>
+            </Link>
+          </Box>
         </Box>
         <Box className="home-about-section">
           <Box className="about-us-img-container">
@@ -378,7 +409,6 @@ const Home = () => {
               </Button>
             </Link>
           </Box>
-
           <ContactUs titleVariant="h3" colorScheme="white-on-black" />
         </Box>
       </Box>
