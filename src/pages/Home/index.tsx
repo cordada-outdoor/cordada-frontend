@@ -230,7 +230,11 @@ const Home = () => {
               </Carousel>
             </Box>
           ) : (
-            <Box className="projects-preview-container">
+            <Box
+              className="projects-preview-container"
+              maxWidth="lg"
+              margin="auto"
+            >
               {projectsQuery.isLoading ? (
                 <CircularProgress className="loading-indicator" />
               ) : (
@@ -271,18 +275,21 @@ const Home = () => {
             </Box>
           )}
 
-          <Link
-            className="see-projects-button-container"
-            to={`${langUrlPrefix}/projects`}
-          >
-            <Button
-              className="see-projects-button"
-              color="primary"
-              variant="contained"
+          <Box margin="auto" display="flex" maxWidth="lg" justifyContent="end">
+            <Link
+              className="see-projects-button-container"
+              to={`${langUrlPrefix}/projects`}
             >
-              {t("homePage.allProjects")}
-            </Button>
-          </Link>
+              <Button
+                className="see-projects-button"
+                color="primary"
+                variant="contained"
+              >
+                {t("homePage.allProjects")}
+              </Button>
+            </Link>
+          </Box>
+
           <Box ref={projectsRef} />
 
           <Box className="collaborators-preview-container">
