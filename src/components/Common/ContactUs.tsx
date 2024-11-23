@@ -17,7 +17,14 @@ const ContactUs = ({ colorScheme, titleVariant = "h3" }: ContactUsProps) => {
       </Typography>
       <Box m={2}>
         <a href="mailto:info@cordadaoutdoor.com">
-          <Button variant="contained">{t("homePage.writeUs")}</Button>
+          <Button
+            sx={{
+              borderRadius: 0,
+            }}
+            variant="contained"
+          >
+            {t("homePage.writeUs")}
+          </Button>
         </a>
       </Box>
     </Box>
