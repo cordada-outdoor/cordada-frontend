@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
 import { Box, Button, Typography } from "@mui/material";
 import { Variant } from "@mui/material/styles/createTypography";
@@ -18,14 +17,7 @@ const ContactUs = ({ colorScheme, titleVariant = "h3" }: ContactUsProps) => {
       </Typography>
       <Box m={2}>
         <a href="mailto:info@cordadaoutdoor.com">
-          <Button
-            variant="contained"
-            sx={{
-              borderRadius: 0,
-            }}
-          >
-            <Typography fontWeight={"bold"}>{t("homePage.writeUs")}</Typography>
-          </Button>
+          <Button variant="contained">{t("homePage.writeUs")}</Button>
         </a>
       </Box>
     </Box>
