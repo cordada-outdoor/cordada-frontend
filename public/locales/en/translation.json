@@ -33,7 +33,8 @@
     "events": "events",
     "contentCreation": "content creation",
     "businessDevelopment": "business development",
-    "seeProjects": "see projects"
+    "seeProjects": "see projects",
+    "consultUs": "consult us"
   },
   "projectsPage": {
     "filterBy": "filter by",

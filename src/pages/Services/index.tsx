@@ -91,6 +91,30 @@ const Services = () => {
               </Grid>
             );
           })}
+          <Grid item md={4} xs={12}>
+            <a
+              title={t("servicesPage.consultUs").toUpperCase()}
+              href="mailto:info@cordadaoutdoor.com"
+            >
+              <Box className="service-menu-item">
+                <PreviewImage
+                  src={HomeBg}
+                  hoverable={false}
+                  hoverContent={
+                    <Box className="menu-item-content-container">
+                      <Typography
+                        className="menu-item-title"
+                        variant={isMobile ? "h5" : "h4"}
+                        fontWeight={700}
+                      >
+                        {t("servicesPage.consultUs").toUpperCase()}
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Box>
+            </a>
+          </Grid>
         </Grid>
         <Box className="services-content-container">
           {services.map((service: any, i: number) => {
