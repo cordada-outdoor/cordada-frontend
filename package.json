@@ -7,7 +7,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "prepare": "husky",
-    "start": "react-scripts start",
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "test": "react-scripts test"
   },
   "browserslist": {
