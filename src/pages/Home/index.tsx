@@ -39,7 +39,7 @@ const Home = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
       updateProjectsSectionVisible(entry.isIntersecting);
     });

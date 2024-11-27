@@ -2,6 +2,13 @@
   "extends": ["react-app", "react-app/jest"],
   "plugins": ["simple-import-sort"],
   "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "_",
+        "varsIgnorePattern": "_"
+      }
+    ],
     "no-console": "off",
     "simple-import-sort/imports": [
       "error",
