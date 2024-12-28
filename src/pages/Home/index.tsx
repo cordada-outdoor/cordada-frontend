@@ -14,13 +14,13 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { t } from "i18next";
 
-import AboutImg from "assets/images/about-us.jpg";
 import HomeBg from "assets/images/home_bg.jpg";
 import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import Carousel from "components/Carousel/Carousel";
 import ContactUs from "components/Common/ContactUs";
 import PreviewImage from "components/Common/PreviewImage";
 import RenderMarkdown from "components/Common/RenderMarkdown";
+import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { Client } from "models/client";
@@ -395,7 +395,10 @@ const Home = () => {
         </Box>
         <Box className="home-about-section">
           <Box className="about-us-img-container">
-            <img src={AboutImg} alt="about-us" className="about-us-img" />
+            <StrapiImage
+              image={homepageQuery.data?.data.contactUsImage}
+              className="about-us-img"
+            />
             <Link
               className="about-us-button-container"
               to={`${langUrlPrefix + "/about"}`}
