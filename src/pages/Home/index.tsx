@@ -395,10 +395,12 @@ const Home = () => {
         </Box>
         <Box className="home-about-section">
           <Box className="about-us-img-container">
-            <StrapiImage
-              image={homepageQuery.data?.data.contactUsImage}
-              className="about-us-img"
-            />
+            {homepageQuery.data && (
+              <StrapiImage
+                image={homepageQuery.data?.data.contactUsImage}
+                className="about-us-img"
+              />
+            )}
             <Link
               className="about-us-button-container"
               to={`${langUrlPrefix + "/about"}`}
