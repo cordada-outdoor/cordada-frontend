@@ -3,10 +3,10 @@ import "./index.scss";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 
-import HeaderImg from "assets/images/about-us-top-img.png";
 import HomeBg from "assets/images/home_bg.jpg";
 import AboutUsDescription from "components/AboutUsDescription";
 import RenderMarkdown from "components/Common/RenderMarkdown";
+import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
@@ -18,6 +18,9 @@ const About = () => {
       const res = await http.get("/api/about-us-page", {
         params: {
           populate: {
+            banner: {
+              populate: "*",
+            },
             sections: {
               populate: "*",
             },
@@ -29,12 +32,13 @@ const About = () => {
     },
   });
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <Layout>
         <CircularProgress className="loading-indicator" />
       </Layout>
     );
+  }
 
   const content = data.data;
 
@@ -45,7 +49,7 @@ const About = () => {
           {content?.header ?? "about us"}
         </Typography>
         <Box className="about-top-image-container">
-          <img src={HeaderImg} alt="header-img" className="about-top-image" />
+          <StrapiImage image={content.banner} className="about-top-image" />
         </Box>
         <Box className="about-us-content" maxWidth="xl" margin="auto">
           {content?.sections?.map((sec: any, idx: number) => {
