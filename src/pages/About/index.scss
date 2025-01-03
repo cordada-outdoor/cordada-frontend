@@ -5,6 +5,13 @@
     @include page-padding;
     .about-top-image-container {
         margin-top: 36px;
+        height: 450px;
+        object-fit: contain;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .about-top-image {
             width: 100%;
         }
@@ -45,6 +52,13 @@
         }
     }
 }
+@media (max-width: 1150px) {
+    .about {
+        .about-top-image-container {
+            height: 350px;
+        }
+    }
+}
 @media (max-width: 900px) {
     .about {
         padding: 50px 20px 10px;
@@ -74,6 +88,13 @@
             .right-to-left {
                 flex-direction: column;
             }
+        }
+    }
+}
+@media (max-width: 550px) {
+    .about {
+        .about-top-image-container {
+            height: 250px;
         }
     }
 }
