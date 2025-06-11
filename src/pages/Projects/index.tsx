@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Box,
   Button,
+  Chip,
   CircularProgress,
   Dialog,
   Grid,
@@ -44,6 +45,11 @@ const Projects = () => {
     maxDate: "",
   });
 
+  const [filtersTitle, setFiltersTitle] = useState({
+    service: "",
+    date: "",
+    client: "",
+  });
   window.history.replaceState({}, "");
 
   const [filterDialog, setFilterDialog] = useState<
@@ -104,16 +110,26 @@ const Projects = () => {
   const handleChangeFilters = (value: string) => {
     const filterToChange = filterDialog ?? "date";
     const newFilters = { ...filters };
+    let val = value;
 
-    newFilters[filterToChange as keyof Filters] = value;
+    if (filterToChange !== "date") {
+      val = value.split("///")[0];
+      setFiltersTitle((prev) => ({
+        ...prev,
+        [filterToChange]: value.split("///")[1],
+      }));
+    }
+
+    newFilters[filterToChange as keyof Filters] = val;
 
     if (filterToChange === "date") {
-      const month = value.split("-")[1];
+      const month = val.split("-")[1];
       const nextMonth = Number(month) + 1;
       const monthToString =
         nextMonth < 10 ? "0" + nextMonth.toString() : nextMonth.toString();
-      const nextDate = value.split("-")[0] + "-" + monthToString + "-01";
+      const nextDate = val.split("-")[0] + "-" + monthToString + "-01";
       newFilters.maxDate = nextDate;
+      setFiltersTitle((prev) => ({ ...prev, [filterToChange]: val }));
     }
 
     setFilters(newFilters);
@@ -149,6 +165,15 @@ const Projects = () => {
             {t("projectsPage.client")}
           </Button>
         </Box>
+        {filtersTitle.service && (
+          <Chip sx={{ m: 1 }} label={filtersTitle.service} variant="outlined" />
+        )}
+        {filtersTitle.date && (
+          <Chip sx={{ m: 1 }} label={filtersTitle.date} variant="outlined" />
+        )}
+        {filtersTitle.client && (
+          <Chip sx={{ m: 1 }} label={filtersTitle.client} variant="outlined" />
+        )}
         <Box className="projects-section">
           <Grid container spacing={2}>
             {projectsQuery.isLoading ? (

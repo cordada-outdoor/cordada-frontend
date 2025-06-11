@@ -11,4 +11,5 @@ export type Project = {
   subtitle: string;
   date: string;
   services: Service[];
+  gallery: any[];
 };
