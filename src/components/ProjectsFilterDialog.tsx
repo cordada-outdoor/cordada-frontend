@@ -62,7 +62,12 @@ const ProjectsFilterDialog = ({
                 id="services-select"
                 value={value}
                 label={t("services")}
-                onChange={(e) => handleSave(e.target.value)}
+                onChange={(e) => {
+                  const service = services.find(
+                    (service: Client) => service.id === Number(e.target.value),
+                  );
+                  handleSave(e.target.value + "///" + service.name);
+                }}
               >
                 {services?.map((service: Service) => (
                   <MenuItem value={service.id.toString()}>
@@ -121,7 +126,12 @@ const ProjectsFilterDialog = ({
                 id="clients-select"
                 value={value}
                 label={t("projectsPage.client")}
-                onChange={(e) => handleSave(e.target.value)}
+                onChange={(e) => {
+                  const client = clients.find(
+                    (client: Client) => client.id === Number(e.target.value),
+                  );
+                  handleSave(e.target.value + "///" + client.name);
+                }}
               >
                 {clients?.map((client: Client) => (
                   <MenuItem value={client.id.toString()}>

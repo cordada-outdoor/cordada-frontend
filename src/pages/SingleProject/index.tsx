@@ -20,6 +20,7 @@ import HomeBg from "assets/images/home_bg.jpg";
 import ClientInProject from "components/ClientInProject";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
+import ProjectGallery from "components/ProjectGallery";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
@@ -157,6 +158,16 @@ const SingleProject = () => {
               <RenderMarkdown markdown={project?.body} />
             </Stack>
           </Grid>
+          {project?.gallery?.length && (
+            <Grid
+              sx={{ display: "flex", width: "100%", justifyContent: "center" }}
+              item
+              xs={12}
+            >
+              <ProjectGallery gallery={project.gallery} />
+            </Grid>
+          )}
+
           <Grid item xs={12}>
             <ClientInProject documentId={client?.documentId} />
           </Grid>

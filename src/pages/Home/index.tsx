@@ -189,7 +189,7 @@ const Home = () => {
                   cssEase: "linear",
                 }}
               >
-                {projects.map((p: any, i: number) => {
+                {projects.map((p: Project, i: number) => {
                   const { title, subtitle, client, image } = p;
                   const imgUrl = getImageUrl(image, "large");
 
