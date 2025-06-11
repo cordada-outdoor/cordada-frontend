@@ -56,7 +56,7 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
               ? "1fr"
               : gallery.length === 2
                 ? "1fr 1fr"
-                : "1fr 1fr", // Primera columna 50%, segunda columna 50%
+                : "1fr 1fr",
           gridTemplateRows:
             gallery.length === 1
               ? "1fr"
@@ -64,7 +64,7 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
                 ? "1fr"
                 : gallery.length === 3
                   ? "1fr 1fr"
-                  : "1fr 1fr 1fr", // Tres filas iguales si hay 4 imágenes
+                  : "1fr 1fr 1fr",
           gap: "0px",
           overflow: "hidden",
         }}
@@ -72,21 +72,20 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
         {imagesToShow.map((image, idx) => {
           const url = getImageUrl(image, "medium") ?? image.url;
 
-          // Definir el área de la cuadrícula para cada imagen
           let gridArea = "";
           if (gallery.length === 1) {
-            gridArea = "1 / 1 / 2 / 2"; // Una imagen ocupa todo el espacio
+            gridArea = "1 / 1 / 2 / 2";
           } else if (gallery.length === 2) {
-            gridArea = idx === 0 ? "1 / 1 / 2 / 2" : "1 / 2 / 2 / 3"; // Dos imágenes, cada una ocupa el 50% del ancho
+            gridArea = idx === 0 ? "1 / 1 / 2 / 2" : "1 / 2 / 2 / 3";
           } else if (gallery.length === 3) {
-            if (idx === 0) gridArea = "1 / 1 / 3 / 2"; // Primera imagen ocupa el 50% del ancho
-            if (idx === 1) gridArea = "1 / 2 / 2 / 3"; // Segunda imagen (arriba derecha)
-            if (idx === 2) gridArea = "2 / 2 / 3 / 3"; // Tercera imagen (abajo derecha)
+            if (idx === 0) gridArea = "1 / 1 / 3 / 2";
+            if (idx === 1) gridArea = "1 / 2 / 2 / 3";
+            if (idx === 2) gridArea = "2 / 2 / 3 / 3";
           } else if (gallery.length >= 4) {
-            if (idx === 0) gridArea = "1 / 1 / 4 / 2"; // Primera imagen ocupa el 50% del ancho
-            if (idx === 1) gridArea = "1 / 2 / 2 / 3"; // Segunda imagen (arriba derecha)
-            if (idx === 2) gridArea = "2 / 2 / 3 / 3"; // Tercera imagen (centro derecha)
-            if (idx === 3) gridArea = "3 / 2 / 4 / 3"; // Cuarta imagen (abajo derecha)
+            if (idx === 0) gridArea = "1 / 1 / 4 / 2";
+            if (idx === 1) gridArea = "1 / 2 / 2 / 3";
+            if (idx === 2) gridArea = "2 / 2 / 3 / 3";
+            if (idx === 3) gridArea = "3 / 2 / 4 / 3";
           }
 
           return (
@@ -108,7 +107,7 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover", // Recorta la imagen si sobresale
+                  objectFit: "cover",
                 }}
               />
               {idx === 3 && gallery.length > 4 && (
@@ -125,7 +124,7 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
                     justifyContent: "center",
                     color: "white",
                     fontWeight: "bold",
-                    backgroundColor: "rgba(0, 0, 0, 0.7)", // Sombreado que cubre toda la imagen
+                    backgroundColor: "rgba(0, 0, 0, 0.7)",
                   }}
                 >
                   +{gallery.length - 4}
