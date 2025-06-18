@@ -135,17 +135,17 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
         })}
       </Box>
 
-      <Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>
+      <Dialog open={open} onClose={handleClose}>
         <Box
           sx={{
             position: "relative",
-            width: "100%",
-            height: "100%",
+            width: "100%", // Use the full viewport width
+            height: "100%", // Use the full viewport height
             display: "flex",
-            overflow: "hidden",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "black",
+            backgroundColor: "transparent", // Ensure a consistent background
+            overflow: "hidden", // Prevent scrollbars
           }}
         >
           {gallery?.length > 1 && (
@@ -166,6 +166,7 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
               <ArrowBack />
             </IconButton>
           )}
+
           <img
             src={
               getImageUrl(gallery[currentIndex], "large") ??
@@ -173,8 +174,9 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
             }
             alt={gallery[currentIndex].name}
             style={{
-              width: "100%",
-              objectFit: "cover",
+              maxWidth: "100%",
+              maxHeight: "calc(100vh - 64px)",
+              objectFit: "contain",
             }}
           />
 
@@ -184,6 +186,7 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
               sx={{
                 position: "absolute",
                 right: "16px",
+                color: "white",
                 zIndex: 10,
                 backgroundColor: "rgba(255, 255, 255, 0.5)",
                 "&>svg": {
