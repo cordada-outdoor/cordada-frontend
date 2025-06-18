@@ -139,13 +139,13 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
         <Box
           sx={{
             position: "relative",
-            width: "100%", // Use the full viewport width
-            height: "100%", // Use the full viewport height
+            width: "100%",
+            height: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "transparent", // Ensure a consistent background
-            overflow: "hidden", // Prevent scrollbars
+            backgroundColor: "transparent",
+            overflow: "hidden",
           }}
         >
           {gallery?.length > 1 && (
@@ -186,7 +186,6 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
               sx={{
                 position: "absolute",
                 right: "16px",
-                color: "white",
                 zIndex: 10,
                 backgroundColor: "rgba(255, 255, 255, 0.5)",
                 "&>svg": {
