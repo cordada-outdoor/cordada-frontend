@@ -96,22 +96,24 @@ const SingleProject = () => {
         <Grid container p={2} spacing={2}>
           <Grid item md={12} lg={3} className="project-data">
             <table>
-              <tr className="project-data-element">
-                <td>
-                  <Typography variant={dataVariant}>
-                    {t("projectsPage.client")}
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    fontWeight={700}
-                    variant={dataVariant}
-                    className="project-data-primary"
-                  >
-                    {client?.name}
-                  </Typography>
-                </td>
-              </tr>
+              {client && (
+                <tr className="project-data-element">
+                  <td>
+                    <Typography variant={dataVariant}>
+                      {t("projectsPage.client")}
+                    </Typography>
+                  </td>
+                  <td>
+                    <Typography
+                      fontWeight={700}
+                      variant={dataVariant}
+                      className="project-data-primary"
+                    >
+                      {client?.name}
+                    </Typography>
+                  </td>
+                </tr>
+              )}
               <tr className="project-data-element">
                 <td>
                   <Typography variant={dataVariant}>
@@ -168,9 +170,11 @@ const SingleProject = () => {
             </Grid>
           )}
 
-          <Grid item xs={12}>
-            <ClientInProject documentId={client?.documentId} />
-          </Grid>
+          {client && (
+            <Grid item xs={12}>
+              <ClientInProject documentId={client?.documentId} />
+            </Grid>
+          )}
         </Grid>
       </Box>
       <Dialog
