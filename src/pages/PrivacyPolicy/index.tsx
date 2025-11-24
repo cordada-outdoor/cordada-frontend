@@ -13,13 +13,14 @@ const PrivacyPolicy = () => {
           utilización de la web y/o de cualquiera de los servicios ofrecidos por
           CORDADA OUTDOOR S.L. implica la aceptación por el usuario de las
           disposiciones contenidas en la presente Política de Privacidad y que
-          sus datos personales sean tratados según se estipula en ella. Por
-          favor, tenga en cuenta que a pesar de que pueda haber enlaces de
-          nuestra web a otras webs o redes sociales, esta Política de Privacidad
-          no se aplica a las webs de otras compañías u organizaciones a las que
-          la web esté redirigida. CORDADA OUTDOOR S.L. no controla el contenido
-          de las webs de terceros, ni acepta cualquier responsabilidad por el
-          contenido o las políticas de privacidad de estas webs.
+          sus datos personales sean tratados según se estipula en ella.
+          <br />
+          <br /> Por favor, tenga en cuenta que a pesar de que pueda haber
+          enlaces de nuestra web a otras webs o redes sociales, esta Política de
+          Privacidad no se aplica a las webs de otras compañías u organizaciones
+          a las que la web esté redirigida. CORDADA OUTDOOR S.L. no controla el
+          contenido de las webs de terceros, ni acepta cualquier responsabilidad
+          por el contenido o las políticas de privacidad de estas webs.
         </Typography>
         <Typography mt={5} variant="h5">
           Información básica sobre el tratamiento de datos (Reglamento (UE)
@@ -88,7 +89,7 @@ const PrivacyPolicy = () => {
           En cumplimiento del Reglamento (UE) 2016/679 del Parlamento Europeo y
           del Consejo, de 27 de abril de 2016 (RGPD), y la Ley Orgánica 3/2018,
           de 5 de diciembre, de Protección de Datos Personales y garantía de los
-          derechos digitales (LOPDGDD) le ofrecemos la siguiente información
+          derechos digitales (LOPDGDD), le ofrecemos la siguiente información
           sobre el tratamiento de sus datos personales:
         </Typography>
         <Typography mt={5} variant="h6">
@@ -96,6 +97,7 @@ const PrivacyPolicy = () => {
         </Typography>
         <Typography mt={1} variant="body1">
           CORDADA OUTDOOR S.L.
+          <br />
           <br />
           Nuestros datos figuran en el aviso legal de esta web.
         </Typography>
@@ -213,11 +215,14 @@ const PrivacyPolicy = () => {
         </Typography>
         <Typography mt={3} variant="body1">
           Los datos personales que tratamos proceden del propio interesado.
+          <br />
           <br /> El interesado garantiza que los datos personales facilitados
           son ciertos y se hace responsable de comunicar cualquier modificación
           de estos.
-          <br /> Los datos que estén marcados con un asterisco serán
-          obligatorios para poder darle el servicio solicitado.
+          <br />
+          <br />
+          Los datos que estén marcados con un asterisco serán obligatorios para
+          poder darle el servicio solicitado.
         </Typography>
         <Typography mt={5} variant="h6">
           ¿Qué datos tratamos?
