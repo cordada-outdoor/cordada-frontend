@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
           <li>
             <Typography mt={3} variant="body1">
               <strong>Finalidad del tratamiento: </strong>Ofrecer y gestionar
-              nuestros productos i/o servicios.
+              nuestros productos y/o servicios.
             </Typography>
           </li>
           <li>
@@ -69,9 +69,9 @@ const PrivacyPolicy = () => {
           <li>
             <Typography mt={3} variant="body1">
               <strong>Reclamación: </strong>
+              Los interesados pueden dirigirse a la AEPD para presentar la
+              reclamación que considere oportuna.
             </Typography>
-            Los interesados pueden dirigirse a la AEPD para presentar la
-            reclamación que considere oportuna.
           </li>
           <li>
             <Typography mt={3} variant="body1">
@@ -86,9 +86,9 @@ const PrivacyPolicy = () => {
         </Typography>
         <Typography mt={3} variant="body1">
           En cumplimiento del Reglamento (UE) 2016/679 del Parlamento Europeo y
-          del Consejo, de 27 de abril de 2016, (RGPD), y la Ley Orgánica 3/2018,
+          del Consejo, de 27 de abril de 2016 (RGPD), y la Ley Orgánica 3/2018,
           de 5 de diciembre, de Protección de Datos Personales y garantía de los
-          derechos digitales (LOPDGDD le ofrecemos la siguiente información
+          derechos digitales (LOPDGDD) le ofrecemos la siguiente información
           sobre el tratamiento de sus datos personales:
         </Typography>
         <Typography mt={5} variant="h6">
@@ -111,14 +111,14 @@ const PrivacyPolicy = () => {
           </li>
           <li>
             <Typography mt={3} variant="body1">
-              Si nos da su consentimiento también podremos tratar sus datos para
-              enviarle información sobre nuestras actividades, servicios y
+              Si nos da su consentimiento, también podremos tratar sus datos
+              para enviarle información sobre nuestras actividades, servicios y
               productos.
             </Typography>
           </li>
           <li>
             <Typography mt={3} variant="body1">
-              Si participa en alguno de nuestros sorteos y/o concursos
+              Si participa en alguno de nuestros sorteos y/o concursos,
               publicaremos su nombre y apellidos, y su imagen, en los diferentes
               espacios y medios de comunicación y difusión que utilizamos,
               incluidas las redes sociales, con el fin de promocionar nuestras
@@ -212,11 +212,12 @@ const PrivacyPolicy = () => {
           ¿Cómo hemos obtenido sus datos?
         </Typography>
         <Typography mt={3} variant="body1">
-          Los datos personales que tratamos proceden del propio interesado. El
-          interesado garantiza que los datos personales facilitados son ciertos
-          y se hace responsable de comunicar cualquier modificación de estos.
-          Los datos que estén marcados con un asterisco serán obligatorios para
-          poder darle el servicio solicitado.
+          Los datos personales que tratamos proceden del propio interesado.
+          <br /> El interesado garantiza que los datos personales facilitados
+          son ciertos y se hace responsable de comunicar cualquier modificación
+          de estos.
+          <br /> Los datos que estén marcados con un asterisco serán
+          obligatorios para poder darle el servicio solicitado.
         </Typography>
         <Typography mt={5} variant="h6">
           ¿Qué datos tratamos?
