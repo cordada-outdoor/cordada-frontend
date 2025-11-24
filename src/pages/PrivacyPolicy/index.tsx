@@ -8,18 +8,19 @@ const PrivacyPolicy = () => {
       <Box p={5}>
         <Typography variant="h3">Política de privacidad</Typography>
         <Typography mt={3} variant="body1">
-          EL TITULAR se compromete a proteger la privacidad de los usuarios que
-          accedan a esta web y/o cualquiera de sus servicios. La utilización de
-          la web y/o de cualquiera de los servicios ofrecidos por EL TITULAR
-          implica la aceptación por el usuario de las disposiciones contenidas
-          en la presente Política de Privacidad y que sus datos personales sean
-          tratados según se estipula en ella. Por favor, tenga en cuenta que a
-          pesar de que pueda haber enlaces de nuestra web a otras webs o redes
-          sociales, esta Política de Privacidad no se aplica a las webs de otras
-          compañías u organizaciones a las que la web esté redirigida. EL
-          TITULAR no controla el contenido de las webs de terceros, ni acepta
-          cualquier responsabilidad por el contenido o las políticas de
-          privacidad de estas webs.
+          CORDADA OUTDOOR S.L. se compromete a proteger la privacidad de los
+          usuarios que accedan a esta web y/o cualquiera de sus servicios. La
+          utilización de la web y/o de cualquiera de los servicios ofrecidos por
+          CORDADA OUTDOOR S.L. implica la aceptación por el usuario de las
+          disposiciones contenidas en la presente Política de Privacidad y que
+          sus datos personales sean tratados según se estipula en ella.
+          <br />
+          <br /> Por favor, tenga en cuenta que a pesar de que pueda haber
+          enlaces de nuestra web a otras webs o redes sociales, esta Política de
+          Privacidad no se aplica a las webs de otras compañías u organizaciones
+          a las que la web esté redirigida. CORDADA OUTDOOR S.L. no controla el
+          contenido de las webs de terceros, ni acepta cualquier responsabilidad
+          por el contenido o las políticas de privacidad de estas webs.
         </Typography>
         <Typography mt={5} variant="h5">
           Información básica sobre el tratamiento de datos (Reglamento (UE)
@@ -28,14 +29,14 @@ const PrivacyPolicy = () => {
         <ul>
           <li>
             <Typography mt={3} variant="body1">
-              <strong>Responsable del tratamiento: </strong>EL TITULAR. Nuestros
-              datos figuran en el aviso legal de esta web.
+              <strong>Responsable del tratamiento: </strong>CORDADA OUTDOOR S.L.
+              Nuestros datos figuran en el aviso legal de esta web.
             </Typography>
           </li>
           <li>
             <Typography mt={3} variant="body1">
               <strong>Finalidad del tratamiento: </strong>Ofrecer y gestionar
-              nuestros productos i/o servicios.
+              nuestros productos y/o servicios.
             </Typography>
           </li>
           <li>
@@ -69,9 +70,9 @@ const PrivacyPolicy = () => {
           <li>
             <Typography mt={3} variant="body1">
               <strong>Reclamación: </strong>
+              Los interesados pueden dirigirse a la AEPD para presentar la
+              reclamación que considere oportuna.
             </Typography>
-            Los interesados pueden dirigirse a la AEPD para presentar la
-            reclamación que considere oportuna.
           </li>
           <li>
             <Typography mt={3} variant="body1">
@@ -86,16 +87,17 @@ const PrivacyPolicy = () => {
         </Typography>
         <Typography mt={3} variant="body1">
           En cumplimiento del Reglamento (UE) 2016/679 del Parlamento Europeo y
-          del Consejo, de 27 de abril de 2016, (RGPD), y la Ley Orgánica 3/2018,
+          del Consejo, de 27 de abril de 2016 (RGPD), y la Ley Orgánica 3/2018,
           de 5 de diciembre, de Protección de Datos Personales y garantía de los
-          derechos digitales (LOPDGDD le ofrecemos la siguiente información
+          derechos digitales (LOPDGDD), le ofrecemos la siguiente información
           sobre el tratamiento de sus datos personales:
         </Typography>
         <Typography mt={5} variant="h6">
           ¿Quién es el responsable del tratamiento de sus datos?
         </Typography>
         <Typography mt={1} variant="body1">
-          EL TITULAR.
+          CORDADA OUTDOOR S.L.
+          <br />
           <br />
           Nuestros datos figuran en el aviso legal de esta web.
         </Typography>
@@ -111,14 +113,14 @@ const PrivacyPolicy = () => {
           </li>
           <li>
             <Typography mt={3} variant="body1">
-              Si nos da su consentimiento también podremos tratar sus datos para
-              enviarle información sobre nuestras actividades, servicios y
+              Si nos da su consentimiento, también podremos tratar sus datos
+              para enviarle información sobre nuestras actividades, servicios y
               productos.
             </Typography>
           </li>
           <li>
             <Typography mt={3} variant="body1">
-              Si participa en alguno de nuestros sorteos y/o concursos
+              Si participa en alguno de nuestros sorteos y/o concursos,
               publicaremos su nombre y apellidos, y su imagen, en los diferentes
               espacios y medios de comunicación y difusión que utilizamos,
               incluidas las redes sociales, con el fin de promocionar nuestras
@@ -212,9 +214,13 @@ const PrivacyPolicy = () => {
           ¿Cómo hemos obtenido sus datos?
         </Typography>
         <Typography mt={3} variant="body1">
-          Los datos personales que tratamos proceden del propio interesado. El
-          interesado garantiza que los datos personales facilitados son ciertos
-          y se hace responsable de comunicar cualquier modificación de estos.
+          Los datos personales que tratamos proceden del propio interesado.
+          <br />
+          <br /> El interesado garantiza que los datos personales facilitados
+          son ciertos y se hace responsable de comunicar cualquier modificación
+          de estos.
+          <br />
+          <br />
           Los datos que estén marcados con un asterisco serán obligatorios para
           poder darle el servicio solicitado.
         </Typography>
