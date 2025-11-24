@@ -8,18 +8,18 @@ const PrivacyPolicy = () => {
       <Box p={5}>
         <Typography variant="h3">Política de privacidad</Typography>
         <Typography mt={3} variant="body1">
-          EL TITULAR se compromete a proteger la privacidad de los usuarios que
-          accedan a esta web y/o cualquiera de sus servicios. La utilización de
-          la web y/o de cualquiera de los servicios ofrecidos por EL TITULAR
-          implica la aceptación por el usuario de las disposiciones contenidas
-          en la presente Política de Privacidad y que sus datos personales sean
-          tratados según se estipula en ella. Por favor, tenga en cuenta que a
-          pesar de que pueda haber enlaces de nuestra web a otras webs o redes
-          sociales, esta Política de Privacidad no se aplica a las webs de otras
-          compañías u organizaciones a las que la web esté redirigida. EL
-          TITULAR no controla el contenido de las webs de terceros, ni acepta
-          cualquier responsabilidad por el contenido o las políticas de
-          privacidad de estas webs.
+          CORDADA OUTDOOR S.L. se compromete a proteger la privacidad de los
+          usuarios que accedan a esta web y/o cualquiera de sus servicios. La
+          utilización de la web y/o de cualquiera de los servicios ofrecidos por
+          CORDADA OUTDOOR S.L. implica la aceptación por el usuario de las
+          disposiciones contenidas en la presente Política de Privacidad y que
+          sus datos personales sean tratados según se estipula en ella. Por
+          favor, tenga en cuenta que a pesar de que pueda haber enlaces de
+          nuestra web a otras webs o redes sociales, esta Política de Privacidad
+          no se aplica a las webs de otras compañías u organizaciones a las que
+          la web esté redirigida. CORDADA OUTDOOR S.L. no controla el contenido
+          de las webs de terceros, ni acepta cualquier responsabilidad por el
+          contenido o las políticas de privacidad de estas webs.
         </Typography>
         <Typography mt={5} variant="h5">
           Información básica sobre el tratamiento de datos (Reglamento (UE)
@@ -28,8 +28,8 @@ const PrivacyPolicy = () => {
         <ul>
           <li>
             <Typography mt={3} variant="body1">
-              <strong>Responsable del tratamiento: </strong>EL TITULAR. Nuestros
-              datos figuran en el aviso legal de esta web.
+              <strong>Responsable del tratamiento: </strong>CORDADA OUTDOOR S.L.
+              Nuestros datos figuran en el aviso legal de esta web.
             </Typography>
           </li>
           <li>
@@ -95,7 +95,7 @@ const PrivacyPolicy = () => {
           ¿Quién es el responsable del tratamiento de sus datos?
         </Typography>
         <Typography mt={1} variant="body1">
-          EL TITULAR.
+          CORDADA OUTDOOR S.L.
           <br />
           Nuestros datos figuran en el aviso legal de esta web.
         </Typography>
