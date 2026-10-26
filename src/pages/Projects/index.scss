@@ -24,40 +24,6 @@
   }
   .projects-section {
     padding-top: 12px;
-    .project-container {
-      border: 5px solid $primary-color;
-      .project-card {
-        padding: 5px 10px;
-        height: calc(100% - 10px);
-        .project-description {
-          margin-top: 5px;
-          line-height: 1.1rem;
-          max-height: calc(100% - 80px);
-          overflow: hidden;
-        }
-        .see-more-button-container {
-          position: absolute;
-          bottom: 10px;
-          left: -5px;
-          display: flex;
-          flex-direction: row;
-          width: 100%;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-    }
-  }
-}
-@media (max-width: 900px) {
-  .projects {
-    .projects-section {
-      .project-card {
-        .see-more-button-container {
-          bottom: 5px !important;
-        }
-      }
-    }
   }
 }
 .filter-modal {

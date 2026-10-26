@@ -2,7 +2,7 @@ import "./index.scss";
 
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import {
   Box,
@@ -15,15 +15,12 @@ import {
 } from "@mui/material";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import HomeBg from "assets/images/home_bg.jpg";
-import PreviewImage from "components/Common/PreviewImage";
 import Layout from "components/Layout/Layout";
 import PageContainer from "components/Layout/PageContainer";
+import ProjectCard from "components/ProjectCard";
 import ProjectsFilterDialog from "components/ProjectsFilterDialog";
 import { http } from "http/client";
 import { Project } from "models/project";
-import { getImageUrl } from "utils";
-import useUrlLang from "utils/useUrlLang";
 
 type Filters = {
   service?: string;
@@ -34,7 +31,6 @@ type Filters = {
 
 const Projects = () => {
   const { t } = useTranslation();
-  const { langUrlPrefix } = useUrlLang();
   const location = useLocation<any>();
 
   const [filters, setFilters] = useState<Filters>({
@@ -184,45 +180,11 @@ const Projects = () => {
               <CircularProgress className="loading-indicator" />
             ) : (
               projectsQuery.data?.pages.map((page, i: number) => {
-                return page.data.map((p) => {
-                  const { title, subtitle, client, image } = p;
-                  const imgUrl = getImageUrl(image, "large");
-
-                  return (
-                    <Grid item key={i} md={4} xs={12} sm={6}>
-                      <Box className="project-container">
-                        <PreviewImage
-                          src={imgUrl ?? HomeBg}
-                          hoverable={true}
-                          titleComponent="h2"
-                          title={title}
-                          description={`${client?.name ?? ""} x Cordada`}
-                          hoverContent={
-                            <Box className="project-card">
-                              <Typography
-                                variant="h5"
-                                component="p"
-                                fontWeight={600}
-                              >
-                                {title}
-                              </Typography>
-                              <Typography className="project-description">
-                                {subtitle}
-                              </Typography>
-                              <Box className="see-more-button-container">
-                                <Link
-                                  to={`${langUrlPrefix}/project/${p.documentId}`}
-                                >
-                                  <Button>{t("seeMore")}</Button>
-                                </Link>
-                              </Box>
-                            </Box>
-                          }
-                        />
-                      </Box>
-                    </Grid>
-                  );
-                });
+                return page.data.map((p) => (
+                  <Grid item key={i} md={4} xs={12} sm={6}>
+                    <ProjectCard project={p} titleComponent="h2" />
+                  </Grid>
+                ));
               })
             )}
           </Grid>

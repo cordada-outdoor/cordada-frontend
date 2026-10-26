@@ -14,14 +14,13 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { t } from "i18next";
 
-import HomeBg from "assets/images/home_bg.jpg";
 import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import Carousel from "components/Carousel/Carousel";
 import ContactUs from "components/Common/ContactUs";
-import PreviewImage from "components/Common/PreviewImage";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
+import ProjectCard from "components/ProjectCard";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
@@ -191,46 +190,11 @@ const Home = () => {
                   cssEase: "linear",
                 }}
               >
-                {projects.map((p: Project, i: number) => {
-                  const { title, subtitle, client, image } = p;
-                  const imgUrl = getImageUrl(image, "large");
-
-                  return (
-                    <Box className="project-preview" key={i}>
-                      <PreviewImage
-                        src={imgUrl ?? HomeBg}
-                        hoverable={true}
-                        title={title}
-                        description={`${client?.name ?? ""} x Cordada`}
-                        hoverContent={
-                          <Box
-                            style={{
-                              padding: "1rem",
-                            }}
-                          >
-                            <Typography
-                              variant="h5"
-                              component="p"
-                              fontWeight={600}
-                            >
-                              {title}
-                            </Typography>
-                            <Typography className="project-description">
-                              {subtitle}
-                            </Typography>
-                            <Box className="see-more-button-container">
-                              <Link
-                                to={`${langUrlPrefix}/project/${p.documentId}`}
-                              >
-                                <Button>{t("seeMore")}</Button>
-                              </Link>
-                            </Box>
-                          </Box>
-                        }
-                      />
-                    </Box>
-                  );
-                })}
+                {projects.map((p: Project) => (
+                  <Box className="project-preview" key={p.documentId}>
+                    <ProjectCard project={p} />
+                  </Box>
+                ))}
               </Carousel>
             </Box>
           ) : (
@@ -242,41 +206,11 @@ const Home = () => {
               {projectsQuery.isLoading ? (
                 <CircularProgress className="loading-indicator" />
               ) : (
-                projects.map((p: Project, i: number) => {
-                  const { title, subtitle, client, image } = p;
-                  const imgUrl = getImageUrl(image, "large");
-                  return (
-                    <Box className="project-preview" key={i}>
-                      <PreviewImage
-                        src={imgUrl ?? HomeBg}
-                        hoverable={true}
-                        title={title}
-                        description={`${client?.name ?? ""} x Cordada`}
-                        hoverContent={
-                          <Box className="project-card">
-                            <Typography
-                              variant="h5"
-                              component="p"
-                              fontWeight={600}
-                            >
-                              {title}
-                            </Typography>
-                            <Typography className="project-description">
-                              {subtitle}
-                            </Typography>
-                            <Box className="see-more-button-container">
-                              <Link
-                                to={`${langUrlPrefix}/project/${p.documentId}`}
-                              >
-                                <Button>{t("seeMore")}</Button>
-                              </Link>
-                            </Box>
-                          </Box>
-                        }
-                      />
-                    </Box>
-                  );
-                })
+                projects.map((p: Project) => (
+                  <Box className="project-preview" key={p.documentId}>
+                    <ProjectCard project={p} />
+                  </Box>
+                ))
               )}
             </Box>
           )}

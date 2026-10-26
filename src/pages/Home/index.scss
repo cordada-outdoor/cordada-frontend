@@ -49,13 +49,6 @@
         padding: 55px 30px;
         color: white;
         background: linear-gradient(black, black, $primary-color);
-        .project-description {
-            width: 100%;
-            margin-top: 5px;
-            max-height: calc(100% - 80px);
-            line-height: 1.1rem;
-            overflow: hidden;
-        }
         .projects-preview-container {
             @include horizontal-list;
             margin-top: 30px;
@@ -64,23 +57,6 @@
             justify-content: space-between;
             .project-preview {
                 width: 30%;
-                border: 5px solid $primary-color;
-
-                .project-card {
-                    padding: 5px 10px;
-                    height: calc(100% - 10px);
-
-                    .see-more-button-container {
-                        position: absolute;
-                        bottom: 10px;
-                        left: -5px;
-                        display: flex;
-                        flex-direction: row;
-                        width: 100%;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
             }
         }
         .collaborators-preview-container {
@@ -152,19 +128,7 @@
                 opacity: 1;
             }
             .project-preview {
-                border: 5px solid $primary-color;
-                width: calc(100% - 10px) !important;
-
-                .see-more-button-container {
-                    position: absolute;
-                    bottom: 10px;
-                    left: -5px;
-                    display: flex;
-                    flex-direction: row;
-                    width: 100%;
-                    align-items: center;
-                    justify-content: center;
-                }
+                width: 100% !important;
             }
         }
         .projects-preview-container {
