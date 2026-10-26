@@ -303,6 +303,30 @@
     letter-spacing: 0.04em;
   }
 }
+.social-embed {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+.embed-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 328px;
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+  text-align: center;
+  &.youtube {
+    width: 640px;
+    aspect-ratio: 16 / 9;
+  }
+  a {
+    font-weight: 700;
+    color: $primary-dark;
+  }
+}
 .loading-indicator {
   margin: 1em;
   color: $primary-color !important;

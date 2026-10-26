@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
-import { InstagramEmbed, YouTubeEmbed } from "react-social-media-embed";
 
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import MarkdownToJsx from "markdown-to-jsx";
 
 import { getMarkdownWithEmbeds } from "utils";
-import { theme } from "utils/theme";
+
+import SocialEmbed from "./SocialEmbed";
 
 // Shift CMS headings down one level so they never compete with the page's h1
 const shiftedHeading =
@@ -36,8 +36,6 @@ interface RenderMarkdownProps {
 const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
   const formattedMarkdown = getMarkdownWithEmbeds(markdown);
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
   if (!formattedMarkdown?.length) {
     return <Box />;
   } else
@@ -52,28 +50,13 @@ const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
                 </MarkdownToJsx>
               </Typography>
             );
-          } else if (element.type === "instagram-link") {
-            return (
-              <Box
-                className="markdown-container"
-                width={"100%"}
-                sx={{ display: "flex", justifyContent: "center" }}
-              >
-                <InstagramEmbed
-                  style={{ overflow: "visible" }}
-                  width={328}
-                  url={element.body}
-                />
-              </Box>
-            );
-          } else {
-            return (
-              <YouTubeEmbed
-                width={isMobile ? "100%" : undefined}
-                url={element.body}
-              />
-            );
           }
+          return (
+            <SocialEmbed
+              type={element.type === "instagram-link" ? "instagram" : "youtube"}
+              url={element.body}
+            />
+          );
         })}
       </>
     );

@@ -55,5 +55,9 @@
     "open": "Abrir la foto",
     "previous": "Foto anterior",
     "next": "Foto siguiente"
+  },
+  "embeds": {
+    "viewOnInstagram": "Ver en Instagram",
+    "viewOnYouTube": "Ver en YouTube"
   }
 }
