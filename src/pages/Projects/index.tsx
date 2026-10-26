@@ -1,57 +1,56 @@
 import "./index.scss";
 
-import { useState } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
-import {
-  Box,
-  Button,
-  Chip,
-  CircularProgress,
-  Dialog,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Button, CircularProgress, Grid, Typography } from "@mui/material";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 import Layout from "components/Layout/Layout";
 import PageContainer from "components/Layout/PageContainer";
 import ProjectCard from "components/ProjectCard";
-import ProjectsFilterDialog from "components/ProjectsFilterDialog";
+import ProjectsFilters, {
+  EMPTY_FILTERS,
+  ProjectFilters,
+} from "components/ProjectsFilters";
 import { http } from "http/client";
 import { Project } from "models/project";
 
-type Filters = {
-  service?: string;
-  date?: string;
-  client?: string;
-  maxDate?: string;
+const FILTER_KEYS = Object.keys(EMPTY_FILTERS) as (keyof ProjectFilters)[];
+
+const dateRange = ({ year, month }: ProjectFilters) => {
+  if (!year) return undefined;
+  if (!month)
+    return { $gte: `${year}-01-01`, $lt: `${Number(year) + 1}-01-01` };
+
+  const next = new Date(Number(year), Number(month), 1);
+  const nextMonth = String(next.getMonth() + 1).padStart(2, "0");
+  return {
+    $gte: `${year}-${month}-01`,
+    $lt: `${next.getFullYear()}-${nextMonth}-01`,
+  };
 };
 
 const Projects = () => {
   const { t } = useTranslation();
-  const location = useLocation<any>();
+  const history = useHistory();
+  const { search } = useLocation();
 
-  const [filters, setFilters] = useState<Filters>({
-    service: location?.state?.service
-      ? location?.state?.service.toString()
-      : "",
-    date: "",
-    client: "",
-    maxDate: "",
-  });
+  // Filters live in the query string so filtered views can be shared
+  const filters = useMemo(() => {
+    const params = new URLSearchParams(search);
+    return FILTER_KEYS.reduce(
+      (acc, key) => ({ ...acc, [key]: params.get(key) ?? "" }),
+      EMPTY_FILTERS,
+    );
+  }, [search]);
 
-  const [filtersTitle, setFiltersTitle] = useState({
-    service: "",
-    date: "",
-    client: "",
-  });
-  window.history.replaceState({}, "");
-
-  const [filterDialog, setFilterDialog] = useState<
-    "service" | "date" | "client" | undefined
-  >(undefined);
+  const setFilters = (next: ProjectFilters) => {
+    const params = new URLSearchParams();
+    FILTER_KEYS.forEach((key) => next[key] && params.set(key, next[key]));
+    history.replace({ search: params.toString() });
+  };
 
   const projectsQuery = useInfiniteQuery({
     queryKey: ["projects", filters],
@@ -66,24 +65,11 @@ const Projects = () => {
             },
             filters: {
               services: filters.service
-                ? {
-                    id: {
-                      $eq: filters.service,
-                    },
-                  }
+                ? { id: { $eq: filters.service } }
                 : undefined,
-              date: filters.date
-                ? {
-                    $gte: filters.date + "-01",
-                    $lt: filters.maxDate,
-                  }
-                : undefined,
+              date: dateRange(filters),
               client: filters.client
-                ? {
-                    id: {
-                      $eq: filters.client,
-                    },
-                  }
+                ? { id: { $eq: filters.client } }
                 : undefined,
             },
             sort: "createdAt:desc",
@@ -104,76 +90,13 @@ const Projects = () => {
     },
   });
 
-  const handleChangeFilters = (value: string) => {
-    const filterToChange = filterDialog ?? "date";
-    const newFilters = { ...filters };
-    let val = value;
-
-    if (filterToChange !== "date") {
-      val = value.split("///")[0];
-      setFiltersTitle((prev) => ({
-        ...prev,
-        [filterToChange]: value.split("///")[1],
-      }));
-    }
-
-    newFilters[filterToChange as keyof Filters] = val;
-
-    if (filterToChange === "date") {
-      const month = val.split("-")[1];
-      const nextMonth = Number(month) + 1;
-      const monthToString =
-        nextMonth < 10 ? "0" + nextMonth.toString() : nextMonth.toString();
-      const nextDate = val.split("-")[0] + "-" + monthToString + "-01";
-      newFilters.maxDate = nextDate;
-      setFiltersTitle((prev) => ({ ...prev, [filterToChange]: val }));
-    }
-
-    setFilters(newFilters);
-    setFilterDialog(undefined);
-  };
-
   return (
     <Layout>
       <PageContainer className="projects">
         <Typography variant="h3" component="h1" fontWeight={600}>
           {t("homePage.ourProjects")}
         </Typography>
-        <Box className="filter-section">
-          <Typography className="filter-title">
-            {t("projectsPage.filterBy")}
-          </Typography>
-          <Button
-            variant="text"
-            onClick={() => setFilterDialog("service")}
-            className={`filter-button ${filters.service !== "" ? "selected-filter-button" : ""}`}
-          >
-            {t("projectsPage.type")}
-          </Button>
-          <Button
-            variant="text"
-            onClick={() => setFilterDialog("date")}
-            className={`filter-button ${filters.date !== "" ? "selected-filter-button" : ""}`}
-          >
-            {t("projectsPage.date")}
-          </Button>
-          <Button
-            variant="text"
-            onClick={() => setFilterDialog("client")}
-            className={`filter-button ${filters.client !== "" ? "selected-filter-button" : ""}`}
-          >
-            {t("projectsPage.client")}
-          </Button>
-        </Box>
-        {filtersTitle.service && (
-          <Chip sx={{ m: 1 }} label={filtersTitle.service} variant="outlined" />
-        )}
-        {filtersTitle.date && (
-          <Chip sx={{ m: 1 }} label={filtersTitle.date} variant="outlined" />
-        )}
-        {filtersTitle.client && (
-          <Chip sx={{ m: 1 }} label={filtersTitle.client} variant="outlined" />
-        )}
+        <ProjectsFilters filters={filters} onChange={setFilters} />
         <Box className="projects-section">
           <Grid container spacing={2}>
             {projectsQuery.isLoading ? (
@@ -211,17 +134,6 @@ const Projects = () => {
           </Box>
         )}
       </PageContainer>
-      <Dialog
-        open={filterDialog ? true : false}
-        onClose={() => setFilterDialog(undefined)}
-      >
-        <ProjectsFilterDialog
-          handleClose={() => setFilterDialog(undefined)}
-          type={filterDialog}
-          handleSave={(value) => handleChangeFilters(value)}
-          value={filters[filterDialog ?? "date"]}
-        />
-      </Dialog>
     </Layout>
   );
 };

@@ -41,7 +41,10 @@
     "type": "Tipo",
     "date": "Fecha",
     "client": "Cliente",
-    "removeFilter": "Quitar filtro"
+    "year": "Año",
+    "month": "Mes",
+    "any": "Todos",
+    "clearFilters": "Quitar filtros"
   },
   "menu": "Menú",
   "close": "Cerrar"

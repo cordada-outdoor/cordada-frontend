@@ -41,7 +41,10 @@
     "type": "Tipus",
     "date": "Data",
     "client": "Client",
-    "removeFilter": "Treure filtre"
+    "year": "Any",
+    "month": "Mes",
+    "any": "Tots",
+    "clearFilters": "Treure filtres"
   },
   "menu": "Menú",
   "close": "Tanca"

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 
-import { ServiceType } from "models";
 import useRevealOnScroll from "utils/useRevealOnScroll";
 import useUrlLang from "utils/useUrlLang";
 
@@ -13,7 +12,8 @@ interface ServiceDescriptionProps {
   image: string;
   children: ReactNode;
   title: string;
-  service: ServiceType;
+  // Service id, used to pre-filter the projects list
+  service: number;
   isMobile: boolean;
 }
 
@@ -39,12 +39,7 @@ const ServiceDescription = ({
       >
         <Grid item md={6} xs={12} className="service-image-container">
           <Avatar variant="square" className="service-image" src={image} />
-          <Link
-            to={{
-              pathname: `${langUrlPrefix}/projects`,
-              state: { service: service },
-            }}
-          >
+          <Link to={`${langUrlPrefix}/projects?service=${service}`}>
             <Button className="see-more-button">
               {t("servicesPage.seeProjects")}
             </Button>

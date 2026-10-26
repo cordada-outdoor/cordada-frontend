@@ -41,7 +41,10 @@
     "type": "Type",
     "date": "Date",
     "client": "Client",
-    "removeFilter": "Remove filter"
+    "year": "Year",
+    "month": "Month",
+    "any": "All",
+    "clearFilters": "Clear filters"
   },
   "menu": "Menu",
   "close": "Close"

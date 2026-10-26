@@ -73,6 +73,9 @@ export const theme = responsiveFontSizes(
           },
           // White on the brand orange is only 3.2:1, so filled buttons use
           // the darker shade to reach 4.5:1
+          textPrimary: {
+            color: colors.primaryDark,
+          },
           containedPrimary: {
             backgroundColor: colors.primaryDark,
             "&:hover": {
