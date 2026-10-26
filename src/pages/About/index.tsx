@@ -8,6 +8,7 @@ import AboutUsDescription from "components/AboutUsDescription";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
 
@@ -44,14 +45,14 @@ const About = () => {
 
   return (
     <Layout>
-      <Box className="about">
+      <PageContainer className="about">
         <Typography variant="h3" fontWeight={600}>
           {content?.header ?? "about us"}
         </Typography>
         <Box className="about-top-image-container">
           <StrapiImage image={content.banner} className="about-top-image" />
         </Box>
-        <Box className="about-us-content" maxWidth="xl" margin="auto">
+        <Box className="about-us-content">
           {content?.sections?.map((sec: any, idx: number) => {
             const imgUrl = getImageUrl(sec.profilePicture, "small");
             const even = idx % 2 === 0;
@@ -65,7 +66,7 @@ const About = () => {
             );
           })}
         </Box>
-      </Box>
+      </PageContainer>
     </Layout>
   );
 };

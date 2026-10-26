@@ -2,7 +2,6 @@
 @import "/src/utils/mixins.scss";
 
 .projects {
-  @include page-padding;
   .filter-section {
     @include horizontal-list;
     margin-top: 12px;
@@ -52,7 +51,6 @@
 }
 @media (max-width: 900px) {
   .projects {
-    padding: 50px 20px 10px;
     .projects-section {
       .project-card {
         .see-more-button-container {

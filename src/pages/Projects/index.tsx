@@ -18,6 +18,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 import ProjectsFilterDialog from "components/ProjectsFilterDialog";
 import { http } from "http/client";
 import { Project } from "models/project";
@@ -138,7 +139,7 @@ const Projects = () => {
 
   return (
     <Layout>
-      <Box className="projects">
+      <PageContainer className="projects">
         <Typography variant="h3" fontWeight={600}>
           {t("homePage.ourProjects")}
         </Typography>
@@ -242,7 +243,7 @@ const Projects = () => {
             )}
           </Box>
         )}
-      </Box>
+      </PageContainer>
       <Dialog
         open={filterDialog ? true : false}
         onClose={() => setFilterDialog(undefined)}

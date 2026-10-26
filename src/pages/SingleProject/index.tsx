@@ -20,6 +20,7 @@ import HomeBg from "assets/images/home_bg.jpg";
 import ClientInProject from "components/ClientInProject";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 import ProjectGallery from "components/ProjectGallery";
 import { http } from "http/client";
 import { Client } from "models/client";
@@ -76,13 +77,13 @@ const SingleProject = () => {
 
   return (
     <Layout>
-      <Box className="project-detail" pt={[4, 4, 0]}>
+      <PageContainer className="project-detail">
         <Typography
           className="project-title"
           variant="h3"
           color="primary"
           fontWeight={600}
-          p={2}
+          mb={3}
         >
           {project?.title}
         </Typography>
@@ -93,7 +94,7 @@ const SingleProject = () => {
           <img src={imgUrl ?? HomeBg} alt="project-header" />
         </Box>
 
-        <Grid container p={2} spacing={2}>
+        <Grid container py={2} spacing={2}>
           <Grid item md={12} lg={3} className="project-data">
             <table>
               {client && (
@@ -176,7 +177,7 @@ const SingleProject = () => {
             </Grid>
           )}
         </Grid>
-      </Box>
+      </PageContainer>
       <Dialog
         maxWidth={"lg"}
         open={imgModal}

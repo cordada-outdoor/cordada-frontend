@@ -1,7 +1,6 @@
 @import "/src/utils/colors.scss";
 @import "/src/utils/mixins.scss";
 .services {
-    @include page-padding;
     scroll-behavior: smooth;
     .service-menu {
         padding: 24px 0;
@@ -75,7 +74,6 @@
 }
 @media (max-width: 900px) {
     .services {
-        padding: 50px 20px 10px;
         .services-content-container {
             .service-container {
                 flex-direction: column;

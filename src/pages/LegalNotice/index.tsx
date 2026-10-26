@@ -1,11 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 
 const LegalNotice = () => {
   return (
     <Layout>
-      <Box p={5}>
+      <PageContainer readable>
         <Typography variant="h3">Aviso legal</Typography>
         <Typography mt={3} variant="body1">
           De conformidad con la Ley 34/2002, de Servicios de la Sociedad de la
@@ -61,7 +62,7 @@ const LegalNotice = () => {
           derechos que legalmente correspondan al usuario, en caso de que este
           ostente la condición de consumidor.
         </Typography>
-      </Box>
+      </PageContainer>
     </Layout>
   );
 };

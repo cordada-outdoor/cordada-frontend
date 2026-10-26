@@ -1,11 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 
 const PrivacyPolicy = () => {
   return (
     <Layout>
-      <Box p={5}>
+      <PageContainer readable>
         <Typography variant="h3">Política de privacidad</Typography>
         <Typography mt={3} variant="body1">
           CORDADA OUTDOOR S.L. se compromete a proteger la privacidad de los
@@ -298,7 +299,7 @@ const PrivacyPolicy = () => {
             </Typography>
           </li>
         </ul>
-      </Box>
+      </PageContainer>
     </Layout>
   );
 };

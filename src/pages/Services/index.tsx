@@ -15,6 +15,7 @@ import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 import ServiceDescription from "components/ServiceDescription";
 import { http } from "http/client";
 import { getImageUrl, isEven } from "utils";
@@ -53,7 +54,7 @@ const Services = () => {
 
   return (
     <Layout>
-      <Box className="services">
+      <PageContainer className="services">
         <Typography variant="h3" fontWeight={600}>
           {t("ourServices")}
         </Typography>
@@ -137,7 +138,7 @@ const Services = () => {
             );
           })}
         </Box>
-      </Box>
+      </PageContainer>
     </Layout>
   );
 };
