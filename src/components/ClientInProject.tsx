@@ -1,17 +1,16 @@
-import React from "react";
-
-import { Avatar, Box, CircularProgress } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 
-import HomeBg from "assets/images/home_bg.jpg";
 import { http } from "http/client";
 import { getImageUrl } from "utils";
 
 interface ClientInProjectProps {
   documentId: string;
+  size?: number;
 }
 
-const ClientInProject = ({ documentId }: ClientInProjectProps) => {
+// The project response doesn't populate the client's icon, so fetch it here
+const ClientInProject = ({ documentId, size = 40 }: ClientInProjectProps) => {
   const clientQuery = useQuery({
     queryKey: ["client", documentId],
     queryFn: async () => {
@@ -25,25 +24,17 @@ const ClientInProject = ({ documentId }: ClientInProjectProps) => {
     },
   });
 
-  if (!clientQuery.data || clientQuery.isLoading) {
-    return <CircularProgress className="loading-indicator" />;
-  }
+  const imgUrl = getImageUrl(clientQuery.data?.data?.icon, "small");
 
-  const client = clientQuery.data?.data;
-  const img = client?.icon;
-  const imgUrl = getImageUrl(img, "small");
+  if (!imgUrl) return null;
 
   return (
-    <Box display="flex" alignItems="center" justifyContent="center" p={2}>
-      <Avatar
-        sx={{
-          width: "175px",
-          height: "175px",
-          bgcolor: "common.black",
-        }}
-        src={imgUrl ?? HomeBg}
-      />
-    </Box>
+    <Avatar
+      sx={{ width: size, height: size, bgcolor: "common.black" }}
+      src={imgUrl}
+      alt=""
+    />
   );
 };
+
 export default ClientInProject;

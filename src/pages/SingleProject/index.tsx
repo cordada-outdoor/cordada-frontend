@@ -9,10 +9,12 @@ import dayjs from "dayjs";
 
 import HomeBg from "assets/images/home_bg.jpg";
 import ClientInProject from "components/ClientInProject";
+import ContactUs from "components/Common/ContactUs";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import PageContainer from "components/Layout/PageContainer";
 import ProjectGallery from "components/ProjectGallery";
+import ProjectNavigation from "components/ProjectNavigation";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
@@ -81,7 +83,10 @@ const SingleProject = () => {
           {client && (
             <div>
               <dt>{t("projectsPage.client")}</dt>
-              <dd>{client.name}</dd>
+              <dd className="project-meta-client">
+                <ClientInProject documentId={client.documentId} />
+                {client.name}
+              </dd>
             </div>
           )}
           <div>
@@ -111,13 +116,9 @@ const SingleProject = () => {
               <ProjectGallery gallery={project.gallery} />
             </Grid>
           )}
-
-          {client && (
-            <Grid item xs={12}>
-              <ClientInProject documentId={client?.documentId} />
-            </Grid>
-          )}
         </Grid>
+        <ProjectNavigation project={project} />
+        <ContactUs titleVariant="h4" colorScheme="black-on-white" />
       </PageContainer>
     </Layout>
   );

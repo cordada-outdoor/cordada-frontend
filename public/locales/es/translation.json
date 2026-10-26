@@ -44,7 +44,9 @@
     "year": "Año",
     "month": "Mes",
     "any": "Todos",
-    "clearFilters": "Quitar filtros"
+    "clearFilters": "Quitar filtros",
+    "previous": "Proyecto anterior",
+    "next": "Proyecto siguiente"
   },
   "menu": "Menú",
   "close": "Cerrar",

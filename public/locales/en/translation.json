@@ -44,7 +44,9 @@
     "year": "Year",
     "month": "Month",
     "any": "All",
-    "clearFilters": "Clear filters"
+    "clearFilters": "Clear filters",
+    "previous": "Previous project",
+    "next": "Next project"
   },
   "menu": "Menu",
   "close": "Close",

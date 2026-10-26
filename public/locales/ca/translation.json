@@ -44,7 +44,9 @@
     "year": "Any",
     "month": "Mes",
     "any": "Tots",
-    "clearFilters": "Treure filtres"
+    "clearFilters": "Treure filtres",
+    "previous": "Projecte anterior",
+    "next": "Projecte següent"
   },
   "menu": "Menú",
   "close": "Tanca",

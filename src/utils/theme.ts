@@ -76,6 +76,15 @@ export const theme = responsiveFontSizes(
           textPrimary: {
             color: colors.primaryDark,
           },
+          outlinedPrimary: {
+            color: colors.primaryDark,
+            borderColor: colors.primaryDark,
+            borderWidth: 2,
+            "&:hover": {
+              borderWidth: 2,
+              borderColor: colors.primaryDark,
+            },
+          },
           containedPrimary: {
             backgroundColor: colors.primaryDark,
             "&:hover": {
