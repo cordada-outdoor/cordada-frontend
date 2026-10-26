@@ -27,14 +27,7 @@
         padding-top: 50px;
         .service-container {
             margin: 100px 12px;
-            opacity: 0;
-            transform: translateX(-20vw);
-            visibility: hidden;
-            transition:
-                opacity 1200ms ease-out,
-                transform 600ms ease-out,
-                visibility 1200ms ease-out;
-            will-change: opacity, transform, visibility;
+            @include reveal-on-scroll;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -60,17 +53,11 @@
             }
         }
         .right-to-left {
-            transform: translateX(20vw);
             flex-direction: row-reverse;
             .see-more-button {
                 right: 30px;
                 left: auto !important;
             }
-        }
-        .service-container.is-visible {
-            opacity: 1;
-            transform: none;
-            visibility: visible;
         }
     }
 }

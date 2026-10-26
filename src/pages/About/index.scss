@@ -18,14 +18,7 @@
     .about-us-content {
         .about-us-description-container {
             margin: 100px 12px;
-            opacity: 0;
-            transform: translateX(-20vw);
-            visibility: hidden;
-            transition:
-                opacity 1200ms ease-out,
-                transform 600ms ease-out,
-                visibility 1200ms ease-out;
-            will-change: opacity, transform, visibility;
+            @include reveal-on-scroll;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -37,17 +30,11 @@
             }
         }
         .right-to-left {
-            transform: translateX(20vw);
             flex-direction: row-reverse;
             .about-us-description-avatar {
                 margin-right: 0;
                 margin-left: 24px;
             }
-        }
-        .about-us-description-container.is-visible {
-            opacity: 1;
-            transform: none;
-            visibility: visible;
         }
     }
 }

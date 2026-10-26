@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -6,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 
 import { ServiceType } from "models";
+import useRevealOnScroll from "utils/useRevealOnScroll";
 import useUrlLang from "utils/useUrlLang";
 
 interface ServiceDescriptionProps {
@@ -25,21 +25,12 @@ const ServiceDescription = ({
   service,
   isMobile,
 }: ServiceDescriptionProps) => {
-  const [isVisible, setVisible] = useState(false);
-  const domRef = useRef();
+  const { ref, isVisible } = useRevealOnScroll<HTMLDivElement>();
   const { t } = useTranslation();
   const { langUrlPrefix } = useUrlLang();
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => setVisible(entry.isIntersecting));
-    });
-    // @ts-expect-error
-    observer.observe(domRef.current);
-  }, []);
-
   return (
-    <Box ref={domRef}>
+    <Box ref={ref}>
       <Grid
         direction={direction === "left-to-right" ? "row" : "row-reverse"}
         spacing={2}
