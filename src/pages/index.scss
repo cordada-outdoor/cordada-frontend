@@ -10,9 +10,7 @@
   }
   .MuiAppBar-colorPrimary.primary-appbar {
     background-color: $primary-color;
-    .active-page {
-      box-shadow: inset 0 -3px 0 $black;
-    }
+    color: $black;
   }
   .appbar {
     transition: 0.2s;
@@ -68,6 +66,9 @@
         margin-left: 15px;
         transform: scale(3.5);
       }
+    }
+    &.primary-appbar .toolbar .active-page {
+      box-shadow: inset 0 -3px 0 $black;
     }
   }
   .mobile-appbar {
