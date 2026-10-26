@@ -196,7 +196,7 @@ const Projects = () => {
                           hoverable={true}
                           titleComponent="h2"
                           title={title}
-                          description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
+                          description={`${client?.name ?? ""} x Cordada`}
                           hoverContent={
                             <Box className="project-card">
                               <Typography

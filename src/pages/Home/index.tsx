@@ -201,7 +201,7 @@ const Home = () => {
                         src={imgUrl ?? HomeBg}
                         hoverable={true}
                         title={title}
-                        description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
+                        description={`${client?.name ?? ""} x Cordada`}
                         hoverContent={
                           <Box
                             style={{
@@ -251,7 +251,7 @@ const Home = () => {
                         src={imgUrl ?? HomeBg}
                         hoverable={true}
                         title={title}
-                        description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
+                        description={`${client?.name ?? ""} x Cordada`}
                         hoverContent={
                           <Box className="project-card">
                             <Typography

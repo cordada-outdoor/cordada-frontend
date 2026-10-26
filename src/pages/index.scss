@@ -21,6 +21,7 @@
       }
       .navigation-list {
         @include horizontal-list;
+        text-transform: uppercase;
         .navigation-item {
           padding-top: 0;
           padding-bottom: 0;
@@ -118,6 +119,9 @@
 
   .preview-image-container {
     aspect-ratio: 3 / 2;
+    .preview-content .MuiTypography-caption {
+      text-transform: uppercase;
+    }
     position: relative;
     color: white;
     .preview-content {
@@ -237,6 +241,9 @@
   }
 }
 .menu-drawer {
+  .main-navigation {
+    text-transform: uppercase;
+  }
   .MuiPaper-root {
     min-width: 70vw;
     display: flex;

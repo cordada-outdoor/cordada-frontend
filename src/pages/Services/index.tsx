@@ -84,7 +84,7 @@ const Services = () => {
                           component="span"
                           fontWeight={700}
                         >
-                          {name.toUpperCase()}
+                          {name}
                         </Typography>
                       </Box>
                     }
@@ -95,7 +95,7 @@ const Services = () => {
           })}
           <Grid item md={4} xs={12}>
             <a
-              title={t("servicesPage.consultUs").toUpperCase()}
+              title={t("servicesPage.consultUs")}
               href="mailto:info@cordadaoutdoor.com"
             >
               <Box className="service-menu-item">
@@ -110,7 +110,7 @@ const Services = () => {
                         component="span"
                         fontWeight={700}
                       >
-                        {t("servicesPage.consultUs").toUpperCase()}
+                        {t("servicesPage.consultUs")}
                       </Typography>
                     </Box>
                   }
@@ -129,7 +129,7 @@ const Services = () => {
               <Box id={name.toLowerCase().split(" ").join("-")}>
                 <ServiceDescription
                   service={service.id}
-                  title={name.toLowerCase()}
+                  title={name}
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
                   image={imgUrl ?? HomeBg}
                   isMobile={isMobile}

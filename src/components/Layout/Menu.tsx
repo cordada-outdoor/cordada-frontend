@@ -99,7 +99,7 @@ const Menu = ({
           open={isDrawerOpen}
           onClose={() => setIsDrawerOpen(!isDrawerOpen)}
         >
-          <List>
+          <List className="main-navigation">
             {navigationOptions.map((aN) => (
               <ListItem key={aN.value} className="navigation-item">
                 <ListItemButton
@@ -107,9 +107,7 @@ const Menu = ({
                 >
                   <ListItemText
                     primary={
-                      <Typography fontWeight={700}>
-                        {t(aN.label).toUpperCase()}
-                      </Typography>
+                      <Typography fontWeight={700}>{t(aN.label)}</Typography>
                     }
                   />
                 </ListItemButton>
@@ -198,7 +196,7 @@ const Menu = ({
                       <ListItemText
                         primary={
                           <Typography fontWeight={700}>
-                            {t(aN.label).toUpperCase()}
+                            {t(aN.label)}
                           </Typography>
                         }
                       />
