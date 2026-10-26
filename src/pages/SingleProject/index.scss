@@ -13,12 +13,24 @@
       object-fit: cover;
     }
   }
-  .project-data {
-    .project-data-element {
-      .project-data-primary {
-        color: $primary-dark;
-        margin-left: 1rem;
-      }
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 48px;
+    margin: 24px 0 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e0e0e0;
+    dt {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #555555;
+    }
+    dd {
+      margin: 4px 0 0;
+      font-size: 1.125rem;
+      font-weight: 700;
     }
   }
   .contact-container {
@@ -26,6 +38,12 @@
     text-align: center;
   }
   .project-body {
-    width: calc(100% - 0.1rem);
+    max-width: 70ch;
+    margin: 0 auto;
+    .project-subtitle {
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
   }
 }

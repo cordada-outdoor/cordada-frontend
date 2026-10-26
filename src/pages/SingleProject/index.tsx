@@ -3,14 +3,7 @@ import "./index.scss";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
-import {
-  Box,
-  CircularProgress,
-  Grid,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
 
@@ -25,12 +18,9 @@ import { Client } from "models/client";
 import { Project } from "models/project";
 import { Service } from "models/service";
 import { getImageUrl, joinWithCommasAndAmpersand } from "utils";
-import { theme } from "utils/theme";
 
 const SingleProject = () => {
   const { t } = useTranslation();
-
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const { id } = useParams<{
     id: string;
@@ -70,8 +60,6 @@ const SingleProject = () => {
 
   const projectDate = dayjs(project?.date).format("MM/YYYY");
 
-  const dataVariant = isMobile ? "h6" : "h5";
-
   return (
     <Layout>
       <PageContainer className="project-detail">
@@ -89,77 +77,35 @@ const SingleProject = () => {
           <img src={imgUrl ?? HomeBg} alt="" />
         </Box>
 
+        <Box component="dl" className="project-meta">
+          {client && (
+            <div>
+              <dt>{t("projectsPage.client")}</dt>
+              <dd>{client.name}</dd>
+            </div>
+          )}
+          <div>
+            <dt>{t("projectsPage.date")}</dt>
+            <dd>{projectDate}</dd>
+          </div>
+          {serviceNames && (
+            <div>
+              <dt>{t("projectsPage.type")}</dt>
+              <dd>{serviceNames}</dd>
+            </div>
+          )}
+        </Box>
+
+        <Box className="project-body">
+          {project?.subtitle && (
+            <Typography variant="h5" component="p" className="project-subtitle">
+              {project.subtitle}
+            </Typography>
+          )}
+          <RenderMarkdown markdown={project?.body} />
+        </Box>
+
         <Grid container py={2} spacing={2}>
-          <Grid item md={12} lg={3} className="project-data">
-            <table>
-              {client && (
-                <tr className="project-data-element">
-                  <td>
-                    <Typography variant={dataVariant} component="span">
-                      {t("projectsPage.client")}
-                    </Typography>
-                  </td>
-                  <td>
-                    <Typography
-                      fontWeight={700}
-                      variant={dataVariant}
-                      component="span"
-                      className="project-data-primary"
-                    >
-                      {client?.name}
-                    </Typography>
-                  </td>
-                </tr>
-              )}
-              <tr className="project-data-element">
-                <td>
-                  <Typography variant={dataVariant} component="span">
-                    {t("projectsPage.date")}
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    fontWeight={700}
-                    variant={dataVariant}
-                    component="span"
-                    className="project-data-primary"
-                  >
-                    {projectDate}
-                  </Typography>
-                </td>
-              </tr>
-              <tr className="project-data-element">
-                <td>
-                  <Typography variant={dataVariant} component="span">
-                    {t("projectsPage.type")}
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    fontWeight={700}
-                    variant={dataVariant}
-                    component="span"
-                    className="project-data-primary"
-                  >
-                    {serviceNames}
-                  </Typography>
-                </td>
-              </tr>
-            </table>
-          </Grid>
-          <Grid item md={12} lg={6} className="project-body">
-            <Stack gap={2}>
-              <Typography
-                variant={dataVariant}
-                component="span"
-                color="primary"
-                fontWeight="bold"
-              >
-                {project?.subtitle}
-              </Typography>
-              <RenderMarkdown markdown={project?.body} />
-            </Stack>
-          </Grid>
           {project?.gallery?.length && (
             <Grid
               sx={{ display: "flex", width: "100%", justifyContent: "center" }}
