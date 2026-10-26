@@ -308,7 +308,9 @@ const Home = () => {
               }
             >
               {clientsQuery.isLoading ? (
-                <CircularProgress sx={{ color: "black", margin: "1em" }} />
+                <CircularProgress
+                  sx={{ color: "common.black", margin: "1em" }}
+                />
               ) : (
                 <Carousel
                   settings={{

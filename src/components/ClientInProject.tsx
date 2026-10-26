@@ -39,7 +39,7 @@ const ClientInProject = ({ documentId }: ClientInProjectProps) => {
         sx={{
           width: "175px",
           height: "175px",
-          bgcolor: "black",
+          bgcolor: "common.black",
         }}
         src={imgUrl ?? HomeBg}
       />

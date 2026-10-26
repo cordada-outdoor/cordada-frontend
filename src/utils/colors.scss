@@ -1,5 +1,8 @@
+// Keep in sync with the palette in utils/theme.ts
 $primary-color: #ff521c;
+// Darker orange for small text and UI on white, or white text on orange
+// (#ff521c only reaches 3.2:1 contrast against white)
+$primary-dark: #d63d0a;
 $primary-translucid: #ff511c14;
 $white: #ffffff;
 $black: #000000;
-$secondary-color: #b2b2b2;

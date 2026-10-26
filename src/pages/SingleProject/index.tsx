@@ -54,7 +54,7 @@ const SingleProject = () => {
   if (projectQuery.isLoading) {
     return (
       <Layout>
-        <CircularProgress sx={{ color: "#ff521c" }} />
+        <CircularProgress className="loading-indicator" />
       </Layout>
     );
   }
