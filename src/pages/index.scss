@@ -14,8 +14,12 @@
   .appbar {
     transition: 0.2s;
     .toolbar {
-      justify-content: space-between;
       flex-direction: row;
+      .logo-link {
+        display: flex;
+        color: inherit;
+        margin-right: 40px;
+      }
       .MuiListItem-padding {
         padding: 0;
       }
@@ -36,6 +40,7 @@
         @include primary-on-white;
       }
       .right-menu {
+        margin-left: auto;
         .lang-list {
           @include horizontal-list;
           .language-button {

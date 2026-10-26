@@ -181,6 +181,13 @@ const Menu = ({
           position="fixed"
         >
           <Toolbar className="toolbar">
+            <Link
+              to={langUrlPrefix + "/"}
+              className="logo-link"
+              aria-label="Cordada Outdoor"
+            >
+              <LogoSmall className="main-menu-logo" />
+            </Link>
             <List className="navigation-list">
               {navigationOptions.map((aN) => {
                 const isSelected =
@@ -234,9 +241,6 @@ const Menu = ({
                     </ListItem>
                   );
                 })}
-                <ListItem>
-                  <LogoSmall className="main-menu-logo" />
-                </ListItem>
               </List>
             </Box>
           </Toolbar>
