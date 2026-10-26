@@ -140,7 +140,7 @@ const Projects = () => {
   return (
     <Layout>
       <PageContainer className="projects">
-        <Typography variant="h3" fontWeight={600}>
+        <Typography variant="h3" component="h1" fontWeight={600}>
           {t("homePage.ourProjects")}
         </Typography>
         <Box className="filter-section">
@@ -194,11 +194,16 @@ const Projects = () => {
                         <PreviewImage
                           src={imgUrl ?? HomeBg}
                           hoverable={true}
+                          titleComponent="h2"
                           title={title}
                           description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
                           hoverContent={
                             <Box className="project-card">
-                              <Typography variant="h5" fontWeight={600}>
+                              <Typography
+                                variant="h5"
+                                component="p"
+                                fontWeight={600}
+                              >
                                 {title}
                               </Typography>
                               <Typography className="project-description">

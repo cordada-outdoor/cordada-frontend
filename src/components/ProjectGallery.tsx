@@ -113,6 +113,7 @@ const ProjectGallery = ({ gallery }: ProjectGalleryProps) => {
               {idx === 3 && gallery.length > 4 && (
                 <Typography
                   variant="h6"
+                  component="span"
                   sx={{
                     position: "absolute",
                     top: 0,

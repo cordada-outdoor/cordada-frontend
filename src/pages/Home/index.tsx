@@ -110,6 +110,7 @@ const Home = () => {
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
       <Box className="home-page">
         <Box className="home-page-header">
+          <h1 className="visually-hidden">Cordada Outdoor</h1>
           <Carousel
             settings={{
               dots: false,
@@ -166,6 +167,7 @@ const Home = () => {
         <Box className="home-projects-section" id="home-projects-section">
           <Typography
             variant="h3"
+            component="h2"
             fontWeight={600}
             className="section-title"
             maxWidth="lg"
@@ -206,7 +208,11 @@ const Home = () => {
                               padding: "1rem",
                             }}
                           >
-                            <Typography variant="h5" fontWeight={600}>
+                            <Typography
+                              variant="h5"
+                              component="p"
+                              fontWeight={600}
+                            >
                               {title}
                             </Typography>
                             <Typography className="project-description">
@@ -248,7 +254,11 @@ const Home = () => {
                         description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
                         hoverContent={
                           <Box className="project-card">
-                            <Typography variant="h5" fontWeight={600}>
+                            <Typography
+                              variant="h5"
+                              component="p"
+                              fontWeight={600}
+                            >
                               {title}
                             </Typography>
                             <Typography className="project-description">
@@ -367,7 +377,7 @@ const Home = () => {
           justifyContent="center"
         >
           <Box maxWidth="lg">
-            <Typography variant="h3" fontWeight={600}>
+            <Typography variant="h3" component="h2" fontWeight={600}>
               {t("ourServices")}
             </Typography>
             <RenderMarkdown markdown={homepageQuery.data?.data.servicesCopy} />

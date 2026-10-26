@@ -55,7 +55,7 @@ const Services = () => {
   return (
     <Layout>
       <PageContainer className="services">
-        <Typography variant="h3" fontWeight={600}>
+        <Typography variant="h3" component="h1" fontWeight={600}>
           {t("ourServices")}
         </Typography>
         <Grid className="service-menu" container spacing={2}>
@@ -81,6 +81,7 @@ const Services = () => {
                         <Typography
                           className="menu-item-title"
                           variant={isMobile ? "h5" : "h4"}
+                          component="span"
                           fontWeight={700}
                         >
                           {name.toUpperCase()}
@@ -106,6 +107,7 @@ const Services = () => {
                       <Typography
                         className="menu-item-title"
                         variant={isMobile ? "h5" : "h4"}
+                        component="span"
                         fontWeight={700}
                       >
                         {t("servicesPage.consultUs").toUpperCase()}

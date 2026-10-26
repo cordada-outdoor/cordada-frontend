@@ -63,6 +63,7 @@ const ServiceDescription = ({
           <Typography
             className="service-title"
             variant={isMobile ? "h4" : "h3"}
+            component="h2"
           >
             {title}
           </Typography>

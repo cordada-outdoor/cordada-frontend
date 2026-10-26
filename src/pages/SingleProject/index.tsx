@@ -81,6 +81,7 @@ const SingleProject = () => {
         <Typography
           className="project-title"
           variant="h3"
+          component="h1"
           color="primary"
           fontWeight={600}
           mb={3}
@@ -100,7 +101,7 @@ const SingleProject = () => {
               {client && (
                 <tr className="project-data-element">
                   <td>
-                    <Typography variant={dataVariant}>
+                    <Typography variant={dataVariant} component="span">
                       {t("projectsPage.client")}
                     </Typography>
                   </td>
@@ -108,6 +109,7 @@ const SingleProject = () => {
                     <Typography
                       fontWeight={700}
                       variant={dataVariant}
+                      component="span"
                       className="project-data-primary"
                     >
                       {client?.name}
@@ -117,7 +119,7 @@ const SingleProject = () => {
               )}
               <tr className="project-data-element">
                 <td>
-                  <Typography variant={dataVariant}>
+                  <Typography variant={dataVariant} component="span">
                     {t("projectsPage.date")}
                   </Typography>
                 </td>
@@ -125,6 +127,7 @@ const SingleProject = () => {
                   <Typography
                     fontWeight={700}
                     variant={dataVariant}
+                    component="span"
                     className="project-data-primary"
                   >
                     {projectDate}
@@ -133,7 +136,7 @@ const SingleProject = () => {
               </tr>
               <tr className="project-data-element">
                 <td>
-                  <Typography variant={dataVariant}>
+                  <Typography variant={dataVariant} component="span">
                     {t("projectsPage.type")}
                   </Typography>
                 </td>
@@ -141,6 +144,7 @@ const SingleProject = () => {
                   <Typography
                     fontWeight={700}
                     variant={dataVariant}
+                    component="span"
                     className="project-data-primary"
                   >
                     {serviceNames}
@@ -153,6 +157,7 @@ const SingleProject = () => {
             <Stack gap={2}>
               <Typography
                 variant={dataVariant}
+                component="span"
                 color="primary"
                 fontWeight="bold"
               >

@@ -165,6 +165,42 @@
     }
   }
 }
+// Hidden visually but still read by screen readers
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+// Markdown headings are rendered one level down (pages own the h1) but keep
+// the browser's default size for their original level
+.markdown-container {
+  .md-h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  .md-h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+  }
+  .md-h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+  }
+  .md-h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+  }
+  .md-h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+  }
+}
 .loading-indicator {
   margin: 1em;
   color: $primary-color !important;

@@ -12,7 +12,7 @@ const ContactUs = ({ colorScheme, titleVariant = "h3" }: ContactUsProps) => {
 
   return (
     <Box className={`contact-us-section ${colorScheme}`}>
-      <Typography variant={titleVariant}>
+      <Typography variant={titleVariant} component="h2">
         {t("homePage.anyQuestions")}
       </Typography>
       <Box m={2}>

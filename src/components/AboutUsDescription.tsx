@@ -32,7 +32,9 @@ const AboutUsDescription = ({
     >
       <Avatar className="about-us-description-avatar" src={image} />
       <Box className="about-us-description">
-        <Typography variant="h4">{title}</Typography>
+        <Typography variant="h4" component="h2">
+          {title}
+        </Typography>
         {children}
       </Box>
     </Box>

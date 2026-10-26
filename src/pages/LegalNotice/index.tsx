@@ -7,7 +7,9 @@ const LegalNotice = () => {
   return (
     <Layout>
       <PageContainer readable>
-        <Typography variant="h3">Aviso legal</Typography>
+        <Typography variant="h3" component="h1">
+          Aviso legal
+        </Typography>
         <Typography mt={3} variant="body1">
           De conformidad con la Ley 34/2002, de Servicios de la Sociedad de la
           Información y de Comercio Electrónico, le informamos que esta web es
@@ -20,7 +22,7 @@ const LegalNotice = () => {
         <Typography variant="body1">
           Domicilio: c. Miguel de Cervantes 35, 3-1
         </Typography>
-        <Typography mt={5} variant="h5">
+        <Typography mt={5} variant="h5" component="h2">
           PROPIEDAD INTELECTUAL E INDUSTRIAL
         </Typography>
         <Typography mt={3} variant="body1">
@@ -33,7 +35,7 @@ const LegalNotice = () => {
           EL TITULAR, quien se reserva el derecho a iniciar las acciones legales
           oportunas para reparar los daños
         </Typography>
-        <Typography mt={5} variant="h5">
+        <Typography mt={5} variant="h5" component="h2">
           EXCLUSIÓN DE RESPONSABILIDAD
         </Typography>
         <Typography mt={3} variant="body1">
@@ -48,7 +50,7 @@ const LegalNotice = () => {
           establezcan por EL TITULAR en un documento específico a tal efecto, o
           por los pactos concretos que pudieran acordarse con los clientes.
         </Typography>
-        <Typography mt={5} variant="h5">
+        <Typography mt={5} variant="h5" component="h2">
           CONDICIONES DE USO
         </Typography>
         <Typography mt={3} variant="body1">

@@ -46,7 +46,7 @@ const About = () => {
   return (
     <Layout>
       <PageContainer className="about">
-        <Typography variant="h3" fontWeight={600}>
+        <Typography variant="h3" component="h1" fontWeight={600}>
           {content?.header ?? "about us"}
         </Typography>
         <Box className="about-top-image-container">
