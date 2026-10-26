@@ -48,6 +48,15 @@ const navigationOptions = [
   { label: "us", value: "/about" },
 ];
 
+// A project detail page belongs to the projects section
+const isActivePage = (navValue: string, urlWithoutLang: string) => {
+  if (navValue === "/") return urlWithoutLang === "/" || urlWithoutLang === "";
+  if (navValue === "/projects" && urlWithoutLang.startsWith("/project/")) {
+    return true;
+  }
+  return urlWithoutLang.startsWith(navValue);
+};
+
 interface MenuProps {
   appbarPosition?: AppbarPosition;
   primaryAppbar?: boolean;
@@ -102,7 +111,16 @@ const Menu = ({
           <List className="main-navigation">
             {navigationOptions.map((aN) => (
               <ListItem key={aN.value} className="navigation-item">
-                <ListItemButton component={Link} to={langUrlPrefix + aN.value}>
+                <ListItemButton
+                  component={Link}
+                  to={langUrlPrefix + aN.value}
+                  className={
+                    isActivePage(aN.value, urlWithoutLang) ? "active-page" : ""
+                  }
+                  aria-current={
+                    isActivePage(aN.value, urlWithoutLang) ? "page" : undefined
+                  }
+                >
                   <ListItemText
                     primary={
                       <Typography fontWeight={700}>{t(aN.label)}</Typography>
@@ -190,13 +208,12 @@ const Menu = ({
             </Link>
             <List className="navigation-list">
               {navigationOptions.map((aN) => {
-                const isSelected =
-                  window.location.pathname.includes(aN.value) &&
-                  aN.value !== "/";
+                const isSelected = isActivePage(aN.value, urlWithoutLang);
                 return (
                   <ListItem key={aN.value}>
                     <ListItemButton
-                      className={`navigation-item ${isSelected ? "selected-item-in-menu" : ""}`}
+                      className={`navigation-item ${isSelected ? "active-page" : ""}`}
+                      aria-current={isSelected ? "page" : undefined}
                       component={Link}
                       to={langUrlPrefix + aN.value}
                     >
