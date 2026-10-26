@@ -6,14 +6,15 @@
     align-items: center;
 }
 
-@mixin white-on-primary {
-    color: $white;
-    background-color: $primary-color;
+@mixin primary-on-white {
+    color: $primary-dark;
+    background-color: $white;
 }
 
-@mixin primary-on-white {
-    color: $primary-color;
-    background-color: $white;
+// Small text on orange must be black: white only reaches 3.2:1
+@mixin black-on-primary {
+    color: $black;
+    background-color: $primary-color;
 }
 
 @mixin white-on-black {

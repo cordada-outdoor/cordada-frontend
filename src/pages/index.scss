@@ -95,25 +95,24 @@
 
   .footer {
     @include horizontal-list;
-    @include white-on-primary;
+    @include black-on-primary;
     justify-content: space-between;
     a {
-      color: white;
+      color: $black;
     }
     .icon-button {
       height: 32px;
       width: 32px;
     }
     .icon-button:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      color: $black;
+      background-color: rgba(0, 0, 0, 0.1);
     }
     .footer-link {
       text-decoration: none;
       margin: 0 1em;
     }
     .footer-link:hover {
-      color: $black;
+      text-decoration: underline;
     }
   }
 
@@ -159,13 +158,10 @@
     @include horizontal-list;
   }
   .markdown-container {
-    a {
-      color: $primary-color;
-      text-decoration-color: $primary-color;
-    }
+    a,
     a:visited {
-      color: $primary-color;
-      text-decoration-color: $primary-color;
+      color: $primary-dark;
+      text-decoration-color: $primary-dark;
     }
   }
 }
@@ -200,7 +196,7 @@
       }
     }
     .selected-month {
-      color: $primary-color;
+      color: $primary-dark;
     }
   }
 }
@@ -222,7 +218,7 @@
       background-color: $primary-translucid;
       align-items: center;
       .primary-color-button {
-        color: $primary-color;
+        color: $primary-dark;
       }
     }
   }

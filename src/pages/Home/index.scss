@@ -113,7 +113,13 @@
         margin-top: -1px;
         white-space: pre-line;
         padding: 11px 20px 80px;
-        @include white-on-primary;
+        @include black-on-primary;
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: $white;
+        }
 
         .see-services-button-container {
             float: right;
