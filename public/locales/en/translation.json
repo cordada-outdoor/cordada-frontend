@@ -58,6 +58,15 @@
   },
   "embeds": {
     "viewOnInstagram": "View on Instagram",
-    "viewOnYouTube": "View on YouTube"
+    "viewOnYouTube": "View on YouTube",
+    "consentMessage": "This content is from an external service that uses cookies.",
+    "load": "Accept and show"
+  },
+  "cookies": {
+    "label": "Cookies",
+    "message": "This site uses third-party cookies (Instagram and YouTube) to show embedded content.",
+    "more": "Learn more",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }

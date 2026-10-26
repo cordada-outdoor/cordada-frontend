@@ -303,6 +303,31 @@
     letter-spacing: 0.04em;
   }
 }
+.cookie-banner {
+  position: fixed;
+  z-index: 1300;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 16px 20px;
+  color: $white;
+  background-color: $black;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  a {
+    color: $white;
+  }
+  .cookie-banner-actions {
+    display: flex;
+    gap: 8px;
+  }
+}
 .social-embed {
   display: flex;
   justify-content: center;
@@ -310,6 +335,10 @@
 }
 .embed-placeholder {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
   width: 328px;
