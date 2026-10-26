@@ -1,13 +1,11 @@
 import "./index.scss";
 
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 import {
   Box,
   CircularProgress,
-  Dialog,
   Grid,
   Stack,
   Typography,
@@ -31,7 +29,6 @@ import { theme } from "utils/theme";
 
 const SingleProject = () => {
   const { t } = useTranslation();
-  const [imgModal, setImgModal] = useState<boolean>(false);
 
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -69,7 +66,7 @@ const SingleProject = () => {
   );
 
   const image = project?.image;
-  const imgUrl = getImageUrl(image);
+  const imgUrl = getImageUrl(image, "large");
 
   const projectDate = dayjs(project?.date).format("MM/YYYY");
 
@@ -88,11 +85,8 @@ const SingleProject = () => {
         >
           {project?.title}
         </Typography>
-        <Box
-          className="project-img-container"
-          onClick={() => setImgModal(!imgModal)}
-        >
-          <img src={imgUrl ?? HomeBg} alt="project-header" />
+        <Box className="project-banner">
+          <img src={imgUrl ?? HomeBg} alt="" />
         </Box>
 
         <Grid container py={2} spacing={2}>
@@ -183,13 +177,6 @@ const SingleProject = () => {
           )}
         </Grid>
       </PageContainer>
-      <Dialog
-        maxWidth={"lg"}
-        open={imgModal}
-        onClose={() => setImgModal(!imgModal)}
-      >
-        <img alt="full-project-img" src={imgUrl ?? HomeBg} />
-      </Dialog>
     </Layout>
   );
 };
