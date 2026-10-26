@@ -36,13 +36,15 @@ const ProjectCard = ({ project, titleComponent = "h3" }: ProjectCardProps) => {
           >
             {title}
           </Typography>
-          <Typography
-            variant="caption"
-            fontWeight="bold"
-            className="project-card-client"
-          >
-            {`${client?.name ?? ""} x Cordada`}
-          </Typography>
+          {client?.name && (
+            <Typography
+              variant="caption"
+              fontWeight="bold"
+              className="project-card-client"
+            >
+              {`${client.name} x Cordada`}
+            </Typography>
+          )}
         </Box>
         {subtitle && (
           <Box className="project-card-hover" aria-hidden="true">
