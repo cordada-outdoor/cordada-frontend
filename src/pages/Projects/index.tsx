@@ -147,18 +147,21 @@ const Projects = () => {
             {t("projectsPage.filterBy")}
           </Typography>
           <Button
+            variant="text"
             onClick={() => setFilterDialog("service")}
             className={`filter-button ${filters.service !== "" ? "selected-filter-button" : ""}`}
           >
             {t("projectsPage.type")}
           </Button>
           <Button
+            variant="text"
             onClick={() => setFilterDialog("date")}
             className={`filter-button ${filters.date !== "" ? "selected-filter-button" : ""}`}
           >
             {t("projectsPage.date")}
           </Button>
           <Button
+            variant="text"
             onClick={() => setFilterDialog("client")}
             className={`filter-button ${filters.client !== "" ? "selected-filter-button" : ""}`}
           >
@@ -204,9 +207,7 @@ const Projects = () => {
                                 <Link
                                   to={`${langUrlPrefix}/project/${p.documentId}`}
                                 >
-                                  <Button className="see-more-button">
-                                    {t("seeMore")}
-                                  </Button>
+                                  <Button>{t("seeMore")}</Button>
                                 </Link>
                               </Box>
                             </Box>
@@ -232,11 +233,6 @@ const Projects = () => {
               <CircularProgress />
             ) : (
               <Button
-                variant="contained"
-                sx={{
-                  fontWeight: "bold",
-                  borderRadius: "0px",
-                }}
                 onClick={() => {
                   projectsQuery.fetchNextPage();
                 }}

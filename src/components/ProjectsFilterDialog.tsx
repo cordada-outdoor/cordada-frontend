@@ -80,7 +80,6 @@ const ProjectsFilterDialog = ({
           <Button
             onClick={() => handleSave("")}
             className="remove-filter-button"
-            variant="contained"
           >
             {t("projectsPage.removeFilter")}
           </Button>
@@ -99,7 +98,6 @@ const ProjectsFilterDialog = ({
           <Button
             onClick={() => handleSave("")}
             className="remove-filter-button"
-            variant="contained"
           >
             {t("projectsPage.removeFilter")}
           </Button>
@@ -144,7 +142,6 @@ const ProjectsFilterDialog = ({
           <Button
             onClick={() => handleSave("")}
             className="remove-filter-button"
-            variant="contained"
           >
             {t("projectsPage.removeFilter")}
           </Button>

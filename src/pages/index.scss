@@ -85,14 +85,6 @@
 
   .contact-us-section {
     padding: 12px 0;
-    .contact-us-button {
-      margin: 10px auto 20px;
-      display: block;
-      background-color: white;
-      border: 2px solid $primary-color;
-      height: 2em;
-      width: 400px;
-    }
   }
   .black-on-white {
     @include black-on-white;
@@ -237,11 +229,6 @@
 }
 @media (max-width: 900px) {
   .layout {
-    .contact-us-section {
-      .contact-us-button {
-        width: 200px;
-      }
-    }
     .footer {
       .footer-link {
         p {

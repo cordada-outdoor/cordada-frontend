@@ -1,5 +1,20 @@
 import { createTheme, responsiveFontSizes } from "@mui/material";
 
+declare module "@mui/material/styles" {
+  interface Palette {
+    white: Palette["primary"];
+  }
+  interface PaletteOptions {
+    white?: PaletteOptions["primary"];
+  }
+}
+
+declare module "@mui/material/Button" {
+  interface ButtonPropsColorOverrides {
+    white: true;
+  }
+}
+
 // Keep in sync with utils/colors.scss
 export const colors = {
   primary: "#ff521c",
@@ -32,6 +47,31 @@ export const theme = responsiveFontSizes(
       },
       background: {
         default: colors.white,
+      },
+      // For buttons on orange or photo backgrounds
+      white: {
+        main: colors.white,
+        dark: "#f2f2f2",
+        contrastText: colors.primaryDark,
+      },
+    },
+    components: {
+      MuiButton: {
+        defaultProps: {
+          variant: "contained",
+          disableElevation: true,
+        },
+        styleOverrides: {
+          root: {
+            borderRadius: 0,
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+            padding: "8px 20px",
+          },
+          text: {
+            padding: "6px 8px",
+          },
+        },
       },
     },
   }),

@@ -216,9 +216,7 @@ const Home = () => {
                               <Link
                                 to={`${langUrlPrefix}/project/${p.documentId}`}
                               >
-                                <Button className="see-more-button">
-                                  {t("seeMore")}
-                                </Button>
+                                <Button>{t("seeMore")}</Button>
                               </Link>
                             </Box>
                           </Box>
@@ -260,9 +258,7 @@ const Home = () => {
                               <Link
                                 to={`${langUrlPrefix}/project/${p.documentId}`}
                               >
-                                <Button className="see-more-button">
-                                  {t("seeMore")}
-                                </Button>
+                                <Button>{t("seeMore")}</Button>
                               </Link>
                             </Box>
                           </Box>
@@ -280,13 +276,7 @@ const Home = () => {
               className="see-projects-button-container"
               to={`${langUrlPrefix}/projects`}
             >
-              <Button
-                className="see-projects-button"
-                color="primary"
-                variant="contained"
-              >
-                {t("homePage.allProjects")}
-              </Button>
+              <Button>{t("homePage.allProjects")}</Button>
             </Link>
           </Box>
 
@@ -385,13 +375,7 @@ const Home = () => {
               className="see-services-button-container"
               to={`${langUrlPrefix + "/services"}`}
             >
-              <Button
-                className="see-services-button"
-                color="primary"
-                variant="contained"
-              >
-                {t("homePage.allServices")}
-              </Button>
+              <Button color="white">{t("homePage.allServices")}</Button>
             </Link>
           </Box>
         </Box>
@@ -407,13 +391,7 @@ const Home = () => {
               className="about-us-button-container"
               to={`${langUrlPrefix + "/about"}`}
             >
-              <Button
-                className="about-us-button"
-                color="primary"
-                variant="contained"
-              >
-                {t("aboutUs")}
-              </Button>
+              <Button>{t("aboutUs")}</Button>
             </Link>
           </Box>
           <ContactUs titleVariant="h3" colorScheme="white-on-black" />

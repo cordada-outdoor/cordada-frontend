@@ -83,6 +83,7 @@ const Menu = ({
                 className="main-menu-logo"
               />
               <Button
+                variant="text"
                 className="right-mobile-menu"
                 onClick={() => setIsDrawerOpen(!isDrawerOpen)}
               >

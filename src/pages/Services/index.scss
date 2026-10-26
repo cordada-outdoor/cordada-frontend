@@ -47,14 +47,9 @@
                     height: auto;
                 }
                 .see-more-button {
-                    @include white-on-primary;
                     position: absolute;
                     left: 30px;
-                    border-radius: 0;
                     bottom: 10px;
-                }
-                .see-more-button:hover {
-                    @include primary-on-white;
                 }
             }
             .service-title {

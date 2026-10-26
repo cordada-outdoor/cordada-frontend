@@ -79,13 +79,6 @@
                         width: 100%;
                         align-items: center;
                         justify-content: center;
-                        .see-more-button {
-                            @include white-on-primary;
-                            border-radius: 0;
-                        }
-                        .see-more-button:hover {
-                            @include primary-on-white;
-                        }
                     }
                 }
             }
@@ -114,10 +107,6 @@
         .see-projects-button-container {
             margin-top: 20px;
             float: right;
-            .see-projects-button {
-                @include white-on-primary;
-                border-radius: 0;
-            }
         }
     }
     .home-services-section {
@@ -128,10 +117,6 @@
 
         .see-services-button-container {
             float: right;
-            .see-services-button {
-                @include primary-on-white;
-                border-radius: 0;
-            }
         }
     }
     .home-about-section {
@@ -148,10 +133,6 @@
             }
             .about-us-button-container {
                 position: absolute;
-                .about-us-button {
-                    @include white-on-primary;
-                    border-radius: 0;
-                }
             }
         }
     }
@@ -177,13 +158,6 @@
                     width: 100%;
                     align-items: center;
                     justify-content: center;
-                    .see-more-button {
-                        @include white-on-primary;
-                        border-radius: 0;
-                    }
-                    .see-more-button:hover {
-                        @include primary-on-white;
-                    }
                 }
             }
         }
@@ -207,9 +181,7 @@
     }
     .home-services-section {
         .see-services-button-container {
-            .see-services-button {
-                margin-top: 10px;
-            }
+            margin-top: 10px;
         }
     }
     .home-about-section {
