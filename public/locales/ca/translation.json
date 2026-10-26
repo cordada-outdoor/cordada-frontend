@@ -42,5 +42,7 @@
     "date": "Data",
     "client": "Client",
     "removeFilter": "Treure filtre"
-  }
+  },
+  "menu": "Menú",
+  "close": "Tanca"
 }

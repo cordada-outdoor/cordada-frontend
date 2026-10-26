@@ -42,5 +42,7 @@
     "date": "Fecha",
     "client": "Cliente",
     "removeFilter": "Quitar filtro"
-  }
+  },
+  "menu": "Menú",
+  "close": "Cerrar"
 }

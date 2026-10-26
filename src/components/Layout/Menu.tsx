@@ -1,12 +1,12 @@
 import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import {
   AppBar,
   Box,
-  Button,
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -73,11 +73,9 @@ const Menu = ({
   const { langUrlPrefix } = useUrlLang();
   const { pathname } = useLocation();
   const { t, i18n } = useTranslation();
-  const history = useHistory();
 
   const urlWithoutLang = getUrlWithoutLang(pathname);
   if (isMobile) {
-    const languageName = findLangName(i18n.language);
     return (
       <>
         <MenuScroll position="fixed">
@@ -87,18 +85,21 @@ const Menu = ({
             elevation={0}
           >
             <Toolbar className="toolbar">
-              <LogoSmall
-                onClick={() => history.push(`${langUrlPrefix + "/"}`)}
-                className="main-menu-logo"
-              />
-              <Button
-                variant="text"
-                className="right-mobile-menu"
-                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+              <Link
+                to={langUrlPrefix + "/"}
+                className="logo-link"
+                aria-label="Cordada Outdoor"
               >
-                <Typography>{languageName + " >"}</Typography>
+                <LogoSmall className="main-menu-logo" />
+              </Link>
+              <IconButton
+                className="right-mobile-menu"
+                aria-label={t("menu")}
+                aria-expanded={isDrawerOpen}
+                onClick={() => setIsDrawerOpen(true)}
+              >
                 <MenuIcon className="menu-icon" />
-              </Button>
+              </IconButton>
             </Toolbar>
           </AppBar>
         </MenuScroll>
@@ -106,8 +107,34 @@ const Menu = ({
           className="menu-drawer"
           anchor="right"
           open={isDrawerOpen}
-          onClose={() => setIsDrawerOpen(!isDrawerOpen)}
+          onClose={() => setIsDrawerOpen(false)}
         >
+          <Box className="drawer-header">
+            <Link
+              to={langUrlPrefix + "/"}
+              className="logo-link"
+              aria-label="Cordada Outdoor"
+            >
+              <LogoSmall className="drawer-logo" />
+            </Link>
+            <IconButton
+              aria-label={t("close")}
+              onClick={() => setIsDrawerOpen(false)}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </IconButton>
+          </Box>
           <List className="main-navigation">
             {navigationOptions.map((aN) => (
               <ListItem key={aN.value} className="navigation-item">

@@ -42,5 +42,7 @@
     "date": "Date",
     "client": "Client",
     "removeFilter": "Remove filter"
-  }
+  },
+  "menu": "Menu",
+  "close": "Close"
 }
