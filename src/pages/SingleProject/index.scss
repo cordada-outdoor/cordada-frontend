@@ -46,4 +46,85 @@
       margin-bottom: 16px;
     }
   }
+  .project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+    margin-top: 32px;
+    .project-gallery-item {
+      padding: 0;
+      border: 0;
+      cursor: zoom-in;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background-color: $black;
+      &:focus-visible {
+        outline: 3px solid $primary-dark;
+        outline-offset: 2px;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      &:hover img {
+        transform: scale(1.03);
+      }
+    }
+  }
+}
+
+// Rendered in a portal, outside .project-detail
+.gallery-lightbox {
+  .MuiDialog-paper {
+    position: relative;
+    margin: 16px;
+    background-color: $black;
+    border-radius: 0;
+  }
+  .gallery-lightbox-image {
+    display: block;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 32px);
+    object-fit: contain;
+  }
+  .gallery-lightbox-close,
+  .gallery-lightbox-nav {
+    position: absolute;
+    color: $white;
+    background-color: rgba(0, 0, 0, 0.6);
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .gallery-lightbox-close {
+    top: 8px;
+    right: 8px;
+  }
+  .gallery-lightbox-nav {
+    top: 50%;
+    transform: translateY(-50%);
+    &.prev {
+      left: 8px;
+    }
+    &.next {
+      right: 8px;
+    }
+  }
+  .gallery-lightbox-counter {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    padding: 2px 10px;
+    color: $white;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 0.875rem;
+  }
 }

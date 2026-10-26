@@ -47,5 +47,11 @@
     "clearFilters": "Clear filters"
   },
   "menu": "Menu",
-  "close": "Close"
+  "close": "Close",
+  "gallery": {
+    "label": "Gallery",
+    "open": "Open photo",
+    "previous": "Previous photo",
+    "next": "Next photo"
+  }
 }

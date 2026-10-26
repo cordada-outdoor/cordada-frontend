@@ -47,5 +47,11 @@
     "clearFilters": "Treure filtres"
   },
   "menu": "Menú",
-  "close": "Tanca"
+  "close": "Tanca",
+  "gallery": {
+    "label": "Galeria",
+    "open": "Obre la foto",
+    "previous": "Foto anterior",
+    "next": "Foto següent"
+  }
 }

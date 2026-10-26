@@ -107,11 +107,7 @@ const SingleProject = () => {
 
         <Grid container py={2} spacing={2}>
           {project?.gallery?.length && (
-            <Grid
-              sx={{ display: "flex", width: "100%", justifyContent: "center" }}
-              item
-              xs={12}
-            >
+            <Grid item xs={12}>
               <ProjectGallery gallery={project.gallery} />
             </Grid>
           )}
