@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 import {
   AppBar,
@@ -102,9 +102,7 @@ const Menu = ({
           <List className="main-navigation">
             {navigationOptions.map((aN) => (
               <ListItem key={aN.value} className="navigation-item">
-                <ListItemButton
-                  onClick={() => history.push(`${langUrlPrefix + aN.value}`)}
-                >
+                <ListItemButton component={Link} to={langUrlPrefix + aN.value}>
                   <ListItemText
                     primary={
                       <Typography fontWeight={700}>{t(aN.label)}</Typography>
@@ -118,7 +116,8 @@ const Menu = ({
             <List className="bottom-menu-navigation">
               <ListItem className="navigation-item">
                 <ListItemButton
-                  onClick={() => history.push(`${langUrlPrefix}/legal-notice`)}
+                  component={Link}
+                  to={`${langUrlPrefix}/legal-notice`}
                 >
                   <ListItemText
                     primary={
@@ -131,9 +130,8 @@ const Menu = ({
               </ListItem>
               <ListItem className="navigation-item">
                 <ListItemButton
-                  onClick={() =>
-                    history.push(`${langUrlPrefix}/privacy-policy`)
-                  }
+                  component={Link}
+                  to={`${langUrlPrefix}/privacy-policy`}
                 >
                   <ListItemText
                     primary={
@@ -152,11 +150,14 @@ const Menu = ({
                   i18n.language.toUpperCase() === aL.toUpperCase();
                 return (
                   <ListItem
-                    onClick={() => history.push(`/${aL + urlWithoutLang}`)}
                     className={isSelected ? "primary-color-button" : ""}
                     key={aL}
                   >
-                    <ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to={`/${aL + urlWithoutLang}`}
+                      lang={aL}
+                    >
                       <ListItemText
                         primary={
                           <Typography fontWeight={700}>{langName}</Typography>
@@ -189,9 +190,8 @@ const Menu = ({
                   <ListItem key={aN.value}>
                     <ListItemButton
                       className={`navigation-item ${isSelected ? "selected-item-in-menu" : ""}`}
-                      onClick={() =>
-                        history.push(`${langUrlPrefix + aN.value}`)
-                      }
+                      component={Link}
+                      to={langUrlPrefix + aN.value}
                     >
                       <ListItemText
                         primary={
@@ -221,7 +221,9 @@ const Menu = ({
                             ? "selected-item-in-menu language-button"
                             : "language-button"
                         }
-                        onClick={() => history.push(`/${aL + urlWithoutLang}`)}
+                        component={Link}
+                        to={`/${aL + urlWithoutLang}`}
+                        lang={aL}
                       >
                         <ListItemText
                           primary={
