@@ -10,6 +10,7 @@ export type Project = {
   body: string;
   subtitle: string;
   date: string;
+  createdAt: string;
   services: Service[];
   gallery: any[];
 };

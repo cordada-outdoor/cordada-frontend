@@ -12,19 +12,12 @@ const ContactUs = ({ colorScheme, titleVariant = "h3" }: ContactUsProps) => {
 
   return (
     <Box className={`contact-us-section ${colorScheme}`}>
-      <Typography variant={titleVariant}>
+      <Typography variant={titleVariant} component="h2">
         {t("homePage.anyQuestions")}
       </Typography>
       <Box m={2}>
         <a href="mailto:info@cordadaoutdoor.com">
-          <Button
-            sx={{
-              borderRadius: 0,
-            }}
-            variant="contained"
-          >
-            {t("homePage.writeUs")}
-          </Button>
+          <Button>{t("homePage.writeUs")}</Button>
         </a>
       </Box>
     </Box>

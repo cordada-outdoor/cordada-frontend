@@ -1,12 +1,15 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 
 const PrivacyPolicy = () => {
   return (
     <Layout>
-      <Box p={5}>
-        <Typography variant="h3">Política de privacidad</Typography>
+      <PageContainer readable>
+        <Typography variant="h3" component="h1">
+          Política de privacidad
+        </Typography>
         <Typography mt={3} variant="body1">
           CORDADA OUTDOOR S.L. se compromete a proteger la privacidad de los
           usuarios que accedan a esta web y/o cualquiera de sus servicios. La
@@ -22,7 +25,7 @@ const PrivacyPolicy = () => {
           contenido de las webs de terceros, ni acepta cualquier responsabilidad
           por el contenido o las políticas de privacidad de estas webs.
         </Typography>
-        <Typography mt={5} variant="h5">
+        <Typography mt={5} variant="h5" component="h2">
           Información básica sobre el tratamiento de datos (Reglamento (UE)
           2016/679 y LO 3/2018)
         </Typography>
@@ -82,7 +85,7 @@ const PrivacyPolicy = () => {
             </Typography>
           </li>
         </ul>
-        <Typography mt={5} variant="h5">
+        <Typography mt={5} variant="h5" component="h2">
           Preguntas sobre privacidad
         </Typography>
         <Typography mt={3} variant="body1">
@@ -92,7 +95,7 @@ const PrivacyPolicy = () => {
           derechos digitales (LOPDGDD), le ofrecemos la siguiente información
           sobre el tratamiento de sus datos personales:
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Quién es el responsable del tratamiento de sus datos?
         </Typography>
         <Typography mt={1} variant="body1">
@@ -101,7 +104,7 @@ const PrivacyPolicy = () => {
           <br />
           Nuestros datos figuran en el aviso legal de esta web.
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Con qué finalidad tratamos sus datos personales?
         </Typography>
         <ul>
@@ -128,7 +131,7 @@ const PrivacyPolicy = () => {
             </Typography>
           </li>
         </ul>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Cuánto tiempo conservaremos sus datos?
         </Typography>
         <Typography mt={3} variant="body1">
@@ -137,7 +140,7 @@ const PrivacyPolicy = () => {
           participa en una promoción mientras esté activa, y luego, durante los
           plazos establecidos para cumplir con nuestras obligaciones legales.
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Cuál es la legitimación para el tratamiento de sus datos?
         </Typography>
         <Typography mt={3} variant="body1">
@@ -150,14 +153,14 @@ const PrivacyPolicy = () => {
           representantes legales. Si no es así, el representante legal del menor
           nos lo tiene que comunicar tan pronto como tenga conocimiento.
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿A qué destinatarios se comunicarán sus datos?
         </Typography>
         <Typography mt={3} variant="body1">
           Los datos no serán comunicados a terceros, salvo que lo exija una Ley
           o sea necesario para cumplir con la finalidad del tratamiento.
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Cuáles son sus derechos cuando nos facilita sus datos?
         </Typography>
         <ul>
@@ -203,14 +206,14 @@ const PrivacyPolicy = () => {
             </Typography>
           </li>
         </ul>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Cómo puede ejercer sus derechos?
         </Typography>
         <Typography mt={3} variant="body1">
           Enviando un escrito adjuntando una copia de un documento que lo
           identifique, a nuestra dirección física o electrónica.
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Cómo hemos obtenido sus datos?
         </Typography>
         <Typography mt={3} variant="body1">
@@ -224,7 +227,7 @@ const PrivacyPolicy = () => {
           Los datos que estén marcados con un asterisco serán obligatorios para
           poder darle el servicio solicitado.
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Qué datos tratamos?
         </Typography>
         <Typography mt={3} variant="body1">
@@ -253,7 +256,7 @@ const PrivacyPolicy = () => {
           necesarios para la prestación de nuestros servicios y la gestión de
           nuestra actividad.
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Usamos cookies?
         </Typography>
         <Typography mt={3} variant="body1">
@@ -262,7 +265,7 @@ const PrivacyPolicy = () => {
           navegador para ser avisado de la utilización de cookies y para evitar
           su uso.
         </Typography>
-        <Typography mt={5} variant="h6">
+        <Typography mt={5} variant="h6" component="h3">
           ¿Qué medidas de seguridad aplicamos?
         </Typography>
         <Typography mt={3} variant="body1">
@@ -298,7 +301,7 @@ const PrivacyPolicy = () => {
             </Typography>
           </li>
         </ul>
-      </Box>
+      </PageContainer>
     </Layout>
   );
 };

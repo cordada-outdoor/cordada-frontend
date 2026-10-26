@@ -41,6 +41,32 @@
     "type": "Tipus",
     "date": "Data",
     "client": "Client",
-    "removeFilter": "Treure filtre"
+    "year": "Any",
+    "month": "Mes",
+    "any": "Tots",
+    "clearFilters": "Treure filtres",
+    "previous": "Projecte anterior",
+    "next": "Projecte següent"
+  },
+  "menu": "Menú",
+  "close": "Tanca",
+  "gallery": {
+    "label": "Galeria",
+    "open": "Obre la foto",
+    "previous": "Foto anterior",
+    "next": "Foto següent"
+  },
+  "embeds": {
+    "viewOnInstagram": "Veure a Instagram",
+    "viewOnYouTube": "Veure a YouTube",
+    "consentMessage": "Aquest contingut és d'un servei extern que fa servir galetes.",
+    "load": "Accepta i mostra"
+  },
+  "cookies": {
+    "label": "Galetes",
+    "message": "Aquest web fa servir galetes de tercers (Instagram i YouTube) per mostrar contingut incrustat.",
+    "more": "Més informació",
+    "accept": "Accepta",
+    "decline": "Rebutja"
   }
 }

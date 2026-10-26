@@ -1,7 +1,6 @@
 @import "/src/utils/colors.scss";
 @import "/src/utils/mixins.scss";
 .services {
-    @include page-padding;
     scroll-behavior: smooth;
     .service-menu {
         padding: 24px 0;
@@ -19,6 +18,7 @@
                 height: 100%;
                 .menu-item-title {
                     position: absolute;
+                    text-transform: uppercase;
                 }
             }
         }
@@ -27,14 +27,7 @@
         padding-top: 50px;
         .service-container {
             margin: 100px 12px;
-            opacity: 0;
-            transform: translateX(-20vw);
-            visibility: hidden;
-            transition:
-                opacity 1200ms ease-out,
-                transform 600ms ease-out,
-                visibility 1200ms ease-out;
-            will-change: opacity, transform, visibility;
+            @include reveal-on-scroll;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -47,40 +40,29 @@
                     height: auto;
                 }
                 .see-more-button {
-                    @include white-on-primary;
                     position: absolute;
                     left: 30px;
-                    border-radius: 0;
                     bottom: 10px;
-                }
-                .see-more-button:hover {
-                    @include primary-on-white;
                 }
             }
             .service-title {
                 color: $primary-color;
+                text-transform: lowercase;
                 text-align: center;
                 margin-bottom: 12px;
             }
         }
         .right-to-left {
-            transform: translateX(20vw);
             flex-direction: row-reverse;
             .see-more-button {
                 right: 30px;
                 left: auto !important;
             }
         }
-        .service-container.is-visible {
-            opacity: 1;
-            transform: none;
-            visibility: visible;
-        }
     }
 }
 @media (max-width: 900px) {
     .services {
-        padding: 50px 20px 10px;
         .services-content-container {
             .service-container {
                 flex-direction: column;

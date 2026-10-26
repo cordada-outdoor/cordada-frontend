@@ -1,12 +1,12 @@
 import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import {
   AppBar,
   Box,
-  Button,
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -48,6 +48,15 @@ const navigationOptions = [
   { label: "us", value: "/about" },
 ];
 
+// A project detail page belongs to the projects section
+const isActivePage = (navValue: string, urlWithoutLang: string) => {
+  if (navValue === "/") return urlWithoutLang === "/" || urlWithoutLang === "";
+  if (navValue === "/projects" && urlWithoutLang.startsWith("/project/")) {
+    return true;
+  }
+  return urlWithoutLang.startsWith(navValue);
+};
+
 interface MenuProps {
   appbarPosition?: AppbarPosition;
   primaryAppbar?: boolean;
@@ -64,11 +73,9 @@ const Menu = ({
   const { langUrlPrefix } = useUrlLang();
   const { pathname } = useLocation();
   const { t, i18n } = useTranslation();
-  const history = useHistory();
 
   const urlWithoutLang = getUrlWithoutLang(pathname);
   if (isMobile) {
-    const languageName = findLangName(i18n.language);
     return (
       <>
         <MenuScroll position="fixed">
@@ -78,17 +85,21 @@ const Menu = ({
             elevation={0}
           >
             <Toolbar className="toolbar">
-              <LogoSmall
-                onClick={() => history.push(`${langUrlPrefix + "/"}`)}
-                className="main-menu-logo"
-              />
-              <Button
-                className="right-mobile-menu"
-                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+              <Link
+                to={langUrlPrefix + "/"}
+                className="logo-link"
+                aria-label="Cordada Outdoor"
               >
-                <Typography>{languageName + " >"}</Typography>
+                <LogoSmall className="main-menu-logo" />
+              </Link>
+              <IconButton
+                className="right-mobile-menu"
+                aria-label={t("menu")}
+                aria-expanded={isDrawerOpen}
+                onClick={() => setIsDrawerOpen(true)}
+              >
                 <MenuIcon className="menu-icon" />
-              </Button>
+              </IconButton>
             </Toolbar>
           </AppBar>
         </MenuScroll>
@@ -96,19 +107,50 @@ const Menu = ({
           className="menu-drawer"
           anchor="right"
           open={isDrawerOpen}
-          onClose={() => setIsDrawerOpen(!isDrawerOpen)}
+          onClose={() => setIsDrawerOpen(false)}
         >
-          <List>
+          <Box className="drawer-header">
+            <Link
+              to={langUrlPrefix + "/"}
+              className="logo-link"
+              aria-label="Cordada Outdoor"
+            >
+              <LogoSmall className="drawer-logo" />
+            </Link>
+            <IconButton
+              aria-label={t("close")}
+              onClick={() => setIsDrawerOpen(false)}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </IconButton>
+          </Box>
+          <List className="main-navigation">
             {navigationOptions.map((aN) => (
               <ListItem key={aN.value} className="navigation-item">
                 <ListItemButton
-                  onClick={() => history.push(`${langUrlPrefix + aN.value}`)}
+                  component={Link}
+                  to={langUrlPrefix + aN.value}
+                  className={
+                    isActivePage(aN.value, urlWithoutLang) ? "active-page" : ""
+                  }
+                  aria-current={
+                    isActivePage(aN.value, urlWithoutLang) ? "page" : undefined
+                  }
                 >
                   <ListItemText
                     primary={
-                      <Typography fontWeight={700}>
-                        {t(aN.label).toUpperCase()}
-                      </Typography>
+                      <Typography fontWeight={700}>{t(aN.label)}</Typography>
                     }
                   />
                 </ListItemButton>
@@ -119,7 +161,8 @@ const Menu = ({
             <List className="bottom-menu-navigation">
               <ListItem className="navigation-item">
                 <ListItemButton
-                  onClick={() => history.push(`${langUrlPrefix}/legal-notice`)}
+                  component={Link}
+                  to={`${langUrlPrefix}/legal-notice`}
                 >
                   <ListItemText
                     primary={
@@ -132,9 +175,8 @@ const Menu = ({
               </ListItem>
               <ListItem className="navigation-item">
                 <ListItemButton
-                  onClick={() =>
-                    history.push(`${langUrlPrefix}/privacy-policy`)
-                  }
+                  component={Link}
+                  to={`${langUrlPrefix}/privacy-policy`}
                 >
                   <ListItemText
                     primary={
@@ -153,11 +195,14 @@ const Menu = ({
                   i18n.language.toUpperCase() === aL.toUpperCase();
                 return (
                   <ListItem
-                    onClick={() => history.push(`/${aL + urlWithoutLang}`)}
                     className={isSelected ? "primary-color-button" : ""}
                     key={aL}
                   >
-                    <ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to={`/${aL + urlWithoutLang}`}
+                      lang={aL}
+                    >
                       <ListItemText
                         primary={
                           <Typography fontWeight={700}>{langName}</Typography>
@@ -181,23 +226,28 @@ const Menu = ({
           position="fixed"
         >
           <Toolbar className="toolbar">
+            <Link
+              to={langUrlPrefix + "/"}
+              className="logo-link"
+              aria-label="Cordada Outdoor"
+            >
+              <LogoSmall className="main-menu-logo" />
+            </Link>
             <List className="navigation-list">
               {navigationOptions.map((aN) => {
-                const isSelected =
-                  window.location.pathname.includes(aN.value) &&
-                  aN.value !== "/";
+                const isSelected = isActivePage(aN.value, urlWithoutLang);
                 return (
                   <ListItem key={aN.value}>
                     <ListItemButton
-                      className={`navigation-item ${isSelected ? "selected-item-in-menu" : ""}`}
-                      onClick={() =>
-                        history.push(`${langUrlPrefix + aN.value}`)
-                      }
+                      className={`navigation-item ${isSelected ? "active-page" : ""}`}
+                      aria-current={isSelected ? "page" : undefined}
+                      component={Link}
+                      to={langUrlPrefix + aN.value}
                     >
                       <ListItemText
                         primary={
                           <Typography fontWeight={700}>
-                            {t(aN.label).toUpperCase()}
+                            {t(aN.label)}
                           </Typography>
                         }
                       />
@@ -222,7 +272,9 @@ const Menu = ({
                             ? "selected-item-in-menu language-button"
                             : "language-button"
                         }
-                        onClick={() => history.push(`/${aL + urlWithoutLang}`)}
+                        component={Link}
+                        to={`/${aL + urlWithoutLang}`}
+                        lang={aL}
                       >
                         <ListItemText
                           primary={
@@ -233,9 +285,6 @@ const Menu = ({
                     </ListItem>
                   );
                 })}
-                <ListItem>
-                  <LogoSmall className="main-menu-logo" />
-                </ListItem>
               </List>
             </Box>
           </Toolbar>

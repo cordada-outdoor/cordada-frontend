@@ -1,38 +1,28 @@
 import "./index.scss";
 
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
-import {
-  Box,
-  CircularProgress,
-  Dialog,
-  Grid,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
 
 import HomeBg from "assets/images/home_bg.jpg";
 import ClientInProject from "components/ClientInProject";
+import ContactUs from "components/Common/ContactUs";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 import ProjectGallery from "components/ProjectGallery";
+import ProjectNavigation from "components/ProjectNavigation";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
 import { Service } from "models/service";
 import { getImageUrl, joinWithCommasAndAmpersand } from "utils";
-import { theme } from "utils/theme";
 
 const SingleProject = () => {
   const { t } = useTranslation();
-  const [imgModal, setImgModal] = useState<boolean>(false);
-
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const { id } = useParams<{
     id: string;
@@ -54,7 +44,7 @@ const SingleProject = () => {
   if (projectQuery.isLoading) {
     return (
       <Layout>
-        <CircularProgress sx={{ color: "#ff521c" }} />
+        <CircularProgress className="loading-indicator" />
       </Layout>
     );
   }
@@ -68,122 +58,68 @@ const SingleProject = () => {
   );
 
   const image = project?.image;
-  const imgUrl = getImageUrl(image);
+  const imgUrl = getImageUrl(image, "large");
 
   const projectDate = dayjs(project?.date).format("MM/YYYY");
 
-  const dataVariant = isMobile ? "h6" : "h5";
-
   return (
     <Layout>
-      <Box className="project-detail" pt={[4, 4, 0]}>
+      <PageContainer className="project-detail">
         <Typography
           className="project-title"
           variant="h3"
+          component="h1"
           color="primary"
           fontWeight={600}
-          p={2}
+          mb={3}
         >
           {project?.title}
         </Typography>
-        <Box
-          className="project-img-container"
-          onClick={() => setImgModal(!imgModal)}
-        >
-          <img src={imgUrl ?? HomeBg} alt="project-header" />
+        <Box className="project-banner">
+          <img src={imgUrl ?? HomeBg} alt="" />
         </Box>
 
-        <Grid container p={2} spacing={2}>
-          <Grid item md={12} lg={3} className="project-data">
-            <table>
-              {client && (
-                <tr className="project-data-element">
-                  <td>
-                    <Typography variant={dataVariant}>
-                      {t("projectsPage.client")}
-                    </Typography>
-                  </td>
-                  <td>
-                    <Typography
-                      fontWeight={700}
-                      variant={dataVariant}
-                      className="project-data-primary"
-                    >
-                      {client?.name}
-                    </Typography>
-                  </td>
-                </tr>
-              )}
-              <tr className="project-data-element">
-                <td>
-                  <Typography variant={dataVariant}>
-                    {t("projectsPage.date")}
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    fontWeight={700}
-                    variant={dataVariant}
-                    className="project-data-primary"
-                  >
-                    {projectDate}
-                  </Typography>
-                </td>
-              </tr>
-              <tr className="project-data-element">
-                <td>
-                  <Typography variant={dataVariant}>
-                    {t("projectsPage.type")}
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    fontWeight={700}
-                    variant={dataVariant}
-                    className="project-data-primary"
-                  >
-                    {serviceNames}
-                  </Typography>
-                </td>
-              </tr>
-            </table>
-          </Grid>
-          <Grid item md={12} lg={6} className="project-body">
-            <Stack gap={2}>
-              <Typography
-                variant={dataVariant}
-                color="primary"
-                fontWeight="bold"
-              >
-                {project?.subtitle}
-              </Typography>
-              <RenderMarkdown markdown={project?.body} />
-            </Stack>
-          </Grid>
+        <Box component="dl" className="project-meta">
+          {client && (
+            <div>
+              <dt>{t("projectsPage.client")}</dt>
+              <dd className="project-meta-client">
+                <ClientInProject documentId={client.documentId} />
+                {client.name}
+              </dd>
+            </div>
+          )}
+          <div>
+            <dt>{t("projectsPage.date")}</dt>
+            <dd>{projectDate}</dd>
+          </div>
+          {serviceNames && (
+            <div>
+              <dt>{t("projectsPage.type")}</dt>
+              <dd>{serviceNames}</dd>
+            </div>
+          )}
+        </Box>
+
+        <Box className="project-body">
+          {project?.subtitle && (
+            <Typography variant="h5" component="p" className="project-subtitle">
+              {project.subtitle}
+            </Typography>
+          )}
+          <RenderMarkdown markdown={project?.body} />
+        </Box>
+
+        <Grid container py={2} spacing={2}>
           {project?.gallery?.length && (
-            <Grid
-              sx={{ display: "flex", width: "100%", justifyContent: "center" }}
-              item
-              xs={12}
-            >
+            <Grid item xs={12}>
               <ProjectGallery gallery={project.gallery} />
             </Grid>
           )}
-
-          {client && (
-            <Grid item xs={12}>
-              <ClientInProject documentId={client?.documentId} />
-            </Grid>
-          )}
         </Grid>
-      </Box>
-      <Dialog
-        maxWidth={"lg"}
-        open={imgModal}
-        onClose={() => setImgModal(!imgModal)}
-      >
-        <img alt="full-project-img" src={imgUrl ?? HomeBg} />
-      </Dialog>
+        <ProjectNavigation project={project} />
+        <ContactUs titleVariant="h4" colorScheme="black-on-white" />
+      </PageContainer>
     </Layout>
   );
 };

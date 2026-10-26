@@ -10,17 +10,23 @@
   }
   .MuiAppBar-colorPrimary.primary-appbar {
     background-color: $primary-color;
+    color: $black;
   }
   .appbar {
     transition: 0.2s;
     .toolbar {
-      justify-content: space-between;
       flex-direction: row;
+      .logo-link {
+        display: flex;
+        color: inherit;
+        margin-right: 40px;
+      }
       .MuiListItem-padding {
         padding: 0;
       }
       .navigation-list {
         @include horizontal-list;
+        text-transform: uppercase;
         .navigation-item {
           padding-top: 0;
           padding-bottom: 0;
@@ -34,7 +40,11 @@
       .selected-item-in-menu {
         @include primary-on-white;
       }
+      .active-page {
+        box-shadow: inset 0 -3px 0 $primary-color;
+      }
       .right-menu {
+        margin-left: auto;
         .lang-list {
           @include horizontal-list;
           .language-button {
@@ -57,22 +67,29 @@
         transform: scale(3.5);
       }
     }
+    &.primary-appbar .toolbar .active-page {
+      box-shadow: inset 0 -3px 0 $black;
+    }
   }
   .mobile-appbar {
     color: $primary-color;
     overflow-y: hidden;
+    .toolbar {
+      justify-content: space-between;
+      .logo-link {
+        margin-right: 0;
+      }
+    }
     .right-mobile-menu {
       color: $primary-color;
-      @include horizontal-list;
       .menu-icon {
-        margin-left: 10px;
         height: 32px;
         width: 32px;
       }
     }
   }
   .mobile-appbar.primary-appbar {
-    background-color: black;
+    background-color: $black;
   }
 
   .mobile-appbar:active {
@@ -85,14 +102,7 @@
 
   .contact-us-section {
     padding: 12px 0;
-    .contact-us-button {
-      margin: 10px auto 20px;
-      display: block;
-      background-color: white;
-      border: 2px solid $primary-color;
-      height: 2em;
-      width: 400px;
-    }
+    text-align: center;
   }
   .black-on-white {
     @include black-on-white;
@@ -103,30 +113,32 @@
 
   .footer {
     @include horizontal-list;
-    @include white-on-primary;
+    @include black-on-primary;
     justify-content: space-between;
     a {
-      color: white;
+      color: $black;
     }
     .icon-button {
       height: 32px;
       width: 32px;
     }
     .icon-button:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      color: black;
+      background-color: rgba(0, 0, 0, 0.1);
     }
     .footer-link {
       text-decoration: none;
       margin: 0 1em;
     }
     .footer-link:hover {
-      color: black;
+      text-decoration: underline;
     }
   }
 
   .preview-image-container {
     aspect-ratio: 3 / 2;
+    .preview-content .MuiTypography-caption {
+      text-transform: uppercase;
+    }
     position: relative;
     color: white;
     .preview-content {
@@ -167,52 +179,213 @@
     @include horizontal-list;
   }
   .markdown-container {
-    a {
-      color: $primary-color;
-      text-decoration-color: $primary-color;
-    }
+    a,
     a:visited {
-      color: $primary-color;
-      text-decoration-color: $primary-color;
+      color: $primary-dark;
+      text-decoration-color: $primary-dark;
     }
+  }
+}
+// Hidden visually but still read by screen readers
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+// Markdown headings are rendered one level down (pages own the h1) but keep
+// the browser's default size for their original level
+.markdown-container {
+  .md-h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  .md-h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+  }
+  .md-h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+  }
+  .md-h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+  }
+  .md-h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+  }
+}
+.project-card-link {
+  display: block;
+  color: $white;
+  text-decoration: none;
+  border: 5px solid $primary-color;
+  &:focus-visible {
+    outline: 3px solid $primary-dark;
+    outline-offset: 3px;
+  }
+  .project-card {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background-color: $black;
+  }
+  .project-card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .project-card-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px 10px 8px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+    transition: opacity 0.2s;
+  }
+  .project-card-title {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.15;
+  }
+  .project-card-client {
+    display: block;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  // Touch devices have no hover, so they only get the caption
+  .project-card-hover {
+    display: none;
+  }
+  @media (hover: hover) {
+    .project-card-hover {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 14px;
+      background-color: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    &:hover,
+    &:focus-visible {
+      .project-card-hover {
+        opacity: 1;
+      }
+      .project-card-caption {
+        opacity: 0;
+      }
+    }
+  }
+  .project-card-description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+  .project-card-more {
+    margin-top: auto;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+.cookie-banner {
+  position: fixed;
+  z-index: 1300;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 16px 20px;
+  color: $white;
+  background-color: $black;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  a {
+    color: $white;
+  }
+  .cookie-banner-actions {
+    display: flex;
+    gap: 8px;
+  }
+}
+.social-embed {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+.embed-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  width: 328px;
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+  text-align: center;
+  &.youtube {
+    width: 640px;
+    aspect-ratio: 16 / 9;
+  }
+  a {
+    font-weight: 700;
+    color: $primary-dark;
   }
 }
 .loading-indicator {
   margin: 1em;
   color: $primary-color !important;
 }
-.datepicker-container {
-  .datepicker-header-container {
+.menu-drawer {
+  .drawer-header {
     display: flex;
-    flex-direction: row;
-    width: 100%;
     align-items: center;
-    justify-content: center;
-    svg {
-      height: 20px;
-      width: auto;
-    }
-  }
-  .datepicker-months-container {
-    text-align: center;
-    width: 100%;
-    margin-top: 10px;
-    .datepicker-month {
-      cursor: pointer;
-      .datepicker-month-text {
-        font-weight: 700;
-      }
-      :hover {
-        background-color: $primary-translucid;
-        border-radius: 5px;
-      }
-    }
-    .selected-month {
+    justify-content: space-between;
+    padding: 12px 8px 12px 16px;
+    .logo-link {
+      display: flex;
       color: $primary-color;
     }
+    // The SVG has a lot of built-in padding, like .main-menu-logo
+    .drawer-logo {
+      height: 32px;
+      width: 32px;
+      margin-left: 12px;
+      transform: scale(3.5);
+    }
   }
-}
-.menu-drawer {
+  .main-navigation {
+    flex: 1;
+    text-transform: uppercase;
+    .active-page {
+      color: $primary-dark;
+      box-shadow: inset 4px 0 0 $primary-color;
+    }
+  }
   .MuiPaper-root {
     min-width: 70vw;
     display: flex;
@@ -230,18 +403,13 @@
       background-color: $primary-translucid;
       align-items: center;
       .primary-color-button {
-        color: $primary-color;
+        color: $primary-dark;
       }
     }
   }
 }
 @media (max-width: 900px) {
   .layout {
-    .contact-us-section {
-      .contact-us-button {
-        width: 200px;
-      }
-    }
     .footer {
       .footer-link {
         p {

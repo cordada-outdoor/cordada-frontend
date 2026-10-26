@@ -15,6 +15,7 @@ import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
+import PageContainer from "components/Layout/PageContainer";
 import ServiceDescription from "components/ServiceDescription";
 import { http } from "http/client";
 import { getImageUrl, isEven } from "utils";
@@ -53,8 +54,8 @@ const Services = () => {
 
   return (
     <Layout>
-      <Box className="services">
-        <Typography variant="h3" fontWeight={600}>
+      <PageContainer className="services">
+        <Typography variant="h3" component="h1" fontWeight={600}>
           {t("ourServices")}
         </Typography>
         <Grid className="service-menu" container spacing={2}>
@@ -80,9 +81,10 @@ const Services = () => {
                         <Typography
                           className="menu-item-title"
                           variant={isMobile ? "h5" : "h4"}
+                          component="span"
                           fontWeight={700}
                         >
-                          {name.toUpperCase()}
+                          {name}
                         </Typography>
                       </Box>
                     }
@@ -93,7 +95,7 @@ const Services = () => {
           })}
           <Grid item md={4} xs={12}>
             <a
-              title={t("servicesPage.consultUs").toUpperCase()}
+              title={t("servicesPage.consultUs")}
               href="mailto:info@cordadaoutdoor.com"
             >
               <Box className="service-menu-item">
@@ -105,9 +107,10 @@ const Services = () => {
                       <Typography
                         className="menu-item-title"
                         variant={isMobile ? "h5" : "h4"}
+                        component="span"
                         fontWeight={700}
                       >
-                        {t("servicesPage.consultUs").toUpperCase()}
+                        {t("servicesPage.consultUs")}
                       </Typography>
                     </Box>
                   }
@@ -126,7 +129,7 @@ const Services = () => {
               <Box id={name.toLowerCase().split(" ").join("-")}>
                 <ServiceDescription
                   service={service.id}
-                  title={name.toLowerCase()}
+                  title={name}
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
                   image={imgUrl ?? HomeBg}
                   isMobile={isMobile}
@@ -137,7 +140,7 @@ const Services = () => {
             );
           })}
         </Box>
-      </Box>
+      </PageContainer>
     </Layout>
   );
 };

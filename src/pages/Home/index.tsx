@@ -14,14 +14,13 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { t } from "i18next";
 
-import HomeBg from "assets/images/home_bg.jpg";
 import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import Carousel from "components/Carousel/Carousel";
 import ContactUs from "components/Common/ContactUs";
-import PreviewImage from "components/Common/PreviewImage";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
+import ProjectCard from "components/ProjectCard";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
@@ -110,6 +109,7 @@ const Home = () => {
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
       <Box className="home-page">
         <Box className="home-page-header">
+          <h1 className="visually-hidden">Cordada Outdoor</h1>
           <Carousel
             settings={{
               dots: false,
@@ -166,6 +166,7 @@ const Home = () => {
         <Box className="home-projects-section" id="home-projects-section">
           <Typography
             variant="h3"
+            component="h2"
             fontWeight={600}
             className="section-title"
             maxWidth="lg"
@@ -189,44 +190,11 @@ const Home = () => {
                   cssEase: "linear",
                 }}
               >
-                {projects.map((p: Project, i: number) => {
-                  const { title, subtitle, client, image } = p;
-                  const imgUrl = getImageUrl(image, "large");
-
-                  return (
-                    <Box className="project-preview" key={i}>
-                      <PreviewImage
-                        src={imgUrl ?? HomeBg}
-                        hoverable={true}
-                        title={title}
-                        description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
-                        hoverContent={
-                          <Box
-                            style={{
-                              padding: "1rem",
-                            }}
-                          >
-                            <Typography variant="h5" fontWeight={600}>
-                              {title}
-                            </Typography>
-                            <Typography className="project-description">
-                              {subtitle}
-                            </Typography>
-                            <Box className="see-more-button-container">
-                              <Link
-                                to={`${langUrlPrefix}/project/${p.documentId}`}
-                              >
-                                <Button className="see-more-button">
-                                  {t("seeMore")}
-                                </Button>
-                              </Link>
-                            </Box>
-                          </Box>
-                        }
-                      />
-                    </Box>
-                  );
-                })}
+                {projects.map((p: Project) => (
+                  <Box className="project-preview" key={p.documentId}>
+                    <ProjectCard project={p} />
+                  </Box>
+                ))}
               </Carousel>
             </Box>
           ) : (
@@ -238,39 +206,11 @@ const Home = () => {
               {projectsQuery.isLoading ? (
                 <CircularProgress className="loading-indicator" />
               ) : (
-                projects.map((p: Project, i: number) => {
-                  const { title, subtitle, client, image } = p;
-                  const imgUrl = getImageUrl(image, "large");
-                  return (
-                    <Box className="project-preview" key={i}>
-                      <PreviewImage
-                        src={imgUrl ?? HomeBg}
-                        hoverable={true}
-                        title={title}
-                        description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
-                        hoverContent={
-                          <Box className="project-card">
-                            <Typography variant="h5" fontWeight={600}>
-                              {title}
-                            </Typography>
-                            <Typography className="project-description">
-                              {subtitle}
-                            </Typography>
-                            <Box className="see-more-button-container">
-                              <Link
-                                to={`${langUrlPrefix}/project/${p.documentId}`}
-                              >
-                                <Button className="see-more-button">
-                                  {t("seeMore")}
-                                </Button>
-                              </Link>
-                            </Box>
-                          </Box>
-                        }
-                      />
-                    </Box>
-                  );
-                })
+                projects.map((p: Project) => (
+                  <Box className="project-preview" key={p.documentId}>
+                    <ProjectCard project={p} />
+                  </Box>
+                ))
               )}
             </Box>
           )}
@@ -280,13 +220,7 @@ const Home = () => {
               className="see-projects-button-container"
               to={`${langUrlPrefix}/projects`}
             >
-              <Button
-                className="see-projects-button"
-                color="primary"
-                variant="contained"
-              >
-                {t("homePage.allProjects")}
-              </Button>
+              <Button>{t("homePage.allProjects")}</Button>
             </Link>
           </Box>
 
@@ -308,7 +242,9 @@ const Home = () => {
               }
             >
               {clientsQuery.isLoading ? (
-                <CircularProgress sx={{ color: "black", margin: "1em" }} />
+                <CircularProgress
+                  sx={{ color: "common.black", margin: "1em" }}
+                />
               ) : (
                 <Carousel
                   settings={{
@@ -375,7 +311,7 @@ const Home = () => {
           justifyContent="center"
         >
           <Box maxWidth="lg">
-            <Typography variant="h3" fontWeight={600}>
+            <Typography variant="h3" component="h2" fontWeight={600}>
               {t("ourServices")}
             </Typography>
             <RenderMarkdown markdown={homepageQuery.data?.data.servicesCopy} />
@@ -383,13 +319,7 @@ const Home = () => {
               className="see-services-button-container"
               to={`${langUrlPrefix + "/services"}`}
             >
-              <Button
-                className="see-services-button"
-                color="primary"
-                variant="contained"
-              >
-                {t("homePage.allServices")}
-              </Button>
+              <Button color="white">{t("homePage.allServices")}</Button>
             </Link>
           </Box>
         </Box>
@@ -405,13 +335,7 @@ const Home = () => {
               className="about-us-button-container"
               to={`${langUrlPrefix + "/about"}`}
             >
-              <Button
-                className="about-us-button"
-                color="primary"
-                variant="contained"
-              >
-                {t("aboutUs")}
-              </Button>
+              <Button>{t("aboutUs")}</Button>
             </Link>
           </Box>
           <ContactUs titleVariant="h3" colorScheme="white-on-black" />

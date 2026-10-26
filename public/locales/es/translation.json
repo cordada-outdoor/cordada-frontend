@@ -41,6 +41,32 @@
     "type": "Tipo",
     "date": "Fecha",
     "client": "Cliente",
-    "removeFilter": "Quitar filtro"
+    "year": "Año",
+    "month": "Mes",
+    "any": "Todos",
+    "clearFilters": "Quitar filtros",
+    "previous": "Proyecto anterior",
+    "next": "Proyecto siguiente"
+  },
+  "menu": "Menú",
+  "close": "Cerrar",
+  "gallery": {
+    "label": "Galería",
+    "open": "Abrir la foto",
+    "previous": "Foto anterior",
+    "next": "Foto siguiente"
+  },
+  "embeds": {
+    "viewOnInstagram": "Ver en Instagram",
+    "viewOnYouTube": "Ver en YouTube",
+    "consentMessage": "Este contenido es de un servicio externo que usa cookies.",
+    "load": "Aceptar y mostrar"
+  },
+  "cookies": {
+    "label": "Cookies",
+    "message": "Esta web usa cookies de terceros (Instagram y YouTube) para mostrar contenido incrustado.",
+    "more": "Más información",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
   }
 }

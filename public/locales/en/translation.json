@@ -41,6 +41,32 @@
     "type": "Type",
     "date": "Date",
     "client": "Client",
-    "removeFilter": "Remove filter"
+    "year": "Year",
+    "month": "Month",
+    "any": "All",
+    "clearFilters": "Clear filters",
+    "previous": "Previous project",
+    "next": "Next project"
+  },
+  "menu": "Menu",
+  "close": "Close",
+  "gallery": {
+    "label": "Gallery",
+    "open": "Open photo",
+    "previous": "Previous photo",
+    "next": "Next photo"
+  },
+  "embeds": {
+    "viewOnInstagram": "View on Instagram",
+    "viewOnYouTube": "View on YouTube",
+    "consentMessage": "This content is from an external service that uses cookies.",
+    "load": "Accept and show"
+  },
+  "cookies": {
+    "label": "Cookies",
+    "message": "This site uses third-party cookies (Instagram and YouTube) to show embedded content.",
+    "more": "Learn more",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }

@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import CookieConsent from "react-cookie-consent";
 
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 import { AppbarPosition } from "models";
 
+import CookieBanner from "./CookieBanner";
 import Footer from "./Footer";
 import Menu from "./Menu";
 interface LayoutProps {
@@ -19,11 +19,7 @@ const Layout = ({ children, appbarPosition, primaryAppbar }: LayoutProps) => {
       <Menu appbarPosition={appbarPosition} primaryAppbar={primaryAppbar} />
       <Box className="content-container">{children}</Box>
       <Footer />
-      <CookieConsent>
-        <Typography>
-          This website uses cookies to enhance the user experience.
-        </Typography>
-      </CookieConsent>
+      <CookieBanner />
     </div>
   );
 };

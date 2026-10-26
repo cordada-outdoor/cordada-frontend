@@ -6,14 +6,36 @@
     align-items: center;
 }
 
-@mixin white-on-primary {
-    color: $white;
+@mixin primary-on-white {
+    color: $primary-dark;
+    background-color: $white;
+}
+
+// Small text on orange must be black: white only reaches 3.2:1
+@mixin black-on-primary {
+    color: $black;
     background-color: $primary-color;
 }
 
-@mixin primary-on-white {
-    color: $primary-color;
-    background-color: $white;
+// Pair with utils/useRevealOnScroll, which adds .is-visible
+@mixin reveal-on-scroll($distance: 24px) {
+    opacity: 0;
+    transform: translateX(-$distance);
+    transition:
+        opacity 600ms ease-out,
+        transform 600ms ease-out;
+    &.right-to-left {
+        transform: translateX($distance);
+    }
+    &.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 @mixin white-on-black {
@@ -24,8 +46,4 @@
 @mixin black-on-white {
     color: $black;
     background-color: $white;
-}
-
-@mixin page-padding {
-    padding: 50px 36px 10px;
 }
