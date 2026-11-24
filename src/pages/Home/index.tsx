@@ -30,8 +30,8 @@ import { theme } from "utils/theme";
 import useUrlLang from "utils/useUrlLang";
 
 const Home = () => {
-  const projectsRef = useRef();
-  const servicesRef = useRef();
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const [projectsSectionVisible, updateProjectsSectionVisible] =
     useState<boolean>(false);
 
@@ -39,12 +39,16 @@ const Home = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
+    const target = isMobile ? servicesRef.current : projectsRef.current;
+    if (!target) return;
+
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
       updateProjectsSectionVisible(entry.isIntersecting);
     });
-    // @ts-expect-error
-    observer.observe(!isMobile ? projectsRef.current : servicesRef.current);
+    observer.observe(target);
+
+    return () => observer.disconnect();
   }, [isMobile]);
 
   const projectsQuery = useQuery({
