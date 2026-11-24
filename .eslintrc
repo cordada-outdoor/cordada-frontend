@@ -36,6 +36,7 @@
             "http",
             "models",
             "pages",
+            "styles",
             "utils",
           ],
 

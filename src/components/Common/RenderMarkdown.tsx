@@ -3,8 +3,8 @@ import { InstagramEmbed, YouTubeEmbed } from "react-social-media-embed";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import MarkdownToJsx from "markdown-to-jsx";
 
+import { theme } from "styles/theme";
 import { getMarkdownWithEmbeds } from "utils";
-import { theme } from "utils/theme";
 
 interface RenderMarkdownProps {
   markdown: string;

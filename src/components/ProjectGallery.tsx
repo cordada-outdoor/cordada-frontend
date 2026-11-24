@@ -10,8 +10,8 @@ import {
 
 import ArrowBack from "assets/icons/arrow-ios-back.svg?react";
 import ArrowForward from "assets/icons/arrow-ios-forward.svg?react";
+import { theme } from "styles/theme";
 import { getImageUrl } from "utils";
-import { theme } from "utils/theme";
 
 interface ProjectGalleryProps {
   gallery: any[];

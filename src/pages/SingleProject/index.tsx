@@ -25,8 +25,8 @@ import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
 import { Service } from "models/service";
+import { theme } from "styles/theme";
 import { getImageUrl, joinWithCommasAndAmpersand } from "utils";
-import { theme } from "utils/theme";
 
 const SingleProject = () => {
   const { t } = useTranslation();
@@ -54,7 +54,7 @@ const SingleProject = () => {
   if (projectQuery.isLoading) {
     return (
       <Layout>
-        <CircularProgress sx={{ color: "#ff521c" }} />
+        <CircularProgress />
       </Layout>
     );
   }

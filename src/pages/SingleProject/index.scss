@@ -1,5 +1,5 @@
-@import "/src/utils/colors.scss";
-@import "/src/utils/mixins.scss";
+@use "styles/colors" as *;
+@use "styles/mixins" as *;
 
 .project-detail {
   .project-img-container {

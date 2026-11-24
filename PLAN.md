@@ -16,14 +16,16 @@ Main problems today: duplicated markup, and styling split across three systems
 
 ## 1. Theme and design tokens
 
-- [ ] One source for colours: the orange lives in `utils/theme.ts`,
-      `utils/colors.scss` and is hardcoded in `pages/SingleProject/index.tsx`.
-- [ ] Button style (orange bg, white text, square corners) is redefined ~6
-      times in SCSS. Set it once in the MUI theme via `components.MuiButton`
-      (`borderRadius: 0` plus a variant).
-- [ ] Breakpoints: SCSS uses 900, 1000 and 375px; MUI `md` is 900. Add a
-      `respond-to($bp)` mixin that matches the MUI breakpoints.
-- [ ] Replace Sass `@import` with `@use` (deprecated in Dart Sass).
+- [x] One source for colours: `styles/tokens.ts` feeds the MUI theme and
+      CSS custom properties; `styles/_colors.scss` aliases the variables.
+- [x] Button style set once in the MUI theme (`components.MuiButton`):
+      square, flat, contained-primary hover inverts; `variant="inverted"`
+      for buttons on primary backgrounds.
+- [x] Breakpoints: `down($bp)` / `up($bp)` mixins in `styles/_mixins.scss`
+      match MUI; all `max-width: 900px` queries now use `down(md)`.
+- [ ] Remaining one-off queries (1000, 1150, 550, 375px) left as-is; revisit
+      per component in step 5.
+- [x] Replace Sass `@import` with `@use` (deprecated in Dart Sass).
 
 ## 2. API layer with typed hooks
 

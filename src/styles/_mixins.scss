@@ -1,0 +1,55 @@
+@use "sass:map";
+@use "colors" as *;
+
+// Mirrors `breakpoints` in styles/tokens.ts (MUI defaults). Keep in sync.
+$breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 900px,
+  lg: 1200px,
+  xl: 1536px,
+);
+
+// Same semantics as MUI's theme.breakpoints.down(): applies below $name.
+@mixin down($name) {
+  @media (max-width: #{map.get($breakpoints, $name) - 0.05px}) {
+    @content;
+  }
+}
+
+// Same semantics as MUI's theme.breakpoints.up(): applies from $name upwards.
+@mixin up($name) {
+  @media (min-width: #{map.get($breakpoints, $name)}) {
+    @content;
+  }
+}
+
+@mixin horizontal-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@mixin white-on-primary {
+  color: $white;
+  background-color: $primary-color;
+}
+
+@mixin primary-on-white {
+  color: $primary-color;
+  background-color: $white;
+}
+
+@mixin white-on-black {
+  color: $white;
+  background-color: $black;
+}
+
+@mixin black-on-white {
+  color: $black;
+  background-color: $white;
+}
+
+@mixin page-padding {
+  padding: 50px 36px 10px;
+}

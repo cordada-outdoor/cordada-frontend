@@ -17,8 +17,8 @@ import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import ServiceDescription from "components/ServiceDescription";
 import { http } from "http/client";
+import { theme } from "styles/theme";
 import { getImageUrl, isEven } from "utils";
-import { theme } from "utils/theme";
 
 const Services = () => {
   const { t } = useTranslation();

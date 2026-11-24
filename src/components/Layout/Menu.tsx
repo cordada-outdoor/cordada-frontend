@@ -21,9 +21,9 @@ import {
 import LogoSmall from "assets/logos/logo-small.svg?react";
 import MenuIcon from "assets/logos/menu-icon.svg?react";
 import { AppbarPosition } from "models";
+import { theme } from "styles/theme";
 import { findLangName, getUrlWithoutLang } from "utils";
 import { SUPPORTED_LANGS } from "utils/constants";
-import { theme } from "utils/theme";
 import useUrlLang from "utils/useUrlLang";
 
 interface MenuScrollProps {
