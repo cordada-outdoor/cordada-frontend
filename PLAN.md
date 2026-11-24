@@ -43,10 +43,10 @@ Seven components build Strapi calls inline with `http.get`, and responses are
 
 ## 3. Shared components
 
-- [ ] **`ProjectCard`**: same card markup is copied 3 times (twice in
+- [x] **`ProjectCard`**: same card markup is copied 3 times (twice in
       `pages/Home/index.tsx`, once in `pages/Projects/index.tsx`).
-- [ ] **`SectionTitle`**: the repeated `Typography h3 fontWeight={600}` heading.
-- [ ] **`Loading`**: the repeated spinner.
+- [x] **`SectionTitle`**: the repeated `Typography h3 fontWeight={600}` heading.
+- [x] **`Loading`**: the repeated spinner.
 
 ## 4. Split large files
 

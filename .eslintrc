@@ -29,17 +29,8 @@
           // Anything not matched in another group.
           ["^"],
 
-          [
-            "^api/",
-            "assets",
-            "components",
-            "config",
-            "http",
-            "models",
-            "pages",
-            "styles",
-            "utils",
-          ],
+          // Absolute imports of local src dirs (baseUrl: "src").
+          ["^(api|assets|components|config|http|models|pages|styles|utils)(/|$)"],
 
           // Relative imports.
           ["^\\.\\."],

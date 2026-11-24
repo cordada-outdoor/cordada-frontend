@@ -1,0 +1,23 @@
+.project-card {
+  padding: 5px 10px;
+  height: calc(100% - 10px);
+
+  .project-description {
+    width: 100%;
+    margin-top: 5px;
+    max-height: calc(100% - 80px);
+    line-height: 1.1rem;
+    overflow: hidden;
+  }
+
+  .see-more-button-container {
+    position: absolute;
+    bottom: 10px;
+    left: -5px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}

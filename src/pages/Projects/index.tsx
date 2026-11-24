@@ -2,7 +2,7 @@ import "./index.scss";
 
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import {
   Box,
@@ -17,20 +17,18 @@ import {
 import { useClients } from "api/clients";
 import { ProjectFilters, useProjects } from "api/projects";
 import { useServices } from "api/services";
-import HomeBg from "assets/images/home_bg.jpg";
-import PreviewImage from "components/Common/PreviewImage";
+import Loading from "components/Common/Loading";
+import SectionTitle from "components/Common/SectionTitle";
 import Layout from "components/Layout/Layout";
+import ProjectCard from "components/ProjectCard/ProjectCard";
 import ProjectsFilterDialog, {
   FilterType,
 } from "components/ProjectsFilterDialog";
-import { getImageUrl } from "utils";
-import useUrlLang from "utils/useUrlLang";
 
 type LocationState = { serviceId?: number } | undefined;
 
 const Projects = () => {
   const { t } = useTranslation();
-  const { langUrlPrefix } = useUrlLang();
   const location = useLocation<LocationState>();
 
   // A service can be preselected when arriving from the Services page.
@@ -79,9 +77,7 @@ const Projects = () => {
   return (
     <Layout>
       <Box className="projects">
-        <Typography variant="h3" fontWeight={600}>
-          {t("homePage.ourProjects")}
-        </Typography>
+        <SectionTitle>{t("homePage.ourProjects")}</SectionTitle>
         <Box className="filter-section">
           <Typography className="filter-title">
             {t("projectsPage.filterBy")}
@@ -117,49 +113,17 @@ const Projects = () => {
         <Box className="projects-section">
           <Grid container spacing={2}>
             {projectsQuery.isLoading ? (
-              <CircularProgress className="loading-indicator" />
+              <Loading />
             ) : (
-              projectsQuery.data?.pages.map((page) => {
-                return page.data.map((p) => {
-                  const { title, subtitle, client, image } = p;
-                  const imgUrl = getImageUrl(image, "large");
-
-                  return (
-                    <Grid item key={p.documentId} md={4} xs={12} sm={6}>
-                      <Box className="project-container">
-                        <PreviewImage
-                          src={imgUrl ?? HomeBg}
-                          hoverable={true}
-                          title={title}
-                          description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
-                          hoverContent={
-                            <Box className="project-card">
-                              <Typography variant="h5" fontWeight={600}>
-                                {title}
-                              </Typography>
-                              <Typography className="project-description">
-                                {subtitle}
-                              </Typography>
-                              <Box className="see-more-button-container">
-                                <Link
-                                  to={`${langUrlPrefix}/project/${p.documentId}`}
-                                >
-                                  <Button
-                                    className="see-more-button"
-                                    variant="contained"
-                                  >
-                                    {t("seeMore")}
-                                  </Button>
-                                </Link>
-                              </Box>
-                            </Box>
-                          }
-                        />
-                      </Box>
-                    </Grid>
-                  );
-                });
-              })
+              projectsQuery.data?.pages.map((page) =>
+                page.data.map((p) => (
+                  <Grid item key={p.documentId} md={4} xs={12} sm={6}>
+                    <Box className="project-container">
+                      <ProjectCard project={p} />
+                    </Box>
+                  </Grid>
+                )),
+              )
             )}
           </Grid>
         </Box>

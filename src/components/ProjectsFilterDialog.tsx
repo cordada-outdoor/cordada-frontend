@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 
 import {
   Button,
-  CircularProgress,
   FormControl,
   IconButton,
   InputLabel,
@@ -14,6 +13,7 @@ import {
 
 import { useClients } from "api/clients";
 import { useServices } from "api/services";
+import Loading from "components/Common/Loading";
 
 import DatePicker from "./Common/DatePicker";
 
@@ -52,7 +52,7 @@ const ProjectsFilterDialog = ({
             <Typography className="close-button-text">x</Typography>
           </IconButton>
           {servicesQuery.isLoading ? (
-            <CircularProgress className="loading-indicator" />
+            <Loading />
           ) : (
             <FormControl className="select-container" fullWidth>
               <InputLabel id="services-label">{t("services")}</InputLabel>
@@ -110,7 +110,7 @@ const ProjectsFilterDialog = ({
             <Typography className="close-button-text">x</Typography>
           </IconButton>
           {clientsQuery.isLoading ? (
-            <CircularProgress className="loading-indicator" />
+            <Loading />
           ) : (
             <FormControl className="select-container" fullWidth>
               <InputLabel id="clients-label">
