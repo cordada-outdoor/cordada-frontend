@@ -5,25 +5,27 @@ Main problems today: duplicated markup, and styling split across three systems
 
 ## 0. Bugs to fix first
 
-- [ ] **December date filter**: "next month" maths in `pages/Projects/index.tsx`
+- [x] **December date filter**: "next month" maths in `pages/Projects/index.tsx`
       produces `2024-13-01`. Use dayjs `.add(1, "month")`.
-- [ ] **Duplicate React keys**: Projects grid uses `key={i}` (the page index),
+- [x] **Duplicate React keys**: Projects grid uses `key={i}` (the page index),
       so every card on a page shares a key. Use `p.documentId`.
-- [ ] **IntersectionObserver leak**: Home creates it but never disconnects, and
+- [x] **IntersectionObserver leak**: Home creates it but never disconnects, and
       re-subscribes whenever `isMobile` changes. Return a cleanup.
-- [ ] **History reset during render**: `window.history.replaceState` runs on
+- [x] **History reset during render**: `window.history.replaceState` runs on
       every render in Projects. Move it into an effect.
 
 ## 1. Theme and design tokens
 
-- [ ] One source for colours: the orange lives in `utils/theme.ts`,
-      `utils/colors.scss` and is hardcoded in `pages/SingleProject/index.tsx`.
-- [ ] Button style (orange bg, white text, square corners) is redefined ~6
-      times in SCSS. Set it once in the MUI theme via `components.MuiButton`
-      (`borderRadius: 0` plus a variant).
-- [ ] Breakpoints: SCSS uses 900, 1000 and 375px; MUI `md` is 900. Add a
-      `respond-to($bp)` mixin that matches the MUI breakpoints.
-- [ ] Replace Sass `@import` with `@use` (deprecated in Dart Sass).
+- [x] One source for colours: `styles/tokens.ts` feeds the MUI theme and
+      CSS custom properties; `styles/_colors.scss` aliases the variables.
+- [x] Button style set once in the MUI theme (`components.MuiButton`):
+      square, flat, MUI's default darker hover; `variant="inverted"`
+      for buttons on primary backgrounds.
+- [x] Breakpoints: `down($bp)` / `up($bp)` mixins in `styles/_mixins.scss`
+      match MUI; all `max-width: 900px` queries now use `down(md)`.
+- [ ] Remaining one-off queries (1000, 1150, 550, 375px) left as-is; revisit
+      per component in step 5.
+- [x] Replace Sass `@import` with `@use` (deprecated in Dart Sass).
 
 ## 2. API layer with typed hooks
 

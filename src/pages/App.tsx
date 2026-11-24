@@ -2,16 +2,18 @@ import "./index.scss";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { ThemeProvider } from "@mui/material";
+import { GlobalStyles, ThemeProvider } from "@mui/material";
 
+import { theme } from "styles/theme";
+import { cssVariables } from "styles/tokens";
 import { SUPPORTED_LANGS } from "utils/constants";
 import Routes from "utils/Routes";
 import ScrollToTop from "utils/ScrollToTop";
-import { theme } from "utils/theme";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles styles={{ ":root": cssVariables }} />
       <BrowserRouter>
         <ScrollToTop />
         <Switch>

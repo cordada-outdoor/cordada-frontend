@@ -1,5 +1,5 @@
-@import "/src/utils/colors.scss";
-@import "/src/utils/mixins.scss";
+@use "styles/colors" as *;
+@use "styles/mixins" as *;
 .services {
     @include page-padding;
     scroll-behavior: smooth;
@@ -47,14 +47,9 @@
                     height: auto;
                 }
                 .see-more-button {
-                    @include white-on-primary;
                     position: absolute;
                     left: 30px;
-                    border-radius: 0;
                     bottom: 10px;
-                }
-                .see-more-button:hover {
-                    @include primary-on-white;
                 }
             }
             .service-title {
@@ -78,7 +73,7 @@
         }
     }
 }
-@media (max-width: 900px) {
+@include down(md) {
     .services {
         padding: 50px 20px 10px;
         .services-content-container {

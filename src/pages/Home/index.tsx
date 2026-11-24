@@ -25,8 +25,8 @@ import Layout from "components/Layout/Layout";
 import { http } from "http/client";
 import { Client } from "models/client";
 import { Project } from "models/project";
+import { theme } from "styles/theme";
 import { getHomeImagesArr, getImageUrl } from "utils";
-import { theme } from "utils/theme";
 import useUrlLang from "utils/useUrlLang";
 
 const Home = () => {
@@ -220,7 +220,10 @@ const Home = () => {
                               <Link
                                 to={`${langUrlPrefix}/project/${p.documentId}`}
                               >
-                                <Button className="see-more-button">
+                                <Button
+                                  className="see-more-button"
+                                  variant="contained"
+                                >
                                   {t("seeMore")}
                                 </Button>
                               </Link>
@@ -264,7 +267,10 @@ const Home = () => {
                               <Link
                                 to={`${langUrlPrefix}/project/${p.documentId}`}
                               >
-                                <Button className="see-more-button">
+                                <Button
+                                  className="see-more-button"
+                                  variant="contained"
+                                >
                                   {t("seeMore")}
                                 </Button>
                               </Link>
@@ -387,11 +393,7 @@ const Home = () => {
               className="see-services-button-container"
               to={`${langUrlPrefix + "/services"}`}
             >
-              <Button
-                className="see-services-button"
-                color="primary"
-                variant="contained"
-              >
+              <Button className="see-services-button" variant="inverted">
                 {t("homePage.allServices")}
               </Button>
             </Link>

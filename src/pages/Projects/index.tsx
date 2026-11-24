@@ -208,7 +208,10 @@ const Projects = () => {
                                 <Link
                                   to={`${langUrlPrefix}/project/${p.documentId}`}
                                 >
-                                  <Button className="see-more-button">
+                                  <Button
+                                    className="see-more-button"
+                                    variant="contained"
+                                  >
                                     {t("seeMore")}
                                   </Button>
                                 </Link>
@@ -239,7 +242,6 @@ const Projects = () => {
                 variant="contained"
                 sx={{
                   fontWeight: "bold",
-                  borderRadius: "0px",
                 }}
                 onClick={() => {
                   projectsQuery.fetchNextPage();

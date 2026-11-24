@@ -54,7 +54,7 @@ const ServiceDescription = ({
               state: { service: service },
             }}
           >
-            <Button className="see-more-button">
+            <Button className="see-more-button" variant="contained">
               {t("servicesPage.seeProjects")}
             </Button>
           </Link>

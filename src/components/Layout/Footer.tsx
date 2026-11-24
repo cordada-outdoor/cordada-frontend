@@ -6,7 +6,7 @@ import { Box, Typography, useMediaQuery } from "@mui/material";
 import InstagramLogo from "assets/logos/instagram-logo.svg?react";
 import LinkedinLogo from "assets/logos/linkedin-logo.svg?react";
 import CustomIconButton from "components/Common/CustomIconButton";
-import { theme } from "utils/theme";
+import { theme } from "styles/theme";
 import useUrlLang from "utils/useUrlLang";
 
 const Footer = () => {

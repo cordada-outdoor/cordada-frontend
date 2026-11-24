@@ -1,0 +1,9 @@
+// Colour values live in styles/tokens.ts and reach CSS as custom properties
+// (injected by <GlobalStyles> in pages/App.tsx). These aliases keep SCSS
+// call sites short; don't hardcode colour values here.
+
+$primary-color: var(--color-primary);
+$primary-translucid: var(--color-primary-translucent);
+$secondary-color: var(--color-secondary);
+$white: var(--color-white);
+$black: var(--color-black);

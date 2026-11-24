@@ -1,5 +1,5 @@
-@import "utils/mixins.scss";
-@import "utils/colors.scss";
+@use "styles/mixins" as *;
+@use "styles/colors" as *;
 
 .home-page {
     .home-page-header {
@@ -39,7 +39,11 @@
             position: absolute;
             width: calc(100% - 60px);
             bottom: 0;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00001) 0%, rgba(0, 0, 0, 1) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.00001) 0%,
+        rgba(0, 0, 0, 1) 100%
+      );
             color: white;
         }
     }
@@ -79,13 +83,6 @@
                         width: 100%;
                         align-items: center;
                         justify-content: center;
-                        .see-more-button {
-                            @include white-on-primary;
-                            border-radius: 0;
-                        }
-                        .see-more-button:hover {
-                            @include primary-on-white;
-                        }
                     }
                 }
             }
@@ -114,10 +111,6 @@
         .see-projects-button-container {
             margin-top: 20px;
             float: right;
-            .see-projects-button {
-                @include white-on-primary;
-                border-radius: 0;
-            }
         }
     }
     .home-services-section {
@@ -128,10 +121,6 @@
 
         .see-services-button-container {
             float: right;
-            .see-services-button {
-                @include primary-on-white;
-                border-radius: 0;
-            }
         }
     }
     .home-about-section {
@@ -148,15 +137,11 @@
             }
             .about-us-button-container {
                 position: absolute;
-                .about-us-button {
-                    @include white-on-primary;
-                    border-radius: 0;
-                }
             }
         }
     }
 }
-@media (max-width: 900px) {
+@include down(md) {
     .home-projects-section {
         .mobile-projects-preview {
             margin-top: 10px;
@@ -177,13 +162,6 @@
                     width: 100%;
                     align-items: center;
                     justify-content: center;
-                    .see-more-button {
-                        @include white-on-primary;
-                        border-radius: 0;
-                    }
-                    .see-more-button:hover {
-                        @include primary-on-white;
-                    }
                 }
             }
         }
