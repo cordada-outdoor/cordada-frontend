@@ -34,13 +34,6 @@ export const theme = createTheme({
         root: {
           borderRadius: 0,
         },
-        containedPrimary: {
-          "&:hover": {
-            backgroundColor: colors.white,
-            color: colors.primary,
-            boxShadow: `inset 0 0 0 2px ${colors.primary}`,
-          },
-        },
       },
       variants: [
         {

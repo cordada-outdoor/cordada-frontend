@@ -19,7 +19,7 @@ Main problems today: duplicated markup, and styling split across three systems
 - [x] One source for colours: `styles/tokens.ts` feeds the MUI theme and
       CSS custom properties; `styles/_colors.scss` aliases the variables.
 - [x] Button style set once in the MUI theme (`components.MuiButton`):
-      square, flat, contained-primary hover inverts; `variant="inverted"`
+      square, flat, MUI's default darker hover; `variant="inverted"`
       for buttons on primary backgrounds.
 - [x] Breakpoints: `down($bp)` / `up($bp)` mixins in `styles/_mixins.scss`
       match MUI; all `max-width: 900px` queries now use `down(md)`.
