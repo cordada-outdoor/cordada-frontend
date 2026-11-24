@@ -8,8 +8,8 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
-import { ReactComponent as ArrowBack } from "assets/icons/arrow-ios-back.svg";
-import { ReactComponent as ArrowForward } from "assets/icons/arrow-ios-forward.svg";
+import ArrowBack from "assets/icons/arrow-ios-back.svg?react";
+import ArrowForward from "assets/icons/arrow-ios-forward.svg?react";
 import { getImageUrl } from "utils";
 import { theme } from "utils/theme";
 
