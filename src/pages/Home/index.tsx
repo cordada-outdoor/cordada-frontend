@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -11,9 +11,10 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
 import { t } from "i18next";
 
+import { useClients } from "api/clients";
+import { useLatestProjects } from "api/projects";
 import HomeBg from "assets/images/home_bg.jpg";
 import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import Carousel from "components/Carousel/Carousel";
@@ -22,9 +23,7 @@ import PreviewImage from "components/Common/PreviewImage";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
-import { http } from "http/client";
-import { Client } from "models/client";
-import { Project } from "models/project";
+import { useHomepage } from "api/pages";
 import { theme } from "styles/theme";
 import { getHomeImagesArr, getImageUrl } from "utils";
 import useUrlLang from "utils/useUrlLang";
@@ -51,64 +50,14 @@ const Home = () => {
     return () => observer.disconnect();
   }, [isMobile]);
 
-  const projectsQuery = useQuery({
-    queryKey: ["projects", "home"],
-    queryFn: async () => {
-      const res = await http.get("api/projects", {
-        params: {
-          pagination: {
-            start: 0,
-            limit: 3,
-          },
-          populate: "*",
-          sort: "createdAt:desc",
-        },
-      });
+  const projectsQuery = useLatestProjects(3);
+  const clientsQuery = useClients();
+  const { data: homepage } = useHomepage();
 
-      return res.data;
-    },
-  });
+  const projects = projectsQuery.data ?? [];
+  const clients = clientsQuery.data ?? [];
 
-  const clientsQuery = useQuery({
-    queryKey: ["clients", "home"],
-    queryFn: async () => {
-      const res = await http.get("api/clients", {
-        params: {
-          populate: "*",
-          sort: "homepageOrder:asc",
-        },
-      });
-
-      return res.data;
-    },
-  });
-
-  const projects = useMemo(() => {
-    if (projectsQuery.isLoading) return [];
-
-    return projectsQuery?.data?.data ?? [];
-  }, [projectsQuery]);
-
-  const clients = useMemo(() => {
-    if (clientsQuery.isLoading) return [];
-
-    return clientsQuery?.data?.data ?? [];
-  }, [clientsQuery]);
-
-  const homepageQuery = useQuery({
-    queryKey: ["homepage"],
-    queryFn: async () => {
-      const res = await http.get("api/homepage", {
-        params: {
-          populate: "*",
-        },
-      });
-
-      return res.data;
-    },
-  });
-
-  const homeImagesArr = getHomeImagesArr(homepageQuery.data?.data.heroImages);
+  const homeImagesArr = getHomeImagesArr(homepage?.heroImages);
 
   return (
     <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
@@ -162,7 +111,7 @@ const Home = () => {
             justifyContent="center"
           >
             <Box maxWidth="lg">
-              <RenderMarkdown markdown={homepageQuery.data?.data.heroCopy} />
+              <RenderMarkdown markdown={homepage?.heroCopy} />
             </Box>
           </Box>
         </Box>
@@ -193,12 +142,12 @@ const Home = () => {
                   cssEase: "linear",
                 }}
               >
-                {projects.map((p: Project, i: number) => {
+                {projects.map((p) => {
                   const { title, subtitle, client, image } = p;
                   const imgUrl = getImageUrl(image, "large");
 
                   return (
-                    <Box className="project-preview" key={i}>
+                    <Box className="project-preview" key={p.documentId}>
                       <PreviewImage
                         src={imgUrl ?? HomeBg}
                         hoverable={true}
@@ -245,11 +194,11 @@ const Home = () => {
               {projectsQuery.isLoading ? (
                 <CircularProgress className="loading-indicator" />
               ) : (
-                projects.map((p: Project, i: number) => {
+                projects.map((p) => {
                   const { title, subtitle, client, image } = p;
                   const imgUrl = getImageUrl(image, "large");
                   return (
-                    <Box className="project-preview" key={i}>
+                    <Box className="project-preview" key={p.documentId}>
                       <PreviewImage
                         src={imgUrl ?? HomeBg}
                         hoverable={true}
@@ -359,7 +308,7 @@ const Home = () => {
                     ],
                   }}
                 >
-                  {clients.map((client: Client, idx: number) => {
+                  {clients.map((client, idx) => {
                     const { icon } = client;
                     const imgUrl = getImageUrl(icon, "small");
                     return (
@@ -388,7 +337,7 @@ const Home = () => {
             <Typography variant="h3" fontWeight={600}>
               {t("ourServices")}
             </Typography>
-            <RenderMarkdown markdown={homepageQuery.data?.data.servicesCopy} />
+            <RenderMarkdown markdown={homepage?.servicesCopy} />
             <Link
               className="see-services-button-container"
               to={`${langUrlPrefix + "/services"}`}
@@ -401,9 +350,9 @@ const Home = () => {
         </Box>
         <Box className="home-about-section">
           <Box className="about-us-img-container">
-            {homepageQuery.data && (
+            {homepage && (
               <StrapiImage
-                image={homepageQuery.data?.data.contactUsImage}
+                image={homepage.contactUsImage}
                 className="about-us-img"
               />
             )}

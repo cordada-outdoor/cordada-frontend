@@ -9,14 +9,13 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
 
+import { useServices } from "api/services";
 import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import ServiceDescription from "components/ServiceDescription";
-import { http } from "http/client";
 import { theme } from "styles/theme";
 import { getImageUrl, isEven } from "utils";
 
@@ -29,27 +28,14 @@ const Services = () => {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
-  const servicesQuery = useQuery({
-    queryKey: ["services"],
-    queryFn: async () => {
-      const res = await http.get("api/services", {
-        params: {
-          populate: "*",
-        },
-      });
+  const { data: services = [], isLoading } = useServices();
 
-      return res.data;
-    },
-  });
-
-  if (servicesQuery.isLoading)
+  if (isLoading)
     return (
       <Layout>
         <CircularProgress className="loading-indicator" />
       </Layout>
     );
-
-  const services = servicesQuery.data?.data;
 
   return (
     <Layout>
@@ -58,11 +44,11 @@ const Services = () => {
           {t("ourServices")}
         </Typography>
         <Grid className="service-menu" container spacing={2}>
-          {services?.map((service: any, i: number) => {
+          {services.map((service) => {
             const { name, banner } = service;
             const imgUrl = getImageUrl(banner, "medium");
             return (
-              <Grid key={i} item md={4} xs={12}>
+              <Grid key={service.documentId} item md={4} xs={12}>
                 <Box
                   onClick={() =>
                     handleScrollToElement(
@@ -117,15 +103,18 @@ const Services = () => {
           </Grid>
         </Grid>
         <Box className="services-content-container">
-          {services.map((service: any, i: number) => {
+          {services.map((service, i) => {
             const { name, body, banner } = service;
 
             const imgUrl = getImageUrl(banner, "large");
 
             return (
-              <Box id={name.toLowerCase().split(" ").join("-")}>
+              <Box
+                key={service.documentId}
+                id={name.toLowerCase().split(" ").join("-")}
+              >
                 <ServiceDescription
-                  service={service.id}
+                  serviceId={service.id}
                   title={name.toLowerCase()}
                   direction={isEven(i) ? "left-to-right" : "right-to-left"}
                   image={imgUrl ?? HomeBg}

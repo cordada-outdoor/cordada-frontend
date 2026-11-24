@@ -1,15 +1,20 @@
-import { Client } from "./client";
-import { Service } from "./service";
+import { ClientAttributes } from "./client";
+import { ServiceAttributes } from "./service";
+import { StrapiEntity, StrapiMedia } from "./strapi";
 
-export type Project = {
-  id: number;
-  documentId: string;
+// Scalar fields only, as returned when a project is a nested relation.
+export type ProjectAttributes = StrapiEntity & {
   title: string;
-  client: Client;
-  image: any;
-  body: string;
   subtitle: string;
   date: string;
-  services: Service[];
-  gallery: any[];
+  body: string;
+  locale: string;
+};
+
+// A project fetched with `populate: "*"`.
+export type Project = ProjectAttributes & {
+  image: StrapiMedia;
+  gallery: StrapiMedia[] | null;
+  client: ClientAttributes | null;
+  services: ServiceAttributes[];
 };

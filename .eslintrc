@@ -30,6 +30,7 @@
           ["^"],
 
           [
+            "^api/",
             "assets",
             "components",
             "config",

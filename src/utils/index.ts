@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import HomeBg from "assets/images/home_bg.jpg";
 import LogoWhite from "assets/logos/logo-big-white.png";
 import { config } from "config";
+import { StrapiMedia, StrapiMediaSize } from "models/strapi";
 
 export function findLangName(language: string) {
   switch (language) {
@@ -27,31 +28,18 @@ export const useQueryParams = () => {
   return params;
 };
 
+// Absolute URL for a Strapi media item, preferring the requested format and
+// falling back to the original. Returns null when there's no image.
 export const getImageUrl = (
-  img: any,
-  size?: "thumbnail" | "medium" | "large" | "small",
+  img: StrapiMedia | null | undefined,
+  size?: StrapiMediaSize,
 ) => {
-  if (!size) {
-    return `${config.cms.host}${img?.url}`;
-  }
+  const url = (size && img?.formats?.[size]?.url) || img?.url;
 
-  const urlForFormat = img?.formats[size]?.url;
-
-  if (urlForFormat) {
-    return `${config.cms.host}${urlForFormat}`;
-  }
-
-  const baseUrl = img?.url;
-
-  if (baseUrl) {
-    // Use the base image, not the formatted one
-    return `${config.cms.host}${img?.url}`;
-  }
-
-  return null;
+  return url ? `${config.cms.host}${url}` : null;
 };
 
-export const getMarkdownWithEmbeds = (markdown: string) => {
+export const getMarkdownWithEmbeds = (markdown?: string) => {
   if (!markdown?.length) return [{ type: "markdown", body: "" }];
   else {
     const regex =
@@ -105,7 +93,7 @@ export function joinWithCommasAndAmpersand(strings: string[]) {
   return `${allButLast} & ${last}`;
 }
 
-export const getHomeImagesArr = (images?: any[]) => {
+export const getHomeImagesArr = (images?: StrapiMedia[] | null) => {
   const defaultImg = [
     {
       hero: HomeBg,
