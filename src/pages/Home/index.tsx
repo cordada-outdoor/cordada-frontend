@@ -3,27 +3,21 @@ import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-import {
-  Avatar,
-  Box,
-  Button,
-  CircularProgress,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Avatar, Box, Button, useMediaQuery } from "@mui/material";
 import { t } from "i18next";
 
 import { useClients } from "api/clients";
+import { useHomepage } from "api/pages";
 import { useLatestProjects } from "api/projects";
-import HomeBg from "assets/images/home_bg.jpg";
 import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import Carousel from "components/Carousel/Carousel";
 import ContactUs from "components/Common/ContactUs";
-import PreviewImage from "components/Common/PreviewImage";
+import Loading from "components/Common/Loading";
 import RenderMarkdown from "components/Common/RenderMarkdown";
+import SectionTitle from "components/Common/SectionTitle";
 import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
-import { useHomepage } from "api/pages";
+import ProjectCard from "components/ProjectCard/ProjectCard";
 import { theme } from "styles/theme";
 import { getHomeImagesArr, getImageUrl } from "utils";
 import useUrlLang from "utils/useUrlLang";
@@ -117,15 +111,9 @@ const Home = () => {
         </Box>
 
         <Box className="home-projects-section" id="home-projects-section">
-          <Typography
-            variant="h3"
-            fontWeight={600}
-            className="section-title"
-            maxWidth="lg"
-            margin="auto"
-          >
+          <SectionTitle className="section-title" maxWidth="lg" margin="auto">
             {t("homePage.ourProjects")}
-          </Typography>
+          </SectionTitle>
           {isMobile ? (
             <Box className="mobile-projects-preview">
               <Carousel
@@ -142,47 +130,11 @@ const Home = () => {
                   cssEase: "linear",
                 }}
               >
-                {projects.map((p) => {
-                  const { title, subtitle, client, image } = p;
-                  const imgUrl = getImageUrl(image, "large");
-
-                  return (
-                    <Box className="project-preview" key={p.documentId}>
-                      <PreviewImage
-                        src={imgUrl ?? HomeBg}
-                        hoverable={true}
-                        title={title}
-                        description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
-                        hoverContent={
-                          <Box
-                            style={{
-                              padding: "1rem",
-                            }}
-                          >
-                            <Typography variant="h5" fontWeight={600}>
-                              {title}
-                            </Typography>
-                            <Typography className="project-description">
-                              {subtitle}
-                            </Typography>
-                            <Box className="see-more-button-container">
-                              <Link
-                                to={`${langUrlPrefix}/project/${p.documentId}`}
-                              >
-                                <Button
-                                  className="see-more-button"
-                                  variant="contained"
-                                >
-                                  {t("seeMore")}
-                                </Button>
-                              </Link>
-                            </Box>
-                          </Box>
-                        }
-                      />
-                    </Box>
-                  );
-                })}
+                {projects.map((p) => (
+                  <Box className="project-preview" key={p.documentId}>
+                    <ProjectCard project={p} />
+                  </Box>
+                ))}
               </Carousel>
             </Box>
           ) : (
@@ -192,44 +144,13 @@ const Home = () => {
               margin="auto"
             >
               {projectsQuery.isLoading ? (
-                <CircularProgress className="loading-indicator" />
+                <Loading />
               ) : (
-                projects.map((p) => {
-                  const { title, subtitle, client, image } = p;
-                  const imgUrl = getImageUrl(image, "large");
-                  return (
-                    <Box className="project-preview" key={p.documentId}>
-                      <PreviewImage
-                        src={imgUrl ?? HomeBg}
-                        hoverable={true}
-                        title={title}
-                        description={`${client?.name?.toUpperCase() ?? ""} X CORDADA`}
-                        hoverContent={
-                          <Box className="project-card">
-                            <Typography variant="h5" fontWeight={600}>
-                              {title}
-                            </Typography>
-                            <Typography className="project-description">
-                              {subtitle}
-                            </Typography>
-                            <Box className="see-more-button-container">
-                              <Link
-                                to={`${langUrlPrefix}/project/${p.documentId}`}
-                              >
-                                <Button
-                                  className="see-more-button"
-                                  variant="contained"
-                                >
-                                  {t("seeMore")}
-                                </Button>
-                              </Link>
-                            </Box>
-                          </Box>
-                        }
-                      />
-                    </Box>
-                  );
-                })
+                projects.map((p) => (
+                  <Box className="project-preview" key={p.documentId}>
+                    <ProjectCard project={p} />
+                  </Box>
+                ))
               )}
             </Box>
           )}
@@ -252,22 +173,16 @@ const Home = () => {
           <Box ref={projectsRef} />
 
           <Box className="collaborators-preview-container">
-            <Typography
-              variant="h3"
-              fontWeight={600}
-              className="section-title"
-              maxWidth="lg"
-              margin="auto"
-            >
+            <SectionTitle className="section-title" maxWidth="lg" margin="auto">
               {t("homePage.ourCordada")}
-            </Typography>
+            </SectionTitle>
             <Box
               className={
                 isMobile ? "mobile-collaborators" : "collaborators-list"
               }
             >
               {clientsQuery.isLoading ? (
-                <CircularProgress sx={{ color: "black", margin: "1em" }} />
+                <Loading sx={{ color: "black" }} />
               ) : (
                 <Carousel
                   settings={{
@@ -334,9 +249,7 @@ const Home = () => {
           justifyContent="center"
         >
           <Box maxWidth="lg">
-            <Typography variant="h3" fontWeight={600}>
-              {t("ourServices")}
-            </Typography>
+            <SectionTitle>{t("ourServices")}</SectionTitle>
             <RenderMarkdown markdown={homepage?.servicesCopy} />
             <Link
               className="see-services-button-container"

@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 
 import {
   Box,
-  CircularProgress,
   Dialog,
   Grid,
   Stack,
@@ -18,7 +17,9 @@ import dayjs from "dayjs";
 import { useProject } from "api/projects";
 import HomeBg from "assets/images/home_bg.jpg";
 import ClientInProject from "components/ClientInProject";
+import Loading from "components/Common/Loading";
 import RenderMarkdown from "components/Common/RenderMarkdown";
+import SectionTitle from "components/Common/SectionTitle";
 import Layout from "components/Layout/Layout";
 import ProjectGallery from "components/ProjectGallery";
 import { theme } from "styles/theme";
@@ -39,7 +40,7 @@ const SingleProject = () => {
   if (isLoading) {
     return (
       <Layout>
-        <CircularProgress />
+        <Loading />
       </Layout>
     );
   }
@@ -60,15 +61,9 @@ const SingleProject = () => {
   return (
     <Layout>
       <Box className="project-detail" pt={[4, 4, 0]}>
-        <Typography
-          className="project-title"
-          variant="h3"
-          color="primary"
-          fontWeight={600}
-          p={2}
-        >
+        <SectionTitle className="project-title" color="primary" p={2}>
           {project?.title}
-        </Typography>
+        </SectionTitle>
         <Box
           className="project-img-container"
           onClick={() => setImgModal(!imgModal)}

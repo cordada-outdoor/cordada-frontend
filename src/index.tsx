@@ -9,8 +9,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { config } from "config";
 import { queryClient } from "http/query-client";
-import App from "./pages/App";
 
+import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(

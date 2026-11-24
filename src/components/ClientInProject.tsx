@@ -1,7 +1,8 @@
-import { Avatar, Box, CircularProgress } from "@mui/material";
+import { Avatar, Box } from "@mui/material";
 
 import { useClient } from "api/clients";
 import HomeBg from "assets/images/home_bg.jpg";
+import Loading from "components/Common/Loading";
 import { getImageUrl } from "utils";
 
 interface ClientInProjectProps {
@@ -12,7 +13,7 @@ const ClientInProject = ({ documentId }: ClientInProjectProps) => {
   const { data: client, isLoading } = useClient(documentId);
 
   if (isLoading) {
-    return <CircularProgress className="loading-indicator" />;
+    return <Loading />;
   }
 
   const imgUrl = getImageUrl(client?.icon, "small");

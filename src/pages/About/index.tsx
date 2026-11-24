@@ -1,13 +1,15 @@
 import "./index.scss";
 
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
+import { useAboutUsPage } from "api/pages";
 import HomeBg from "assets/images/home_bg.jpg";
 import AboutUsDescription from "components/AboutUsDescription";
+import Loading from "components/Common/Loading";
 import RenderMarkdown from "components/Common/RenderMarkdown";
+import SectionTitle from "components/Common/SectionTitle";
 import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
-import { useAboutUsPage } from "api/pages";
 import { getImageUrl } from "utils";
 
 const About = () => {
@@ -16,7 +18,7 @@ const About = () => {
   if (isLoading) {
     return (
       <Layout>
-        <CircularProgress className="loading-indicator" />
+        <Loading />
       </Layout>
     );
   }
@@ -24,9 +26,7 @@ const About = () => {
   return (
     <Layout>
       <Box className="about">
-        <Typography variant="h3" fontWeight={600}>
-          {content?.header ?? "about us"}
-        </Typography>
+        <SectionTitle>{content?.header ?? "about us"}</SectionTitle>
         <Box className="about-top-image-container">
           <StrapiImage image={content?.banner} className="about-top-image" />
         </Box>

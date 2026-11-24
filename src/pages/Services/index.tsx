@@ -2,18 +2,14 @@ import "./index.scss";
 
 import { useTranslation } from "react-i18next";
 
-import {
-  Box,
-  CircularProgress,
-  Grid,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 
 import { useServices } from "api/services";
 import HomeBg from "assets/images/home_bg.jpg";
+import Loading from "components/Common/Loading";
 import PreviewImage from "components/Common/PreviewImage";
 import RenderMarkdown from "components/Common/RenderMarkdown";
+import SectionTitle from "components/Common/SectionTitle";
 import Layout from "components/Layout/Layout";
 import ServiceDescription from "components/ServiceDescription";
 import { theme } from "styles/theme";
@@ -33,16 +29,14 @@ const Services = () => {
   if (isLoading)
     return (
       <Layout>
-        <CircularProgress className="loading-indicator" />
+        <Loading />
       </Layout>
     );
 
   return (
     <Layout>
       <Box className="services">
-        <Typography variant="h3" fontWeight={600}>
-          {t("ourServices")}
-        </Typography>
+        <SectionTitle>{t("ourServices")}</SectionTitle>
         <Grid className="service-menu" container spacing={2}>
           {services.map((service) => {
             const { name, banner } = service;

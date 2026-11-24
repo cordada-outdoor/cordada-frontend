@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 
 import { Box, Button, Typography } from "@mui/material";
-
 import { Variant } from "@mui/material/styles/createTypography";
 
 interface ContactUsProps {
