@@ -18,8 +18,8 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 
-import { ReactComponent as LogoSmall } from "assets/logos/logo-small.svg";
-import { ReactComponent as MenuIcon } from "assets/logos/menu-icon.svg";
+import LogoSmall from "assets/logos/logo-small.svg?react";
+import MenuIcon from "assets/logos/menu-icon.svg?react";
 import { AppbarPosition } from "models";
 import { findLangName, getUrlWithoutLang } from "utils";
 import { SUPPORTED_LANGS } from "utils/constants";

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 import { Box, Typography, useMediaQuery } from "@mui/material";
 
-import { ReactComponent as InstagramLogo } from "assets/logos/instagram-logo.svg";
-import { ReactComponent as LinkedinLogo } from "assets/logos/linkedin-logo.svg";
+import InstagramLogo from "assets/logos/instagram-logo.svg?react";
+import LinkedinLogo from "assets/logos/linkedin-logo.svg?react";
 import CustomIconButton from "components/Common/CustomIconButton";
 import { theme } from "utils/theme";
 import useUrlLang from "utils/useUrlLang";
