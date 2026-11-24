@@ -2,6 +2,10 @@ import { ReactNode } from "react";
 
 import { Avatar, Box, Typography } from "@mui/material";
 
+import { cx } from "utils/cx";
+
+import styles from "./PreviewImage.module.scss";
+
 interface PreviewImageProps {
   src: string;
   hoverable: boolean;
@@ -17,7 +21,7 @@ interface PreviewContentProps {
 
 const PreviewContent = ({ title, description }: PreviewContentProps) => {
   return (
-    <Box className="preview-content">
+    <Box className={styles.content}>
       {title && (
         <Typography variant="h4" fontWeight={600}>
           {title}
@@ -32,6 +36,8 @@ const PreviewContent = ({ title, description }: PreviewContentProps) => {
   );
 };
 
+// Image with an optional title/description overlay. `hoverContent` slides up
+// over the image on hover, or always covers it when not `hoverable`.
 const PreviewImage = ({
   src,
   hoverable,
@@ -40,16 +46,12 @@ const PreviewImage = ({
   description,
 }: PreviewImageProps) => {
   return (
-    <Box className="preview-image-container">
-      <Avatar
-        sx={{ height: "100%", width: "100%" }}
-        src={src}
-        variant="square"
-      />
+    <Box className={styles.container}>
+      <Avatar className={styles.image} src={src} variant="square" />
       {title || description ? (
         <PreviewContent title={title} description={description} />
       ) : null}
-      <Box className={`hover-container ${!hoverable ? "non-hoverable" : ""}`}>
+      <Box className={cx(styles.hover, !hoverable && styles.nonHoverable)}>
         {hoverContent}
       </Box>
     </Box>

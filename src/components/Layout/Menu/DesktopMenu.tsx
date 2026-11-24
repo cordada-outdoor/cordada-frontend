@@ -2,8 +2,10 @@ import { AppBar, Box, List, ListItem, styled, Toolbar } from "@mui/material";
 
 import LogoSmall from "assets/logos/logo-small.svg?react";
 import { AppbarPosition } from "models";
+import { cx } from "utils/cx";
 
 import LanguageSwitcher from "./LanguageSwitcher";
+import styles from "./Menu.module.scss";
 import MenuScroll from "./MenuScroll";
 import { MAIN_NAV } from "./navigation";
 import NavLinks from "./NavLinks";
@@ -19,22 +21,25 @@ const DesktopMenu = ({ appbarPosition, primaryAppbar }: DesktopMenuProps) => (
   <>
     <MenuScroll position={appbarPosition}>
       <AppBar
-        className={`appbar ${primaryAppbar ? "primary-appbar" : ""}`}
+        className={cx(styles.appbar, primaryAppbar && styles.primary)}
         position="fixed"
       >
-        <Toolbar className="toolbar">
+        <Toolbar className={styles.toolbar}>
           <NavLinks
             items={MAIN_NAV}
-            className="navigation-list"
-            buttonClassName="navigation-item"
-            activeClassName="selected-item-in-menu"
+            className={styles.navList}
+            buttonClassName={styles.navItem}
+            activeClassName={styles.selected}
             uppercase
           />
-          <Box className="right-menu">
-            <List className="lang-list">
-              <LanguageSwitcher selectedClassName="selected-item-in-menu" />
+          <Box>
+            <List className={styles.langList}>
+              <LanguageSwitcher
+                buttonClassName={styles.langButton}
+                selectedClassName={styles.selected}
+              />
               <ListItem>
-                <LogoSmall className="main-menu-logo" />
+                <LogoSmall className={styles.logo} />
               </ListItem>
             </List>
           </Box>

@@ -1,8 +1,10 @@
-import "./index.scss";
-
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { GlobalStyles, ThemeProvider } from "@mui/material";
+import {
+  GlobalStyles,
+  StyledEngineProvider,
+  ThemeProvider,
+} from "@mui/material";
 
 import { theme } from "styles/theme";
 import { cssVariables } from "styles/tokens";
@@ -12,18 +14,22 @@ import ScrollToTop from "utils/ScrollToTop";
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles styles={{ ":root": cssVariables }} />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Switch>
-          <Routes />
-          <Route path={`/:lang(${SUPPORTED_LANGS.join("|")})`}>
+    // injectFirst puts MUI's styles before ours, so component SCSS modules
+    // override MUI at equal specificity.
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles styles={{ ":root": cssVariables }} />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Switch>
             <Routes />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </ThemeProvider>
+            <Route path={`/:lang(${SUPPORTED_LANGS.join("|")})`}>
+              <Routes />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

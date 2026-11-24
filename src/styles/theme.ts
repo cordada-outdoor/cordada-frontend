@@ -26,6 +26,11 @@ export const theme = createTheme({
     },
   },
   components: {
+    // Read the media query on the first render, so components branching on
+    // breakpoints don't render the desktop layout first on mobile.
+    MuiUseMediaQuery: {
+      defaultProps: { noSsr: true },
+    },
     MuiButton: {
       defaultProps: {
         disableElevation: true,

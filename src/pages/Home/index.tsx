@@ -1,5 +1,3 @@
-import "./index.scss";
-
 import { useEffect, useRef, useState } from "react";
 
 import { Box, useMediaQuery } from "@mui/material";
@@ -7,6 +5,7 @@ import { Box, useMediaQuery } from "@mui/material";
 import Layout from "components/Layout/Layout";
 import { theme } from "styles/theme";
 
+import styles from "./Home.module.scss";
 import AboutSection from "./sections/AboutSection";
 import HeroSection from "./sections/HeroSection";
 import ProjectsSection from "./sections/ProjectsSection";
@@ -33,7 +32,7 @@ const Home = () => {
 
   return (
     <Layout appbarPosition="fixed" primaryAppbar={primaryAppbar}>
-      <Box className="home-page">
+      <Box className={styles.page}>
         <HeroSection />
         <ProjectsSection sentinelRef={projectsRef} />
         <ServicesSection sectionRef={servicesRef} />

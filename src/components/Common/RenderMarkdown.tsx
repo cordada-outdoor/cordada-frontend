@@ -5,6 +5,9 @@ import MarkdownToJsx from "markdown-to-jsx";
 
 import { theme } from "styles/theme";
 import { getMarkdownWithEmbeds } from "utils";
+import { cx } from "utils/cx";
+
+import styles from "./RenderMarkdown.module.scss";
 
 interface RenderMarkdownProps {
   // Undefined while the CMS content is loading.
@@ -24,17 +27,14 @@ const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {
         {formattedMarkdown.map((element) => {
           if (element.type === "markdown") {
             return (
-              <Typography className="markdown-container">
+              <Typography className={styles.markdown}>
                 <MarkdownToJsx>{element.body}</MarkdownToJsx>
               </Typography>
             );
           } else if (element.type === "instagram-link") {
             return (
-              <Box
-                className="markdown-container"
-                width={"100%"}
-                sx={{ display: "flex", justifyContent: "center" }}
-              >
+              <Box className={cx(styles.markdown, styles.embed)} width="100%">
+                {/* The embed sets overflow inline, so override it inline. */}
                 <InstagramEmbed
                   style={{ overflow: "visible" }}
                   width={328}

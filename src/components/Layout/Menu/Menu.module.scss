@@ -1,0 +1,100 @@
+@use "styles/mixins" as *;
+@use "styles/colors" as *;
+
+.appbar {
+  transition: 0.2s;
+
+  // MenuScroll switches the bar to color="primary" once the page scrolls.
+  &:global(.MuiAppBar-colorPrimary) {
+    background-color: $black;
+  }
+  &.primary:global(.MuiAppBar-colorPrimary) {
+    background-color: $primary-color;
+  }
+
+  .toolbar {
+    justify-content: space-between;
+    flex-direction: row;
+
+    :global(.MuiListItem-padding) {
+      padding: 0;
+    }
+    .navList {
+      @include horizontal-list;
+
+      .navItem {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      span {
+        white-space: nowrap;
+        font-weight: 600;
+        background-color: transparent;
+      }
+    }
+    .selected {
+      @include primary-on-white;
+    }
+    .langList {
+      @include horizontal-list;
+
+      .langButton {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+    .logo {
+      height: 32px;
+      width: 32px;
+      margin-left: 15px;
+      transform: scale(3.5);
+    }
+    .logoLink {
+      color: inherit;
+      display: flex;
+    }
+  }
+}
+
+.appbar.mobileAppbar {
+  color: $primary-color;
+  overflow-y: hidden;
+
+  .menuButton {
+    @include horizontal-list;
+    color: $primary-color;
+
+    .menuIcon {
+      margin-left: 10px;
+      height: 32px;
+      width: 32px;
+    }
+  }
+  &:active {
+    background-color: transparent;
+  }
+}
+
+.drawer :global(.MuiPaper-root) {
+  min-width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .drawerNavItem {
+    padding-left: 0;
+  }
+  .legalNav {
+    background-color: rgba(128, 128, 128, 0.174);
+  }
+  .drawerLangList {
+    display: flex;
+    flex-direction: row;
+    background-color: $primary-translucid;
+    align-items: center;
+
+    .selectedLang {
+      color: $primary-color;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@use "styles/colors" as *;
+@use "styles/mixins" as *;
+
+.services {
+  @include page-padding;
+  scroll-behavior: smooth;
+
+  .menu {
+    padding: 24px 0;
+
+    .menuItem {
+      word-wrap: break-word;
+      border: 5px solid $primary-color;
+      padding: 0;
+      text-align: center;
+      cursor: pointer;
+
+      .menuItemContent {
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        .menuItemTitle {
+          position: absolute;
+        }
+      }
+    }
+  }
+  .content {
+    padding-top: 50px;
+  }
+}
+
+@include down(md) {
+  .services {
+    padding: 50px 20px 10px;
+  }
+}

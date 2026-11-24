@@ -1,5 +1,3 @@
-import "./index.scss";
-
 import { Box } from "@mui/material";
 
 import { useAboutUsPage } from "api/pages";
@@ -11,6 +9,8 @@ import SectionTitle from "components/Common/SectionTitle";
 import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
 import { getImageUrl } from "utils";
+
+import styles from "./About.module.scss";
 
 const About = () => {
   const { data: content, isLoading } = useAboutUsPage();
@@ -25,12 +25,12 @@ const About = () => {
 
   return (
     <Layout>
-      <Box className="about">
+      <Box className={styles.about}>
         <SectionTitle>{content?.header ?? "about us"}</SectionTitle>
-        <Box className="about-top-image-container">
-          <StrapiImage image={content?.banner} className="about-top-image" />
+        <Box className={styles.bannerContainer}>
+          <StrapiImage image={content?.banner} className={styles.banner} />
         </Box>
-        <Box className="about-us-content" maxWidth="xl" margin="auto">
+        <Box maxWidth="xl" margin="auto">
           {content?.sections?.map((sec, idx) => {
             const imgUrl = getImageUrl(sec.profilePicture, "small");
             const even = idx % 2 === 0;

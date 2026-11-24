@@ -65,13 +65,20 @@ Recommendation: **SCSS Modules** (`Component.module.scss` next to each
 component). Vite supports them out of the box, we keep SCSS, and class names
 get scoped.
 
-- [ ] Break up `pages/index.scss`: it holds Menu, Footer, PreviewImage and
+- [x] Break up `pages/index.scss`: it holds Menu, Footer, PreviewImage and
       DatePicker styles nested under `.layout`. Move each to its component.
-- [ ] Remove the 18 `!important` overrides as scoping makes them unnecessary.
-- [ ] Move `sx` / inline `style` blocks (e.g. `ProjectGallery`) into modules.
-- [ ] Prefer responsive CSS over `isMobile` branching: Home renders two
+- [x] Remove the 18 `!important` overrides as scoping makes them unnecessary.
+- [x] Move `sx` / inline `style` blocks (e.g. `ProjectGallery`) into modules.
+- [x] Prefer responsive CSS over `isMobile` branching: Home renders two
       separate project trees depending on `isMobile`, which flashes on load.
-- [ ] Migrate per component as it's touched in steps 3–4, not big-bang.
+- [x] Migrate per component as it's touched in steps 3–4, not big-bang.
+
+  Notes: `StyledEngineProvider injectFirst` lets modules override MUI at
+  equal specificity; `useMediaQuery` defaults to `noSsr` (no desktop-first
+  flash on mobile). One `!important` remains, against react-slick's inline
+  slide width. Typography variant switches and Home's mobile carousel still
+  use `isMobile`. The one-off queries (1000, 1150, 550, 375px) are kept as
+  literals in their modules.
 
 ## 6. Legal pages to the CMS
 

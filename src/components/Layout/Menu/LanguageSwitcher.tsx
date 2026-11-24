@@ -10,13 +10,18 @@ import {
 
 import { findLangName, getUrlWithoutLang } from "utils";
 import { SUPPORTED_LANGS } from "utils/constants";
+import { cx } from "utils/cx";
 
 interface LanguageSwitcherProps {
+  buttonClassName?: string;
   selectedClassName: string;
 }
 
 // Renders one list item per language; the parent supplies the <List>.
-const LanguageSwitcher = ({ selectedClassName }: LanguageSwitcherProps) => {
+const LanguageSwitcher = ({
+  buttonClassName,
+  selectedClassName,
+}: LanguageSwitcherProps) => {
   const { i18n } = useTranslation();
   const { pathname } = useLocation();
   const urlWithoutLang = getUrlWithoutLang(pathname);
@@ -30,7 +35,7 @@ const LanguageSwitcher = ({ selectedClassName }: LanguageSwitcherProps) => {
             <ListItemButton
               component={Link}
               to={`/${lang}${urlWithoutLang}`}
-              className={`language-button ${isSelected ? selectedClassName : ""}`}
+              className={cx(buttonClassName, isSelected && selectedClassName)}
             >
               <ListItemText
                 primary={

@@ -9,6 +9,8 @@ import RenderMarkdown from "components/Common/RenderMarkdown";
 import SectionTitle from "components/Common/SectionTitle";
 import useUrlLang from "utils/useUrlLang";
 
+import styles from "../Home.module.scss";
+
 interface ServicesSectionProps {
   sectionRef: RefObject<HTMLDivElement>;
 }
@@ -20,18 +22,15 @@ const ServicesSection = ({ sectionRef }: ServicesSectionProps) => {
   return (
     <Box
       ref={sectionRef}
-      className="home-services-section"
+      className={styles.services}
       display="flex"
       justifyContent="center"
     >
       <Box maxWidth="lg">
         <SectionTitle>{t("ourServices")}</SectionTitle>
         <RenderMarkdown markdown={homepage?.servicesCopy} />
-        <Link
-          className="see-services-button-container"
-          to={`${langUrlPrefix}/services`}
-        >
-          <Button className="see-services-button" variant="inverted">
+        <Link className={styles.seeServices} to={`${langUrlPrefix}/services`}>
+          <Button className={styles.seeServicesButton} variant="inverted">
             {t("homePage.allServices")}
           </Button>
         </Link>

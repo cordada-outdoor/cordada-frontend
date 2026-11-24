@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -16,11 +17,75 @@ import { useServices } from "api/services";
 import Loading from "components/Common/Loading";
 
 import DatePicker from "./Common/DatePicker";
+import styles from "./ProjectsFilterDialog.module.scss";
 
 export type FilterType = "service" | "date" | "client";
 
 const byName = (a: { name: string }, b: { name: string }) =>
   a.name.localeCompare(b.name);
+
+interface FilterPanelProps {
+  children: ReactNode;
+  onClose: () => void;
+  onRemove: () => void;
+}
+
+// Close button, the filter's own control, and a "remove filter" button.
+const FilterPanel = ({ children, onClose, onRemove }: FilterPanelProps) => {
+  const { t } = useTranslation();
+  return (
+    <Paper className={styles.modal}>
+      <IconButton onClick={onClose} className={styles.closeButton}>
+        <Typography className={styles.closeText}>x</Typography>
+      </IconButton>
+      {children}
+      <Button
+        onClick={onRemove}
+        className={styles.removeButton}
+        variant="contained"
+      >
+        {t("projectsPage.removeFilter")}
+      </Button>
+    </Paper>
+  );
+};
+
+interface OptionSelectProps {
+  id: string;
+  label: string;
+  value: string;
+  options: { id: number; name: string }[];
+  isLoading: boolean;
+  onChange: (value: string) => void;
+}
+
+const OptionSelect = ({
+  id,
+  label,
+  value,
+  options,
+  isLoading,
+  onChange,
+}: OptionSelectProps) =>
+  isLoading ? (
+    <Loading />
+  ) : (
+    <FormControl className={styles.select} fullWidth>
+      <InputLabel id={`${id}-label`}>{label}</InputLabel>
+      <Select
+        id={`${id}-select`}
+        value={value}
+        label={label}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        {[...options].sort(byName).map((option) => (
+          <MenuItem key={option.id} value={option.id.toString()}>
+            {option.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
 
 interface ProjectsFilterDialogProps {
   type: FilterType | undefined;
@@ -30,6 +95,7 @@ interface ProjectsFilterDialogProps {
   handleSave: (value: string) => void;
   handleClose: () => void;
 }
+
 const ProjectsFilterDialog = ({
   type,
   value = "",
@@ -40,109 +106,33 @@ const ProjectsFilterDialog = ({
   const servicesQuery = useServices();
   const clientsQuery = useClients();
 
-  switch (type) {
-    case "service": {
-      const services = [...(servicesQuery.data ?? [])].sort(byName);
-      return (
-        <Paper className="filter-modal">
-          <IconButton
-            onClick={() => handleClose()}
-            className="close-button-icon"
-          >
-            <Typography className="close-button-text">x</Typography>
-          </IconButton>
-          {servicesQuery.isLoading ? (
-            <Loading />
-          ) : (
-            <FormControl className="select-container" fullWidth>
-              <InputLabel id="services-label">{t("services")}</InputLabel>
-              <Select
-                id="services-select"
-                value={value}
-                label={t("services")}
-                onChange={(e) => handleSave(e.target.value)}
-              >
-                {services.map((service) => (
-                  <MenuItem key={service.id} value={service.id.toString()}>
-                    {service.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
-          <Button
-            onClick={() => handleSave("")}
-            className="remove-filter-button"
-            variant="contained"
-          >
-            {t("projectsPage.removeFilter")}
-          </Button>
-        </Paper>
-      );
-    }
-    case "date":
-      return (
-        <Paper className="filter-modal">
-          <IconButton
-            onClick={() => handleClose()}
-            className="close-button-icon"
-          >
-            <Typography className="close-button-text">x</Typography>
-          </IconButton>
-          <DatePicker onChange={(val) => handleSave(val)} value={value} />
-          <Button
-            onClick={() => handleSave("")}
-            className="remove-filter-button"
-            variant="contained"
-          >
-            {t("projectsPage.removeFilter")}
-          </Button>
-        </Paper>
-      );
-    case "client": {
-      const clients = [...(clientsQuery.data ?? [])].sort(byName);
-      return (
-        <Paper className="filter-modal">
-          <IconButton
-            onClick={() => handleClose()}
-            className="close-button-icon"
-          >
-            <Typography className="close-button-text">x</Typography>
-          </IconButton>
-          {clientsQuery.isLoading ? (
-            <Loading />
-          ) : (
-            <FormControl className="select-container" fullWidth>
-              <InputLabel id="clients-label">
-                {t("projectsPage.client")}
-              </InputLabel>
-              <Select
-                id="clients-select"
-                value={value}
-                label={t("projectsPage.client")}
-                onChange={(e) => handleSave(e.target.value)}
-              >
-                {clients.map((client) => (
-                  <MenuItem key={client.id} value={client.id.toString()}>
-                    {client.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
-          <Button
-            onClick={() => handleSave("")}
-            className="remove-filter-button"
-            variant="contained"
-          >
-            {t("projectsPage.removeFilter")}
-          </Button>
-        </Paper>
-      );
-    }
-    default:
-      return <div></div>;
-  }
+  if (!type) return <div></div>;
+
+  return (
+    <FilterPanel onClose={handleClose} onRemove={() => handleSave("")}>
+      {type === "service" && (
+        <OptionSelect
+          id="services"
+          label={t("services")}
+          value={value}
+          options={servicesQuery.data ?? []}
+          isLoading={servicesQuery.isLoading}
+          onChange={handleSave}
+        />
+      )}
+      {type === "client" && (
+        <OptionSelect
+          id="clients"
+          label={t("projectsPage.client")}
+          value={value}
+          options={clientsQuery.data ?? []}
+          isLoading={clientsQuery.isLoading}
+          onChange={handleSave}
+        />
+      )}
+      {type === "date" && <DatePicker onChange={handleSave} value={value} />}
+    </FilterPanel>
+  );
 };
 
 export default ProjectsFilterDialog;
