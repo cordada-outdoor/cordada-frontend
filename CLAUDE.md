@@ -26,7 +26,7 @@ A Husky pre-commit hook runs lint-staged: `prettier --write` + `eslint --fix` on
 
 ## Environment
 
-Copy `.env.example` to `.env`. Required vars (`REACT_APP_CMS_HOST`, `REACT_APP_CMS_TOKEN`, `REACT_APP_REACT_QUERY_DEV_TOOLS`) are read from `import.meta.env` through `src/config` helpers, which **throw at startup** if a var is missing or (for booleans) isn't exactly `true`/`false`. Vite is configured (`envPrefix` in `vite.config.ts`) to expose only `REACT_APP_*` vars. Add new env vars in `src/config/config.ts` the same way rather than reading `import.meta.env` directly. Since Vite inlines env vars at build time, the Docker image needs them present during `npm run build`.
+Copy `.env.example` to `.env`. Required vars (`VITE_CMS_HOST`, `VITE_CMS_TOKEN`, `VITE_REACT_QUERY_DEV_TOOLS`) are read from `import.meta.env` through `src/config` helpers, which **throw at startup** if a var is missing or (for booleans) isn't exactly `true`/`false`. Add new env vars in `src/config/config.ts` the same way rather than reading `import.meta.env` directly. Since Vite inlines env vars at build time, the Docker image needs them present during `npm run build`.
 
 ## Architecture
 

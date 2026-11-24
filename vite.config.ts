@@ -7,9 +7,6 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgr()],
-  // Keep the existing env var names (REACT_APP_*) so .env files and
-  // deployment config don't need to change.
-  envPrefix: "REACT_APP_",
   css: {
     preprocessorOptions: {
       // Lets SCSS import "utils/..." relative to src, like CRA did.

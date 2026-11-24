@@ -1,6 +1,6 @@
 import { boolean, string } from "./helpers";
 
-const PREFIX = `REACT_APP_`;
+const PREFIX = `VITE_`;
 
 const withPrefix = (key: string) => `${PREFIX}${key}`;
 
