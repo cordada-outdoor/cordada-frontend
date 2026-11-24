@@ -1,289 +1,43 @@
 import "./index.scss";
 
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
-import { Avatar, Box, Button, useMediaQuery } from "@mui/material";
-import { t } from "i18next";
+import { Box, useMediaQuery } from "@mui/material";
 
-import { useClients } from "api/clients";
-import { useHomepage } from "api/pages";
-import { useLatestProjects } from "api/projects";
-import LogoSmallWhite from "assets/logos/logo-small-white.png";
-import Carousel from "components/Carousel/Carousel";
-import ContactUs from "components/Common/ContactUs";
-import Loading from "components/Common/Loading";
-import RenderMarkdown from "components/Common/RenderMarkdown";
-import SectionTitle from "components/Common/SectionTitle";
-import { StrapiImage } from "components/Common/StrapiImage";
 import Layout from "components/Layout/Layout";
-import ProjectCard from "components/ProjectCard/ProjectCard";
 import { theme } from "styles/theme";
-import { getHomeImagesArr, getImageUrl } from "utils";
-import useUrlLang from "utils/useUrlLang";
+
+import AboutSection from "./sections/AboutSection";
+import HeroSection from "./sections/HeroSection";
+import ProjectsSection from "./sections/ProjectsSection";
+import ServicesSection from "./sections/ServicesSection";
 
 const Home = () => {
   const projectsRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
-  const [projectsSectionVisible, updateProjectsSectionVisible] =
-    useState<boolean>(false);
-
-  const { langUrlPrefix } = useUrlLang();
+  const [primaryAppbar, setPrimaryAppbar] = useState(false);
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  // Use the primary app bar while the watched section is on screen.
   useEffect(() => {
     const target = isMobile ? servicesRef.current : projectsRef.current;
     if (!target) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      updateProjectsSectionVisible(entry.isIntersecting);
-    });
+    const observer = new IntersectionObserver(([entry]) =>
+      setPrimaryAppbar(entry.isIntersecting),
+    );
     observer.observe(target);
 
     return () => observer.disconnect();
   }, [isMobile]);
 
-  const projectsQuery = useLatestProjects(3);
-  const clientsQuery = useClients();
-  const { data: homepage } = useHomepage();
-
-  const projects = projectsQuery.data ?? [];
-  const clients = clientsQuery.data ?? [];
-
-  const homeImagesArr = getHomeImagesArr(homepage?.heroImages);
-
   return (
-    <Layout appbarPosition="fixed" primaryAppbar={projectsSectionVisible}>
+    <Layout appbarPosition="fixed" primaryAppbar={primaryAppbar}>
       <Box className="home-page">
-        <Box className="home-page-header">
-          <Carousel
-            settings={{
-              dots: false,
-              arrows: false,
-              infinite: true,
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              autoplay: true,
-              autoplaySpeed: 6000,
-              draggable: false,
-              fade: true,
-              speed: 1000,
-              swipeToSlide: false,
-              swipe: false,
-              pauseOnDotsHover: false,
-              pauseOnHover: false,
-              pauseOnFocus: false,
-              cssEase: "linear",
-            }}
-          >
-            {homeImagesArr.map((homeImage, idx) => {
-              return (
-                <Box key={idx}>
-                  <Box className="home-background-image-container">
-                    <img
-                      key={idx}
-                      src={homeImage.hero}
-                      alt="home-bg"
-                      className="home-background-image"
-                    />
-                  </Box>
-                  <Box className="home-primary-logo-container">
-                    <img
-                      src={homeImage.logo}
-                      alt="home-logo"
-                      className="home-primary-logo"
-                    />
-                  </Box>
-                </Box>
-              );
-            })}
-          </Carousel>
-          <Box
-            className="home-corp-copy"
-            display="flex"
-            justifyContent="center"
-          >
-            <Box maxWidth="lg">
-              <RenderMarkdown markdown={homepage?.heroCopy} />
-            </Box>
-          </Box>
-        </Box>
-
-        <Box className="home-projects-section" id="home-projects-section">
-          <SectionTitle className="section-title" maxWidth="lg" margin="auto">
-            {t("homePage.ourProjects")}
-          </SectionTitle>
-          {isMobile ? (
-            <Box className="mobile-projects-preview">
-              <Carousel
-                settings={{
-                  dots: false,
-                  arrows: true,
-                  infinite: true,
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  autoplay: false,
-                  pauseOnDotsHover: false,
-                  pauseOnHover: true,
-                  pauseOnFocus: false,
-                  cssEase: "linear",
-                }}
-              >
-                {projects.map((p) => (
-                  <Box className="project-preview" key={p.documentId}>
-                    <ProjectCard project={p} />
-                  </Box>
-                ))}
-              </Carousel>
-            </Box>
-          ) : (
-            <Box
-              className="projects-preview-container"
-              maxWidth="lg"
-              margin="auto"
-            >
-              {projectsQuery.isLoading ? (
-                <Loading />
-              ) : (
-                projects.map((p) => (
-                  <Box className="project-preview" key={p.documentId}>
-                    <ProjectCard project={p} />
-                  </Box>
-                ))
-              )}
-            </Box>
-          )}
-
-          <Box margin="auto" display="flex" maxWidth="lg" justifyContent="end">
-            <Link
-              className="see-projects-button-container"
-              to={`${langUrlPrefix}/projects`}
-            >
-              <Button
-                className="see-projects-button"
-                color="primary"
-                variant="contained"
-              >
-                {t("homePage.allProjects")}
-              </Button>
-            </Link>
-          </Box>
-
-          <Box ref={projectsRef} />
-
-          <Box className="collaborators-preview-container">
-            <SectionTitle className="section-title" maxWidth="lg" margin="auto">
-              {t("homePage.ourCordada")}
-            </SectionTitle>
-            <Box
-              className={
-                isMobile ? "mobile-collaborators" : "collaborators-list"
-              }
-            >
-              {clientsQuery.isLoading ? (
-                <Loading sx={{ color: "black" }} />
-              ) : (
-                <Carousel
-                  settings={{
-                    dots: false,
-                    arrows: false,
-                    infinite: true,
-                    slidesToShow: clients?.length > 5 ? 6 : clients.length,
-                    initialSlide: -2,
-                    autoplay: true,
-                    pauseOnDotsHover: false,
-                    pauseOnHover: false,
-                    pauseOnFocus: false,
-                    autoplaySpeed: 0,
-                    speed: 5000,
-                    cssEase: "linear",
-                    responsive: [
-                      {
-                        breakpoint: 1024,
-                        settings: {
-                          slidesToShow:
-                            clients?.length > 5 ? 6 : clients.length,
-                        },
-                      },
-                      {
-                        breakpoint: 600,
-                        settings: {
-                          slidesToShow:
-                            clients?.length > 3 ? 4 : clients.length,
-                        },
-                      },
-                      {
-                        breakpoint: 480,
-                        settings: {
-                          slidesToShow:
-                            clients?.length > 2 ? 3 : clients.length,
-                        },
-                      },
-                    ],
-                  }}
-                >
-                  {clients.map((client, idx) => {
-                    const { icon } = client;
-                    const imgUrl = getImageUrl(icon, "small");
-                    return (
-                      <Avatar
-                        variant="square"
-                        className="avatar-img"
-                        key={client.id}
-                        src={imgUrl ?? LogoSmallWhite}
-                        alt={"carousel " + idx}
-                      />
-                    );
-                  })}
-                </Carousel>
-              )}
-            </Box>
-          </Box>
-        </Box>
-
-        <Box
-          ref={servicesRef}
-          className="home-services-section"
-          display="flex"
-          justifyContent="center"
-        >
-          <Box maxWidth="lg">
-            <SectionTitle>{t("ourServices")}</SectionTitle>
-            <RenderMarkdown markdown={homepage?.servicesCopy} />
-            <Link
-              className="see-services-button-container"
-              to={`${langUrlPrefix + "/services"}`}
-            >
-              <Button className="see-services-button" variant="inverted">
-                {t("homePage.allServices")}
-              </Button>
-            </Link>
-          </Box>
-        </Box>
-        <Box className="home-about-section">
-          <Box className="about-us-img-container">
-            {homepage && (
-              <StrapiImage
-                image={homepage.contactUsImage}
-                className="about-us-img"
-              />
-            )}
-            <Link
-              className="about-us-button-container"
-              to={`${langUrlPrefix + "/about"}`}
-            >
-              <Button
-                className="about-us-button"
-                color="primary"
-                variant="contained"
-              >
-                {t("aboutUs")}
-              </Button>
-            </Link>
-          </Box>
-          <ContactUs titleVariant="h3" colorScheme="white-on-black" />
-        </Box>
+        <HeroSection />
+        <ProjectsSection sentinelRef={projectsRef} />
+        <ServicesSection sectionRef={servicesRef} />
+        <AboutSection />
       </Box>
     </Layout>
   );
