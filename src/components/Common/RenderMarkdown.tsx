@@ -7,7 +7,8 @@ import { theme } from "styles/theme";
 import { getMarkdownWithEmbeds } from "utils";
 
 interface RenderMarkdownProps {
-  markdown: string;
+  // Undefined while the CMS content is loading.
+  markdown?: string;
 }
 
 const RenderMarkdown = ({ markdown }: RenderMarkdownProps) => {

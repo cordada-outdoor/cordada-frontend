@@ -11,17 +11,22 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
 
-import { http } from "http/client";
-import { Client } from "models/client";
-import { Service } from "models/service";
+import { useClients } from "api/clients";
+import { useServices } from "api/services";
 
 import DatePicker from "./Common/DatePicker";
 
+export type FilterType = "service" | "date" | "client";
+
+const byName = (a: { name: string }, b: { name: string }) =>
+  a.name.localeCompare(b.name);
+
 interface ProjectsFilterDialogProps {
-  type: "service" | "date" | "client" | undefined;
+  type: FilterType | undefined;
   value?: string;
+  // Receives the selected id (service/client) or "YYYY-MM" (date); an empty
+  // string removes the filter.
   handleSave: (value: string) => void;
   handleClose: () => void;
 }
@@ -32,19 +37,12 @@ const ProjectsFilterDialog = ({
   handleClose,
 }: ProjectsFilterDialogProps) => {
   const { t } = useTranslation();
-  const urlPath = type === "service" ? "api/services" : "api/clients";
-  const query = useQuery({
-    queryKey: [type],
-    queryFn: async () => {
-      const res = await http.get(urlPath, {});
-      return res.data;
-    },
-  });
-  const isLoading = query?.isLoading;
+  const servicesQuery = useServices();
+  const clientsQuery = useClients();
 
   switch (type) {
-    case "service":
-      const services = query?.data?.data;
+    case "service": {
+      const services = [...(servicesQuery.data ?? [])].sort(byName);
       return (
         <Paper className="filter-modal">
           <IconButton
@@ -53,7 +51,7 @@ const ProjectsFilterDialog = ({
           >
             <Typography className="close-button-text">x</Typography>
           </IconButton>
-          {isLoading ? (
+          {servicesQuery.isLoading ? (
             <CircularProgress className="loading-indicator" />
           ) : (
             <FormControl className="select-container" fullWidth>
@@ -62,15 +60,10 @@ const ProjectsFilterDialog = ({
                 id="services-select"
                 value={value}
                 label={t("services")}
-                onChange={(e) => {
-                  const service = services.find(
-                    (service: Client) => service.id === Number(e.target.value),
-                  );
-                  handleSave(e.target.value + "///" + service.name);
-                }}
+                onChange={(e) => handleSave(e.target.value)}
               >
-                {services?.map((service: Service) => (
-                  <MenuItem value={service.id.toString()}>
+                {services.map((service) => (
+                  <MenuItem key={service.id} value={service.id.toString()}>
                     {service.name}
                   </MenuItem>
                 ))}
@@ -86,6 +79,7 @@ const ProjectsFilterDialog = ({
           </Button>
         </Paper>
       );
+    }
     case "date":
       return (
         <Paper className="filter-modal">
@@ -105,8 +99,8 @@ const ProjectsFilterDialog = ({
           </Button>
         </Paper>
       );
-    case "client":
-      const clients = query?.data?.data;
+    case "client": {
+      const clients = [...(clientsQuery.data ?? [])].sort(byName);
       return (
         <Paper className="filter-modal">
           <IconButton
@@ -115,7 +109,7 @@ const ProjectsFilterDialog = ({
           >
             <Typography className="close-button-text">x</Typography>
           </IconButton>
-          {isLoading ? (
+          {clientsQuery.isLoading ? (
             <CircularProgress className="loading-indicator" />
           ) : (
             <FormControl className="select-container" fullWidth>
@@ -126,15 +120,10 @@ const ProjectsFilterDialog = ({
                 id="clients-select"
                 value={value}
                 label={t("projectsPage.client")}
-                onChange={(e) => {
-                  const client = clients.find(
-                    (client: Client) => client.id === Number(e.target.value),
-                  );
-                  handleSave(e.target.value + "///" + client.name);
-                }}
+                onChange={(e) => handleSave(e.target.value)}
               >
-                {clients?.map((client: Client) => (
-                  <MenuItem value={client.id.toString()}>
+                {clients.map((client) => (
+                  <MenuItem key={client.id} value={client.id.toString()}>
                     {client.name}
                   </MenuItem>
                 ))}
@@ -150,6 +139,7 @@ const ProjectsFilterDialog = ({
           </Button>
         </Paper>
       );
+    }
     default:
       return <div></div>;
   }

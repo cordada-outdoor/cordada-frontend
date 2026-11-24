@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 
-import { ServiceType } from "models";
 import useUrlLang from "utils/useUrlLang";
 
 interface ServiceDescriptionProps {
@@ -13,7 +12,7 @@ interface ServiceDescriptionProps {
   image: string;
   children: ReactNode;
   title: string;
-  service: ServiceType;
+  serviceId: number;
   isMobile: boolean;
 }
 
@@ -22,7 +21,7 @@ const ServiceDescription = ({
   direction,
   image,
   children,
-  service,
+  serviceId,
   isMobile,
 }: ServiceDescriptionProps) => {
   const [isVisible, setVisible] = useState(false);
@@ -51,7 +50,7 @@ const ServiceDescription = ({
           <Link
             to={{
               pathname: `${langUrlPrefix}/projects`,
-              state: { service: service },
+              state: { serviceId },
             }}
           >
             <Button className="see-more-button" variant="contained">

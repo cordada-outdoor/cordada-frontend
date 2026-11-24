@@ -1,8 +1,9 @@
+import { StrapiMedia, StrapiMediaSize } from "models/strapi";
 import { getImageUrl } from "utils";
 
 type StrapiImageProps = {
-  image: any;
-  size?: "large" | "medium" | "small" | "thumbnail";
+  image: StrapiMedia | null | undefined;
+  size?: StrapiMediaSize;
   className?: string;
 };
 
@@ -16,6 +17,10 @@ export const StrapiImage: React.FC<StrapiImageProps> = ({
   if (!imageUrl) return null;
 
   return (
-    <img alt={image.alternativeText} src={imageUrl} className={className} />
+    <img
+      alt={image?.alternativeText ?? ""}
+      src={imageUrl}
+      className={className}
+    />
   );
 };

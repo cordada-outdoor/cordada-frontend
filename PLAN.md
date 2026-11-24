@@ -32,12 +32,14 @@ Main problems today: duplicated markup, and styling split across three systems
 Seven components build Strapi calls inline with `http.get`, and responses are
 `any` (14 uses).
 
-- [ ] Create `src/api/` with `useProjects`, `useProject`, `useClients`,
-      `useHomepage`, `useServices`.
-- [ ] Add generic `StrapiResponse<T>` and a `StrapiMedia` type to replace
-      `image: any` / `gallery: any[]` in `models/`.
-- [ ] Replace the `"id///title"` string encoding in the projects filter with a
-      typed `{ id, label }` value.
+- [x] Create `src/api/` with `useLatestProjects`, `useProjects`, `useProject`,
+      `useClients`, `useClient`, `useServices`, `useHomepage`,
+      `useAboutUsPage`.
+- [x] Add `StrapiCollectionResponse<T>` / `StrapiSingleResponse<T>` and
+      `StrapiMedia` in `models/strapi.ts`; models match the cordada-cms
+      schemas.
+- [x] Replace the `"id///title"` filter encoding: filters hold ids only and
+      chip labels come from the cached services/clients lists.
 
 ## 3. Shared components
 

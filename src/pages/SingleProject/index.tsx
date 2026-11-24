@@ -13,18 +13,14 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
 
+import { useProject } from "api/projects";
 import HomeBg from "assets/images/home_bg.jpg";
 import ClientInProject from "components/ClientInProject";
 import RenderMarkdown from "components/Common/RenderMarkdown";
 import Layout from "components/Layout/Layout";
 import ProjectGallery from "components/ProjectGallery";
-import { http } from "http/client";
-import { Client } from "models/client";
-import { Project } from "models/project";
-import { Service } from "models/service";
 import { theme } from "styles/theme";
 import { getImageUrl, joinWithCommasAndAmpersand } from "utils";
 
@@ -38,20 +34,9 @@ const SingleProject = () => {
     id: string;
   }>();
 
-  const projectQuery = useQuery({
-    queryKey: ["project", id],
-    queryFn: async () => {
-      const res = await http.get(`api/projects/${id}`, {
-        params: {
-          populate: "*",
-        },
-      });
+  const { data: project, isLoading } = useProject(id);
 
-      return res.data;
-    },
-  });
-
-  if (projectQuery.isLoading) {
+  if (isLoading) {
     return (
       <Layout>
         <CircularProgress />
@@ -59,12 +44,10 @@ const SingleProject = () => {
     );
   }
 
-  const project: Project = projectQuery.data?.data;
-  const client: Client = project?.client;
-  const services: Service[] = project?.services;
+  const client = project?.client;
 
   const serviceNames = joinWithCommasAndAmpersand(
-    services?.map((s) => s?.name),
+    project?.services.map((s) => s.name) ?? [],
   );
 
   const image = project?.image;
@@ -160,7 +143,7 @@ const SingleProject = () => {
               <RenderMarkdown markdown={project?.body} />
             </Stack>
           </Grid>
-          {project?.gallery?.length && (
+          {!!project?.gallery?.length && (
             <Grid
               sx={{ display: "flex", width: "100%", justifyContent: "center" }}
               item
