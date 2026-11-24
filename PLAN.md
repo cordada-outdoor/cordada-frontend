@@ -50,11 +50,11 @@ Seven components build Strapi calls inline with `http.get`, and responses are
 
 ## 4. Split large files
 
-- [ ] **Home (424 lines)** → `pages/Home/sections/`: `Hero`, `Projects`,
+- [x] **Home (424 lines)** → `pages/Home/sections/`: `Hero`, `Projects`,
       `Clients`, `Services`, `About`. Move carousel settings into constants.
-- [ ] **Menu (249 lines)** → `DesktopMenu`, `MobileMenu`, shared `NavLinks`,
+- [x] **Menu (249 lines)** → `DesktopMenu`, `MobileMenu`, shared `NavLinks`,
       `LanguageSwitcher`.
-- [ ] Use `<Link>` / `NavLink` instead of `onClick={() => history.push(...)}`:
+- [x] Use `<Link>` / `NavLink` instead of `onClick={() => history.push(...)}`:
       today there are no real anchors, so open-in-new-tab and accessibility
       don't work. `NavLink` also replaces the
       `window.location.pathname.includes` selected-state check.
