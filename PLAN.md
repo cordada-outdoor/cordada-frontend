@@ -5,13 +5,13 @@ Main problems today: duplicated markup, and styling split across three systems
 
 ## 0. Bugs to fix first
 
-- [ ] **December date filter**: "next month" maths in `pages/Projects/index.tsx`
+- [x] **December date filter**: "next month" maths in `pages/Projects/index.tsx`
       produces `2024-13-01`. Use dayjs `.add(1, "month")`.
-- [ ] **Duplicate React keys**: Projects grid uses `key={i}` (the page index),
+- [x] **Duplicate React keys**: Projects grid uses `key={i}` (the page index),
       so every card on a page shares a key. Use `p.documentId`.
-- [ ] **IntersectionObserver leak**: Home creates it but never disconnects, and
+- [x] **IntersectionObserver leak**: Home creates it but never disconnects, and
       re-subscribes whenever `isMobile` changes. Return a cleanup.
-- [ ] **History reset during render**: `window.history.replaceState` runs on
+- [x] **History reset during render**: `window.history.replaceState` runs on
       every render in Projects. Move it into an effect.
 
 ## 1. Theme and design tokens
