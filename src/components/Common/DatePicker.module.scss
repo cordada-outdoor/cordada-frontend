@@ -1,0 +1,36 @@
+@use "styles/colors" as *;
+
+.datepicker {
+  .header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      height: 20px;
+      width: auto;
+    }
+  }
+  .months {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+
+    .month {
+      cursor: pointer;
+
+      .monthText {
+        font-weight: 700;
+      }
+      :hover {
+        background-color: $primary-translucid;
+        border-radius: 5px;
+      }
+    }
+    .selected {
+      color: $primary-color;
+    }
+  }
+}

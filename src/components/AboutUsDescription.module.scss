@@ -1,0 +1,53 @@
+@use "styles/mixins" as *;
+
+.container {
+  margin: 100px 12px;
+  opacity: 0;
+  transform: translateX(-20vw);
+  visibility: hidden;
+  transition:
+    opacity 1200ms ease-out,
+    transform 600ms ease-out,
+    visibility 1200ms ease-out;
+  will-change: opacity, transform, visibility;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  .avatar {
+    height: 300px;
+    width: 300px;
+    margin-right: 24px;
+  }
+}
+.container.rightToLeft {
+  transform: translateX(20vw);
+  flex-direction: row-reverse;
+
+  .avatar {
+    margin-right: 0;
+    margin-left: 24px;
+  }
+}
+.container.visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+@include down(md) {
+  .container,
+  .container.rightToLeft {
+    flex-direction: column;
+    text-align: center;
+
+    .avatar {
+      margin-bottom: 24px;
+      margin-left: 0;
+      margin-right: 0;
+      width: 150px;
+      height: 150px;
+    }
+  }
+}

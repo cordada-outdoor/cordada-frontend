@@ -1,0 +1,33 @@
+@use "styles/colors" as *;
+
+.project {
+  .imageContainer {
+    cursor: pointer;
+    transition: 0.2s;
+    max-height: 300px;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+    }
+    &:hover {
+      box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+  }
+  .data .dataValue {
+    color: $primary-color;
+    margin-left: 1rem;
+  }
+  .body {
+    width: calc(100% - 0.1rem);
+  }
+  .gallery {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}

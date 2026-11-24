@@ -1,5 +1,3 @@
-import "./index.scss";
-
 import { useTranslation } from "react-i18next";
 
 import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
@@ -14,6 +12,8 @@ import Layout from "components/Layout/Layout";
 import ServiceDescription from "components/ServiceDescription";
 import { theme } from "styles/theme";
 import { getImageUrl, isEven } from "utils";
+
+import styles from "./Services.module.scss";
 
 const Services = () => {
   const { t } = useTranslation();
@@ -35,9 +35,9 @@ const Services = () => {
 
   return (
     <Layout>
-      <Box className="services">
+      <Box className={styles.services}>
         <SectionTitle>{t("ourServices")}</SectionTitle>
-        <Grid className="service-menu" container spacing={2}>
+        <Grid className={styles.menu} container spacing={2}>
           {services.map((service) => {
             const { name, banner } = service;
             const imgUrl = getImageUrl(banner, "medium");
@@ -50,15 +50,15 @@ const Services = () => {
                     )
                   }
                   aria-description={name}
-                  className="service-menu-item"
+                  className={styles.menuItem}
                 >
                   <PreviewImage
                     src={imgUrl ?? HomeBg}
                     hoverable={false}
                     hoverContent={
-                      <Box className="menu-item-content-container">
+                      <Box className={styles.menuItemContent}>
                         <Typography
-                          className="menu-item-title"
+                          className={styles.menuItemTitle}
                           variant={isMobile ? "h5" : "h4"}
                           fontWeight={700}
                         >
@@ -76,14 +76,14 @@ const Services = () => {
               title={t("servicesPage.consultUs").toUpperCase()}
               href="mailto:info@cordadaoutdoor.com"
             >
-              <Box className="service-menu-item">
+              <Box className={styles.menuItem}>
                 <PreviewImage
                   src={HomeBg}
                   hoverable={false}
                   hoverContent={
-                    <Box className="menu-item-content-container">
+                    <Box className={styles.menuItemContent}>
                       <Typography
-                        className="menu-item-title"
+                        className={styles.menuItemTitle}
                         variant={isMobile ? "h5" : "h4"}
                         fontWeight={700}
                       >
@@ -96,7 +96,7 @@ const Services = () => {
             </a>
           </Grid>
         </Grid>
-        <Box className="services-content-container">
+        <Box className={styles.content}>
           {services.map((service, i) => {
             const { name, body, banner } = service;
 

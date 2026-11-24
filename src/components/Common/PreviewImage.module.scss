@@ -1,0 +1,44 @@
+.container {
+  aspect-ratio: 3 / 2;
+  position: relative;
+  color: white;
+
+  .image {
+    height: 100%;
+    width: 100%;
+  }
+  .content {
+    position: absolute;
+    max-height: calc(100% - 10px);
+    overflow: hidden;
+    width: calc(100% - 10px);
+    background: linear-gradient(
+      180deg,
+      rgba(234, 55, 94, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    bottom: 0;
+    padding: 5px;
+  }
+  .hover {
+    height: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+  .nonHoverable {
+    height: 100%;
+  }
+
+  &:hover {
+    .content {
+      visibility: hidden;
+    }
+    .hover {
+      height: 100%;
+    }
+  }
+}

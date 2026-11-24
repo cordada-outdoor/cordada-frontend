@@ -6,7 +6,9 @@ import { Box, Typography } from "@mui/material";
 import { AppbarPosition } from "models";
 
 import Footer from "./Footer";
+import styles from "./Layout.module.scss";
 import Menu from "./Menu";
+
 interface LayoutProps {
   children: ReactNode;
   appbarPosition?: AppbarPosition;
@@ -15,9 +17,9 @@ interface LayoutProps {
 
 const Layout = ({ children, appbarPosition, primaryAppbar }: LayoutProps) => {
   return (
-    <div className="layout">
+    <div className={styles.layout}>
       <Menu appbarPosition={appbarPosition} primaryAppbar={primaryAppbar} />
-      <Box className="content-container">{children}</Box>
+      <Box className={styles.content}>{children}</Box>
       <Footer />
       <CookieConsent>
         <Typography>

@@ -1,5 +1,3 @@
-import "./index.scss";
-
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -24,6 +22,8 @@ import Layout from "components/Layout/Layout";
 import ProjectGallery from "components/ProjectGallery";
 import { theme } from "styles/theme";
 import { getImageUrl, joinWithCommasAndAmpersand } from "utils";
+
+import styles from "./SingleProject.module.scss";
 
 const SingleProject = () => {
   const { t } = useTranslation();
@@ -60,22 +60,22 @@ const SingleProject = () => {
 
   return (
     <Layout>
-      <Box className="project-detail" pt={[4, 4, 0]}>
-        <SectionTitle className="project-title" color="primary" p={2}>
+      <Box className={styles.project} pt={[4, 4, 0]}>
+        <SectionTitle color="primary" p={2}>
           {project?.title}
         </SectionTitle>
         <Box
-          className="project-img-container"
+          className={styles.imageContainer}
           onClick={() => setImgModal(!imgModal)}
         >
           <img src={imgUrl ?? HomeBg} alt="project-header" />
         </Box>
 
         <Grid container p={2} spacing={2}>
-          <Grid item md={12} lg={3} className="project-data">
+          <Grid item md={12} lg={3} className={styles.data}>
             <table>
               {client && (
-                <tr className="project-data-element">
+                <tr>
                   <td>
                     <Typography variant={dataVariant}>
                       {t("projectsPage.client")}
@@ -85,14 +85,14 @@ const SingleProject = () => {
                     <Typography
                       fontWeight={700}
                       variant={dataVariant}
-                      className="project-data-primary"
+                      className={styles.dataValue}
                     >
                       {client?.name}
                     </Typography>
                   </td>
                 </tr>
               )}
-              <tr className="project-data-element">
+              <tr>
                 <td>
                   <Typography variant={dataVariant}>
                     {t("projectsPage.date")}
@@ -102,13 +102,13 @@ const SingleProject = () => {
                   <Typography
                     fontWeight={700}
                     variant={dataVariant}
-                    className="project-data-primary"
+                    className={styles.dataValue}
                   >
                     {projectDate}
                   </Typography>
                 </td>
               </tr>
-              <tr className="project-data-element">
+              <tr>
                 <td>
                   <Typography variant={dataVariant}>
                     {t("projectsPage.type")}
@@ -118,7 +118,7 @@ const SingleProject = () => {
                   <Typography
                     fontWeight={700}
                     variant={dataVariant}
-                    className="project-data-primary"
+                    className={styles.dataValue}
                   >
                     {serviceNames}
                   </Typography>
@@ -126,7 +126,7 @@ const SingleProject = () => {
               </tr>
             </table>
           </Grid>
-          <Grid item md={12} lg={6} className="project-body">
+          <Grid item md={12} lg={6} className={styles.body}>
             <Stack gap={2}>
               <Typography
                 variant={dataVariant}
@@ -139,11 +139,7 @@ const SingleProject = () => {
             </Stack>
           </Grid>
           {!!project?.gallery?.length && (
-            <Grid
-              sx={{ display: "flex", width: "100%", justifyContent: "center" }}
-              item
-              xs={12}
-            >
+            <Grid className={styles.gallery} item xs={12}>
               <ProjectGallery gallery={project.gallery} />
             </Grid>
           )}

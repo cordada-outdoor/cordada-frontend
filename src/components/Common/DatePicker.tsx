@@ -4,8 +4,10 @@ import { Box, Grid, Typography } from "@mui/material";
 
 import ArrowBack from "assets/icons/arrow-ios-back.svg?react";
 import ArrowForward from "assets/icons/arrow-ios-forward.svg?react";
+import { cx } from "utils/cx";
 
 import CustomIconButton from "./CustomIconButton";
+import styles from "./DatePicker.module.scss";
 
 const months = [
   { label: "january", value: "01" },
@@ -35,8 +37,8 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
   );
 
   return (
-    <Box className="datepicker-container">
-      <Box className="datepicker-header-container">
+    <Box className={styles.datepicker}>
+      <Box className={styles.header}>
         <CustomIconButton onClick={() => setYear(year - 1)}>
           <ArrowBack />
         </CustomIconButton>
@@ -45,7 +47,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
           <ArrowForward />
         </CustomIconButton>
       </Box>
-      <Grid className="datepicker-months-container" container rowGap={1}>
+      <Grid className={styles.months} container rowGap={1}>
         {months.map((month) => {
           const splitValue = value.split("-");
           const isSelected =
@@ -53,13 +55,13 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
           return (
             <Grid
               onClick={() => onChange(year.toString() + "-" + month.value)}
-              className={`datepicker-month ${isSelected ? "selected-month" : ""}`}
+              className={cx(styles.month, isSelected && styles.selected)}
               key={month.value}
               item
               md={4}
               xs={12}
             >
-              <Typography className="datepicker-month-text">
+              <Typography className={styles.monthText}>
                 {month.value}
               </Typography>
             </Grid>

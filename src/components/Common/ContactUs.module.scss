@@ -1,0 +1,11 @@
+@use "styles/mixins" as *;
+
+.section {
+  padding: 12px 0;
+}
+.whiteOnBlack {
+  @include white-on-black;
+}
+.blackOnWhite {
+  @include black-on-white;
+}

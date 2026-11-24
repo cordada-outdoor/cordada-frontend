@@ -1,7 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 import { Avatar, Box, Typography } from "@mui/material";
+
+import { cx } from "utils/cx";
+
+import styles from "./AboutUsDescription.module.scss";
 
 interface AboutUsDescriptionProps {
   direction: "left-to-right" | "right-to-left";
@@ -17,21 +20,28 @@ const AboutUsDescription = ({
   children,
 }: AboutUsDescriptionProps) => {
   const [isVisible, setVisible] = useState(false);
-  const domRef = useRef();
+  const domRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    if (!domRef.current) return;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => setVisible(entry.isIntersecting));
     });
-    // @ts-expect-error
     observer.observe(domRef.current);
+    return () => observer.disconnect();
   }, []);
+
   return (
     <Box
       ref={domRef}
-      className={`about-us-description-container ${direction} ${isVisible ? "is-visible" : ""}`}
+      className={cx(
+        styles.container,
+        direction === "right-to-left" && styles.rightToLeft,
+        isVisible && styles.visible,
+      )}
     >
-      <Avatar className="about-us-description-avatar" src={image} />
-      <Box className="about-us-description">
+      <Avatar className={styles.avatar} src={image} />
+      <Box>
         <Typography variant="h4">{title}</Typography>
         {children}
       </Box>

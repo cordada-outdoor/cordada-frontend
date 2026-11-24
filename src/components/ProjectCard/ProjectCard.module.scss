@@ -1,16 +1,17 @@
-.project-card {
+@use "styles/mixins" as *;
+
+.card {
   padding: 5px 10px;
   height: calc(100% - 10px);
 
-  .project-description {
+  .description {
     width: 100%;
     margin-top: 5px;
     max-height: calc(100% - 80px);
     line-height: 1.1rem;
     overflow: hidden;
   }
-
-  .see-more-button-container {
+  .buttonContainer {
     position: absolute;
     bottom: 10px;
     left: -5px;
@@ -19,5 +20,23 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+  }
+}
+
+// One card per slide in the mobile Home carousel.
+.card.carousel {
+  height: auto;
+  padding: 1rem;
+}
+
+@include down(md) {
+  .card.grid .buttonContainer {
+    bottom: 5px;
+  }
+}
+
+@media (max-width: 375px) {
+  .card .description {
+    max-height: 50px;
   }
 }

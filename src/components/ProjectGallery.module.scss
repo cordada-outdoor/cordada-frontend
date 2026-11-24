@@ -1,0 +1,120 @@
+@use "styles/mixins" as *;
+
+// Up to four tiles: the first fills the left column and the rest stack on
+// the right. The `countN` class on the grid picks the layout.
+.grid {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0;
+  overflow: hidden;
+
+  @include down(md) {
+    width: 300px;
+    height: 300px;
+  }
+}
+.count1 {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.count2 {
+  grid-template-rows: 1fr;
+}
+.count3 {
+  grid-template-rows: 1fr 1fr;
+}
+
+.tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .more {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.count1 .tile:nth-child(1),
+.count2 .tile:nth-child(1) {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.count2 .tile:nth-child(2),
+.count3 .tile:nth-child(2),
+.count4 .tile:nth-child(2) {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.count3 .tile:nth-child(1) {
+  grid-area: 1 / 1 / 3 / 2;
+}
+.count3 .tile:nth-child(3),
+.count4 .tile:nth-child(3) {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.count4 .tile:nth-child(1) {
+  grid-area: 1 / 1 / 4 / 2;
+}
+.count4 .tile:nth-child(4) {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.viewer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;
+    max-height: calc(100vh - 64px);
+    object-fit: contain;
+  }
+}
+
+// Single class on purpose: IconButton's own :hover background still applies.
+.arrow {
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  > svg {
+    height: 25px;
+    width: 25px;
+
+    @include down(md) {
+      height: 15px;
+      width: 15px;
+    }
+  }
+}
+.prev {
+  left: 16px;
+  color: white;
+}
+.next {
+  right: 16px;
+}

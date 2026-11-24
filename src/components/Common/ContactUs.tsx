@@ -3,15 +3,25 @@ import { useTranslation } from "react-i18next";
 import { Box, Button, Typography } from "@mui/material";
 import { Variant } from "@mui/material/styles/createTypography";
 
+import { cx } from "utils/cx";
+
+import styles from "./ContactUs.module.scss";
+
 interface ContactUsProps {
   colorScheme: "white-on-black" | "black-on-white";
   titleVariant?: Variant;
 }
+
+const schemeClass = {
+  "white-on-black": styles.whiteOnBlack,
+  "black-on-white": styles.blackOnWhite,
+};
+
 const ContactUs = ({ colorScheme, titleVariant = "h3" }: ContactUsProps) => {
   const { t } = useTranslation();
 
   return (
-    <Box className={`contact-us-section ${colorScheme}`}>
+    <Box className={cx(styles.section, schemeClass[colorScheme])}>
       <Typography variant={titleVariant}>
         {t("homePage.anyQuestions")}
       </Typography>

@@ -1,0 +1,45 @@
+@use "styles/colors" as *;
+@use "styles/mixins" as *;
+
+.projects {
+  @include page-padding;
+
+  .filters {
+    @include horizontal-list;
+    margin-top: 12px;
+    align-items: center;
+
+    .filterTitle {
+      font-size: 1.2rem;
+      margin-right: 12px;
+    }
+    .filterButton {
+      color: $black;
+      font-weight: 600;
+      font-size: 1.35rem;
+    }
+    .filterButton:hover,
+    .selected {
+      color: $primary-color;
+    }
+  }
+  .chip {
+    margin: 8px;
+  }
+  .list {
+    padding-top: 12px;
+
+    .projectContainer {
+      border: 5px solid $primary-color;
+    }
+  }
+  .loadMore {
+    font-weight: bold;
+  }
+}
+
+@include down(md) {
+  .projects {
+    padding: 50px 20px 10px;
+  }
+}

@@ -1,0 +1,79 @@
+@use "styles/colors" as *;
+@use "styles/mixins" as *;
+
+.root {
+  .container {
+    margin: 100px 12px;
+    opacity: 0;
+    transform: translateX(-20vw);
+    visibility: hidden;
+    transition:
+      opacity 1200ms ease-out,
+      transform 600ms ease-out,
+      visibility 1200ms ease-out;
+    will-change: opacity, transform, visibility;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    .imageContainer {
+      position: relative;
+
+      .image {
+        width: calc(100% - 16px);
+        aspect-ratio: 3 / 2;
+        height: auto;
+      }
+      .seeMore {
+        position: absolute;
+        left: 30px;
+        bottom: 10px;
+      }
+    }
+    .title {
+      color: $primary-color;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+  }
+  .container.rightToLeft {
+    transform: translateX(20vw);
+    flex-direction: row-reverse;
+
+    .imageContainer .seeMore {
+      left: auto;
+      right: 30px;
+    }
+  }
+  .container.visible {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+}
+
+@include down(md) {
+  .root {
+    .container,
+    .container.rightToLeft {
+      flex-direction: column;
+      text-align: center;
+      margin-left: 0;
+      width: 100%;
+
+      .imageContainer {
+        position: relative;
+        padding-left: 16px;
+
+        .seeMore {
+          position: inherit;
+          margin-top: 12px;
+        }
+      }
+      .descriptionContainer {
+        padding-left: 0;
+      }
+    }
+  }
+}

@@ -14,12 +14,18 @@ import { theme } from "styles/theme";
 import useUrlLang from "utils/useUrlLang";
 
 import { MOBILE_PROJECTS_CAROUSEL_SETTINGS } from "../carouselSettings";
+import styles from "../Home.module.scss";
 
 import ClientsSection from "./ClientsSection";
 
-const ProjectPreview = ({ project }: { project: Project }) => (
-  <Box className="project-preview">
-    <ProjectCard project={project} />
+interface ProjectPreviewProps {
+  project: Project;
+  variant?: "grid" | "carousel";
+}
+
+const ProjectPreview = ({ project, variant }: ProjectPreviewProps) => (
+  <Box className={styles.projectPreview}>
+    <ProjectCard project={project} variant={variant} />
   </Box>
 );
 
@@ -35,20 +41,24 @@ const ProjectsSection = ({ sentinelRef }: ProjectsSectionProps) => {
   const { data: projects = [], isLoading } = useLatestProjects(3);
 
   return (
-    <Box className="home-projects-section" id="home-projects-section">
-      <SectionTitle className="section-title" maxWidth="lg" margin="auto">
+    <Box className={styles.projects} id="home-projects-section">
+      <SectionTitle maxWidth="lg" margin="auto">
         {t("homePage.ourProjects")}
       </SectionTitle>
       {isMobile ? (
-        <Box className="mobile-projects-preview">
+        <Box className={styles.mobilePreview}>
           <Carousel settings={MOBILE_PROJECTS_CAROUSEL_SETTINGS}>
             {projects.map((p) => (
-              <ProjectPreview key={p.documentId} project={p} />
+              <ProjectPreview
+                key={p.documentId}
+                project={p}
+                variant="carousel"
+              />
             ))}
           </Carousel>
         </Box>
       ) : (
-        <Box className="projects-preview-container" maxWidth="lg" margin="auto">
+        <Box className={styles.projectsGrid} maxWidth="lg" margin="auto">
           {isLoading ? (
             <Loading />
           ) : (
@@ -60,15 +70,8 @@ const ProjectsSection = ({ sentinelRef }: ProjectsSectionProps) => {
       )}
 
       <Box margin="auto" display="flex" maxWidth="lg" justifyContent="end">
-        <Link
-          className="see-projects-button-container"
-          to={`${langUrlPrefix}/projects`}
-        >
-          <Button
-            className="see-projects-button"
-            color="primary"
-            variant="contained"
-          >
+        <Link className={styles.seeProjects} to={`${langUrlPrefix}/projects`}>
+          <Button color="primary" variant="contained">
             {t("homePage.allProjects")}
           </Button>
         </Link>

@@ -1,0 +1,42 @@
+@use "styles/mixins" as *;
+
+.footer {
+  @include horizontal-list;
+  @include white-on-primary;
+  justify-content: space-between;
+
+  a {
+    color: white;
+  }
+  .list {
+    @include horizontal-list;
+  }
+  .iconButton {
+    color: inherit;
+    height: 32px;
+    width: 32px;
+  }
+  .iconButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: black;
+  }
+  .link {
+    text-decoration: none;
+    margin: 0 1em;
+  }
+  .link:hover {
+    color: black;
+  }
+}
+
+@include down(md) {
+  .footer {
+    .link p {
+      font-size: 1em;
+    }
+    // The legal links live in the mobile menu drawer instead.
+    .legal {
+      display: none;
+    }
+  }
+}

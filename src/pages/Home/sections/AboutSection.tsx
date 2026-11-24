@@ -8,28 +8,23 @@ import ContactUs from "components/Common/ContactUs";
 import { StrapiImage } from "components/Common/StrapiImage";
 import useUrlLang from "utils/useUrlLang";
 
+import styles from "../Home.module.scss";
+
 const AboutSection = () => {
   const { langUrlPrefix } = useUrlLang();
   const { data: homepage } = useHomepage();
 
   return (
-    <Box className="home-about-section">
-      <Box className="about-us-img-container">
+    <Box className={styles.about}>
+      <Box className={styles.aboutImageContainer}>
         {homepage && (
           <StrapiImage
             image={homepage.contactUsImage}
-            className="about-us-img"
+            className={styles.aboutImage}
           />
         )}
-        <Link
-          className="about-us-button-container"
-          to={`${langUrlPrefix}/about`}
-        >
-          <Button
-            className="about-us-button"
-            color="primary"
-            variant="contained"
-          >
+        <Link className={styles.aboutButton} to={`${langUrlPrefix}/about`}>
+          <Button color="primary" variant="contained">
             {t("aboutUs")}
           </Button>
         </Link>

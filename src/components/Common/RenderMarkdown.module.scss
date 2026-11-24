@@ -1,0 +1,13 @@
+@use "styles/colors" as *;
+
+.markdown {
+  a,
+  a:visited {
+    color: $primary-color;
+    text-decoration-color: $primary-color;
+  }
+}
+.embed {
+  display: flex;
+  justify-content: center;
+}

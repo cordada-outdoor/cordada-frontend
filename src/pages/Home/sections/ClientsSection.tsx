@@ -1,4 +1,4 @@
-import { Avatar, Box, useMediaQuery } from "@mui/material";
+import { Avatar, Box } from "@mui/material";
 import { t } from "i18next";
 
 import { useClients } from "api/clients";
@@ -6,29 +6,31 @@ import LogoSmallWhite from "assets/logos/logo-small-white.png";
 import Carousel from "components/Carousel/Carousel";
 import Loading from "components/Common/Loading";
 import SectionTitle from "components/Common/SectionTitle";
-import { theme } from "styles/theme";
 import { getImageUrl } from "utils";
 
 import { getClientsCarouselSettings } from "../carouselSettings";
+import styles from "../Home.module.scss";
 
 const ClientsSection = () => {
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { data: clients = [], isLoading } = useClients();
 
   return (
-    <Box className="collaborators-preview-container">
-      <SectionTitle className="section-title" maxWidth="lg" margin="auto">
+    <Box className={styles.clients}>
+      <SectionTitle maxWidth="lg" margin="auto">
         {t("homePage.ourCordada")}
       </SectionTitle>
-      <Box className={isMobile ? "mobile-collaborators" : "collaborators-list"}>
+      <Box>
         {isLoading ? (
-          <Loading sx={{ color: "black" }} />
+          <Loading className={styles.clientsLoading} />
         ) : (
-          <Carousel settings={getClientsCarouselSettings(clients.length)}>
+          <Carousel
+            settings={getClientsCarouselSettings(clients.length)}
+            className={styles.carousel}
+          >
             {clients.map((client, idx) => (
               <Avatar
                 variant="square"
-                className="avatar-img"
+                className={styles.clientLogo}
                 key={client.id}
                 src={getImageUrl(client.icon, "small") ?? LogoSmallWhite}
                 alt={"carousel " + idx}

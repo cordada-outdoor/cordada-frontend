@@ -1,5 +1,3 @@
-import "./index.scss";
-
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
@@ -24,6 +22,9 @@ import ProjectCard from "components/ProjectCard/ProjectCard";
 import ProjectsFilterDialog, {
   FilterType,
 } from "components/ProjectsFilterDialog";
+import { cx } from "utils/cx";
+
+import styles from "./Projects.module.scss";
 
 type LocationState = { serviceId?: number } | undefined;
 
@@ -76,41 +77,58 @@ const Projects = () => {
 
   return (
     <Layout>
-      <Box className="projects">
+      <Box className={styles.projects}>
         <SectionTitle>{t("homePage.ourProjects")}</SectionTitle>
-        <Box className="filter-section">
-          <Typography className="filter-title">
+        <Box className={styles.filters}>
+          <Typography className={styles.filterTitle}>
             {t("projectsPage.filterBy")}
           </Typography>
           <Button
             onClick={() => setFilterDialog("service")}
-            className={`filter-button ${filters.serviceId ? "selected-filter-button" : ""}`}
+            className={cx(
+              styles.filterButton,
+              !!filters.serviceId && styles.selected,
+            )}
           >
             {t("projectsPage.type")}
           </Button>
           <Button
             onClick={() => setFilterDialog("date")}
-            className={`filter-button ${filters.month ? "selected-filter-button" : ""}`}
+            className={cx(
+              styles.filterButton,
+              !!filters.month && styles.selected,
+            )}
           >
             {t("projectsPage.date")}
           </Button>
           <Button
             onClick={() => setFilterDialog("client")}
-            className={`filter-button ${filters.clientId ? "selected-filter-button" : ""}`}
+            className={cx(
+              styles.filterButton,
+              !!filters.clientId && styles.selected,
+            )}
           >
             {t("projectsPage.client")}
           </Button>
         </Box>
         {serviceName && (
-          <Chip sx={{ m: 1 }} label={serviceName} variant="outlined" />
+          <Chip
+            className={styles.chip}
+            label={serviceName}
+            variant="outlined"
+          />
         )}
         {filters.month && (
-          <Chip sx={{ m: 1 }} label={filters.month} variant="outlined" />
+          <Chip
+            className={styles.chip}
+            label={filters.month}
+            variant="outlined"
+          />
         )}
         {clientName && (
-          <Chip sx={{ m: 1 }} label={clientName} variant="outlined" />
+          <Chip className={styles.chip} label={clientName} variant="outlined" />
         )}
-        <Box className="projects-section">
+        <Box className={styles.list}>
           <Grid container spacing={2}>
             {projectsQuery.isLoading ? (
               <Loading />
@@ -118,7 +136,7 @@ const Projects = () => {
               projectsQuery.data?.pages.map((page) =>
                 page.data.map((p) => (
                   <Grid item key={p.documentId} md={4} xs={12} sm={6}>
-                    <Box className="project-container">
+                    <Box className={styles.projectContainer}>
                       <ProjectCard project={p} />
                     </Box>
                   </Grid>
@@ -140,9 +158,7 @@ const Projects = () => {
             ) : (
               <Button
                 variant="contained"
-                sx={{
-                  fontWeight: "bold",
-                }}
+                className={styles.loadMore}
                 onClick={() => {
                   projectsQuery.fetchNextPage();
                 }}
