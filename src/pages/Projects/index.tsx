@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 
@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import dayjs from "dayjs";
 
 import HomeBg from "assets/images/home_bg.jpg";
 import PreviewImage from "components/Common/PreviewImage";
@@ -50,7 +51,12 @@ const Projects = () => {
     date: "",
     client: "",
   });
-  window.history.replaceState({}, "");
+
+  // Clear the router state (e.g. a service preselected from the Services page)
+  // once it's been read, so a reload doesn't re-apply it.
+  useEffect(() => {
+    window.history.replaceState({}, "");
+  }, []);
 
   const [filterDialog, setFilterDialog] = useState<
     "service" | "date" | "client" | undefined
@@ -123,12 +129,10 @@ const Projects = () => {
     newFilters[filterToChange as keyof Filters] = val;
 
     if (filterToChange === "date") {
-      const month = val.split("-")[1];
-      const nextMonth = Number(month) + 1;
-      const monthToString =
-        nextMonth < 10 ? "0" + nextMonth.toString() : nextMonth.toString();
-      const nextDate = val.split("-")[0] + "-" + monthToString + "-01";
-      newFilters.maxDate = nextDate;
+      // val is "YYYY-MM"; the filter upper bound is the 1st of the next month.
+      newFilters.maxDate = dayjs(`${val}-01`)
+        .add(1, "month")
+        .format("YYYY-MM-DD");
       setFiltersTitle((prev) => ({ ...prev, [filterToChange]: val }));
     }
 
@@ -179,13 +183,13 @@ const Projects = () => {
             {projectsQuery.isLoading ? (
               <CircularProgress className="loading-indicator" />
             ) : (
-              projectsQuery.data?.pages.map((page, i: number) => {
+              projectsQuery.data?.pages.map((page) => {
                 return page.data.map((p) => {
                   const { title, subtitle, client, image } = p;
                   const imgUrl = getImageUrl(image, "large");
 
                   return (
-                    <Grid item key={i} md={4} xs={12} sm={6}>
+                    <Grid item key={p.documentId} md={4} xs={12} sm={6}>
                       <Box className="project-container">
                         <PreviewImage
                           src={imgUrl ?? HomeBg}
